@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="valueflow.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="375"
+     inkscape:cy="469.60942"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     showguides="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1002"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3351" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="105"
+       y="642.36218"
+       id="text3363"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3365"
+         x="105"
+         y="642.36218" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="338.90619"
+       y="638.70471"
+       id="text3419"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3421"
+         x="338.90619"
+         y="638.70471" /><tspan
+         sodipodi:role="line"
+         x="338.90619"
+         y="663.70471"
+         id="tspan3423" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="109.09647"
+       y="588.70221"
+       id="text3437"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3439"
+         x="109.09647"
+         y="588.70221" /><tspan
+         sodipodi:role="line"
+         x="109.09647"
+         y="613.70221"
+         id="tspan3443" /><tspan
+         sodipodi:role="line"
+         x="109.09647"
+         y="638.70221"
+         id="tspan3441" /></text>
+    <g
+       id="g3449"
+       transform="translate(-17.142857,-505.71428)">
+      <rect
+         y="651.86218"
+         x="100.5"
+         height="300"
+         width="200"
+         id="rect3349"
+         style="fill:none;stroke:#000000" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3353"
+         d="m 100,752.3622 200,0"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3355"
+         y="687.36218"
+         x="115"
+         style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="687.36218"
+           x="115"
+           id="tspan3357"
+           sodipodi:role="line">Inflation</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3359"
+         y="787.36218"
+         x="115"
+         style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="787.36218"
+           x="115"
+           id="tspan3361"
+           sodipodi:role="line">Current</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3367"
+         y="642.36218"
+         x="105"
+         style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="642.36218"
+           x="105"
+           id="tspan3369"
+           sodipodi:role="line">STEEM</tspan></text>
+      <rect
+         y="652.41296"
+         x="465.15744"
+         height="300"
+         width="200"
+         id="rect3349-3"
+         style="fill:none;stroke:#000000" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3353-6"
+         d="m 464.65741,752.91294 200,0"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3355-7"
+         y="687.91296"
+         x="479.65744"
+         style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="687.91296"
+           x="479.65744"
+           id="tspan3357-5"
+           sodipodi:role="line">Inflation</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3359-3"
+         y="787.91296"
+         x="479.65744"
+         style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="787.91296"
+           x="479.65744"
+           id="tspan3361-5"
+           sodipodi:role="line">Current</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3367-6"
+         y="642.91296"
+         x="469.65744"
+         style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan3433"
+           y="642.91296"
+           x="469.65744"
+           sodipodi:role="line">CAT</tspan></text>
+      <path
+         d="M 319.07075,673.74653 A 67.5,32.5 0 0 1 382.5,652.36218 a 67.5,32.5 0 0 1 63.42925,21.38435"
+         sodipodi:open="true"
+         sodipodi:end="5.9341195"
+         sodipodi:start="3.4906585"
+         sodipodi:ry="32.5"
+         sodipodi:rx="67.5"
+         sodipodi:cy="684.86218"
+         sodipodi:cx="382.5"
+         sodipodi:type="arc"
+         id="path3381"
+         style="fill:none;stroke:#000000" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3387"
+         d="m 445.98235,657.89764 0,15.65736 -15.65737,0"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <g
+         transform="matrix(-1,0,0,-1,738.82548,1437.2051)"
+         id="g3415">
+        <path
+           style="fill:none;stroke:#000000"
+           id="path3381-7"
+           sodipodi:type="arc"
+           sodipodi:cx="356.00165"
+           sodipodi:cy="727.27838"
+           sodipodi:rx="67.5"
+           sodipodi:ry="32.5"
+           sodipodi:start="3.4906585"
+           sodipodi:end="5.9341195"
+           sodipodi:open="true"
+           d="m 292.5724,716.16273 a 67.5,32.5 0 0 1 63.42925,-21.38435 67.5,32.5 0 0 1 63.42925,21.38435" />
+        <path
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 419.484,700.31386 0,15.65736 -15.65737,0"
+           id="path3387-5"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3425"
+         y="642.74536"
+         x="319.20819"
+         style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:15px"
+           y="642.74536"
+           x="319.20819"
+           id="tspan3427"
+           sodipodi:role="line">CAT  user growth</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3429"
+         y="762.95349"
+         x="326.78436"
+         style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-size:15px"
+           y="762.95349"
+           x="326.78436"
+           id="tspan3431"
+           sodipodi:role="line">CAT MC growth</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3445"
+         y="598.29865"
+         x="105.05586"
+         style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="598.29865"
+           x="105.05586"
+           id="tspan3447"
+           sodipodi:role="line">Boom</tspan></text>
+    </g>
+    <rect
+       style="fill:none;stroke:#000000"
+       id="rect3349-5"
+       width="200"
+       height="300"
+       x="77.67128"
+       y="565.90863" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 77.17128,666.40864 200,0"
+       id="path3353-62"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="92.17128"
+       y="601.40863"
+       id="text3355-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3357-1"
+         x="92.17128"
+         y="601.40863">Inflation</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="92.17128"
+       y="701.40863"
+       id="text3359-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3361-7"
+         x="92.17128"
+         y="701.40863">Current</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="82.17128"
+       y="556.40863"
+       id="text3367-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3369-9"
+         x="82.17128"
+         y="556.40863">STEEM</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000"
+       id="rect3349-3-3"
+       width="200"
+       height="300"
+       x="442.32874"
+       y="566.45941" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 441.82869,666.95938 200,0"
+       id="path3353-6-6"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="456.82874"
+       y="601.95941"
+       id="text3355-7-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3357-5-6"
+         x="456.82874"
+         y="601.95941">Inflation</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="456.82874"
+       y="701.95941"
+       id="text3359-3-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3361-5-6"
+         x="456.82874"
+         y="701.95941">Current</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="446.82874"
+       y="556.95941"
+       id="text3367-6-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="446.82874"
+         y="556.95941"
+         id="tspan3433-8">CAT</tspan></text>
+    <g
+       id="g3603"
+       transform="matrix(-1,0,0,1,719.49681,0)">
+      <path
+         transform="scale(-1,1)"
+         d="m -423.10055,587.79298 a 67.5,32.5 0 0 1 63.42926,-21.38435 67.5,32.5 0 0 1 63.42925,21.38435"
+         sodipodi:open="true"
+         sodipodi:end="5.9341195"
+         sodipodi:start="3.4906585"
+         sodipodi:ry="32.5"
+         sodipodi:rx="67.5"
+         sodipodi:cy="598.90863"
+         sodipodi:cx="-359.6713"
+         sodipodi:type="arc"
+         id="path3381-79"
+         style="fill:none;stroke:#000000" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3387-2"
+         d="m 423.15363,571.94408 0,15.65736 -15.65737,0"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       id="g3415-0"
+       transform="matrix(1,0,0,-1,3.8392243,1351.2515)">
+      <path
+         d="m 292.5724,716.16273 a 67.5,32.5 0 0 1 63.42925,-21.38435 67.5,32.5 0 0 1 63.42925,21.38435"
+         sodipodi:open="true"
+         sodipodi:end="5.9341195"
+         sodipodi:start="3.4906585"
+         sodipodi:ry="32.5"
+         sodipodi:rx="67.5"
+         sodipodi:cy="727.27838"
+         sodipodi:cx="356.00165"
+         sodipodi:type="arc"
+         id="path3381-7-2"
+         style="fill:none;stroke:#000000" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3387-5-3"
+         d="m 419.484,700.31386 0,15.65736 -15.65737,0"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="296.37949"
+       y="556.79181"
+       id="text3425-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3427-5"
+         x="296.37949"
+         y="556.79181"
+         style="font-size:15px">CAT  user shrink</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="303.95566"
+       y="676.99994"
+       id="text3429-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3431-2"
+         x="303.95566"
+         y="676.99994"
+         style="font-size:15px">CAT MC drop</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="82.227142"
+       y="512.34509"
+       id="text3445-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3447-8"
+         x="82.227142"
+         y="512.34509">Bust</tspan><tspan
+         sodipodi:role="line"
+         x="82.227142"
+         y="537.34509"
+         id="tspan3601" /></text>
+    <rect
+       style="fill:none;stroke:#000000"
+       id="rect3609"
+       width="610"
+       height="840"
+       x="60"
+       y="62.362206" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 60,472.3622 610,0"
+       id="path3611"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
