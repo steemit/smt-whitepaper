@@ -95,7 +95,7 @@ to the Steem community as a nucleus of initial users, (2) incentivize participat
 
 
 
-Business
+# Business
 
 - Use Steem support to buyback tokens
 - What is the algorithm for determining Steem support?
@@ -103,7 +103,8 @@ Business
 - Why we need it and it can’t be optional
 - On-chain market between Steem and coins
 
-Tech
+# Tech
+
 - Why C# (I have a whitepaper on this for DOT, we can use with little modification)
 - Parallelism via two-way sidechaining
 - JSON type schemas
@@ -112,7 +113,8 @@ Tech
 - Specification of accesses as function of operation, state, prev operation
 - State checkpointing
 
-Steem features considered for cutting:
+# Steem features considered for cutting:
+
 - All account, witness vote operations unnecessary because accounts deferred to main chain
 - Escrow
 - Savings
