@@ -1,3 +1,11 @@
+
+# Introduction
+
+Steem has proven the value in blockchain-based social media community
+which rewards user activity with tokens.  Giving tokens relatively freely
+as a reward for participation in the community creates powerful incentive
+forces which stoke the growth of the community.
+
 # History of custom tokens
 
 The blockchain of the future will be a friendly environment for entrepreneurs
@@ -126,6 +134,92 @@ to the Steem community as a nucleus of initial users, (2) incentivize participat
 - Set_reset_account_operation
 - SBD
 
+# Incomplete stuff
+
+The exact economic dynamics of how Steem works is fascinating, rich
+theoretical ground.  Explain some of 
+
+What Steem's achieved so far is just the tip of the iceberg.
+
+
+
+
+- Growth coupling:  
+- Stimulus effect:  Increased MC incentivizes more posting / commenting
+- Demand effect:  Increased userbase generates buy pressure for token
+
+effect is *growth coupling*:  The
+token and the community "ride each others' coattails."
+
+
+
+Another effect is *oiling the machine*:  Reducing frictional costs
+
+
+- Growth coupling:  Token / community "ride each others' coattails."
+- Oiling the machine:  Reduce / eliminate frictional costs.
+- Widening the funnel:  Give low-commitment users (lurkers
+and those who don't create an account) a way to effectively participate
+- Positive feedback loop
+
+
+
+As the token gains more value, users join the community, and
+users who view Steem as an investment are happier with their value
+and less likely to leave (token -> community coupling).  As users
+join the community, they buy and earn the token.  Increased platform
+adoption is one of the basic fundamentals of a token, and if this
+fundamental indicator is solid,  reassures people the token's fundamentals are solid
+causing demand to
+increase (community -> token coupling).
+
+Each individual user values his/her contribution according to a certain
+amount, if he/she is not getting rewarded "enough" then 
+
+
+Since the "pie" of currency is
+being divided 
+
+This means the currency is
+intrinsic value for their contributions
+
+
+faster than the currency growth.  The currency gains more value as 
+
+Another effect is *positive feedback*:  The community
+
+In the technical section of this whitepaper,
+we'll discuss the details of growth coupling and positive feedback loops.
+
+
+
+The growth of the community is *coupled* to the growth of the token.  The
+exact 
+feedback loops
+
+But what Steem's achieved
+so far is just the tip of the iceberg:  There's a lot of potential
+for similar communities to form
+
+
+
+
+[1] 
+
+
+
+existing apps / websites, entrepreneurs, and decentralized organic
+growth
+
+Up to this point, the Steem experience has mostly been on
+`steemit.com`
+
+We want to make this value proposition widely available
+
+
+successfully created a blockchain-based
+
+# Another incomplete section
 
 We've come up with an interesting new idea.  Much of the value proposition of Ethereum is in ICO's -- entrepreneurs come up with an idea for a token, market it and sell to users
 
@@ -139,7 +233,7 @@ The problem with Ethereum, or UIA (user issued asset) on BitShares, is that it's
 
 
 
-
+# Nathan's notes
 
 Nathan’ Basic Understanding:
 A CBT is a type of user-created currency based on the STEEM blockchain, or a sidechain.. Many people wish to create their own type of currency, but lack the technical skills to do it from scratch, fork and modify an existing technology/blockchain, or create smart contracts in Ethereum.
