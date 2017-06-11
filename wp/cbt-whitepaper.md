@@ -1,3 +1,21 @@
+# Ned's Notes
+
+Title: Community-Building Tokens - A First Class Meta Token Protocol Built into Steem with Customizeable Economic Properties Specific to Community Buildiong Across Websites and Forums
+
+Sections: 
+A. Token Parameters
+  1. Reward Pool Inflation Schedule (Annual Inflation; Disinflationary?; Increasingly Inflationary?)
+  2. Decentralized Exchange vs. Steem - Bandwidth Costs or Fees or Both -- All Fees go to a Dividends Pool that is paid weekly
+  3. Curation Rewards Curve Options and Why you would choose one or the other
+  4. Content Rewards Curve Options and Why you would choose one or the other
+  5. Will there be a Treasury Committee? And Why? Committee for Arbitrary Rewards - Elect Committee Members who can allocate X% of the Rewards Pool
+  6. Payout Dates After Post - 1 Day; 7 Days; 30 Days;
+  7. Power/Staking time frames for Power Down - Must be Payout Date Lengths + 1
+  8. Savings Account Timelengths - 3 Days? 7 Days? - Will these use exisitng savings account strucutres?
+  PLease add more paramters here
+  
+  Can this really be built in C#? How? Why not C++? We don't need Turing Complete AFAICT.
+
 
 # Introduction
 
@@ -223,9 +241,11 @@ successfully created a blockchain-based
 
 We've come up with an interesting new idea.  Much of the value proposition of Ethereum is in ICO's -- entrepreneurs come up with an idea for a token, market it and sell to users
 
-The killer feature isn't the Turing complete nature, it's being able to launch ICO's.  So what we've decided to do is implement a system where users can set up communities (think subreddits).  A community can be set up to reward users with STEEM as the base site, or can be set up to reward user with a custom token *of that community*, which is issued by the founder of that community -- called CBT (community building token).
+The killer feature isn't the Turing complete nature, it's being able to build communities with tokens that incentivize growth - whether that be through fundraising (i.e. ICOs; TGEs) or rewards to users (e.g. Steem Content and Curation Rewards).  So what we've decided to do is implement a system where users can set up communities (think subreddits).  A community can be set up to reward users with STEEM as the base site, or can be set up to reward user with a custom token *of that community*, which is issued by the founder of that community -- called CBT (community building token).
 
 The problem with Ethereum, or UIA (user issued asset) on BitShares, is that it's actually too flexible -- it requires the issuer to be creative enough to come up with their own business model.  CBT's give the entrepreneur a business model out of the box -- build a community -- which is repeatable for different areas of interest.
+
+Ned's Comment on "the porblem with....": There are two sepearte problems with Ethereum and UIAs -- Eth allows creativity but it too flexible.  UIAs don't allow creativirty without the creative business being based off-chain.  Any on chain developments are more promising than off chain in the blockchain space.
 
 
 
