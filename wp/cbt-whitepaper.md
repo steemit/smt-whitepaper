@@ -88,7 +88,6 @@ single-core bottlenecks.
 
 ![Graphical representation of user flow](img/build/userflow.png)
 
-
 What brings users to a token?
 
 - Functionality:  Some feature, e.g. decentralized pseudonymous value
@@ -115,6 +114,175 @@ at low value.
 - Community:  Very tough to jumpstart this from scratch.  CBT’s (1) have access
 to the Steem community as a nucleus of initial users, (2) incentivize participation with low users, (3)
 
+# Market maker function
+
+The CBT blockchain will include an on-chain market to trade CBT's against STEEM.  The blockchain logic
+implements a *market maker* to participate in this market.  Each CBT has its own separate market maker.
+In this section we will define how the market maker functions.
+
+The market maker is capitalized by a fixed fraction (15%) of CBT inflation, and a variable fraction of
+STEEM inflation, determined by user participation in the CBT community.  The STEEM inflation is called
+"support."
+
+The market maker has a simple policy:  Every time the price of the CBT doubles, it sells 10% of its holdings.
+The market maker also does not trade at very low prices; the price at which the market maker enters the
+market is a fixed price called the *entry price* $p_{entry}$.  This policy can be summarized by the following chart:
+
+![Market maker policy curve](img/build/mm-policy.png)\ 
+
+It is informative to look at a *phase space* visualization showing the market maker's CBT inventory and STEEM
+inventory on the same diagram.  This diagram was constructed by starting with an inventory of 100 CBT and price
+parity (1 STEEM per 1 CBT), then increasing the price in 0.1% increments.  After each increase, exchange STEEM
+for CBT at the new price to adjust the STEEM holdings as appropriate to move the percentage of portfolio
+value represented by CBT back onto the policy curve.  Moving from right to left, each of the large dots on
+the diagram represents a doubling of value relative to the previous dot.
+
+![Market maker phase diagram](img/build/mm-phase.png)\ 
+
+As capital flows into the market maker, the market maker curve shifts up and to the right.  If the new capital
+is not in the same STEEM to CBT ratio as the market maker's current inventory, it will buy/sell on the open
+market.  Assuming the capital flow is small compared to the market depth (so the market maker's buying/selling
+activity is not sufficient to appreciably move the price), this effectively constrains the movement due to capital
+changes to occur along lines through the origin, as shown here:
+
+![Market maker phase diagram](img/build/mm-phase-adjust.png)\ 
+
+# Market maker analysis
+
+The market maker is in equilibrium (no buying or selling) when its CBT and STEEM inflows are equal to the portfolio
+balance at the current price.  The market maker's CBT input rate is equal to $r \cdot i_{CBT} \cdot F_{CBT}$ where $r = 0.15$ is the fixed
+fraction of CBT inflation sent to the market maker, $i_{CBT}$ is the CBT inflation rate, and $F_{CBT}$ is the CBT token
+supply.  The market maker's STEEM input rate is equal to $s \cdot i_{STEEM} \cdot F_{STEEM}$ where $s$ is the support
+fraction, $i_{STEEM}$ is the STEEM inflation rate, and $F_{STEEM}$ is the STEEM token supply.
+
+The policy fraction is given by the policy curve
+
+\begin{eqnarray*}
+f(p) & = & \left( {9 \over 10} \right)^{\log_2(p) - \log_2(p_{entry})}
+\end{eqnarray*}
+
+When the market maker is in equilibrium, the price is
+
+\begin{eqnarray*}
+r \cdot i_{CBT} \cdot F_{CBT} \cdot f(p) & = &
+s \cdot i_{STEEM} \cdot F_{STEEM}
+\end{eqnarray*}
+
+To simplify the analysis, let us define the *balanced portfolio price* $p_{bal}$ to be the price at which the market
+maker's CBT and STEEM balances are equal.  The BPP occurs at:
+
+\begin{eqnarray*}
+p_{bal} & = & {2^{\log(1/2) \over \log(9/10)}} p_{entry} \approx 95.59 p_{entry}
+\end{eqnarray*}
+
+At the balanced portfolio price, we have:
+
+\begin{eqnarray*}
+r \cdot i_{CBT} \cdot F_{CBT} \cdot p_{bal} & = &
+s \cdot i_{STEEM} \cdot F_{STEEM}
+\end{eqnarray*}
+
+This is a very interesting relation.  It shows that the constant $r$ actually has a non-obvious alternative interpretation:
+It is the support needed to maintain the market maker in equilibrium at the balanced portfolio price!
+
+As blockchain designers, we are now armed with enough information to set the entry price parameter.  Specifically, we can set
+some ratio $R$ as the desired capitalization of CBT's relative to STEEM.  Then $p_{bal}$ we may set so that $r R$ is the ratio
+of the token value to STEEM:
+
+\begin{eqnarray*}
+r R & = & {p_{bal} F_{CBT} \over F_{STEEM}}
+\end{eqnarray*}
+
+where $F_{CBT}$ is the current supply of the CBT and $F_{STEEM}$ is the current supply of STEEM.  Running this computation
+with $R = 0.25$, $F_{STEEM} = 250,000,000$ and $F_{CBT} = 100,000$ gives $p_{bal} = 93.75$ and $p_{entry} \approx 0.98$.
+
+The interpretation of these numbers is as follows:
+
+- In a healthy market, the aggregate market cap of all CBT's should be about 25% of the value of STEEM.
+- If there are a total of 250 million STEEM in existence, the aggregate market cap of all CBT's should be about 62.5 million STEEM.
+- If CAT (a particular CBT token devoted to feline enthusiasts) has 15% of the total aggregate support of all CBT's, we want CAT to represent 15% of the 62.5 million STEEM, or 9.375 million STEEM.
+- We want the CAT market maker to have a balanced inventory (half of its value in STEEM, half in CAT) when CAT is at 15% of the total aggregate support.
+- We don't want the CAT market maker to buy or sell as long as support remains steady at 15%.
+- The fact that CAT's inventory is balanced at 15% support means the CAT inflation and the STEEM inflation capital inflows to the market maker must be of equal value, otherwise the MM would buy or sell.
+- If CAT and STEEM have the same inflation rate, then the ratio of the inflation inflows is same as the ratio of the token supplies.
+- Since we know a ratio of values and a ratio of quantities, dividing these two ratios gives a price.
+- Knowing this price allows us to turn the "price" scale from arbitrary relative units to specific concrete units.
+
+We can also invert this calculation.  The support level required to maintain a given 
+
+
+
+
+
+At a price of $93.75$, the 100,000 CBT tokens in existence are worth
+9,375,000 STEEM, or 3.75% of the STEEM supply.
+
+
+
+$p_{bal}$ to be the price which makes the CBT market cap equal to 15% of the STEEM market cap.
+
+
+
+
+
+# Why market makers?
+
+Every new social networking startup faces the problem of turning users into revenue.  The support mechanism
+of the market maker -- rewarding the CBT with buy pressure based on user enthusiasm -- solves this problem directly.
+It also has ancillary benefits:
+
+- Bootstrap liquidity in the new market.
+- Stabilize wild price swings; dampen the effect of price bubbles and sudden sell-offs.
+
+The market maker establishes a *coupling* between market cap and userbase size.  If a particular CBT has support from
+5% of the userbase, but only has 1% of the market cap of STEEM, then the market maker will 
+
+
+- A new CBT will find it far easier to attract users than capital.  Turning
+- Bootstrapping a liquid market for a new CBT is non-trivial.
+
+
+
+- STEEM holders would like to see some benefit from allowing the CBT to operate on the STEEM platform.
+
+
+The market maker mechanism solves both problems at a single stroke.  The CBT operator
+
+
+The market maker mechanism solves some of the central problems of bootstrapping a CBT.
+
+
+
+
+
+The market maker's policy is essentially to use all its STEEM to buy the CBT as the price goes to zero,
+and sell all its CBT for STEEM as the price of the CBT goes to infinity.  In more detail
+
+
+
+
+In this section, we will answer two simple questions:
+
+- How do CBT's benefit from STEEM's ecosystem?
+- How do STEEM holders benefit from CBT's?
+
+
+
+
+# Funding the market maker
+
+
+
+From the standpoint of a CBT holder:
+
+- CBT's want to get an "updraft" from the powerful economic force that STEEM has already created to bootstrap their value.
+- STEEM holders want to be sure to get the value from CBT's.
+
+
+CBT's face value proposition.
+
+
+![Graphical representation of value flow](img/build/valueflow.png)
 
 
 
