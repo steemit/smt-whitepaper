@@ -14,3 +14,4 @@ cd ..
 
 ./mmpolicy.py
 ./mmphase.py
+./mmeq.py

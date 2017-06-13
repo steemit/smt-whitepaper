@@ -150,9 +150,9 @@ changes to occur along lines through the origin, as shown here:
 # Market maker analysis
 
 The market maker is in equilibrium (no buying or selling) when its CBT and STEEM inflows are equal to the portfolio
-balance at the current price.  The market maker's CBT input rate is equal to $r \cdot i_{CBT} \cdot F_{CBT}$ where $r = 0.15$ is the fixed
+balance at the current price.  The market maker's CBT input rate is equal to $r_{in} = r \cdot i_{CBT} \cdot F_{CBT}$ where $r = 0.15$ is the fixed
 fraction of CBT inflation sent to the market maker, $i_{CBT}$ is the CBT inflation rate, and $F_{CBT}$ is the CBT token
-supply.  The market maker's STEEM input rate is equal to $s \cdot i_{STEEM} \cdot F_{STEEM}$ where $s$ is the support
+supply.  The market maker's STEEM input rate is equal to $s_{in} = s \cdot i_{STEEM} \cdot F_{STEEM}$ where $s$ is the support
 fraction, $i_{STEEM}$ is the STEEM inflation rate, and $F_{STEEM}$ is the STEEM token supply.
 
 The policy fraction is given by the policy curve
@@ -161,65 +161,22 @@ The policy fraction is given by the policy curve
 f(p) & = & \left( {9 \over 10} \right)^{\log_2(p) - \log_2(p_{entry})}
 \end{eqnarray*}
 
-When the market maker is in equilibrium, the price is
+When the market maker is in equilibrium, the policy curve is equal to the proportion of the input that is CBT.  This
+results in an equation which we solve for $s$:
 
 \begin{eqnarray*}
-r \cdot i_{CBT} \cdot F_{CBT} \cdot f(p) & = &
-s \cdot i_{STEEM} \cdot F_{STEEM}
+f(p) & = & { p r_{in} \over p r_{in} + s_{in} } \\
+     & = & { p r_{in} \over p r_{in} + s \cdot i_{STEEM} \cdot F_{STEEM} } \\
+\Rightarrow p r_{in} f(p) + s \cdot i_{STEEM} \cdot F_{STEEM} f(p) & = & p r_{in} \\
+\Rightarrow s & = & {(1 - f(p)) p r_in \over i_{STEEM} F_{STEEM} f(p)}
 \end{eqnarray*}
 
-To simplify the analysis, let us define the *balanced portfolio price* $p_{bal}$ to be the price at which the market
-maker's CBT and STEEM balances are equal.  The BPP occurs at:
-
-\begin{eqnarray*}
-p_{bal} & = & {2^{\log(1/2) \over \log(9/10)}} p_{entry} \approx 95.59 p_{entry}
-\end{eqnarray*}
-
-At the balanced portfolio price, we have:
-
-\begin{eqnarray*}
-r \cdot i_{CBT} \cdot F_{CBT} \cdot p_{bal} & = &
-s \cdot i_{STEEM} \cdot F_{STEEM}
-\end{eqnarray*}
-
-This is a very interesting relation.  It shows that the constant $r$ actually has a non-obvious alternative interpretation:
-It is the support needed to maintain the market maker in equilibrium at the balanced portfolio price!
-
-As blockchain designers, we are now armed with enough information to set the entry price parameter.  Specifically, we can set
-some ratio $R$ as the desired capitalization of CBT's relative to STEEM.  Then $p_{bal}$ we may set so that $r R$ is the ratio
-of the token value to STEEM:
-
-\begin{eqnarray*}
-r R & = & {p_{bal} F_{CBT} \over F_{STEEM}}
-\end{eqnarray*}
-
-where $F_{CBT}$ is the current supply of the CBT and $F_{STEEM}$ is the current supply of STEEM.  Running this computation
-with $R = 0.25$, $F_{STEEM} = 250,000,000$ and $F_{CBT} = 100,000$ gives $p_{bal} = 93.75$ and $p_{entry} \approx 0.98$.
-
-The interpretation of these numbers is as follows:
-
-- In a healthy market, the aggregate market cap of all CBT's should be about 25% of the value of STEEM.
-- If there are a total of 250 million STEEM in existence, the aggregate market cap of all CBT's should be about 62.5 million STEEM.
-- If CAT (a particular CBT token devoted to feline enthusiasts) has 15% of the total aggregate support of all CBT's, we want CAT to represent 15% of the 62.5 million STEEM, or 9.375 million STEEM.
-- We want the CAT market maker to have a balanced inventory (half of its value in STEEM, half in CAT) when CAT is at 15% of the total aggregate support.
-- We don't want the CAT market maker to buy or sell as long as support remains steady at 15%.
-- The fact that CAT's inventory is balanced at 15% support means the CAT inflation and the STEEM inflation capital inflows to the market maker must be of equal value, otherwise the MM would buy or sell.
-- If CAT and STEEM have the same inflation rate, then the ratio of the inflation inflows is same as the ratio of the token supplies.
-- Since we know a ratio of values and a ratio of quantities, dividing these two ratios gives a price.
-- Knowing this price allows us to turn the "price" scale from arbitrary relative units to specific concrete units.
-
-We can also invert this calculation.  The support level required to maintain a given 
 
 
 
 
+Substituting we obtain:
 
-At a price of $93.75$, the 100,000 CBT tokens in existence are worth
-9,375,000 STEEM, or 3.75% of the STEEM supply.
-
-
-
-$p_{bal}$ to be the price which makes the CBT market cap equal to 15% of the STEEM market cap.
 
 
 
