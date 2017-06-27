@@ -104,8 +104,8 @@ can be optimized to a bit-shift operation.  To gain more dynamic range
 from the bits, we can let the shift be variable:
 
 ```
-// Event seq v2:  v1 + allow relative amount of tokens
-struct token_inflation_event_seq_v2
+// Event seq v3:  v2 + specify shift in struct
+struct token_inflation_event_seq_v3
 {
    timestamp           schedule_time;
    inflation_target    target;
@@ -137,8 +137,8 @@ specifying the left/right endpoints of a time interval, and specifying absolute 
 at both endpoints:
 
 ```
-// Event seq v3:  v2 + modulation over time
-struct token_inflation_event_seq_v3
+// Event seq v4:  v3 + modulation over time
+struct token_inflation_event_seq_v4
 {
    timestamp           schedule_time;
    inflation_target    target;
