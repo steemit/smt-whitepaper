@@ -191,3 +191,21 @@ target has been reached.  This allows a Bancor-style ICO where additional funds 
 rejected, but are instead directed to decentralized market maker.
 
 TODO:  How do we modify the data structures to enable this use case?
+
+TODO:  Rename this because "multi-stage ICO" already means something else in the industry
+
+### Future feature list
+
+- Idea:  Return excess funds above cap to investors
+- Support for hidden cap
+- BitShares lessons learned from flags
+- Don't have permission bits, mutations of flags need to be scheduled in advance
+- Interesting type of asset:  Can participate in market, but not transferrable
+- Figure out how deferred issuance works
+- UI / scripts to generate segments
+
+The triumvirate
+
+- Descriptor (name, decimals, boring stuff)
+- Issuance
+- Inflation
