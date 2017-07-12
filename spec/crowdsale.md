@@ -11,18 +11,23 @@ struct token_issue_segment
    asset               max_contribution;
    asset               max_issue;
    price               min_price;
+   price               max_price;
 };
 ```
 
 1. Reject STEEM contributions that would cause `max_contribution` to be exceeded.
 2. Attempt to issue tokens to all contributions at `min_price`.
 3. If (2) would cause `max_issue` to be exceeded, issue `max_issue` tokens to all contributors proportionally to their contribution.
+4. Any STEEM in excess of `max_issue * max_price` is issued to `extra_steem_targets`.
 
 FAQ:
 
-- Q: How do I allow unlimited contributions?  A: Set `max_contribution` to a very large number.
+- Q: How do I allow unlimited contributions?  A: Set `max_contribution` and `max_price` to a very large number.
 - Q: How do I issue a variable quantity of tokens at a fixed price?  A: Set `max_issue` to a very large number and `min_price` to the desired price.
 - Q: How do I issue a fixed quantity of tokens proportionally to contributors' contributions?  A: Set `min_price` to a very small number and set `max_issue` to the desired quantity of tokens.
+- Q: How do I set a cap on the amount of STEEM raised, where contributions after the cap are rejected?  A: Set `max_contribution` to the desired cap and `max_price` to a very large number.
+- Q: How do I set a cap on the amount of STEEM raised, where contributions above the cap are returned proportionally?  A: Set `max_contribution` to a very large number, set `max_price = cap / max_issue`, and set `extra_steem_targets = [{"$from" : 1}]`.
+- Q: How do I ensure contributions returned are not recycled in subsequent segments?  A:  Set `extra_steem_targets = [{"$from.vesting" : 1}]` to send returned contributions to the contributor's vesting balance.
 
 # Targets
 
@@ -33,6 +38,7 @@ struct token_issue_target_spec
 {
    flat_map< account_name_type, uint16_t >        steem_targets;
    flat_map< account_name_type, uint16_t >        token_targets;
+   flat_map< account_name_type, uint16_t >        extra_steem_targets;
 };
 ```
 

@@ -194,5 +194,23 @@ else
 }
 ```
 
+# FAQ
+
+- Q:  Can the CBT inflation data structures express Steem's [current inflation scheme](https://github.com/steemit/steem/issues/551)?
+- A:  Yes (except for rounding errors).
+- Q:  Can the CBT inflation data structures reward founders directly after X months/years?
+- A:  Yes.
+- Q:  I don't care about time modulation.  Can I disable it?
+- A:  Yes, just set the `lep_abs_amount == rep_abs_amount` and `lep_rel_amount_numerator == rep_rel_amount_numerator` to the same value, and set `lep_time = rep_time` (any value will do).
+- Q:  Can some of this complexity be hidden by a well-designed UI?
+- A:  Yes.
+- Q:  Can we model the inflation as a function of time with complete accuracy?
+- A:  The inflation data structures can be fully modeled / simulated.  For some issue structures, the amount issued depends on how much is raised, so the issue structures cannot be modeled with complete accuracy.
+
+
+
+
+
+
 TODO:  Make some pretty graphs
 TODO:  Examples:  Steem old inflation scheme, Steem new inflation scheme, Bitcoin, send % to founders, send % to founders after time
