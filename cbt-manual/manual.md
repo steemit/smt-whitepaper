@@ -1,3 +1,9 @@
+# Smart Media Tokens
+## Outline
+
+TODO:  Links from here to section anchors later
+TODO:  Can we make anchor names portable across markdown engines?
+
 1. Introduction - (Value Prop) - Proposal for Steem
 **2.Owner's Manual
 2a. Establish Name Space & Token Creation
@@ -5,33 +11,37 @@
 2a2. There is a fee for launching a token, paid to the blockchain.
 
 **2b. Token Parameters
-2b1. ICO
-2b2. Market Maker
-2b3. Inflation
-2b4. Structures
-2b5a. Rewards Curves
-2b5b. Target Votes Per Day
-2b5c. Regeneration times
-2b5d. ... All other Structures/Parameters**
+2b1. Descriptor
+2b2. ICO
+2b3. Market Maker
+2b4. Inflation
+2b5. Structures
+2b6a. Rewards Curves
+2b6b. Target Votes Per Day
+2b6c. Regeneration times
+2b6d. ... All other Structures/Parameters**
 
 3. Ecosystem Apps Supporting SMTs
 4. Conclusion
 
-
 # Introduction
 
-This manual will explain the nuts and bolts of how CBT's work.
+TODO:  Talk about value proposition, proposal for STEEM
+
+# Owner's manual
+
+This manual will explain the nuts and bolts of how SMT's work.
 The intended audience is technical users who want to create their
-own CBT.
+own SMT.
 
-# Reserving a name
+## Reserving a name
 
-After you've decided on a name for your CBT, you are ready to create
-the CBT's *control account*.  This control account will be able to
-design the CBT's policies, launch the CBT, and modify certain CBT
+After you've decided on a name for your SMT, you are ready to create
+the SMT's *control account*.  This control account will be able to
+design the SMT's policies, launch the SMT, and modify certain SMT
 parameters after launch.
 
-The CBT's name will be the same as the name of its control account.
+The SMT's name will be the same as the name of its control account.
 
 TODO:  Add or link to detailed instructions showing how to create
 an account with the CLI wallet.
@@ -53,35 +63,45 @@ make this recommendation, we must do testing to be sure the account will
 remain functional in at least the CLI wallet, and possibly the steemit.com,
 SteemConnect, and/or mobile wallet UI's.
 
-# Descriptor
+### Token consensus
 
-Each CBT has an associated descriptor object which has
+Since tokens participate in atomic transactions also involving
+STEEM, they have been designed as part of the STEEM
+blockchain's consensus.
+
+### Creation fee
+
+TODO:  Explain and justify the blockchain's fee to create an asset
+
+## Token parameters
+
+### Descriptor
+
+Each SMT has an associated descriptor object which has
 *permanent configuration data*.  This data cannot be changed after launch!
-The descriptor is set by the `cbt_setup_operation`:
+The descriptor is set by the `SMT_setup_operation`:
 
 ```
-struct cbt_setup_operation
+struct SMT_setup_operation
 {
    account_name_type       control_account;
    uint8_t                 decimal_places = 0;
    int64_t                 max_supply = STEEMIT_MAX_SHARE_SUPPLY;
 
-   cbt_distribution        initial_distribution_policy;
+   SMT_distribution        initial_distribution_policy;
 
    extensions_type         extensions;
 };
 ```
 
-# CBT token creation mechanics
+SMT token creation exchange takes place in a series of *units*.
 
-CBT token creation exchange takes place in a series of *units*.
+### ICO
 
-## Example
+TODO:  Is ICO a term we want to use?
 
 ALPHA wants to create a crowdsale (TODO: is this the term we want to use?)
-where 7% of contributed STEEM
-goes to Founder Account A, 23% of contributed STEEM goes to Founder
-Account B, and 70% of contributed STEEM goes to Founder Account C.
+where 7% of contributed STEEM goes to Founder Account A, 23% of contributed STEEM goes to Founder Account B, and 70% of contributed STEEM goes to Founder Account C.
 
 ALPHA defines a STEEM unit as:
 
@@ -107,7 +127,7 @@ are issued as `steem_unit` are contributed.  So to match the specification
 of 6 ALPHA per 1 STEEM, we need to issue 1000 ALPHA-units per STEEM-unit.
 Therefore the unit ratio of this crowdsale is 1000.
 
-## Why unit ratios?
+#### Why unit ratios?
 
 Why does the blockchain use unit ratios, rather than simply specifying
 prices?
@@ -122,7 +142,7 @@ price is ill-defined.  For example:
 
 These definitions are still supported by unit ratio.
 
-## UI treatment of unit ratios
+#### UI treatment of unit ratios
 
 As a consequence of the above, the concept of "crowdsale price" is purely
 a UI-level concept.  UI's which provide a crowdsale price should do the following:
@@ -131,12 +151,12 @@ a UI-level concept.  UI's which provide a crowdsale price should do the followin
 - Be well-behaved for pathological input like above
 - Have a button for switching between a unit ratio display and price display
 
-## Defining CBT units
+#### Defining SMT units
 
 The operation used to define units is:
 
 ```
-struct cbt_define_unit_operation
+struct SMT_define_unit_operation
 {
    account_name_type                              control_account;
    uint32_t                                       unit_num = 0;
@@ -147,17 +167,23 @@ struct cbt_define_unit_operation
 };
 ```
 
-## Defining CBT issue segments
+##### Special account names
 
-A *segment* is a portion of a CBT.  During the contribution phase of a CBT,
+The `token_unit` member allows a special account name, `$from`, which should be illegal to be created, and will represent the contributor.
+
+Also supported is `$from.vesting` which represents the vesting balance of the `$from` account.
+
+#### Defining SMT issue segments
+
+A *segment* is a portion of a SMT.  During the contribution phase of a SMT,
 exactly one segment is active at any point in time.  The transition from
 one segment to the next is triggered either by passing a specific point in
 time, or by exceeding a predefined cap.
 
-CBT issue segments are defined with the following operation:
+SMT issue segments are defined with the following operation:
 
 ```
-struct cbt_define_segment_operation
+struct SMT_define_segment_operation
 {
    account_name_type   control_account;
    time_point_sec      end_time;
@@ -176,13 +202,15 @@ struct cbt_define_segment_operation
 
 The ratios must be defined with `begin_unit_ratio >= end_unit_ratio > 0`.
 
-## Example
+#### Examples
+
+##### Full JSON example
 
 Suppose BETA is defined with the following definitions:
 
 ```
 [
- ["cbt_setup_operation",
+ ["SMT_setup_operation",
   {
    "control_account"      : "beta",
    "decimal_places"       : 4,
@@ -190,7 +218,7 @@ Suppose BETA is defined with the following definitions:
    "launch_time"          : "2017-06-01T00:00:00"
   },
  ],
- ["cbt_define_unit_operation",
+ ["SMT_define_unit_operation",
   {
    "control_account"      : "beta",
    "unit_num"             : 1001,
@@ -205,7 +233,7 @@ Suppose BETA is defined with the following definitions:
    ]
   },
  ],
- ["cbt_define_segment_operation",
+ ["SMT_define_segment_operation",
   {
    "control_account"      : "beta",
    "end_time"             : "2017-07-01T00:00:00",
@@ -235,7 +263,7 @@ This spreadsheet will make the relationship clear.
 TODO:  Add screenshot
 TODO:  Add link to spreadsheet file
 
-## Single-segment with min and cap
+##### Single-segment with min and cap
 
 This is an example where 1 STEEM for 1 token,
 100,000 STEEM minimum, 7 million maximum.
@@ -261,7 +289,7 @@ TODO:  Do billions and billions need to be quoted?
 TODO:  Write script to process this into operations
 TODO:  Test this
 
-## Fixed-float no-reserve
+##### Fixed-float no-reserve
 
 This is an example where 1 million tokens
 will be issued according to the amount of STEEM received.
@@ -281,7 +309,7 @@ contributor will receive the whole 1 million tokens.
 More contributions will lower the ratio, the ratio
 can drop as low as 1 STEEM per token-satoshi.
 
-## Vesting contributions
+##### Vesting contributions
 
 It is possible to send part or all of contributions
 to a vesting balance, instead of permitting immediate
@@ -291,57 +319,29 @@ liquidity.  This example puts 95% in vesting.
 "token_unit"           : [["$from.vesting", 95], ["$from", 5]]
 ```
 
+##### Burning contributed STEEM
 
-# Token issue segments
-
-AGS style distribution divided into segments.
+In this ICO, the STEEM is permanently destroyed rather than going into the wallet of any person.
+This mimics the structure of the Counterparty ICO.
 
 ```
-struct token_issue_segment
 {
-   timestamp           start_time;
-   timestamp           end_time;
-   asset               max_contribution;
-   asset               max_issue;
-   price               min_price;
-   price               max_price;
-};
+ "steem_unit" : [["null", 1]],
+ "token_unit" : [["$from", 1]]
+}
 ```
 
-1. Reject STEEM contributions that would cause `max_contribution` to be exceeded.
-2. Attempt to issue tokens to all contributions at `min_price`.
-3. If (2) would cause `max_issue` to be exceeded, issue `max_issue` tokens to all contributors proportionally to their contribution.
-4. Any STEEM in excess of `max_issue * max_price` is issued to `extra_steem_targets`.
+##### Vesting as cost
 
-FAQ:
-
-- Q: How do I allow unlimited contributions?  A: Set `max_contribution` and `max_price` to a very large number.
-- Q: How do I issue a variable quantity of tokens at a fixed price?  A: Set `max_issue` to a very large number and `min_price` to the desired price.
-- Q: How do I issue a fixed quantity of tokens proportionally to contributors' contributions?  A: Set `min_price` to a very small number and set `max_issue` to the desired quantity of tokens.
-- Q: How do I set a cap on the amount of STEEM raised, where contributions after the cap are rejected?  A: Set `max_contribution` to the desired cap and `max_price` to a very large number.
-- Q: How do I set a cap on the amount of STEEM raised, where contributions above the cap are returned proportionally?  A: Set `max_contribution` to a very large number, set `max_price = cap / max_issue`, and set `extra_steem_targets = [{"$from" : 1}]`.
-- Q: How do I ensure contributions returned are not recycled in subsequent segments?  A:  Set `extra_steem_targets = [{"$from.vesting" : 1}]` to send returned contributions to the contributor's vesting balance.
-
-# Targets
-
-Specify who gets the issued tokens.
+In this ICO, you don't send STEEM to the issuer in exchange for tokens.  Instead, you vest STEEM (to yourself),
+and tokens are issued to you equal to the STEEM you vested.
 
 ```
-struct token_issue_target_spec
 {
-   flat_map< account_name_type, uint16_t >        steem_targets;
-   flat_map< account_name_type, uint16_t >        token_targets;
-   flat_map< account_name_type, uint16_t >        extra_steem_targets;
-};
+ "steem_targets" : [["$from.vesting", 1]],
+ "token_targets" : [["$from", 1]]
+}
 ```
-
-# Target accounts
-
-The `token_targets` account has a special account name, `$from`, which should be illegal
-to be created, and will represent the contributor.
-
-Also supported is `$from.vesting` which represents the vesting balance of the `$from`
-account.
 
 # Example ICO's
 
@@ -369,61 +369,6 @@ In this 3-day ICO, one STEEM will be one CAT.  ICO proceeds go to `catman` accou
 }
 ```
 
-### Repeated fixed-price sales at different prices
-
-Tokens sold in the first days are sold 1-1, later on tokens are sold at a slightly higher price.
-This may be done by repeating the segment.  This can mimic the structure of the Ethereum ICO.
-
-### Tokens for ICO owner
-
-This ICO is the same as one-token-per-STEEM, but in addition 30% of the tokens created goes to `catman`.
-
-```
-"token_targets" : [{"$from" : 7, "catman" : 3}]
-```
-
-### Fixed quantity no-reserve auction
-
-In this ICO, we divide 1 million CAT among contributors according to their contribution.
-
-```
-{
- "segments" :
- [
-  {
-   "start_time" : "2017-01-01T00:00:00", "end_time" : "2017-01-04T00:00:00",
-   "max_contribution" : "1 billion STEEM", "max_issue" : "1000000 CAT",
-   "min_price" : "0.001 STEEM / CAT"
-  }
- ],
- "target_spec" :
- [
-  {
-   "steem_targets" : [{"catman" : 1}],
-   "token_targets" : [{"$from" : 1}]
-  }
- ]
-}
-```
-
-### Fixed quantity serial no-reserve auction
-
-Repeating the segment in the previous auction with different dates allows AGS style auction.
-Each day has an allotment of coins are divided among contributors according to their contribution.
-This mimics the structure of the AngelShares ICO for BitShares.
-
-### Burning contributed STEEM
-
-In this ICO, the STEEM is permanently destroyed rather than going into the wallet of any person.
-This mimics the structure of the Counterparty ICO.
-
-```
-{
- "steem_targets" : [{"null" : 1}],
- "token_targets" : [{"$from" : 1}]
-}
-```
-
 ### Locking up tokens
 
 In this ICO, 95% of the tokens go to vesting balance object (VBO).
@@ -435,33 +380,9 @@ In this ICO, 95% of the tokens go to vesting balance object (VBO).
 }
 ```
 
-### Locking up shares
-
-Consider Ripple's announcement that it will add on-blockchain restriction to sales of its reserve as
-discussed in [this article](https://www.americanbanker.com/news/inside-ripples-plan-to-make-money-move-as-fast-as-information).
-TODO: Primary source
-
-To implement something similar for STEEM, we would allow an account to be created with a permanently
-smaller maximum vesting withdrawal rate.  The maximum vesting withdrawal rate should not be changeable
-after account creation because it is a potential route for a hacker to permanently damage an account
-in a way that account recovery cannot fix.
-
-### Vesting as cost
-
-In this issue, you don't send STEEM to the issuer in exchange for tokens.  Instead, you vest STEEM (to yourself),
-and tokens are issued to you equal to the STEEM you vested.
-
-```
-{
- "steem_targets" : [{"$from.vesting" : 1}],
- "token_targets" : [{"$from" : 1}]
-}
-```
-
 ### Non-STEEM ICO's
 
-ICO's using SBD or other tokens are deliberately not supported.  The implementation would be more
-complicated, and STEEM holders are less able to capture value if ICO's don't use STEEM as the base.
+ICO's using SBD or BTC or ETH and other tokens are not supported by complete on chain ICOs, however, they can be managed by manually transferring founder's distributions to buyers' Steem accounts in proportion to their donation in the non-STEEM assets.
 
 ### Market maker accounts
 
@@ -475,13 +396,6 @@ To create a fully decentralized market maker, create an account with no recovery
 Funds in the account will then be inaccessible and it will operate completely autonomously.
 
 TODO:  Specify fee percentage, fee beneficiary
-
-### Whitelist
-
-Some ICO's want to do KYC or some other form of due diligence on customers.  Charles Hoskinson's
-Japan coin (TODO:  what is this project called?) falls into this category.
-
-This is going to be complicated to support, let's skip it.
 
 ### Multi-stage ICO
 
@@ -514,7 +428,7 @@ The triumvirate
 
 Token creation is called *inflation*.
 
-Inflation is the means by which the CBT rewards contributors for
+Inflation is the means by which the SMT rewards contributors for
 the value they provide.
 
 Inflation events use the following data structure:
@@ -524,12 +438,12 @@ Inflation events use the following data structure:
 struct token_inflation_event
 {
    timestamp           schedule_time;
-   asset               new_cbt;
+   asset               new_SMT;
    inflation_target    target;
 };
 ```
 
-This event prints `new_cbt` amount of the CBT token and sends it to the
+This event prints `new_SMT` amount of the SMT token and sends it to the
 given `target` account.
 
 # Possible inflation target
@@ -554,7 +468,7 @@ as block production rewards are the main (often, only) means of
 inflation.
 
 However, there is no good reason to couple inflation to block
-production for CBT's.  In fact, CBT's have no block rewards,
+production for SMT's.  In fact, SMT's have no block rewards,
 since they have no blocks (the underlying functionality of block
 production being supplied by the Steem witnesses, who are
 rewarded with Steem).
@@ -569,7 +483,7 @@ data structure called `token_inflation_event_seq_v1`:
 struct token_inflation_event_seq_v1
 {
    timestamp           schedule_time;
-   asset               new_cbt;
+   asset               new_SMT;
    inflation_target    target;
 
    int32_t             interval_seconds;
@@ -603,14 +517,14 @@ struct token_inflation_event_seq_v2
 };
 ```
 
-Then we compute `new_cbt` as follows from the supply:
+Then we compute `new_SMT` as follows from the supply:
 
 ```
-rel_amount = (cbt_supply * rel_amount_numerator) / CBT_REL_AMOUNT_DENOMINATOR;
-new_cbt = max( abs_amount, rel_amount );
+rel_amount = (SMT_supply * rel_amount_numerator) / SMT_REL_AMOUNT_DENOMINATOR;
+new_SMT = max( abs_amount, rel_amount );
 ```
 
-If we set `CBT_REL_AMOUNT_DENOMINATOR` to a power of two, the division
+If we set `SMT_REL_AMOUNT_DENOMINATOR` to a power of two, the division
 can be optimized to a bit-shift operation.  To gain more dynamic range
 from the bits, we can let the shift be variable:
 
@@ -633,12 +547,12 @@ struct token_inflation_event_seq_v3
 Then the computation becomes:
 
 ```
-rel_amount = (cbt_supply * rel_amount_numerator) >> rel_amount_denom_bits;
-new_cbt = max( abs_amount, rel_amount );
+rel_amount = (SMT_supply * rel_amount_numerator) >> rel_amount_denom_bits;
+new_SMT = max( abs_amount, rel_amount );
 ```
 
 Of course, an implementation of these computations must carefully handle
-potential overflow in the intermediate value `cbt_supply * rel_amount_numerator`!
+potential overflow in the intermediate value `SMT_supply * rel_amount_numerator`!
 
 # Adding time modulation
 
@@ -707,9 +621,9 @@ else
 
 # FAQ
 
-- Q:  Can the CBT inflation data structures express Steem's [current inflation scheme](https://github.com/steemit/steem/issues/551)?
+- Q:  Can the SMT inflation data structures express Steem's [current inflation scheme](https://github.com/steemit/steem/issues/551)?
 - A:  Yes (except for rounding errors).
-- Q:  Can the CBT inflation data structures reward founders directly after X months/years?
+- Q:  Can the SMT inflation data structures reward founders directly after X months/years?
 - A:  Yes.
 - Q:  I don't care about time modulation.  Can I disable it?
 - A:  Yes, just set the `lep_abs_amount == rep_abs_amount` and `lep_rel_amount_numerator == rep_rel_amount_numerator` to the same value, and set `lep_time = rep_time` (any value will do).
