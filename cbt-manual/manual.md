@@ -356,46 +356,9 @@ and tokens are issued to you equal to the STEEM you vested.
 }
 ```
 
-# Example ICO's
+##### Non-STEEM ICO's
 
-### One-token-per-STEEM
-
-In this 3-day ICO, one STEEM will be one CAT.  ICO proceeds go to `catman` account, the CAT promoter.
-
-```
-{
- "segments" :
- [
-  {
-   "start_time" : "2017-01-01T00:00:00", "end_time" : "2017-01-04T00:00:00",
-   "max_contribution" : "1 billion STEEM", "max_issue" : "1 billion CAT",
-   "min_price" : "1.0 STEEM / CAT"
-  }
- ],
- "target_spec" :
- [
-  {
-   "steem_targets" : [{"catman" : 1}],
-   "token_targets" : [{"$from" : 1}]
-  }
- ]
-}
-```
-
-### Locking up tokens
-
-In this ICO, 95% of the tokens go to vesting balance object (VBO).
-
-```
-{
- "steem_targets" : [{"catman" : 1}],
- "token_targets" : [{"$from.vesting" : 19, "$from" : 1}]
-}
-```
-
-### Non-STEEM ICO's
-
-ICO's using SBD or BTC or ETH and other tokens are not supported by complete on chain ICOs, however, they can be managed by manually transferring founder's distributions to buyers' Steem accounts in proportion to their donation in the non-STEEM assets.
+ICO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. -- cannot be done fully automatically on-chain.   However, such ICO's can be managed by manually transferring some founder account's distribution to buyers' Steem accounts in proportion to their non-STEEM contribution.
 
 ### Market maker accounts
 
@@ -694,5 +657,4 @@ TODO:  Examples:  Steem old inflation scheme, Steem new inflation scheme, Bitcoi
 # Ecosystem Support
 
 # Conclusion
-
 
