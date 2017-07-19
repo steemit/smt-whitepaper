@@ -1,24 +1,28 @@
+1. Introduction - (Value Prop) - Proposal for Steem
+**2.Owner's Manual
+2a. Establish Name Space & Token Creation
+2a1. Tokens are consensus with the Steem name space
+2a2. There is a fee for launching a token, paid to the blockchain.
+
+**2b. Token Parameters
+2b1. ICO
+2b2. Market Maker
+2b3. Inflation
+2b4. Structures
+2b5a. Rewards Curves
+2b5b. Target Votes Per Day
+2b5c. Regeneration times
+2b5d. ... All other Structures/Parameters**
+
+3. Ecosystem Apps Supporting SMTs
+4. Conclusion
+
 
 # Introduction
 
 This manual will explain the nuts and bolts of how CBT's work.
 The intended audience is technical users who want to create their
 own CBT.
-
-# Status
-
-This document describes functionality which has not yet been
-implemented.  Therefore, many/most/all of the practical interfaces
-and examples do not actually work yet.
-
-# Testnet
-
-It is *highly recommended* that a private or public Steem testnet
-is used to test all operations and transactions related to custom
-asset issuance, before issuing them on the main blockchain.
-
-(TODO:  Provide a link to information on public and private testnets,
-when such information is written.)
 
 # Reserving a name
 
@@ -286,3 +290,474 @@ liquidity.  This example puts 95% in vesting.
 ```
 "token_unit"           : [["$from.vesting", 95], ["$from", 5]]
 ```
+
+
+# Token issue segments
+
+AGS style distribution divided into segments.
+
+```
+struct token_issue_segment
+{
+   timestamp           start_time;
+   timestamp           end_time;
+   asset               max_contribution;
+   asset               max_issue;
+   price               min_price;
+   price               max_price;
+};
+```
+
+1. Reject STEEM contributions that would cause `max_contribution` to be exceeded.
+2. Attempt to issue tokens to all contributions at `min_price`.
+3. If (2) would cause `max_issue` to be exceeded, issue `max_issue` tokens to all contributors proportionally to their contribution.
+4. Any STEEM in excess of `max_issue * max_price` is issued to `extra_steem_targets`.
+
+FAQ:
+
+- Q: How do I allow unlimited contributions?  A: Set `max_contribution` and `max_price` to a very large number.
+- Q: How do I issue a variable quantity of tokens at a fixed price?  A: Set `max_issue` to a very large number and `min_price` to the desired price.
+- Q: How do I issue a fixed quantity of tokens proportionally to contributors' contributions?  A: Set `min_price` to a very small number and set `max_issue` to the desired quantity of tokens.
+- Q: How do I set a cap on the amount of STEEM raised, where contributions after the cap are rejected?  A: Set `max_contribution` to the desired cap and `max_price` to a very large number.
+- Q: How do I set a cap on the amount of STEEM raised, where contributions above the cap are returned proportionally?  A: Set `max_contribution` to a very large number, set `max_price = cap / max_issue`, and set `extra_steem_targets = [{"$from" : 1}]`.
+- Q: How do I ensure contributions returned are not recycled in subsequent segments?  A:  Set `extra_steem_targets = [{"$from.vesting" : 1}]` to send returned contributions to the contributor's vesting balance.
+
+# Targets
+
+Specify who gets the issued tokens.
+
+```
+struct token_issue_target_spec
+{
+   flat_map< account_name_type, uint16_t >        steem_targets;
+   flat_map< account_name_type, uint16_t >        token_targets;
+   flat_map< account_name_type, uint16_t >        extra_steem_targets;
+};
+```
+
+# Target accounts
+
+The `token_targets` account has a special account name, `$from`, which should be illegal
+to be created, and will represent the contributor.
+
+Also supported is `$from.vesting` which represents the vesting balance of the `$from`
+account.
+
+# Example ICO's
+
+### One-token-per-STEEM
+
+In this 3-day ICO, one STEEM will be one CAT.  ICO proceeds go to `catman` account, the CAT promoter.
+
+```
+{
+ "segments" :
+ [
+  {
+   "start_time" : "2017-01-01T00:00:00", "end_time" : "2017-01-04T00:00:00",
+   "max_contribution" : "1 billion STEEM", "max_issue" : "1 billion CAT",
+   "min_price" : "1.0 STEEM / CAT"
+  }
+ ],
+ "target_spec" :
+ [
+  {
+   "steem_targets" : [{"catman" : 1}],
+   "token_targets" : [{"$from" : 1}]
+  }
+ ]
+}
+```
+
+### Repeated fixed-price sales at different prices
+
+Tokens sold in the first days are sold 1-1, later on tokens are sold at a slightly higher price.
+This may be done by repeating the segment.  This can mimic the structure of the Ethereum ICO.
+
+### Tokens for ICO owner
+
+This ICO is the same as one-token-per-STEEM, but in addition 30% of the tokens created goes to `catman`.
+
+```
+"token_targets" : [{"$from" : 7, "catman" : 3}]
+```
+
+### Fixed quantity no-reserve auction
+
+In this ICO, we divide 1 million CAT among contributors according to their contribution.
+
+```
+{
+ "segments" :
+ [
+  {
+   "start_time" : "2017-01-01T00:00:00", "end_time" : "2017-01-04T00:00:00",
+   "max_contribution" : "1 billion STEEM", "max_issue" : "1000000 CAT",
+   "min_price" : "0.001 STEEM / CAT"
+  }
+ ],
+ "target_spec" :
+ [
+  {
+   "steem_targets" : [{"catman" : 1}],
+   "token_targets" : [{"$from" : 1}]
+  }
+ ]
+}
+```
+
+### Fixed quantity serial no-reserve auction
+
+Repeating the segment in the previous auction with different dates allows AGS style auction.
+Each day has an allotment of coins are divided among contributors according to their contribution.
+This mimics the structure of the AngelShares ICO for BitShares.
+
+### Burning contributed STEEM
+
+In this ICO, the STEEM is permanently destroyed rather than going into the wallet of any person.
+This mimics the structure of the Counterparty ICO.
+
+```
+{
+ "steem_targets" : [{"null" : 1}],
+ "token_targets" : [{"$from" : 1}]
+}
+```
+
+### Locking up tokens
+
+In this ICO, 95% of the tokens go to vesting balance object (VBO).
+
+```
+{
+ "steem_targets" : [{"catman" : 1}],
+ "token_targets" : [{"$from.vesting" : 19, "$from" : 1}]
+}
+```
+
+### Locking up shares
+
+Consider Ripple's announcement that it will add on-blockchain restriction to sales of its reserve as
+discussed in [this article](https://www.americanbanker.com/news/inside-ripples-plan-to-make-money-move-as-fast-as-information).
+TODO: Primary source
+
+To implement something similar for STEEM, we would allow an account to be created with a permanently
+smaller maximum vesting withdrawal rate.  The maximum vesting withdrawal rate should not be changeable
+after account creation because it is a potential route for a hacker to permanently damage an account
+in a way that account recovery cannot fix.
+
+### Vesting as cost
+
+In this issue, you don't send STEEM to the issuer in exchange for tokens.  Instead, you vest STEEM (to yourself),
+and tokens are issued to you equal to the STEEM you vested.
+
+```
+{
+ "steem_targets" : [{"$from.vesting" : 1}],
+ "token_targets" : [{"$from" : 1}]
+}
+```
+
+### Non-STEEM ICO's
+
+ICO's using SBD or other tokens are deliberately not supported.  The implementation would be more
+complicated, and STEEM holders are less able to capture value if ICO's don't use STEEM as the base.
+
+### Market maker accounts
+
+Market making is done by performing a "ping" to the MM account.  This inspects the state of the
+market and issues orders from the MM account as appropriate.  The pinger is responsible for
+paying the bandwidth cost of the ping.
+
+An account which is created as a market maker has `mm_ping_authority` and `mm_reserve_ratios`.
+To create a fully decentralized market maker, create an account with no recovery account, set
+`mm_ping_authority` to `temp`, and set the account's owner/active/posting authorities to `null`.
+Funds in the account will then be inaccessible and it will operate completely autonomously.
+
+TODO:  Specify fee percentage, fee beneficiary
+
+### Whitelist
+
+Some ICO's want to do KYC or some other form of due diligence on customers.  Charles Hoskinson's
+Japan coin (TODO:  what is this project called?) falls into this category.
+
+This is going to be complicated to support, let's skip it.
+
+### Multi-stage ICO
+
+Some ICO's want to change the `token_target_issue_spec` or otherwise modify the ICO once a certain
+target has been reached.  This allows a Bancor-style ICO where additional funds beyond the cap aren't
+rejected, but are instead directed to decentralized market maker.
+
+TODO:  How do we modify the data structures to enable this use case?
+
+TODO:  Rename this because "multi-stage ICO" already means something else in the industry
+
+### Future feature list
+
+- Idea:  Return excess funds above cap to investors
+- Support for hidden cap
+- BitShares lessons learned from flags
+- Don't have permission bits, mutations of flags need to be scheduled in advance
+- Interesting type of asset:  Can participate in market, but not transferrable
+- Figure out how deferred issuance works
+- UI / scripts to generate segments
+
+The triumvirate
+
+- Descriptor (name, decimals, boring stuff)
+- Issuance
+- Inflation
+- 
+- 
+# Inflation
+
+Token creation is called *inflation*.
+
+Inflation is the means by which the CBT rewards contributors for
+the value they provide.
+
+Inflation events use the following data structure:
+
+```
+// Event:  Support issuing tokens to target at time
+struct token_inflation_event
+{
+   timestamp           schedule_time;
+   asset               new_cbt;
+   inflation_target    target;
+};
+```
+
+This event prints `new_cbt` amount of the CBT token and sends it to the
+given `target` account.
+
+# Possible inflation target
+
+The target is the entity to which the inflation is directed.  The target
+may be a normal Steem account controlled by an individual founder, or a
+multisig of several founders.
+
+In addition, several special targets are possible representing trustless
+functions provided by the blockchain itself:
+
+- Rewards.  A special destination representing the token's posting / voting rewards.
+- Vesting.  A special destination representing the tokens backing vested tokens.
+- Market maker.  A special destination representing a CRR market maker.
+
+# Event sequences
+
+A single inflation event is insufficient.
+
+Traditionally blockchains compute inflation on a per-block basis,
+as block production rewards are the main (often, only) means of
+inflation.
+
+However, there is no good reason to couple inflation to block
+production for CBT's.  In fact, CBT's have no block rewards,
+since they have no blocks (the underlying functionality of block
+production being supplied by the Steem witnesses, who are
+rewarded with Steem).
+
+Repeating inflation at regular intervals can be enabled by
+adding `interval_seconds` and `interval_count` to the
+`token_inflation_event` data structure.  The result is a new
+data structure called `token_inflation_event_seq_v1`:
+
+```
+// Event seq v1:  Support repeatedly issuing tokens to target at time
+struct token_inflation_event_seq_v1
+{
+   timestamp           schedule_time;
+   asset               new_cbt;
+   inflation_target    target;
+
+   int32_t             interval_seconds;
+   uint32_t            interval_count;
+};
+```
+
+The data structure represents a token inflation event
+that repeats every `interval_seconds` seconds, for
+`interval_count` times.  The maximum integer value
+`0xFFFFFFFF` is a special sentinel value that represents
+an event sequence that repeats forever.
+
+# Adding relative inflation
+
+Often, inflation schedules are expressed using percentage
+of supply, rather than in absolute terms:
+
+```
+// Event seq v2:  v1 + allow relative amount of tokens
+struct token_inflation_event_seq_v2
+{
+   timestamp           schedule_time;
+   inflation_target    target;
+
+   int32_t             interval_seconds;
+   uint32_t            interval_count;
+
+   asset               abs_amount;
+   uint32_t            rel_amount_numerator;
+};
+```
+
+Then we compute `new_cbt` as follows from the supply:
+
+```
+rel_amount = (cbt_supply * rel_amount_numerator) / CBT_REL_AMOUNT_DENOMINATOR;
+new_cbt = max( abs_amount, rel_amount );
+```
+
+If we set `CBT_REL_AMOUNT_DENOMINATOR` to a power of two, the division
+can be optimized to a bit-shift operation.  To gain more dynamic range
+from the bits, we can let the shift be variable:
+
+```
+// Event seq v3:  v2 + specify shift in struct
+struct token_inflation_event_seq_v3
+{
+   timestamp           schedule_time;
+   inflation_target    target;
+
+   int32_t             interval_seconds;
+   uint32_t            interval_count;
+
+   asset               abs_amount;
+   uint32_t            rel_amount_numerator;
+   uint8_t             rel_amount_denom_bits;
+};
+```
+
+Then the computation becomes:
+
+```
+rel_amount = (cbt_supply * rel_amount_numerator) >> rel_amount_denom_bits;
+new_cbt = max( abs_amount, rel_amount );
+```
+
+Of course, an implementation of these computations must carefully handle
+potential overflow in the intermediate value `cbt_supply * rel_amount_numerator`!
+
+# Adding time modulation
+
+Time modulation allows implementing an inflation rate which changes continuously
+over time according to a piecewise linear function.  This can be achieved by simply
+specifying the left/right endpoints of a time interval, and specifying absolute amounts
+at both endpoints:
+
+```
+// Event seq v4:  v3 + modulation over time
+struct token_inflation_event_seq_v4
+{
+   timestamp           schedule_time;
+   inflation_target    target;
+
+   int32_t             interval_seconds;
+   uint32_t            interval_count;
+
+   timestamp           lep_time;
+   timestamp           rep_time;
+
+   asset               lep_abs_amount;
+   asset               rep_abs_amount;
+   uint32_t            lep_rel_amount_numerator;
+   uint32_t            rep_rel_amount_numerator;
+
+   uint8_t             rel_amount_denom_bits;
+};
+```
+
+Some notes about this:
+
+- Only the numerator of relative amounts is interpolated,
+the denominator is the same for both endpoints.
+
+- For times before the left endpoint time, the amount at
+the left endpoint time is used.
+
+- For times after the right endpoint time, the amount at
+the right endpoint time is used.
+
+Code looks something like this:
+
+```
+if( now <= lep_time )
+{
+   abs_amount = lep_abs_amount;
+   rel_amount_numerator = lep_rel_amount_numerator;
+}
+else if( now >= rep_time )
+{
+   abs_amount = rep_abs_amount;
+   rel_amount_numerator = rep_rel_amount_numerator;
+}
+else
+{
+   // t is a number between 0.0 and 1.0
+   // this calculation will need to be implemented
+   // slightly re-arranged so it uses all integer math
+
+   t = (now - lep_time) / (rep_time - lep_time)
+   abs_amount = lep_abs_amount * (1-t) + rep_abs_amount * t;
+   rel_amount_numeratr = lep_rel_amount_numerator * (1-t) + rep_rel_amount_numerator * t;
+}
+```
+
+# FAQ
+
+- Q:  Can the CBT inflation data structures express Steem's [current inflation scheme](https://github.com/steemit/steem/issues/551)?
+- A:  Yes (except for rounding errors).
+- Q:  Can the CBT inflation data structures reward founders directly after X months/years?
+- A:  Yes.
+- Q:  I don't care about time modulation.  Can I disable it?
+- A:  Yes, just set the `lep_abs_amount == rep_abs_amount` and `lep_rel_amount_numerator == rep_rel_amount_numerator` to the same value, and set `lep_time = rep_time` (any value will do).
+- Q:  Can some of this complexity be hidden by a well-designed UI?
+- A:  Yes.
+- Q:  Can we model the inflation as a function of time with complete accuracy?
+- A:  The inflation data structures can be fully modeled / simulated.  For some issue structures, the amount issued depends on how much is raised, so the issue structures cannot be modeled with complete accuracy.
+
+
+
+
+
+
+TODO:  Make some pretty graphs
+TODO:  Examples:  Steem old inflation scheme, Steem new inflation scheme, Bitcoin, send % to founders, send % to founders after time
+
+## Parameter constraints
+
+- `0 < STEEMIT_VOTE_REGENERATION_SECONDS < STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS`
+- `0 <= STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS + STEEMIT_UPVOTE_LOCKOUT < STEEMIT_CASHOUT_WINDOW_SECONDS < STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS`
+
+## Dynamic parameters
+
+- `STEEMIT_CASHOUT_WINDOW_SECONDS` : Dynamic
+- `STEEMIT_VOTE_REGENERATION_SECONDS` : Dynamic
+- `STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS` : Dynamic
+- `vote_power_reserve_rate` : Dynamic
+
+## Configurable parameters
+
+- `STEEMIT_BLOCKCHAIN_PRECISION` : Configurable
+- `STEEMIT_BLOCKCHAIN_PRECISION_DIGITS` : Configurable
+
+## Hardcoded parameters
+
+- `STEEMIT_UPVOTE_LOCKOUT_HF17` : Hardcoded
+- `STEEMIT_VESTING_WITHDRAW_INTERVALS` : Hardcoded
+- `STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS` : Hardcoded
+- `STEEMIT_MAX_WITHDRAW_ROUTES` : Hardcoded
+- `STEEMIT_SAVINGS_WITHDRAW_TIME` : Hardcoded
+- `STEEMIT_SAVINGS_WITHDRAW_REQUEST_LIMIT` : Hardcoded
+- `STEEMIT_MAX_VOTE_CHANGES` : Hardcoded
+- `STEEMIT_MIN_VOTE_INTERVAL_SEC` : Hardcoded
+- `STEEMIT_MIN_ROOT_COMMENT_INTERVAL` : Hardcoded
+- `STEEMIT_MIN_REPLY_INTERVAL` : Hardcoded
+- `STEEMIT_MAX_COMMENT_DEPTH` : Hardcoded
+- `STEEMIT_SOFT_MAX_COMMENT_DEPTH` : Hardcoded
+- `STEEMIT_MIN_PERMLINK_LENGTH` : Hardcoded
+- `STEEMIT_MAX_PERMLINK_LENGTH` : Hardcoded
+- `STEEMIT_MAX_SHARE_SUPPLY` : Hardcoded
+
