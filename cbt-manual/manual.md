@@ -109,9 +109,9 @@ struct SMT_setup_operation
 };
 ```
 
-SMT token creation exchange takes place in a series of *units*.
-
 ### Token Generation Events and Initial Token Offerings (TGEs and ITOs)
+
+SMT token creation exchange takes place in a series of *units*.  To understand units, it's best to start with an example.
 
 ALPHA wants to sell a token to the crowd to raise funds
 where 7% of contributed STEEM goes to Founder Account A, 23% of contributed STEEM goes to Founder Account B, and 70% of contributed STEEM goes to Founder Account C.
@@ -145,7 +145,7 @@ Therefore the unit ratio of this crowdsale is 1000.
 Why does the blockchain use unit ratios, rather than simply specifying
 prices?
 
-The answer is that it is possible to write crowdsale definitions for which
+The answer is that it is possible to write TGE definitions for which
 price is ill-defined.  For example:
 
 - `"$from"` does not occur in `token_unit`
@@ -153,12 +153,14 @@ price is ill-defined.  For example:
 - A combination of `"$from"` and `"$from.vesting"` occurs
 - Future expansion allows new special accounts
 
-These definitions are still supported by unit ratio.
+All of these TGE definitions have a unit ratio, but defining a
+single quantity to call "price" is complicated or impossible for
+TGE's like these.
 
 #### UI treatment of unit ratios
 
-As a consequence of the above, the concept of "crowdsale price" is purely
-a UI-level concept.  UI's which provide a crowdsale price should do the following:
+As a consequence of the above, the concept of "TGE price" is purely
+a UI-level concept.  UI's which provide a TGE price should do the following:
 
 - Document the precise definition of "price" provided by the UI
 - Be well-behaved for pathological input like above
