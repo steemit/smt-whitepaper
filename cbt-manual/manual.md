@@ -75,7 +75,7 @@ struct cbt_setup_operation
 
    time_point_sec          launch_time;
 
-   extensions_type     extensions;
+   extensions_type         extensions;
 };
 ```
 
@@ -158,7 +158,7 @@ struct cbt_define_unit_operation
    flat_map< account_name_type, uint16_t >        steem_unit;
    flat_map< account_name_type, uint16_t >        token_unit;
 
-   extensions_type     extensions;
+   extensions_type                                extensions;
 };
 ```
 
