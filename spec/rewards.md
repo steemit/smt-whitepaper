@@ -73,4 +73,3 @@ window expires, the new settings apply to future rewards.  Note the asset creato
 these settings to change the amount of inflation used to fund the reward pool, nor can the creator
 send inflated tokens to any specific author or content.
 
-

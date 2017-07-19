@@ -1,5 +1,4 @@
 
-
 # Introduction
 
 This manual will explain the nuts and bolts of how CBT's work.
@@ -50,16 +49,6 @@ make this recommendation, we must do testing to be sure the account will
 remain functional in at least the CLI wallet, and possibly the steemit.com,
 SteemConnect, and/or mobile wallet UI's.
 
-# Policy design phase
-
-Before a CBT is launched, the *policy design phase* occurs.  In the
-policy design phase, the rules for the CBT are set up by publishing
-transactions which act as a sequence of instructions to be executed
-in the future.  Then the CBT is launched.  After launch, the policy
-instructions cannot be modified, except for dynamic token attributes.
-
-TODO:  Link to policy design UI when it's been written.
-
 # Descriptor
 
 Each CBT has an associated descriptor object which has
@@ -73,19 +62,11 @@ struct cbt_setup_operation
    uint8_t                 decimal_places = 0;
    int64_t                 max_supply = STEEMIT_MAX_SHARE_SUPPLY;
 
-   time_point_sec          launch_time;
+   cbt_distribution        initial_distribution_policy;
 
    extensions_type         extensions;
 };
 ```
-
-The descriptor must be set before any other policy design
-operations can be issued.  Multiple `cbt_setup` operations
-are allowed before launch, only the last one will be effective.
-After launch, `cbt_setup_operation` is illegal.
-
-Issuing a `cbt_setup_operation` deletes all prior
-created CBT segments.
 
 # CBT token creation mechanics
 
