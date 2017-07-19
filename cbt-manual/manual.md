@@ -1,18 +1,24 @@
+CONFIDENTIAL AND PRIVLEGED; DO NOT SHARE
+Proposal by Steemit Inc;
+Status: DRAFT
+
 # Smart Media Tokens
+## A Protocol for Autonomous Growth and Fundraising with Application-Integrated Tokens
+
 ## Outline
 
 TODO:  Links from here to section anchors later
 TODO:  Can we make anchor names portable across markdown engines?
 
 1. Introduction - (Value Prop) - Proposal for Steem
-**2.Owner's Manual
+2.Owner's Manual
 2a. Establish Name Space & Token Creation
 2a1. Tokens are consensus with the Steem name space
 2a2. There is a fee for launching a token, paid to the blockchain.
 
 **2b. Token Parameters
 2b1. Descriptor
-2b2. ICO
+2b2. Token Generation
 2b3. Market Maker
 2b4. Inflation
 2b5. Structures
@@ -21,16 +27,25 @@ TODO:  Can we make anchor names portable across markdown engines?
 2b6c. Regeneration times
 2b6d. ... All other Structures/Parameters**
 
-3. Ecosystem Apps Supporting SMTs
-4. Conclusion
+3. SMT Parameter Commentary
+4. Decentralized Exchange - STEEM / SBD / SMTs / Simple Derivatives (IOUs)
+5. Ecosystem Support for SMTs
+6. Conclusion
+
+Github: https://github.com/steemit/cbt-whitepaper/blob/collab/cbt-manual/manual.md
+Git Changes: https://github.com/steemit/cbt-whitepaper/commit/6eab36d3b941f52f65e78f3be72efdd5bf5afc2e
 
 # Introduction
 
-TODO:  Talk about value proposition, proposal for STEEM
+Smart Media Tokens (SMTs) is a proposal to build a protocol on the Steem Blockchain that allows for meta-assets powered by STEEM as their bandwidth calculation token.  Inspired by the revolutionary  properties of the STEEM asset, SMTs will be an upgrade above previous blockchain's meta-asset protocols due to extensive, user-oriented programmability and the Steem ecosystem's tools for integrations at website and application layers. 
+
+Smart Media Tokens are an expansion of the successful relationship established between STEEM and the social websites sitting atop of it, such as steemit.com, which has grown to be a top 3000 website in Alexa rankings in less than one year, solely from integrating the incentive model of STEEM.  With SMTs, any website or content library across the internet may have one or more tokens integrated into its interface to facilitate fundraising and autonomous growth.
+
+These tokens are designed to allow website operators flexibility during the integration of the token into their community by choosing from many parameters that may be structured creatively at outset or refined over time.  Any tokens launched as Smart Media Tokens shall benefit from a blockchain ecosystem built with decentralized exchange, market making tools, and many applications and libraries to support successful deployment, fundraising and growth.
 
 # Owner's manual
 
-This manual will explain the nuts and bolts of how SMT's work.
+This manual will explain the nuts and bolts of how SMTs work.
 The intended audience is technical users who want to create their
 own SMT.
 
@@ -96,11 +111,9 @@ struct SMT_setup_operation
 
 SMT token creation exchange takes place in a series of *units*.
 
-### ICO
+### Token Generation Events and Initial Token Offerings (TGEs and ITOs)
 
-TODO:  Is ICO a term we want to use?
-
-ALPHA wants to create a crowdsale (TODO: is this the term we want to use?)
+ALPHA wants to sell a token to the crowd to raise funds
 where 7% of contributed STEEM goes to Founder Account A, 23% of contributed STEEM goes to Founder Account B, and 70% of contributed STEEM goes to Founder Account C.
 
 ALPHA defines a STEEM unit as:
@@ -674,4 +687,12 @@ TODO:  Examples:  Steem old inflation scheme, Steem new inflation scheme, Bitcoi
 - `STEEMIT_MIN_PERMLINK_LENGTH` : Hardcoded
 - `STEEMIT_MAX_PERMLINK_LENGTH` : Hardcoded
 - `STEEMIT_MAX_SHARE_SUPPLY` : Hardcoded
+
+
+# SMT Parameters Commentary
+
+# Ecosystem Support
+
+# Conclusion
+
 
