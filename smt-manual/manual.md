@@ -292,7 +292,7 @@ The UI / wallet should set
 `nonce = H(privkey + control_account + lower_bound + upper_bound + current_date)`
 to allow the nonce to be recovered from the private key.
 
-#### Hidden cap HOWTO
+#### Hidden cap FAQ
 
 - Q: Should my TGE have a cap?
 - A: Some set of people stay away from uncapped TGE's due to perceived "greed",
@@ -490,32 +490,6 @@ To create a fully decentralized market maker, create an account with no recovery
 Funds in the account will then be inaccessible and it will operate completely autonomously.
 
 TODO:  Specify fee percentage, fee beneficiary
-
-#### Multi-stage ITO
-
-Some ITO's want to change the `token_target_issue_spec` or otherwise modify the ITO once a certain
-target has been reached.  This allows a Bancor-style ITO where additional funds beyond the cap aren't
-rejected, but are instead directed to decentralized market maker.
-
-TODO:  How do we modify the data structures to enable this use case?
-
-TODO:  Rename this because "multi-stage ITO" already means something else in the industry
-
-#### Future feature list
-
-- Idea:  Return excess funds above cap to investors
-- Support for hidden cap
-- BitShares lessons learned from flags
-- Don't have permission bits, mutations of flags need to be scheduled in advance
-- Interesting type of asset:  Can participate in market, but not transferrable
-- Figure out how deferred issuance works
-- UI / scripts to generate segments
-
-The triumvirate
-
-- Descriptor (name, decimals, boring stuff)
-- Issuance
-- Inflation
 
 ### Inflation Parameters
 
@@ -746,7 +720,7 @@ struct smt_setup_inflation_operation
 };
 ```
 
-#### FAQ
+#### Inflation FAQ
 
 - Q:  Can the SMT inflation data structures express Steem's [current inflation scheme](https://github.com/steemit/steem/issues/551)?
 - A:  Yes (except for rounding errors).
