@@ -1,36 +1,39 @@
-CONFIDENTIAL AND PRIVLEGED; DO NOT SHARE
-Proposal by Steemit Inc;
+CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
+Proposal by Steemit Inc
+Copyright (c) Steemit, Inc. 2017
 Status: DRAFT
 
 # Smart Media Tokens
-## A Protocol for Autonomous Growth and Fundraising with Application-Integrated Tokens
+## A Token Protocol for Achieving Autonomous Application Growth and Fundraising
 
 ## Outline
 
 TODO:  Links from here to section anchors later
 TODO:  Can we make anchor names portable across markdown engines?
 
-1. Introduction - (Value Prop) - Proposal for Steem
+1. Introduction - Proposal for Steem
 2.Owner's Manual
-2a. Establish Name Space & Token Creation
+2a. Establish Name Space
 2a1. Tokens are consensus with the Steem name space
-2a2. There is a fee for launching a token, paid to the blockchain.
-
-**2b. Token Parameters
+2b. Token Generation and Initialized Parameters
+2b0. Asset Creation Fee
 2b1. Descriptor
-2b2. Token Generation
-2b3. Market Maker
-2b4. Inflation
-2b5. Structures
-2b6a. Rewards Curves
-2b6b. Target Votes Per Day
-2b6c. Regeneration times
-2b6d. ... All other Structures/Parameters**
-
-3. SMT Parameter Commentary
-4. Decentralized Exchange - STEEM / SBD / SMTs / Simple Derivatives (IOUs)
-5. Ecosystem Support for SMTs
-6. Conclusion
+2b2. Initial Token Offering
+2b3a. Market Maker
+2b3b. Founder's Distribution
+2b3c. Non-STEEM and Hybrid ITOs
+2b4. Inflation Parameters
+2b5. Token Precision Parameters
+2d. Dynamic Reward Parameters
+2d1. Rewards Curves
+2d2. Target Votes Per Day
+2d3. Regeneration times
+2d4. ... All other Structures/Parameters
+2e. Hardcoded Parameters
+2f. SMT Parameter Commentary
+3. Decentralized Exchange - STEEM / SBD / SMTs / Simple Derivatives (IOUs)
+4. Ecosystem Support for SMTs
+5. Conclusion
 
 Github: https://github.com/steemit/cbt-whitepaper/blob/collab/cbt-manual/manual.md
 Git Changes: https://github.com/steemit/cbt-whitepaper/commit/6eab36d3b941f52f65e78f3be72efdd5bf5afc2e
@@ -49,7 +52,7 @@ This manual will explain the nuts and bolts of how SMTs work.
 The intended audience is technical users who want to create their
 own SMT.
 
-## Reserving a name
+## Establish a Name Space
 
 After you've decided on a name for your SMT, you are ready to create
 the SMT's *control account*.  This control account will be able to
@@ -84,11 +87,11 @@ Since tokens participate in atomic transactions also involving
 STEEM, they have been designed as part of the STEEM
 blockchain's consensus.
 
+## Token Generation and Initialized Parameters
+
 ### Creation fee
 
 TODO:  Explain and justify the blockchain's fee to create an asset
-
-## Token parameters
 
 ### Descriptor
 
@@ -108,8 +111,7 @@ struct SMT_setup_operation
    extensions_type         extensions;
 };
 ```
-
-### Token Generation Events and Initial Token Offerings (TGEs and ITOs)
+### Structuring Token Generation Events and Initial Token Offerings (TGEs and ITOs)
 
 SMT token creation exchange takes place in a series of *units*.  To understand units, it's best to start with an example.
 
@@ -336,8 +338,8 @@ liquidity.  This example puts 95% in vesting.
 
 ##### Burning contributed STEEM
 
-In this ICO, the STEEM is permanently destroyed rather than going into the wallet of any person.
-This mimics the structure of the Counterparty ICO.
+In this ITO, the STEEM is permanently destroyed rather than going into the wallet of any person.
+This mimics the structure of the Counterparty ITO.
 
 ```
 {
@@ -348,7 +350,7 @@ This mimics the structure of the Counterparty ICO.
 
 ##### Vesting as cost
 
-In this ICO, you don't send STEEM to the issuer in exchange for tokens.  Instead, you vest STEEM (to yourself),
+In this ITO, you don't send STEEM to the issuer in exchange for tokens.  Instead, you vest STEEM (to yourself),
 and tokens are issued to you equal to the STEEM you vested.
 
 ```
@@ -358,11 +360,11 @@ and tokens are issued to you equal to the STEEM you vested.
 }
 ```
 
-##### Non-STEEM ICO's
+##### Non-STEEM & Hybrid ITO's
 
-ICO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. -- cannot be done fully automatically on-chain.   However, such ICO's can be managed by manually transferring some founder account's distribution to buyers' Steem accounts in proportion to their non-STEEM contribution.
+ITO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. -- cannot be done fully automatically on-chain.   However, such ITO's can be managed by manually transferring some founder account's distribution to buyers' Steem accounts in proportion to their non-STEEM contribution.
 
-### Market maker accounts
+#### Market maker accounts
 
 Market making is done by performing a "ping" to the MM account.  This inspects the state of the
 market and issues orders from the MM account as appropriate.  The pinger is responsible for
@@ -375,17 +377,17 @@ Funds in the account will then be inaccessible and it will operate completely au
 
 TODO:  Specify fee percentage, fee beneficiary
 
-### Multi-stage ICO
+#### Multi-stage ITO
 
-Some ICO's want to change the `token_target_issue_spec` or otherwise modify the ICO once a certain
-target has been reached.  This allows a Bancor-style ICO where additional funds beyond the cap aren't
+Some ITO's want to change the `token_target_issue_spec` or otherwise modify the ITO once a certain
+target has been reached.  This allows a Bancor-style ITO where additional funds beyond the cap aren't
 rejected, but are instead directed to decentralized market maker.
 
 TODO:  How do we modify the data structures to enable this use case?
 
-TODO:  Rename this because "multi-stage ICO" already means something else in the industry
+TODO:  Rename this because "multi-stage ITO" already means something else in the industry
 
-### Future feature list
+#### Future feature list
 
 - Idea:  Return excess funds above cap to investors
 - Support for hidden cap
@@ -400,9 +402,8 @@ The triumvirate
 - Descriptor (name, decimals, boring stuff)
 - Issuance
 - Inflation
-- 
-- 
-# Inflation
+
+### Inflation Parameters
 
 Token creation is called *inflation*.
 
@@ -424,7 +425,7 @@ struct token_inflation_event
 This event prints `new_SMT` amount of the SMT token and sends it to the
 given `target` account.
 
-# Possible inflation target
+#### Possible inflation target
 
 The target is the entity to which the inflation is directed.  The target
 may be a normal Steem account controlled by an individual founder, or a
@@ -437,7 +438,7 @@ functions provided by the blockchain itself:
 - Vesting.  A special destination representing the tokens backing vested tokens.
 - Market maker.  A special destination representing a CRR market maker.
 
-# Event sequences
+#### Event sequences
 
 A single inflation event is insufficient.
 
@@ -475,7 +476,7 @@ that repeats every `interval_seconds` seconds, for
 `0xFFFFFFFF` is a special sentinel value that represents
 an event sequence that repeats forever.
 
-# Adding relative inflation
+#### Adding relative inflation
 
 Often, inflation schedules are expressed using percentage
 of supply, rather than in absolute terms:
@@ -532,7 +533,7 @@ new_SMT = max( abs_amount, rel_amount );
 Of course, an implementation of these computations must carefully handle
 potential overflow in the intermediate value `SMT_supply * rel_amount_numerator`!
 
-# Adding time modulation
+#### Adding time modulation
 
 Time modulation allows implementing an inflation rate which changes continuously
 over time according to a piecewise linear function.  This can be achieved by simply
@@ -597,7 +598,7 @@ else
 }
 ```
 
-# FAQ
+#### FAQ
 
 - Q:  Can the SMT inflation data structures express Steem's [current inflation scheme](https://github.com/steemit/steem/issues/551)?
 - A:  Yes (except for rounding errors).
@@ -610,34 +611,40 @@ else
 - Q:  Can we model the inflation as a function of time with complete accuracy?
 - A:  The inflation data structures can be fully modeled / simulated.  For some issue structures, the amount issued depends on how much is raised, so the issue structures cannot be modeled with complete accuracy.
 
-
-
-
-
-
 TODO:  Make some pretty graphs
 TODO:  Examples:  Steem old inflation scheme, Steem new inflation scheme, Bitcoin, send % to founders, send % to founders after time
 
-## Parameter constraints
+### Token Precision Parameters
+These are values that may be set to determine how many digits a token supports. These values may only be set once.
 
-- `0 < STEEMIT_VOTE_REGENERATION_SECONDS < STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS`
-- `0 <= STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS + STEEMIT_UPVOTE_LOCKOUT < STEEMIT_CASHOUT_WINDOW_SECONDS < STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS`
-
-## Dynamic parameters
-
-- `STEEMIT_CASHOUT_WINDOW_SECONDS` : Dynamic
-- `STEEMIT_VOTE_REGENERATION_SECONDS` : Dynamic
-- `STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS` : Dynamic
-- `vote_power_reserve_rate` : Dynamic
-
-## Configurable parameters
+CAN WE CHANGE STEEMIT TO STEEM IN THE CHAIN?
+This should be included in Token Generation Event / Initial Token Offering section, no?
 
 - `STEEMIT_BLOCKCHAIN_PRECISION` : Configurable
 - `STEEMIT_BLOCKCHAIN_PRECISION_DIGITS` : Configurable
 
-## Hardcoded parameters
+## Dynamic Rewards Parameters
+SMTs have several parameters adjustable at the launch of the token, such as inflation rate, token generation events and founder's issuance, that cannot be changed once the token is launched, however, SMTs also have dynamic parameters that allow the token launcher to adjust certain properties of the token refine the incentivized behaviors of the token's users. Some of the parameters will increase the flow of the rewards pool towards certain user behaviors while reducing the flow towards other less desired behaviors. 
 
+CAN WE CHANGE STEEMIT TO STEEM IN THE CHAIN?
+- `STEEMIT_CASHOUT_WINDOW_SECONDS` : Dynamic  TODO CASH OUT the name in the chain already? (seems to be a bad name)  WHY IS STEEMIT listed here and not STEEM????
+- `STEEMIT_VOTE_REGENERATION_SECONDS` : Dynamic
+- `STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS` : Dynamic
+- `vote_power_reserve_rate` : Dynamic
+- ADD REWARDS CURVE PARAMETERS
+
+### Parameter Constraints
+Several dynamic parameters must be constrained to prevent abuse scenarios that could harm token users.
+- `0 < STEEMIT_VOTE_REGENERATION_SECONDS < STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS`
+- `0 <= STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS + STEEMIT_UPVOTE_LOCKOUT < STEEMIT_CASHOUT_WINDOW_SECONDS < STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS`
+- `0 < SMT_REWARD_CURVE`
+
+## Hardcoded Token Parameters
+Hardcoded parameters are aspects of tokens that interact with users in manners that have been found to increase security and safety of the assets as managed by the end user.  Though these hard coded parameters could change for all SMTs in the case of a STEEM-wide upgrade, it is proposed that SMTs leverage these parameters in the same manner as the STEEM asset for the benefit of continuity and common user knowledge.
+
+CAN WE CHANGE STEEMIT TO STEEM IN THE CHAIN?
 - `STEEMIT_UPVOTE_LOCKOUT_HF17` : Hardcoded
+			-This value locks out upvotes from posts at a certain time prior to "CASH OUT" to prevent downvote abuse immediately prior to "CASH OUT."
 - `STEEMIT_VESTING_WITHDRAW_INTERVALS` : Hardcoded
 - `STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS` : Hardcoded
 - `STEEMIT_MAX_WITHDRAW_ROUTES` : Hardcoded
@@ -653,10 +660,28 @@ TODO:  Examples:  Steem old inflation scheme, Steem new inflation scheme, Bitcoi
 - `STEEMIT_MAX_PERMLINK_LENGTH` : Hardcoded
 - `STEEMIT_MAX_SHARE_SUPPLY` : Hardcoded
 
+## SMT Parameters Commentary
 
-# SMT Parameters Commentary
+# Decentralized Exchange
+One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM. On top of automated market makers that can be established during ITOs, SMTs can have immediate access to price discovery and liquidity, benefiting all its users and holders.
+
+## Decentralized Order Matching
+The Decentralized Exchange (DEX) structures of Steem allow assets to automatically be matched for best possible price when bids and asks overlap, unlike other DEXs which require a man in the middle to match orders.  This is important for security of Steem-based assets and for the replicability and safety of DEX interfaces.
+
+## Diverse Asset Types
+There are several assets that SMT users and creators will have access to by way of the Steem DEX: STEEM; SBD; SMTs; Simple Derivatives (IOUs).  These neighboring assets can increase the visibility and network effect of all created SMTs.
+
+STEEM is the gateway token for assets issued on Steem, staying relevant by acting as the bandwidth usage measuring stick across Steem's meta-assets.  STEEM is also the common denominator asset, acting as a trading pair for all of Steem's meta-assets.
+
+SBD (Steem Blockchain Dollars) are an experimental asset on Steem that relate to the US Dollar originating back to Steem's launch in 2016. It is unclear if SBD will bring value to holders of USD as they will compete, possibly poorly, with IOU USDs, however, SBDs will bring value to speculators.
+
+SMTs as described in this proposal are an important part of growing the token ecosystem and bringing crypto assets to the mainstream.  SMTs will trade against STEEM across the DEX.
+
+Simple Derivatives (IOUs) will be possible via SMT issuance.  For instance, if an SMT is issued without inflation or rewards pool properties, then the issuer can reliably back the token with another real world asset such as bitcoin or USD.  In this instance, the issuer could create business as a gateway by trading their IOU for btc or USD.  Users would buy the IOU to gain access to the Steem DEX. This market would add diversity and value flow to the Steem ecosystem while adding to the DEX's network effect.
+
+## ZERO Trading Fees
+The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike.  This is made possible by Bandwidth Rate Limiting, a concept first introduced in the original Steem White Paper.
 
 # Ecosystem Support
 
 # Conclusion
-
