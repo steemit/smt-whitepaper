@@ -35,8 +35,8 @@ TODO:  Can we make anchor names portable across markdown engines?
 4. Ecosystem Support for SMTs
 5. Conclusion
 
-Github: https://github.com/steemit/cbt-whitepaper/blob/collab/cbt-manual/manual.md
-Git Changes: https://github.com/steemit/cbt-whitepaper/commit/6eab36d3b941f52f65e78f3be72efdd5bf5afc2e
+Github: https://github.com/steemit/smt-whitepaper/blob/collab/smt-manual/manual.md
+Git Changes: https://github.com/steemit/smt-whitepaper/commit/6eab36d3b941f52f65e78f3be72efdd5bf5afc2e
 
 # Introduction
 
@@ -100,13 +100,16 @@ Each SMT has an associated descriptor object which has
 The descriptor is set by the `SMT_setup_operation`:
 
 ```
-struct SMT_setup_operation
+struct smt_setup_operation
 {
    account_name_type       control_account;
    uint8_t                 decimal_places = 0;
    int64_t                 max_supply = STEEMIT_MAX_SHARE_SUPPLY;
 
-   SMT_distribution        initial_distribution_policy;
+   smt_distribution        initial_distribution_policy;
+
+   time_point_sec          distribution_end_time;
+   time_point_sec          launch_time;
 
    extensions_type         extensions;
 };
@@ -168,19 +171,15 @@ a UI-level concept.  UI's which provide a TGE price should do the following:
 - Be well-behaved for pathological input like above
 - Have a button for switching between a unit ratio display and price display
 
-#### Defining SMT units
+#### Defining SMT distribution
 
-The operation used to define units is:
+The data structure used to define units is:
 
 ```
-struct SMT_define_unit_operation
+struct smt_unit
 {
-   account_name_type                              control_account;
-   uint32_t                                       unit_num = 0;
    flat_map< account_name_type, uint16_t >        steem_unit;
    flat_map< account_name_type, uint16_t >        token_unit;
-
-   extensions_type                                extensions;
 };
 ```
 
@@ -190,25 +189,27 @@ The `token_unit` member allows a special account name, `$from`, which should be 
 
 Also supported is `$from.vesting` which represents the vesting balance of the `$from` account.
 
-#### Defining SMT issue segments
+#### Defining SMT issue policy
 
 A *segment* is a portion of a SMT.  During the contribution phase of a SMT,
 exactly one segment is active at any point in time.  The transition from
 one segment to the next is triggered either by passing a specific point in
 time, or by exceeding a predefined cap.
 
-SMT issue segments are defined with the following operation:
+SMT issue segments are defined with the following data structure:
 
 ```
-struct SMT_define_segment_operation
+struct smt_distribution
 {
-   account_name_type   control_account;
    time_point_sec      end_time;
 
-   uint32_t            unit_num;
+   smt_unit            pre_soft_cap_unit;
+   smt_unit            post_soft_cap_unit;
 
-   uint32_t            min_steem_units;
-   uint32_t            max_steem_units;
+   smt_cap_commitment  min_steem_units_commitment;
+   smt_cap_commitment  hard_cap_steem_units_commitment;
+
+   uint16_t            soft_cap_percent;
 
    uint32_t            begin_unit_ratio;
    uint32_t            end_unit_ratio;
@@ -217,7 +218,120 @@ struct SMT_define_segment_operation
 };
 ```
 
+The caps function as follows:
+
+- If fewer than `min_steem_units` are contributed, then the TGE is cancelled and all contributors are fully refunded.
+- The soft cap is defiend as `soft_cap_percent` times `hard_cap_steem_units`.
+- Before the soft cap is reached, STEEM and tokens are generated according to `pre_soft_cap_unit`.
+- After the soft cap is reached, STEEM and tokens are generated according to `post_soft_cap_unit`.
+
 The ratios must be defined with `begin_unit_ratio >= end_unit_ratio > 0`.
+
+#### Ratios
+
+How do `begin_unit_ratio` / `end_unit_ratio` work, and what should they be set to?
+
+If you want a Proportional Generation Event, where N tokens are created for every M STEEM
+contributed (and so the total number of tokens generated depends on the total number of STEEM
+contributed):
+
+- Set `begin_unit_ratio = end_unit_ratio = 1`
+- Set `steem_unit` so that its sum is M
+- Set `token_unit` so that its sum is N
+
+If you want a Fixed Generation Event, where some fixed number of tokens T are created,
+and divided among contributors:
+
+- Set `begin_unit_ratio` to a very large number such
+as 4,000,000,000
+- Let N be the sum of `token_unit`
+- Set `end_unit_ratio` to `T / (N * hard_cap)`
+
+You can think of the settings as a Bounded Proportional Generation Event:  Use
+Proportional Generation until T tokens are created, then use Fixed Generation thereafter,
+where `T = N * hard_cap * end_unit_ratio`.
+
+TODO:  Test all this, and double check the math.
+
+#### Caps
+
+A cap is defined as simply an `sha256` digest.  Here are the relevant data structures:
+
+```
+struct smt_cap_commitment
+{
+   share_type            lower_bound;
+   share_type            upper_bound;
+   digest_type           hash;
+};
+
+struct smt_revealed_cap
+{
+   share_type            amount;
+   uint128_t             nonce;
+};
+
+struct smt_cap_reveal_operation
+{
+   account_name_type     control_account;
+   smt_revealed_cap      cap;
+
+   extensions_type       extensions;
+};
+```
+
+Then `sha256( cap )` must match one of the `commitment` fields in the
+`smt_distribution` operation.  Additionally, the `amount` must be between
+the `lower_bound` and `upper_bound`.
+
+- The UI should provide functionality to immediately reveal the cap.
+- The UI should warn the user to WRITE DOWN the amount and nonce.
+- The UI should allow the user to set lower and upper bound on the cap.
+
+The UI / wallet should set
+`nonce = H(privkey + control_account + lower_bound + upper_bound + current_date)`
+to allow the nonce to be recovered from the private key.
+
+#### Hidden cap HOWTO
+
+- Q: Should my TGE have a cap?
+- A: Some set of people stay away from uncapped TGE's due to perceived "greed",
+or want a guaranteed lower bound on the percentage of the TGE their
+contribution will buy.  If you want this set of people to participate,
+use a cap.
+
+- Q: Should my cap be hidden?
+- A: Some people like the transparency and certainty of a public cap.
+Other people think a hidden cap creates excitement and builds demand.  One
+possible compromise is to publish the previous and next power of 10, for example
+"this TGE's cap is between 1 million and 10 million STEEM."
+
+- Q: How do I disable the cap?
+- A: Set it so that the cap would occur above `STEEMIT_MAX_SHARE_SUPPLY`.
+
+#### Launch
+
+The *launch time* is the time at which tokens become transferrable,
+it occurs sometime after the end of the distribution.
+
+The token cannot launch until the hidden cap and hidden minimum have
+been revealed.  If the control account does not publish the hidden cap
+for any reason [1], then contributors will be able to request a refund
+of their STEEM.
+
+```
+struct smt_refund
+{
+   account_name_type       contributor;
+   account_name_type       control_account;
+
+   asset                   amount;
+
+   extensions_type         extensions;
+};
+```
+
+[1] Possible reasons range from lost key / nonce to malicious intent.
 
 #### Examples
 
