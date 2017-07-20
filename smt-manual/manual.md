@@ -40,7 +40,7 @@ Git Changes: https://github.com/steemit/smt-whitepaper/commit/6eab36d3b941f52f65
 
 # Introduction
 
-Smart Media Tokens (SMTs) is a proposal to build a protocol on the Steem Blockchain that allows for meta-assets powered by STEEM as their bandwidth calculation token.  Inspired by the revolutionary  properties of the STEEM asset, SMTs will be an upgrade above previous blockchain's meta-asset protocols due to extensive, user-oriented programmability and the Steem ecosystem's tools for integrations at website and application layers. 
+Smart Media Tokens (SMTs) is a proposal to build a protocol on the Steem Blockchain that allows for meta-assets powered by STEEM as their bandwidth calculation token.  Inspired by the revolutionary  properties of the STEEM asset, SMTs will be an upgrade above previous blockchain's meta-asset protocols due to extensive, user-oriented programmability and the Steem ecosystem's tools for integrations at website and application layers.
 
 Smart Media Tokens are an expansion of the successful relationship established between STEEM and the social websites sitting atop of it, such as steemit.com, which has grown to be a top 3000 website in Alexa rankings in less than one year, solely from integrating the incentive model of STEEM.  With SMTs, any website or content library across the internet may have one or more tokens integrated into its interface to facilitate fundraising and autonomous growth.
 
@@ -176,7 +176,7 @@ a UI-level concept.  UI's which provide a TGE price should do the following:
 The data structure used to define units is:
 
 ```
-struct smt_unit
+struct smt_generation_unit
 {
    flat_map< account_name_type, uint16_t >        steem_unit;
    flat_map< account_name_type, uint16_t >        token_unit;
@@ -203,8 +203,8 @@ struct smt_distribution
 {
    time_point_sec      end_time;
 
-   smt_unit            pre_soft_cap_unit;
-   smt_unit            post_soft_cap_unit;
+   smt_generation_unit pre_soft_cap_unit;
+   smt_generation_unit post_soft_cap_unit;
 
    smt_cap_commitment  min_steem_units_commitment;
    smt_cap_commitment  hard_cap_steem_units_commitment;
@@ -469,8 +469,8 @@ and tokens are issued to you equal to the STEEM you vested.
 
 ```
 {
- "steem_targets" : [["$from.vesting", 1]],
- "token_targets" : [["$from", 1]]
+ "steem_unit" : [["$from.vesting", 1]],
+ "token_unit" : [["$from", 1]]
 }
 ```
 
@@ -519,7 +519,7 @@ The triumvirate
 
 ### Inflation Parameters
 
-Token creation is called *inflation*.
+Creation of SMT after launch is called *inflation*.
 
 Inflation is the means by which the SMT rewards contributors for
 the value they provide.
@@ -527,17 +527,21 @@ the value they provide.
 Inflation events use the following data structure:
 
 ```
+struct smt_inflation_unit
+{
+   flat_map< account_name_type, uint16_t >        token_unit;
+};
+
 // Event:  Support issuing tokens to target at time
 struct token_inflation_event
 {
    timestamp           schedule_time;
-   asset               new_SMT;
-   inflation_target    target;
+   smt_inflation_unit  unit;
+   uint32_t            num_units;
 };
 ```
 
-This event prints `new_SMT` amount of the SMT token and sends it to the
-given `target` account.
+This event prints `num_units` units of the SMT token.
 
 #### Possible inflation target
 
@@ -553,8 +557,6 @@ functions provided by the blockchain itself:
 - Market maker.  A special destination representing a CRR market maker.
 
 #### Event sequences
-
-A single inflation event is insufficient.
 
 Traditionally blockchains compute inflation on a per-block basis,
 as block production rewards are the main (often, only) means of
@@ -576,8 +578,8 @@ data structure called `token_inflation_event_seq_v1`:
 struct token_inflation_event_seq_v1
 {
    timestamp           schedule_time;
-   asset               new_SMT;
-   inflation_target    target;
+   smt_inflation_unit  unit;
+   asset               new_smt;
 
    int32_t             interval_seconds;
    uint32_t            interval_count;
@@ -590,6 +592,10 @@ that repeats every `interval_seconds` seconds, for
 `0xFFFFFFFF` is a special sentinel value that represents
 an event sequence that repeats forever.
 
+Note, the `new_smt` is a quantity of SMT, not a number
+of units.  The number of units is determined by dividing
+`new_smt` by the sum of `unit` members.
+
 #### Adding relative inflation
 
 Often, inflation schedules are expressed using percentage
@@ -600,7 +606,8 @@ of supply, rather than in absolute terms:
 struct token_inflation_event_seq_v2
 {
    timestamp           schedule_time;
-   inflation_target    target;
+   smt_inflation_unit  unit;
+   uint32_t            num_units;
 
    int32_t             interval_seconds;
    uint32_t            interval_count;
@@ -610,11 +617,11 @@ struct token_inflation_event_seq_v2
 };
 ```
 
-Then we compute `new_SMT` as follows from the supply:
+Then we compute `new_smt` as follows from the supply:
 
 ```
-rel_amount = (SMT_supply * rel_amount_numerator) / SMT_REL_AMOUNT_DENOMINATOR;
-new_SMT = max( abs_amount, rel_amount );
+rel_amount = (smt_supply * rel_amount_numerator) / SMT_REL_AMOUNT_DENOMINATOR;
+new_smt = max( abs_amount, rel_amount );
 ```
 
 If we set `SMT_REL_AMOUNT_DENOMINATOR` to a power of two, the division
@@ -626,7 +633,7 @@ from the bits, we can let the shift be variable:
 struct token_inflation_event_seq_v3
 {
    timestamp           schedule_time;
-   inflation_target    target;
+   smt_inflation_unit  unit;
 
    int32_t             interval_seconds;
    uint32_t            interval_count;
@@ -640,12 +647,12 @@ struct token_inflation_event_seq_v3
 Then the computation becomes:
 
 ```
-rel_amount = (SMT_supply * rel_amount_numerator) >> rel_amount_denom_bits;
-new_SMT = max( abs_amount, rel_amount );
+rel_amount = (smt_supply * rel_amount_numerator) >> rel_amount_denom_bits;
+new_smt = max( abs_amount, rel_amount );
 ```
 
-Of course, an implementation of these computations must carefully handle
-potential overflow in the intermediate value `SMT_supply * rel_amount_numerator`!
+Of course, the implementation of these computations must carefully handle
+potential overflow in the intermediate value `smt_supply * rel_amount_numerator`!
 
 #### Adding time modulation
 
@@ -659,7 +666,7 @@ at both endpoints:
 struct token_inflation_event_seq_v4
 {
    timestamp           schedule_time;
-   inflation_target    target;
+   smt_inflation_unit  unit;
 
    int32_t             interval_seconds;
    uint32_t            interval_count;
@@ -708,8 +715,35 @@ else
 
    t = (now - lep_time) / (rep_time - lep_time)
    abs_amount = lep_abs_amount * (1-t) + rep_abs_amount * t;
-   rel_amount_numeratr = lep_rel_amount_numerator * (1-t) + rep_rel_amount_numerator * t;
+   rel_amount_numerator = lep_rel_amount_numerator * (1-t) + rep_rel_amount_numerator * t;
 }
+```
+
+#### Inflation operations
+
+The inflation operation is specified as follows:
+
+```
+struct smt_setup_inflation_operation
+{
+   account_name_type   control_account;
+
+   timestamp           schedule_time;
+   inflation_target    target;
+
+   int32_t             interval_seconds;
+   uint32_t            interval_count;
+
+   timestamp           lep_time;
+   timestamp           rep_time;
+
+   asset               lep_abs_amount;
+   asset               rep_abs_amount;
+   uint32_t            lep_rel_amount_numerator;
+   uint32_t            rep_rel_amount_numerator;
+
+   uint8_t             rel_amount_denom_bits;
+};
 ```
 
 #### FAQ
@@ -731,16 +765,16 @@ TODO:  Examples:  Steem old inflation scheme, Steem new inflation scheme, Bitcoi
 ### Token Precision Parameters
 These are values that may be set to determine how many digits a token supports. These values may only be set once.
 
-CAN WE CHANGE STEEMIT TO STEEM IN THE CHAIN?
+NB, we will change STEEMIT to STEEM in the chain, see [here](https://github.com/steemit/steem/issues/1268).
 This should be included in Token Generation Event / Initial Token Offering section, no?
 
 - `STEEMIT_BLOCKCHAIN_PRECISION` : Configurable
 - `STEEMIT_BLOCKCHAIN_PRECISION_DIGITS` : Configurable
 
 ## Dynamic Rewards Parameters
-SMTs have several parameters adjustable at the launch of the token, such as inflation rate, token generation events and founder's issuance, that cannot be changed once the token is launched, however, SMTs also have dynamic parameters that allow the token launcher to adjust certain properties of the token refine the incentivized behaviors of the token's users. Some of the parameters will increase the flow of the rewards pool towards certain user behaviors while reducing the flow towards other less desired behaviors. 
 
-CAN WE CHANGE STEEMIT TO STEEM IN THE CHAIN?
+SMTs have several parameters adjustable at the launch of the token, such as inflation rate, token generation events and founder's issuance, that cannot be changed once the token is launched, however, SMTs also have dynamic parameters that allow the token launcher to adjust certain properties of the token refine the incentivized behaviors of the token's users. Some of the parameters will increase the flow of the rewards pool towards certain user behaviors while reducing the flow towards other less desired behaviors.
+
 - `STEEMIT_CASHOUT_WINDOW_SECONDS` : Dynamic  TODO CASH OUT the name in the chain already? (seems to be a bad name)  WHY IS STEEMIT listed here and not STEEM????
 - `STEEMIT_VOTE_REGENERATION_SECONDS` : Dynamic
 - `STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS` : Dynamic
@@ -748,17 +782,19 @@ CAN WE CHANGE STEEMIT TO STEEM IN THE CHAIN?
 - ADD REWARDS CURVE PARAMETERS
 
 ### Parameter Constraints
+
 Several dynamic parameters must be constrained to prevent abuse scenarios that could harm token users.
+
 - `0 < STEEMIT_VOTE_REGENERATION_SECONDS < STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS`
 - `0 <= STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS + STEEMIT_UPVOTE_LOCKOUT < STEEMIT_CASHOUT_WINDOW_SECONDS < STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS`
 - `0 < SMT_REWARD_CURVE`
 
 ## Hardcoded Token Parameters
+
 Hardcoded parameters are aspects of tokens that interact with users in manners that have been found to increase security and safety of the assets as managed by the end user.  Though these hard coded parameters could change for all SMTs in the case of a STEEM-wide upgrade, it is proposed that SMTs leverage these parameters in the same manner as the STEEM asset for the benefit of continuity and common user knowledge.
 
 CAN WE CHANGE STEEMIT TO STEEM IN THE CHAIN?
-- `STEEMIT_UPVOTE_LOCKOUT_HF17` : Hardcoded
-			-This value locks out upvotes from posts at a certain time prior to "CASH OUT" to prevent downvote abuse immediately prior to "CASH OUT."
+- `STEEMIT_UPVOTE_LOCKOUT_HF17` : Hardcoded -- This value locks out upvotes from posts at a certain time prior to "CASH OUT" to prevent downvote abuse immediately prior to "CASH OUT."
 - `STEEMIT_VESTING_WITHDRAW_INTERVALS` : Hardcoded
 - `STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS` : Hardcoded
 - `STEEMIT_MAX_WITHDRAW_ROUTES` : Hardcoded
