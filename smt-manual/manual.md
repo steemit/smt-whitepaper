@@ -3,9 +3,9 @@ Proposal by Steemit Inc
 Copyright (c) Steemit, Inc. 2017
 Status: DRAFT
 
-# Smart Media Tokens - A Proposal for Steem
+# Smart Media Tokens 
 
-A Token Protocol for Achieving Autonomous Application Growth and Fundraising
+A Token Protocol for Achieving Autonomous Application Growth and Fundraising - A Proposal for Steem
 
 - [Introduction](#introduction)
 - [Owner's manual](#owners-manual)
