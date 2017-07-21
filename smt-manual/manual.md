@@ -5,7 +5,7 @@ Status: DRAFT
 
 # Smart Media Tokens 
 
-Steem Proposal: A Token Protocol for Achieving Autonomous Application Growth and Fundraising 
+Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
 
 - [Introduction](#introduction)
 - [Owner's manual](#owners-manual)
