@@ -4,39 +4,59 @@ Copyright (c) Steemit, Inc. 2017
 Status: DRAFT
 
 # Smart Media Tokens
-## A Token Protocol for Achieving Autonomous Application Growth and Fundraising
 
-## Outline
+A Token Protocol for Achieving Autonomous Application Growth and Fundraising
 
-TODO:  Links from here to section anchors later
-TODO:  Can we make anchor names portable across markdown engines?
+- [Introduction](#introduction)
+- [Owner's manual](#owners-manual)
+  - [Establish a Name Space](#establish-a-name-space)
+    - [Token consensus](#token-consensus)
+  - [Token Generation and Initialized Parameters](#token-generation-and-initialized-parameters)
+    - [Creation fee](#creation-fee)
+    - [Descriptor](#descriptor)
+    - [Structuring Token Generation Events and Initial Token Offerings (TGEs and ITOs)](#structuring-token-generation-events-and-initial-token-offerings-tges-and-itos)
+      - [Why unit ratios?](#why-unit-ratios)
+      - [UI treatment of unit ratios](#ui-treatment-of-unit-ratios)
+      - [Defining SMT distribution](#defining-smt-distribution)
+        - [Special account names](#special-account-names)
+      - [Defining SMT issue policy](#defining-smt-issue-policy)
+      - [Ratios](#ratios)
+      - [Caps](#caps)
+      - [Hidden cap FAQ](#hidden-cap-faq)
+      - [Launch](#launch)
+      - [Examples](#examples)
+        - [Full JSON example](#full-json-example)
+        - [Single-segment with min and cap](#single-segment-with-min-and-cap)
+        - [Fixed-float no-reserve](#fixed-float-no-reserve)
+        - [Vesting contributions](#vesting-contributions)
+        - [Burning contributed STEEM](#burning-contributed-steem)
+        - [Vesting as cost](#vesting-as-cost)
+        - [Non-STEEM & Hybrid ITO's](#non-steem--hybrid-itos)
+      - [Market maker accounts](#market-maker-accounts)
+    - [Inflation Parameters](#inflation-parameters)
+      - [Possible inflation target](#possible-inflation-target)
+      - [Event sequences](#event-sequences)
+      - [Adding relative inflation](#adding-relative-inflation)
+      - [Adding time modulation](#adding-time-modulation)
+      - [Inflation operations](#inflation-operations)
+      - [Inflation FAQ](#inflation-faq)
+    - [Token Precision Parameters](#token-precision-parameters)
+  - [Reward curves](#reward-curves)
+  - [Target votes per day](#target-votes-per-day)
+  - [Regeneration time](#regeneration-time)
+  - [Dynamic Rewards Parameters](#dynamic-rewards-parameters)
+    - [Parameter Constraints](#parameter-constraints)
+  - [Hardcoded Token Parameters](#hardcoded-token-parameters)
+  - [SMT Parameters Commentary](#smt-parameters-commentary)
+- [Decentralized Exchange](#decentralized-exchange)
+  - [Decentralized Order Matching](#decentralized-order-matching)
+  - [Diverse Asset Types](#diverse-asset-types)
+  - [ZERO Trading Fees](#zero-trading-fees)
+- [Ecosystem Support](#ecosystem-support)
+- [Conclusion](#conclusion)
 
-1. Introduction - Proposal for Steem
-2.Owner's Manual
-2a. Establish Name Space
-2a1. Tokens are consensus with the Steem name space
-2b. Token Generation and Initialized Parameters
-2b0. Asset Creation Fee
-2b1. Descriptor
-2b2. Initial Token Offering
-2b3a. Market Maker
-2b3b. Founder's Distribution
-2b3c. Non-STEEM and Hybrid ITOs
-2b4. Inflation Parameters
-2b5. Token Precision Parameters
-2d. Dynamic Reward Parameters
-2d1. Rewards Curves
-2d2. Target Votes Per Day
-2d3. Regeneration times
-2d4. ... All other Structures/Parameters
-2e. Hardcoded Parameters
-2f. SMT Parameter Commentary
-3. Decentralized Exchange - STEEM / SBD / SMTs / Simple Derivatives (IOUs)
-4. Ecosystem Support for SMTs
-5. Conclusion
-
-Github: https://github.com/steemit/smt-whitepaper/blob/collab/smt-manual/manual.md
-Git Changes: https://github.com/steemit/smt-whitepaper/commit/6eab36d3b941f52f65e78f3be72efdd5bf5afc2e
+- Github: https://github.com/steemit/smt-whitepaper/blob/collab/smt-manual/manual.md
+- Git Changes: https://github.com/steemit/smt-whitepaper/commit/6eab36d3b941f52f65e78f3be72efdd5bf5afc2e
 
 # Introduction
 
@@ -744,6 +764,18 @@ This should be included in Token Generation Event / Initial Token Offering secti
 
 - `STEEMIT_BLOCKCHAIN_PRECISION` : Configurable
 - `STEEMIT_BLOCKCHAIN_PRECISION_DIGITS` : Configurable
+
+## Reward curves
+
+TODO: Write this section
+
+## Target votes per day
+
+TODO: Write this section
+
+## Regeneration time
+
+TODO: Write this section
 
 ## Dynamic Rewards Parameters
 
