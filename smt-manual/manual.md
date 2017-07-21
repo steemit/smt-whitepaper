@@ -64,7 +64,7 @@ Smart Media Tokens (SMTs) is a proposal to build a protocol on the Steem Blockch
 
 Smart Media Tokens are an expansion of the successful relationship established between STEEM and the social websites sitting atop of it, such as steemit.com, which has grown to be a top 3000 website in Alexa rankings in less than one year, solely from integrating the incentive model of STEEM.  With SMTs, any website or content library across the internet may have one or more tokens integrated into its interface to facilitate fundraising and autonomous growth.
 
-These tokens are designed to allow website operators flexibility during the integration of the token into their community by choosing from many parameters that may be structured creatively at outset or refined over time.  Any tokens launched as Smart Media Tokens shall benefit from a blockchain ecosystem built with decentralized exchange, market making tools, and many applications and libraries to support successful deployment, fundraising and growth.
+These tokens are designed to allow website operators flexibility during the integration of the token into their community by choosing from many parameters that may be structured creatively at outset or refined over time.  Any tokens launched as Smart Media Tokens shall benefit from a blockchain ecosystem built with decentralized exchange, and many applications and libraries to support successful deployment, fundraising and growth.
 
 # Owner's manual
 
@@ -498,19 +498,6 @@ and tokens are issued to you equal to the STEEM you vested.
 
 ITO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. -- cannot be done fully automatically on-chain.   However, such ITO's can be managed by manually transferring some founder account's distribution to buyers' Steem accounts in proportion to their non-STEEM contribution.
 
-#### Market maker accounts
-
-Market making is done by performing a "ping" to the MM account.  This inspects the state of the
-market and issues orders from the MM account as appropriate.  The pinger is responsible for
-paying the bandwidth cost of the ping.
-
-An account which is created as a market maker has `mm_ping_authority` and `mm_reserve_ratios`.
-To create a fully decentralized market maker, create an account with no recovery account, set
-`mm_ping_authority` to `temp`, and set the account's owner/active/posting authorities to `null`.
-Funds in the account will then be inaccessible and it will operate completely autonomously.
-
-TODO:  Specify fee percentage, fee beneficiary
-
 ### Inflation Parameters
 
 Creation of SMT after launch is called *inflation*.
@@ -548,7 +535,6 @@ functions provided by the blockchain itself:
 
 - Rewards.  A special destination representing the token's posting / voting rewards.
 - Vesting.  A special destination representing the tokens backing vested tokens.
-- Market maker.  A special destination representing a CRR market maker.
 
 #### Event sequences
 
@@ -819,7 +805,7 @@ CAN WE CHANGE STEEMIT TO STEEM IN THE CHAIN?
 ## SMT Parameters Commentary
 
 # Decentralized Exchange
-One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM. On top of automated market makers that can be established during ITOs, SMTs can have immediate access to price discovery and liquidity, benefiting all its users and holders.
+One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM.
 
 ## Decentralized Order Matching
 The Decentralized Exchange (DEX) structures of Steem allow assets to automatically be matched for best possible price when bids and asks overlap, unlike other DEXs which require a man in the middle to match orders.  This is important for security of Steem-based assets and for the replicability and safety of DEX interfaces.
