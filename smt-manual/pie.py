@@ -11,106 +11,134 @@ import numpy as np
 import bisect
 import math
 
-def plot_curation(
-    reward_curve=None,
-    curation_curve=None,
-    xmin=0.0,
-    xmax=10000.0,
-    xsteps=1000,
-    ymin=0.0,
-    ymax=None,
-    ysteps=1000,
+class RewardCurvePlotter(object):
+
+    def __init__(self,
+        reward_curve=None,
+        curation_curve=None,
+        xmin=0.0,
+        xmax=10000.0,
+        xsteps=1000,
+        ymin=0.0,
+        ymax=None,
+        ysteps=1000,
     ):
 
-    dx = float(xmax - xmin) / float(xsteps)
+        self.reward_curve = reward_curve
+        self.curation_curve = curation_curve
+        self.xmin = xmin
+        self.xmax = xmax
+        self.xsteps = xsteps
+        self.ymin = ymin
+        if ymax is None:
+            dx = float(xmax - xmin) / float(xsteps)
+            ymax = (reward_curve(xmax) - reward_curve(xmax - dx)) / dx
+        self.ymax = ymax
+        self.ysteps = ysteps
+        return
 
-    if ymax is None:
-        ymax = (reward_curve(xmax) - reward_curve(xmax - dx)) / dx
+    def plot_curation(self):
 
-    #print("ymax:", ymax)
+        xmin, xmax, xsteps = self.xmin, self.xmax, self.xsteps
+        ymin, ymax, ysteps = self.ymin, self.ymax, self.ysteps
 
-    dy = float(ymax - ymin) / float(ysteps)
-    wlist = [0.0]
-    img = 0.0 * np.ones((xsteps, ysteps))
-    for i in range(xsteps):
-        x0 = i*dx
-        x1 = x0+dx
-        dw = curation_curve(x1) - curation_curve(x0)
-        drc = (reward_curve(x1) - reward_curve(x0)) / dx
-        wlist.append(wlist[-1]+dw)
+        dx = float(xmax - xmin) / float(xsteps)
 
-        #print("x0:", x0, "x1:", x1, "drc:", drc)
+        #print("ymax:", ymax)
 
-        epsilon = 1e-5
+        dy = float(ymax - ymin) / float(ysteps)
+        wlist = [0.0]
+        img = 0.0 * np.ones((xsteps, ysteps))
+        for i in range(xsteps):
+            x0 = i*dx
+            x1 = x0+dx
+            dw = self.curation_curve(x1) - self.curation_curve(x0)
+            drc = (self.reward_curve(x1) - self.reward_curve(x0)) / dx
+            wlist.append(wlist[-1]+dw)
 
-        for j in range(ysteps):
-            y = ymin + (j+0.5) * dy
-            #print(x0, y)
-            if y < ymin:
-                continue
-            if y > drc:
-                break
-            search_val = (1.0 - (y / drc)) * wlist[-1]
-            img[j][i] = bisect.bisect_left(wlist, search_val) / float(xsteps+1) + epsilon
-            #print(i, j, img[i][j])
+            #print("x0:", x0, "x1:", x1, "drc:", drc)
 
-    cmap = cm.Paired
-    cmap.set_under(color="white")
+            epsilon = 1e-5
 
-    plt.imshow(
-       img,
-       extent=(xmin, xmax, ymin, ymax),
-       #aspect="equal",
-       origin="lower",
-       interpolation="nearest",
-       cmap=cmap,
-       vmin=2.0*epsilon,
-       )
-    return
+            for j in range(ysteps):
+                y = ymin + (j+0.5) * dy
+                #print(x0, y)
+                if y < ymin:
+                    continue
+                if y > drc:
+                    break
+                search_val = (1.0 - (y / drc)) * wlist[-1]
+                img[j][i] = bisect.bisect_left(wlist, search_val) / float(xsteps+1) + epsilon
+                #print(i, j, img[i][j])
 
-def rc_quadratic(r, s=0.2):
-    return r*r + 2*r*s
+        cmap = cm.Paired
+        cmap.set_under(color="white")
 
-def cc_quadratic_curation(r, s=0.2):
-    return float(r) / float(r+2*s)
+        plt.imshow(
+           img,
+           extent=(xmin, xmax, ymin, ymax),
+           #aspect="equal",
+           origin="lower",
+           interpolation="nearest",
+           cmap=cmap,
+           vmin=2.0*epsilon,
+           )
+        return
 
-def rc_linear(r):
-    return float(r)
+class QuadraticRewardCurve(object):
+    def __init__(self, s=1.0):
+        self.s = s
+        self.name = "quadratic"
+        return
 
-def cc_linear(r):
-    return float(r)
+    def __call__(self, r):
+        return r*r + 2.0*r*self.s
 
-def cc_sqrt(r):
-    return math.sqrt(r)
+class BoundedWeightCurve(object):
+    def __init__(self, s=1.0):
+        self.s = s
+        self.name = "bounded"
+        return
 
-plt.clf()
-plot_curation(
-    xmin=0.0,
-    xmax=1.0,
-    reward_curve=rc_quadratic,
-    curation_curve=cc_quadratic_curation,
-    )
-plt.title("rc_quadratic + cc_quadratic_curation")
-plt.savefig("quadratic-rewards.png")
+    def __call__(self, r):
+        return float(r) / float(r + 2.0*self.s)
 
-plt.clf()
-plot_curation(
-    reward_curve=rc_linear,
-    curation_curve=cc_linear,
-    xmin=0.0,
-    xmax=1.0,
-    ymax=1.2,
-    )
-plt.title("rc_linear + cc_linear")
-plt.savefig("linear-rewards-linear-curation.png")
+class LinearCurve(object):
+    def __init__(self):
+        self.name = "linear"
+        return
 
-plt.clf()
-plot_curation(
-    reward_curve=rc_linear,
-    curation_curve=cc_sqrt,
-    xmin=0.0,
-    xmax=1.0,
-    ymax=1.2,
-    )
-plt.title("rc_linear + cc_sqrt")
-plt.savefig("linear-rewards-sqrt-curation.png")
+    def __call__(self, r):
+        return float(r)
+
+class SqrtCurve(object):
+    def __init__(self):
+        self.name = "sqrt"
+        return
+
+    def __call__(self, r):
+        return math.sqrt(r)
+
+reward_curves = [
+    QuadraticRewardCurve(s=0.2),
+    LinearCurve(),
+    ]
+
+weight_curves = [
+    BoundedWeightCurve(s=0.2),
+    LinearCurve(),
+    SqrtCurve(),
+    ]
+
+for rc in reward_curves:
+    for cc in weight_curves:
+        rcp = RewardCurvePlotter(
+            xmin=0.0,
+            xmax=1.0,
+            reward_curve=rc,
+            curation_curve=cc,
+            )
+        plt.clf()
+        rcp.plot_curation()
+        plt.title("rc_"+rc.name+" + cc_"+cc.name)
+        plt.savefig("rc-"+rc.name+"-cc-"+cc.name+".png")
