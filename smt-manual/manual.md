@@ -119,6 +119,8 @@ Each SMT has an associated descriptor object which has
 *permanent configuration data*.  This data cannot be changed after launch!
 The descriptor is set by the `SMT_setup_operation`:
 
+TODO:  distribution -> generation
+
 ```
 struct smt_setup_operation
 {
@@ -358,6 +360,8 @@ struct smt_refund
 ##### Full JSON example
 
 Suppose BETA is defined with the following definitions:
+
+TODO:  Fix/update this JSON
 
 ```
 [
@@ -726,6 +730,8 @@ struct smt_setup_inflation_operation
 };
 ```
 
+TODO:  Add more text.  Can we re-use data type for `inflation_target`?
+
 #### Inflation FAQ
 
 - Q:  Can the SMT inflation data structures express Steem's [current inflation scheme](https://github.com/steemit/steem/issues/551)?
@@ -751,17 +757,106 @@ This should be included in Token Generation Event / Initial Token Offering secti
 - `STEEMIT_BLOCKCHAIN_PRECISION` : Configurable
 - `STEEMIT_BLOCKCHAIN_PRECISION_DIGITS` : Configurable
 
-## Reward curves
+## Vesting rewards
 
-TODO: Write this section
+TODO:  Do we want to rename vesting rewards to powerup rewards?
+
+Token inflation may be directed to vesting rewards.  These rewards are effectively
+split among all users with vesting balances proportional to the number of tokens
+they have vested.  As the number of tokens devoted to these rewards is independent
+of users' vesting balances, the percentage rate of return this represents will vary
+depending on how many tokens are vested at a time.
+
+## Content rewards
+
+Tokens flow from SMT inflation into the reward fund.  The blockchain uses algorithms
+to decide:
+
+- (1) How to divide the token-wide rewards among posts
+- (2) How to divide rewards within a post among the author and curators (upvoters) of that post
+
+The algorithms to solve these problems operate as follows:
+
+- (1) Posts are weighed *against other posts* according to the *reward curve* or `rc`.
+- (2a) The curators collectively receive a fixed percentage of the post, specified by the `curation_pct` parameter.
+- (2b) The author receives the remainder (after applying any beneficiaries or limited/declined author reward).
+- (2c) Curators are weighted *against other curators of that post* according to the *curation curve* or `cc`.
+
+![creation.png](creation.png)
+
+## Curve definitions
+
+The reward curve can be *linear* or *quadratic*.  The linear reward curve `rc(r) = r` passes the R-shares
+(upvotes) through unchanged.  The quadratic reward curve `rc(r) = r^2 + 2rs` has increasing slope.
+
+For an illustration of the meaning of reward curves, imagine grouping the most-upvoted posts as follows:
+
+- Section A consists of the top 10% of posts by upvotes.
+- Section B consists of the next 10% of posts by upvotes.
+
+Here's how the rewards differ:
+
+- With either reward curve, Section A posts will have greater rewards than Section B posts since they have more upvotes.
+- With the quadratic reward curve, Section A posts will have an *additional boost* relative to Section B posts, since Section A posts will get *more rewards per upvote*.
+- With the linear reward curve, Section A and Section B will get the same reward per upvote.
+
+Possible curation curves are:
+
+- Linear `cc(r) = r`
+- Square-root `cc(r) = sqrt(r)`
+- Bounded `cc(r) = r / (r + 2s)`.
+
+TODO:  File a ticket to rename `quadratic_curation` to `bounded` in the code
+
+To help visualize, here are some plots called *pie charts*.  Each colored area
+represents how curation rewards are divided among curators with equal voting power.
+
+![rc-linear-cc-linear.png](rc-linear-cc-linear.png)
+![rc-linear-cc-sqrt.png](rc-linear-cc-sqrt.png)
+![rc-linear-cc-bounded.png](rc-linear-cc-bounded.png)
+![rc-quadratic-cc-linear.png](rc-quadratic-cc-linear.png)
+![rc-quadratic-cc-sqrt.png](rc-quadratic-cc-sqrt.png)
+![rc-quadratic-cc-bounded.png](rc-quadratic-cc-bounded.png)
+
+- The rectangular vertical column shows the immediate reward upon making an upvote.
+- The colored area extending to the right shows how the rewards of a curator grow as later curators vote.
+- When both curves are linear, everyone gets the same curation reward regardless of which post they vote on.
+- In the case of `rc_linear + cc_sqrt` and `rc_quadratic + cc_bounded`, the same height rectangles mean everyone gets about the same initial curation reward, call this `ICR=`.
+- In the case of `rc_linear + cc_bounded`, the rectangles are decreasing in height.  This represents a progressive *handicap* against voting for already-popular posts, call this `ICR-`.
+- In the case of `rc_quadratic + cc_sqrt` and `rc_quadratic + cc_linear`, the rectangles are increasing in height.  Call this `ICR+`.
+
+Fundamentally, curation is making a prediction that upvotes will occur in the future.  As reward system designers, our criterion for selecting a curve
+should be to reward successful predictions.  Which curve satisfies this criterion depends on the relationship between current and future upvotes.
+
+- If a post's future upvotes are *independent* of its current upvotes, we should choose an `ICR=` curve.
+- If a post's future upvotes are *positively correlated* with its current upvotes, we should choose some `ICR-` curve, ideally somehow tuned to the amount of correlation.
+- If a post's future upvotes are *negatively correlated* with its current upvotes, we should choose some `ICR+` curve, ideally somehow tuned to the amount of correlation.
+
+In practice, independence or a modest positive correlation should be expected, so an `ICR=` or `ICR-` curve should be chosen.
+For STEEM itself, curation was originally the quadratic `ICR=`, as of (TODO: Hardfork number) it is the linear `ICR=`.
+
+TODO:  Operator to create fund
+TODO:  Do we want to allow these parameters to be dynamic?
+TODO:  Possibly decreasing-slope reward curve?
+TODO:  Possibly `ICR-` curve for quadratic?
 
 ## Target votes per day
 
-TODO: Write this section
+Each account has a `voting_power`, which is essentially a "mana bar" that fills from 0% to 100% over time at a constant rate.
+That rate is determined by two parameters:
 
-## Regeneration time
+- (a) The time it takes to regenerate the bar to 100%, `vote_regeneration_period_seconds`
+- (b) The `voting_power` used by a maximum-strength vote
 
-TODO: Write this section
+The `vote_regeneration_period_seconds` is specified directly.  For (b), instead of
+specifying the voting power of a maximum-strength vote directly, instead you specify
+`votes_per_regeneration_period`.  Then the maximum-strength vote is set such that a
+user casting that many max-strength votes will exactly cancel the regeneration.
+
+TODO:  File ticket to change from target votes per day to target votes per period
+TODO:  File ticket to refactor out voting computations
+TODO:  Make voting power upper bound constant, delegate voting power decision to UI
+TODO:  Create operation.
 
 ## Dynamic Rewards Parameters
 
@@ -771,7 +866,8 @@ SMTs have several parameters adjustable at the launch of the token, such as infl
 - `STEEMIT_VOTE_REGENERATION_SECONDS` : Dynamic
 - `STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS` : Dynamic
 - `vote_power_reserve_rate` : Dynamic
-- ADD REWARDS CURVE PARAMETERS
+- `STEEMIT_CONTENT_REWARD_PERCENT` : Dynamic
+- `STEEMIT_VESTING_FUND_PERCENT` : Dynamic
 
 ### Parameter Constraints
 
