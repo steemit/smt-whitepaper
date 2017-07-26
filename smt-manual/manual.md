@@ -782,7 +782,7 @@ The algorithms to solve these problems operate as follows:
 - (2b) The author receives the remainder (after applying any beneficiaries or limited/declined author reward).
 - (2c) Curators are weighted *against other curators of that post* according to the *curation curve* or `cc`.
 
-![creation.png](creation.png)
+![creation.png](img/creation.png)
 
 ## Curve definitions
 
@@ -811,12 +811,12 @@ TODO:  File a ticket to rename `quadratic_curation` to `bounded` in the code
 To help visualize, here are some plots called *pie charts*.  Each colored area
 represents how curation rewards are divided among curators with equal voting power.
 
-![rc-linear-cc-linear.png](rc-linear-cc-linear.png)
-![rc-linear-cc-sqrt.png](rc-linear-cc-sqrt.png)
-![rc-linear-cc-bounded.png](rc-linear-cc-bounded.png)
-![rc-quadratic-cc-linear.png](rc-quadratic-cc-linear.png)
-![rc-quadratic-cc-sqrt.png](rc-quadratic-cc-sqrt.png)
-![rc-quadratic-cc-bounded.png](rc-quadratic-cc-bounded.png)
+![rc-linear-cc-linear.png](img/rc-linear-cc-linear.png)
+![rc-linear-cc-sqrt.png](img/rc-linear-cc-sqrt.png)
+![rc-linear-cc-bounded.png](img/rc-linear-cc-bounded.png)
+![rc-quadratic-cc-linear.png](img/rc-quadratic-cc-linear.png)
+![rc-quadratic-cc-sqrt.png](img/rc-quadratic-cc-sqrt.png)
+![rc-quadratic-cc-bounded.png](img/rc-quadratic-cc-bounded.png)
 
 - The rectangular vertical column shows the immediate reward upon making an upvote.
 - The colored area extending to the right shows how the rewards of a curator grow as later curators vote.
