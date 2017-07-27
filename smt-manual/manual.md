@@ -811,12 +811,7 @@ TODO:  File a ticket to rename `quadratic_curation` to `bounded` in the code
 To help visualize, here are some plots called *pie charts*.  Each colored area
 represents how curation rewards are divided among curators with equal voting power.
 
-![rc-linear-cc-linear.png](img/rc-linear-cc-linear.png)
-![rc-linear-cc-sqrt.png](img/rc-linear-cc-sqrt.png)
-![rc-linear-cc-bounded.png](img/rc-linear-cc-bounded.png)
-![rc-quadratic-cc-linear.png](img/rc-quadratic-cc-linear.png)
-![rc-quadratic-cc-sqrt.png](img/rc-quadratic-cc-sqrt.png)
-![rc-quadratic-cc-bounded.png](img/rc-quadratic-cc-bounded.png)
+![Reward curves and curation curves](img/rc-cc.png)
 
 - The rectangular vertical column shows the immediate reward upon making an upvote.
 - The colored area extending to the right shows how the rewards of a curator grow as later curators vote.
