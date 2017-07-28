@@ -326,14 +326,6 @@ five-sixths / one-sixth split is expressed as:
 token_unit = [["$from", 5], ["founder_d", 1]]
 ```
 
-This token-unit contains 6 ALPHA-satoshis, or 0.0006 ALPHA (if ALPHA
-has 4 decimal places).
-
-Next we define the *unit ratio* as the relative rate at which `token_unit`
-are issued as `steem_unit` are contributed.  So to match the specification
-of 6 ALPHA per 1 STEEM, we need to issue 1000 ALPHA-units per STEEM-unit.
-Therefore the unit ratio of this TGE is 1000.
-
 This ratio is defined in the following data structure:
 
 ```
@@ -342,6 +334,21 @@ struct smt_generation_unit
    flat_map< account_name_type, uint16_t >        steem_unit;
    flat_map< account_name_type, uint16_t >        token_unit;
 };
+```
+
+This token-unit contains 6 ALPHA-satoshis, or 0.0006 ALPHA (if ALPHA
+has 4 decimal places).
+
+Next we define the *unit ratio* as the relative rate at which `token_unit`
+are issued as `steem_unit` are contributed.  So to match the specification
+of 6 ALPHA per 1 STEEM, we need to issue 1000 ALPHA-units per STEEM-unit.
+Therefore the unit ratio of this TGE is 1000.  This unit ratio is placed in
+the `min_unit_ratio` and `max_unit_ratio` fields of the
+`smt_capped_generation_policy` data structure:
+
+```
+min_unit_ratio = 1000
+max_unit_ratio = 1000
 ```
 
 A special account name, `$from`, represents the contributor.  Also
