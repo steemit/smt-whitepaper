@@ -54,6 +54,9 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
   - [Diverse Asset Types](#diverse-asset-types)
   - [ZERO Trading Fees](#zero-trading-fees)
 - [Ecosystem Support](#ecosystem-support)
+  - [How to integrate tokens](#how-to-integrate-tokens)
+  - [Existing publisher](#existing-publisher)
+  - [New application](#new-application)
 - [Conclusion](#conclusion)
 
 - Github: https://github.com/steemit/smt-whitepaper/blob/collab/smt-manual/manual.md
@@ -986,5 +989,11 @@ Simple Derivatives (IOUs) will be possible via SMT issuance.  For instance, if a
 The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike.  This is made possible by Bandwidth Rate Limiting, a concept first introduced in the original Steem White Paper.
 
 # Ecosystem Support
+
+## How to integrate tokens
+
+## Existing publisher
+
+## New application
 
 # Conclusion
