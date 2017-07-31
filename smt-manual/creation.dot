@@ -1,0 +1,26 @@
+digraph {
+    creation -> generation;
+    creation -> inflation;
+    generation -> founders[label="setup"];
+    generation -> contributors[label="setup"];
+    inflation -> founders[label="setup"];
+    inflation -> content_rewards[label="setup"];
+    inflation -> vesting_rewards[label="setup"];
+
+    content_rewards -> post1[label="rc(post1.votes)"];
+    content_rewards -> post2[label="rc(post2.votes)"];
+    content_rewards -> post3[label="rc(post3.votes)"];
+
+    post1 -> post1_author[label="author_pct"];
+    post1 -> post1_curators[label="curation_pct"];
+
+    post2 -> post2_author[label="author_pct"];
+    post2 -> post2_curators[label="curation_pct"];
+
+    post3 -> post3_author[label="author_pct"];
+    post3 -> post3_curators[label="curation_pct"];
+
+    post2_curators -> alice[label="cc"];
+    post2_curators -> bob[label="cc"];
+
+}

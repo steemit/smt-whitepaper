@@ -13,26 +13,26 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
     - [Token consensus](#token-consensus)
   - [Token Generation and Initialized Parameters](#token-generation-and-initialized-parameters)
     - [Creation fee](#creation-fee)
-    - [Descriptor](#descriptor)
-    - [Structuring Token Generation Events and Initial Token Offerings (TGEs and ITOs)](#structuring-token-generation-events-and-initial-token-offerings-tges-and-itos)
+    - [SMT setup](#smt-setup)
+    - [Token units](#token-units)
+    - [Unit ratios](#unit-ratios)
+    - [Cap and min](#cap-and-min)
+    - [Hidden caps](#hidden-caps)
+    - [Generation policy data structure](#generation-policy-data-structure)
+    - [Examples and rationale](#examples-and-rationale)
+      - [Example TGE](#example-tge)
       - [Why unit ratios?](#why-unit-ratios)
       - [UI treatment of unit ratios](#ui-treatment-of-unit-ratios)
-      - [Defining SMT distribution](#defining-smt-distribution)
-        - [Special account names](#special-account-names)
-      - [Defining SMT issue policy](#defining-smt-issue-policy)
-      - [Ratios](#ratios)
-      - [Caps](#caps)
       - [Hidden cap FAQ](#hidden-cap-faq)
-      - [Launch](#launch)
-      - [Examples](#examples)
-        - [Full JSON example](#full-json-example)
-        - [Single-segment with min and cap](#single-segment-with-min-and-cap)
-        - [Fixed-float no-reserve](#fixed-float-no-reserve)
-        - [Vesting contributions](#vesting-contributions)
-        - [Burning contributed STEEM](#burning-contributed-steem)
-        - [Vesting as cost](#vesting-as-cost)
-        - [Non-STEEM & Hybrid ITO's](#non-steem--hybrid-itos)
-      - [Market maker accounts](#market-maker-accounts)
+    - [Launch](#launch)
+    - [Examples](#examples)
+      - [Full JSON example](#full-json-example)
+      - [Single-segment with min and cap](#single-segment-with-min-and-cap)
+      - [Fixed-float no-reserve](#fixed-float-no-reserve)
+      - [Vesting contributions](#vesting-contributions)
+      - [Burning contributed STEEM](#burning-contributed-steem)
+      - [Vesting as cost](#vesting-as-cost)
+      - [Non-STEEM & Hybrid ITO's](#non-steem--hybrid-itos)
     - [Inflation Parameters](#inflation-parameters)
       - [Possible inflation target](#possible-inflation-target)
       - [Event sequences](#event-sequences)
@@ -41,9 +41,10 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
       - [Inflation operations](#inflation-operations)
       - [Inflation FAQ](#inflation-faq)
     - [Token Precision Parameters](#token-precision-parameters)
-  - [Reward curves](#reward-curves)
+  - [Vesting rewards](#vesting-rewards)
+  - [Content rewards](#content-rewards)
+  - [Curve definitions](#curve-definitions)
   - [Target votes per day](#target-votes-per-day)
-  - [Regeneration time](#regeneration-time)
   - [Dynamic Rewards Parameters](#dynamic-rewards-parameters)
     - [Parameter Constraints](#parameter-constraints)
   - [Hardcoded Token Parameters](#hardcoded-token-parameters)
@@ -113,11 +114,11 @@ blockchain's consensus.
 
 TODO:  Explain and justify the blockchain's fee to create an asset
 
-### Descriptor
+### SMT setup
 
 Each SMT has an associated descriptor object which has
 *permanent configuration data*.  This data cannot be changed after launch!
-The descriptor is set by the `SMT_setup_operation`:
+The descriptor is set by the `smt_setup_operation`:
 
 ```
 struct smt_setup_operation
@@ -126,20 +127,188 @@ struct smt_setup_operation
    uint8_t                 decimal_places = 0;
    int64_t                 max_supply = STEEMIT_MAX_SHARE_SUPPLY;
 
-   smt_distribution        initial_distribution_policy;
+   smt_generation_policy   initial_generation_policy;
 
-   time_point_sec          distribution_end_time;
+   time_point_sec          generation_end_time;
    time_point_sec          launch_time;
 
    extensions_type         extensions;
 };
 ```
-### Structuring Token Generation Events and Initial Token Offerings (TGEs and ITOs)
 
-SMT token creation exchange takes place in a series of *units*.  To understand units, it's best to start with an example.
+The operation must be signed by the `control_account` key.  The name
+of the control account becomes the name of the token.  The
+`decimal_places` field is used by UI's to display units as a number
+of decimals.
+
+### Token units
+
+Initial token generation is driven by a contributions of *STEEM
+units* from contributors.  To simplify rounding concerns, a
+contribution must be an integer number of STEEM units.  The TGE
+creator sets the size of a STEEM unit, it can be large or small.
+It is better to keep the unit small (for example, 1 STEEM or
+0.1 STEEM), as this allows the TGE to be accessible to the
+maximum possible audience.
+
+A STEEM unit also specifies a *routing policy* which determines
+where the STEEM goes when the token launches.  (STEEM for tokens
+which do not launch may be refunded on demand.)  The routing
+policy may split the STEEM in the unit among multiple parties.
+
+When the TGE occurs, the tokens are generated in *token units*.
+Multiple token units are generated per STEEM unit contributed.
+Token units also have a routing policy.
+
+The units and their routing policies are specified in the
+`smt_generation_unit` structure:
+
+```
+struct smt_generation_unit
+{
+   flat_map< account_name_type, uint16_t >        steem_unit;
+   flat_map< account_name_type, uint16_t >        token_unit;
+};
+```
+
+Each `(key, value)` pair in the `flat_map` determines the routing
+of some satoshis.  The total STEEM/tokens in each unit is
+simply the sum of the values.
+
+### Unit ratios
+
+When an SMT launches, token units are created for STEEM
+units in an R-for-1 ratio.  The number R is called the
+*unit ratio*.  Maximum and minimum allowable values for
+R are specified respectively in the `min_unit_ratio`
+and `max_unit_ratio` fields of `smt_generation_policy`.
+
+The maximum number of token units that can be created in the TGE
+is limited to `max_token_units_generated`, a parameter which is set by
+the TGE creator.  (More tokens can be created after the
+token has launched, but this later creation is called *inflation*
+and is not considered to be part of the TGE.)
+
+The unit ratio is set to the largest integer that would
+not result in exceeding `max_token_units_generated` for the number
+of STEEM units actually contributed.
+
+### Cap and min
+
+TGE's may specify a minimum number of STEEM units `min_steem_units`.
+If the TGE does not reach `min_steem_units` before `generation_end_time`,
+then it does not occur and contributors become eligible for refunds.
+
+Likewise, TGE's may specify two maximum numbers of STEEM units:
+A *hard cap* and a *soft cap*.  Units in excess of the soft cap
+have different routing for their STEEM and tokens.  STEEM units in
+excess of the hard cap are rejected and do not generate any SMT's.
+
+The effects of the soft cap are divided equally among all contributors.
+I.e. if a TGE has a soft cap of 8 million STEEM, and 10 contributors
+each contribute 1 million STEEM, then 0.2 million of
+*each user's* STEEM is routed via the soft cap's policy.
+
+The effects of the hard cap fall solely on the last contributors.
+I.e. if a TGE has a hard cap of 8 million STEEM, and 10 contributors each
+contribute 1 million STEEM, then the first 8 users fully participate
+in the TGE, and the last 2 users are refunded 1 million STEEM.
+
+### Hidden caps
+
+The min and hard cap are *hidden* in the generation policy.  This means
+that these numbers are fixed at setup time, but the TGE creator has the
+option to keep it secret.  This functionality is implemented by a
+*commit/reveal* cryptographic protocol:  A hash called the *commitment*
+is published at setup time, and the actual amount must match the
+commitment.  (A nonce is also included in the hash to prevent an attacker
+from finding the hidden cap with a brute-force guess-and-test approach.)
+
+The SMT designer may wish to pre-publish a guarantee that the hidden
+values are within a certain range.  The `lower_bound` and `upper_bound`
+fields provide this functionality:  A revealed amount that is not in
+the specified range is treated the same as a hash mismatch.
+
+```
+struct smt_cap_commitment
+{
+   share_type            lower_bound;
+   share_type            upper_bound;
+   digest_type           hash;
+};
+
+struct smt_revealed_cap
+{
+   share_type            amount;
+   uint128_t             nonce;
+};
+
+struct smt_cap_reveal_operation
+{
+   account_name_type     control_account;
+   smt_revealed_cap      cap;
+
+   extensions_type       extensions;
+};
+```
+
+All caps are hidden, but the cap may be revealed at any point in time.
+Therefore, a TGE with a non-hidden minimum or cap may be implemented by
+simply including the `smt_cap_reveal_operation` in the same transaction
+as the `smt_setup_operation`.  UI's should provide functionality for this.
+
+A UI should provide one or more of the following means to ensure the `nonce`
+and `amount` are recoverable:
+
+- Force the user to type in the `amount` and `nonce` again as confirmation they have been backed up
+- Set `nonce` to some deterministic function of the private key and public data, for example
+`nonce = H(privkey + control_account + lower_bound + upper_bound + current_date)`
+- Provide functionality to brute-force the uncertain fields when the nonce is known (e.g. the current date and `amount`)
+- Require the amount to be low-entropy to facilitate brute-forcing when the nonce is known (e.g. a number between 1-999 times a power of 10)
+
+### Generation policy data structure
+
+The SMT generation policy data structure looks like this:
+
+```
+struct smt_capped_generation_policy
+{
+   smt_generation_unit pre_soft_cap_unit;
+   smt_generation_unit post_soft_cap_unit;
+
+   smt_cap_commitment  min_steem_units_commitment;
+   smt_cap_commitment  hard_cap_steem_units_commitment;
+
+   uint16_t            soft_cap_percent;
+
+   uint32_t            min_unit_ratio;
+   uint32_t            max_unit_ratio;
+
+   extensions_type     extensions;
+};
+```
+
+Note, the `max_token_units_generated` parameter does not appear anywhere in the operation.
+The reason is that it is actually a derived parameter,
+`max_token_units_generated = min_unit_ratio * hard_cap_steem_units`.
+
+Additionally, the `smt_generation_policy` is defined as a `static_variant` of which
+`smt_capped_generation_policy` is the only member:
+
+```
+typedef static_variant< smt_capped_generation_policy > smt_generation_policy;
+```
+
+This `typedef` allows the potential for future protocol versions to allow additional
+generation policy semantics with different parameters.
+
+### Examples and rationale
+
+#### Example TGE
 
 ALPHA wants to sell a token to the crowd to raise funds
-where 7% of contributed STEEM goes to Founder Account A, 23% of contributed STEEM goes to Founder Account B, and 70% of contributed STEEM goes to Founder Account C.
+where 7% of contributed STEEM goes to Founder Account A, 23% of contributed STEEM
+goes to Founder Account B, and 70% of contributed STEEM goes to Founder Account C.
 
 ALPHA defines a STEEM unit as:
 
@@ -157,13 +326,34 @@ five-sixths / one-sixth split is expressed as:
 token_unit = [["$from", 5], ["founder_d", 1]]
 ```
 
+This ratio is defined in the following data structure:
+
+```
+struct smt_generation_unit
+{
+   flat_map< account_name_type, uint16_t >        steem_unit;
+   flat_map< account_name_type, uint16_t >        token_unit;
+};
+```
+
 This token-unit contains 6 ALPHA-satoshis, or 0.0006 ALPHA (if ALPHA
 has 4 decimal places).
 
 Next we define the *unit ratio* as the relative rate at which `token_unit`
 are issued as `steem_unit` are contributed.  So to match the specification
 of 6 ALPHA per 1 STEEM, we need to issue 1000 ALPHA-units per STEEM-unit.
-Therefore the unit ratio of this crowdsale is 1000.
+Therefore the unit ratio of this TGE is 1000.  This unit ratio is placed in
+the `min_unit_ratio` and `max_unit_ratio` fields of the
+`smt_capped_generation_policy` data structure:
+
+```
+min_unit_ratio = 1000
+max_unit_ratio = 1000
+```
+
+A special account name, `$from`, represents the contributor.  Also
+supported is `$from.vesting`, which represents the vesting balance
+of the `$from` account.
 
 #### Why unit ratios?
 
@@ -191,127 +381,6 @@ a UI-level concept.  UI's which provide a TGE price should do the following:
 - Be well-behaved for pathological input like above
 - Have a button for switching between a unit ratio display and price display
 
-#### Defining SMT distribution
-
-The data structure used to define units is:
-
-```
-struct smt_generation_unit
-{
-   flat_map< account_name_type, uint16_t >        steem_unit;
-   flat_map< account_name_type, uint16_t >        token_unit;
-};
-```
-
-##### Special account names
-
-The `token_unit` member allows a special account name, `$from`, which should be illegal to be created, and will represent the contributor.
-
-Also supported is `$from.vesting` which represents the vesting balance of the `$from` account.
-
-#### Defining SMT issue policy
-
-A *segment* is a portion of a SMT.  During the contribution phase of a SMT,
-exactly one segment is active at any point in time.  The transition from
-one segment to the next is triggered either by passing a specific point in
-time, or by exceeding a predefined cap.
-
-SMT issue segments are defined with the following data structure:
-
-```
-struct smt_distribution
-{
-   time_point_sec      end_time;
-
-   smt_generation_unit pre_soft_cap_unit;
-   smt_generation_unit post_soft_cap_unit;
-
-   smt_cap_commitment  min_steem_units_commitment;
-   smt_cap_commitment  hard_cap_steem_units_commitment;
-
-   uint16_t            soft_cap_percent;
-
-   uint32_t            begin_unit_ratio;
-   uint32_t            end_unit_ratio;
-
-   extensions_type     extensions;
-};
-```
-
-The caps function as follows:
-
-- If fewer than `min_steem_units` are contributed, then the TGE is cancelled and all contributors are fully refunded.
-- The soft cap is defiend as `soft_cap_percent` times `hard_cap_steem_units`.
-- Before the soft cap is reached, STEEM and tokens are generated according to `pre_soft_cap_unit`.
-- After the soft cap is reached, STEEM and tokens are generated according to `post_soft_cap_unit`.
-
-The ratios must be defined with `begin_unit_ratio >= end_unit_ratio > 0`.
-
-#### Ratios
-
-How do `begin_unit_ratio` / `end_unit_ratio` work, and what should they be set to?
-
-If you want a Proportional Generation Event, where N tokens are created for every M STEEM
-contributed (and so the total number of tokens generated depends on the total number of STEEM
-contributed):
-
-- Set `begin_unit_ratio = end_unit_ratio = 1`
-- Set `steem_unit` so that its sum is M
-- Set `token_unit` so that its sum is N
-
-If you want a Fixed Generation Event, where some fixed number of tokens T are created,
-and divided among contributors:
-
-- Set `begin_unit_ratio` to a very large number such
-as 4,000,000,000
-- Let N be the sum of `token_unit`
-- Set `end_unit_ratio` to `T / (N * hard_cap)`
-
-You can think of the settings as a Bounded Proportional Generation Event:  Use
-Proportional Generation until T tokens are created, then use Fixed Generation thereafter,
-where `T = N * hard_cap * end_unit_ratio`.
-
-TODO:  Test all this, and double check the math.
-
-#### Caps
-
-A cap is defined as simply an `sha256` digest.  Here are the relevant data structures:
-
-```
-struct smt_cap_commitment
-{
-   share_type            lower_bound;
-   share_type            upper_bound;
-   digest_type           hash;
-};
-
-struct smt_revealed_cap
-{
-   share_type            amount;
-   uint128_t             nonce;
-};
-
-struct smt_cap_reveal_operation
-{
-   account_name_type     control_account;
-   smt_revealed_cap      cap;
-
-   extensions_type       extensions;
-};
-```
-
-Then `sha256( cap )` must match one of the `commitment` fields in the
-`smt_distribution` operation.  Additionally, the `amount` must be between
-the `lower_bound` and `upper_bound`.
-
-- The UI should provide functionality to immediately reveal the cap.
-- The UI should warn the user to WRITE DOWN the amount and nonce.
-- The UI should allow the user to set lower and upper bound on the cap.
-
-The UI / wallet should set
-`nonce = H(privkey + control_account + lower_bound + upper_bound + current_date)`
-to allow the nonce to be recovered from the private key.
-
 #### Hidden cap FAQ
 
 - Q: Should my TGE have a cap?
@@ -329,7 +398,7 @@ possible compromise is to publish the previous and next power of 10, for example
 - Q: How do I disable the cap?
 - A: Set it so that the cap would occur above `STEEMIT_MAX_SHARE_SUPPLY`.
 
-#### Launch
+### Launch
 
 The *launch time* is the time at which tokens become transferrable,
 it occurs sometime after the end of the distribution.
@@ -353,11 +422,13 @@ struct smt_refund
 
 [1] Possible reasons range from lost key / nonce to malicious intent.
 
-#### Examples
+### Examples
 
-##### Full JSON example
+#### Full JSON example
 
 Suppose BETA is defined with the following definitions:
+
+TODO:  Fix/update this JSON
 
 ```
 [
@@ -414,7 +485,7 @@ This spreadsheet will make the relationship clear.
 TODO:  Add screenshot
 TODO:  Add link to spreadsheet file
 
-##### Single-segment with min and cap
+#### Single-segment with min and cap
 
 This is an example where 1 STEEM for 1 token,
 100,000 STEEM minimum, 7 million maximum.
@@ -440,7 +511,7 @@ TODO:  Do billions and billions need to be quoted?
 TODO:  Write script to process this into operations
 TODO:  Test this
 
-##### Fixed-float no-reserve
+#### Fixed-float no-reserve
 
 This is an example where 1 million tokens
 will be issued according to the amount of STEEM received.
@@ -460,7 +531,7 @@ contributor will receive the whole 1 million tokens.
 More contributions will lower the ratio, the ratio
 can drop as low as 1 STEEM per token-satoshi.
 
-##### Vesting contributions
+#### Vesting contributions
 
 It is possible to send part or all of contributions
 to a vesting balance, instead of permitting immediate
@@ -470,7 +541,7 @@ liquidity.  This example puts 95% in vesting.
 "token_unit"           : [["$from.vesting", 95], ["$from", 5]]
 ```
 
-##### Burning contributed STEEM
+#### Burning contributed STEEM
 
 In this ITO, the STEEM is permanently destroyed rather than going into the wallet of any person.
 This mimics the structure of the Counterparty ITO.
@@ -482,7 +553,7 @@ This mimics the structure of the Counterparty ITO.
 }
 ```
 
-##### Vesting as cost
+#### Vesting as cost
 
 In this ITO, you don't send STEEM to the issuer in exchange for tokens.  Instead, you vest STEEM (to yourself),
 and tokens are issued to you equal to the STEEM you vested.
@@ -494,9 +565,12 @@ and tokens are issued to you equal to the STEEM you vested.
 }
 ```
 
-##### Non-STEEM & Hybrid ITO's
+#### Non-STEEM & Hybrid ITO's
 
-ITO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. -- cannot be done fully automatically on-chain.   However, such ITO's can be managed by manually transferring some founder account's distribution to buyers' Steem accounts in proportion to their non-STEEM contribution.
+ITO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. --
+cannot be done fully automatically on-chain.   However, such ITO's can be
+managed by manually transferring some founder account's distribution to
+buyers' Steem accounts in proportion to their non-STEEM contribution.
 
 ### Inflation Parameters
 
@@ -726,6 +800,8 @@ struct smt_setup_inflation_operation
 };
 ```
 
+TODO:  Add more text.  Can we re-use data type for `inflation_target`?
+
 #### Inflation FAQ
 
 - Q:  Can the SMT inflation data structures express Steem's [current inflation scheme](https://github.com/steemit/steem/issues/551)?
@@ -751,17 +827,101 @@ This should be included in Token Generation Event / Initial Token Offering secti
 - `STEEMIT_BLOCKCHAIN_PRECISION` : Configurable
 - `STEEMIT_BLOCKCHAIN_PRECISION_DIGITS` : Configurable
 
-## Reward curves
+## Vesting rewards
 
-TODO: Write this section
+TODO:  Do we want to rename vesting rewards to powerup rewards?
+
+Token inflation may be directed to vesting rewards.  These rewards are effectively
+split among all users with vesting balances proportional to the number of tokens
+they have vested.  As the number of tokens devoted to these rewards is independent
+of users' vesting balances, the percentage rate of return this represents will vary
+depending on how many tokens are vested at a time.
+
+## Content rewards
+
+Tokens flow from SMT inflation into the reward fund.  The blockchain uses algorithms
+to decide:
+
+- (1) How to divide the token-wide rewards among posts
+- (2) How to divide rewards within a post among the author and curators (upvoters) of that post
+
+The algorithms to solve these problems operate as follows:
+
+- (1) Posts are weighed *against other posts* according to the *reward curve* or `rc`.
+- (2a) The curators collectively receive a fixed percentage of the post, specified by the `curation_pct` parameter.
+- (2b) The author receives the remainder (after applying any beneficiaries or limited/declined author reward).
+- (2c) Curators are weighted *against other curators of that post* according to the *curation curve* or `cc`.
+
+![creation.png](img/creation.png)
+
+## Curve definitions
+
+The reward curve can be *linear* or *quadratic*.  The linear reward curve `rc(r) = r` passes the R-shares
+(upvotes) through unchanged.  The quadratic reward curve `rc(r) = r^2 + 2rs` has increasing slope.
+
+For an illustration of the meaning of reward curves, imagine grouping the most-upvoted posts as follows:
+
+- Section A consists of the top 10% of posts by upvotes.
+- Section B consists of the next 10% of posts by upvotes.
+
+Here's how the rewards differ:
+
+- With either reward curve, Section A posts will have greater rewards than Section B posts since they have more upvotes.
+- With the quadratic reward curve, Section A posts will have an *additional boost* relative to Section B posts, since Section A posts will get *more rewards per upvote*.
+- With the linear reward curve, Section A and Section B will get the same reward per upvote.
+
+Possible curation curves are:
+
+- Linear `cc(r) = r`
+- Square-root `cc(r) = sqrt(r)`
+- Bounded `cc(r) = r / (r + 2s)`.
+
+TODO:  File a ticket to rename `quadratic_curation` to `bounded` in the code
+
+To help visualize, here are some plots called *pie charts*.  Each colored area
+represents how curation rewards are divided among curators with equal voting power.
+
+![Reward curves and curation curves](img/rc-cc.png)
+
+- The rectangular vertical column shows the immediate reward upon making an upvote.
+- The colored area extending to the right shows how the rewards of a curator grow as later curators vote.
+- When both curves are linear, everyone gets the same curation reward regardless of which post they vote on.
+- In the case of `rc_linear + cc_sqrt` and `rc_quadratic + cc_bounded`, the same height rectangles mean everyone gets about the same initial curation reward, call this `ICR=`.
+- In the case of `rc_linear + cc_bounded`, the rectangles are decreasing in height.  This represents a progressive *handicap* against voting for already-popular posts, call this `ICR-`.
+- In the case of `rc_quadratic + cc_sqrt` and `rc_quadratic + cc_linear`, the rectangles are increasing in height.  Call this `ICR+`.
+
+Fundamentally, curation is making a prediction that upvotes will occur in the future.  As reward system designers, our criterion for selecting a curve
+should be to reward successful predictions.  Which curve satisfies this criterion depends on the relationship between current and future upvotes.
+
+- If a post's future upvotes are *independent* of its current upvotes, we should choose an `ICR=` curve.
+- If a post's future upvotes are *positively correlated* with its current upvotes, we should choose some `ICR-` curve, ideally somehow tuned to the amount of correlation.
+- If a post's future upvotes are *negatively correlated* with its current upvotes, we should choose some `ICR+` curve, ideally somehow tuned to the amount of correlation.
+
+In practice, independence or a modest positive correlation should be expected, so an `ICR=` or `ICR-` curve should be chosen.
+For STEEM itself, curation was originally the quadratic `ICR=`, as of (TODO: Hardfork number) it is the linear `ICR=`.
+
+TODO:  Operator to create fund
+TODO:  Do we want to allow these parameters to be dynamic?
+TODO:  Possibly decreasing-slope reward curve?
+TODO:  Possibly `ICR-` curve for quadratic?
 
 ## Target votes per day
 
-TODO: Write this section
+Each account has a `voting_power`, which is essentially a "mana bar" that fills from 0% to 100% over time at a constant rate.
+That rate is determined by two parameters:
 
-## Regeneration time
+- (a) The time it takes to regenerate the bar to 100%, `vote_regeneration_period_seconds`
+- (b) The `voting_power` used by a maximum-strength vote
 
-TODO: Write this section
+The `vote_regeneration_period_seconds` is specified directly.  For (b), instead of
+specifying the voting power of a maximum-strength vote directly, instead you specify
+`votes_per_regeneration_period`.  Then the maximum-strength vote is set such that a
+user casting that many max-strength votes will exactly cancel the regeneration.
+
+TODO:  File ticket to change from target votes per day to target votes per period
+TODO:  File ticket to refactor out voting computations
+TODO:  Make voting power upper bound constant, delegate voting power decision to UI
+TODO:  Create operation.
 
 ## Dynamic Rewards Parameters
 
@@ -771,7 +931,8 @@ SMTs have several parameters adjustable at the launch of the token, such as infl
 - `STEEMIT_VOTE_REGENERATION_SECONDS` : Dynamic
 - `STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS` : Dynamic
 - `vote_power_reserve_rate` : Dynamic
-- ADD REWARDS CURVE PARAMETERS
+- `STEEMIT_CONTENT_REWARD_PERCENT` : Dynamic
+- `STEEMIT_VESTING_FUND_PERCENT` : Dynamic
 
 ### Parameter Constraints
 
