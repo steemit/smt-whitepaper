@@ -433,14 +433,45 @@ Suppose BETA is defined with the following definitions:
 
 TODO:  Fix/update this JSON
 
+  
+
+
 ```
 [
  ["SMT_setup_operation",
   {
-   "control_account"      : "beta",
-   "decimal_places"       : 4,
-   "max_supply"           : STEEMIT_MAX_SHARE_SUPPLY,
-   "launch_time"          : "2017-06-01T00:00:00"
+   "control_account"           : "beta",
+   "decimal_places"            : 4,
+   "max_supply"                : STEEMIT_MAX_SHARE_SUPPLY,
+   "initial_generation_policy" : [0,
+	{
+	 "pre_soft_cap_unit"          : {
+	  "steem_unit":[],
+	  "token_unit":[]
+	 },
+	 "post_soft_cap_unit"         : {
+	  "steem_unit":[],
+	  "token_unit":[]
+	 },
+	 "min_steem_units_commitment" : {
+	  "lower_bound":0,
+	  "upper_bound":0,
+	  "hash":"abcd123"
+	 },
+	 "hard_cap_steem_units_commitment" : {
+	  "lower_bound" : 0,
+	  "upper_bound" : 0,
+	  "hash"        : "abcd123"
+	 },
+	 "soft_cap_percent":0, 
+	 "min_unit_ratio":0, 
+	 "max_unit_ratio":0, 
+	 "extensions":[] 
+	}
+   ],
+   "generation_end_time"       : "2017-06-01T00:00:00",
+   "launch_time"               : "2017-06-01T00:00:00",
+   "extensions"                : []
   },
  ],
  ["SMT_define_unit_operation",
