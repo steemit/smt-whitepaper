@@ -8,9 +8,10 @@ Status: DRAFT
 Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
 
 - [Introduction](#introduction)
-- [Introduction Use Case #1](#introduction-use-case-1)
-- [Introduction Use Case #2](#introduction-use-case-2)
-- [Introduction Use Case #3](#introduction-use-case-3)
+	- [Sample Use Cases](#sample-use-cases)
+		- [Introduction Use Case #1](#introduction-use-case-1)
+		- [Introduction Use Case #2](#introduction-use-case-2)
+		- [Introduction Use Case #3](#introduction-use-case-3)
 - [Owner's manual](#owners-manual)
   - [Establish a Name Space](#establish-a-name-space)
     - [Token consensus](#token-consensus)
@@ -74,13 +75,15 @@ Smart Media Tokens are an expansion of the successful relationship established b
 
 These tokens are designed to allow website operators flexibility during the integration of the token into their community by choosing from many parameters that may be structured creatively at outset or refined over time.  Any tokens launched as Smart Media Tokens shall benefit from a blockchain ecosystem built with decentralized exchange, and many applications and libraries to support successful deployment, fundraising and growth.
 
-# Introduction Use Case #1
+## Sample Use Cases
+
+### Introduction Use Case #1
 
 A mainstream media website's growth has been slowing and they are looking for ways to get ahead of the changing tech landscape. This website is using Disqus for managing their comments.  The website migrates to a Disqus-like application based on Steem.  Now their viewers can be rewarded with crypto currency while commenting.  When the website is ready, they can issue their own token through the comments interface - the token will allow them to 1) earn money by selling tokens 2) catalyze autonomous growth
 
 Add graphic.
 
-# Introduction Use Case #2
+### Introduction Use Case #2
 
 An up and coming forum business is looking to integrate cryptocurrency to create cash flow and spark growth to get the business to the next level.  They issue an SMT and integrate it into their website, however, theyre not cryptocurrency security experts and would prefer not to host a cryptocurrency wallet.  Focusing solely on the social aspects, the forum business can integrate other applications, such as SteemConnect, into their forum to handle wallet and transfer capabiltiies.  This allows the forum to focus on their business (growing communities) without focusing on the security aspects of cryptocurrency. 
 
@@ -92,7 +95,7 @@ An entrpreneuer is looking to provide liqudiity in the Steem ecosystem. They iss
 
 Add graphic.
 
-# Owner's manual
+### Owner's manual
 
 This manual will explain the nuts and bolts of how SMTs work.
 The intended audience is technical users who want to create their
