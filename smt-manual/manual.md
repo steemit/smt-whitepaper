@@ -110,26 +110,6 @@ parameters after launch.
 
 The SMT's name will be the same as the name of its control account.
 
-TODO:  Add or link to detailed instructions showing how to create
-an account with the CLI wallet.
-
-TODO:  Add or link to detailed instructions on how to transfer an account.
-For example, if you're buying a desirably named account from somebody,
-we should explain:
-
-- How do they send you the account?
-- How do you verify you've received the account and take full control of it?
-- How can you atomically, trustlessly swap STEEM or SBD for an account?
-- What parts of this can be done with the steemit.com, SteemConnect, the mobile wallet, or other official UI's?
-- What steps do you need to take to ensure the seller cannot fraudulently use the account recovery process to get the account back after they've sold it?
-- In the case of an account with steemit.com as its recovery agent, what information do the buyer and seller need to give us to ensure we would recover the account to the proper party?
-
-TODO:  We should probably recommend to set up another account, or a multisig
-of accounts, as the authority on the control account.  However, before we
-make this recommendation, we must do testing to be sure the account will
-remain functional in at least the CLI wallet, and possibly the steemit.com,
-SteemConnect, and/or mobile wallet UI's.
-
 ### Token consensus
 
 Since tokens participate in atomic transactions also involving
