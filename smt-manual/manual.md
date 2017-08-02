@@ -3,7 +3,7 @@ Proposal by Steemit Inc
 Copyright (c) Steemit, Inc. 2017
 Status: DRAFT
 
-# Smart Media Tokens 
+# Smart Media Tokens
 
 Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
 
@@ -433,12 +433,9 @@ Suppose BETA is defined with the following definitions:
 
 TODO:  Fix/update this JSON
 
-  
-
-
 ```
 [
- ["SMT_setup_operation",
+ ["smt_setup_operation",
   {
    "control_account"           : "beta",
    "decimal_places"            : 4,
@@ -463,10 +460,10 @@ TODO:  Fix/update this JSON
 	  "upper_bound" : 0,
 	  "hash"        : "abcd123"
 	 },
-	 "soft_cap_percent":0, 
-	 "min_unit_ratio":0, 
-	 "max_unit_ratio":0, 
-	 "extensions":[] 
+	 "soft_cap_percent":0,
+	 "min_unit_ratio":0,
+	 "max_unit_ratio":0,
+	 "extensions":[]
 	}
    ],
    "generation_end_time"       : "2017-06-01T00:00:00",
@@ -474,7 +471,7 @@ TODO:  Fix/update this JSON
    "extensions"                : []
   },
  ],
- ["SMT_define_unit_operation",
+ ["smt_define_unit_operation",
   {
    "control_account"      : "beta",
    "unit_num"             : 1001,
@@ -489,7 +486,7 @@ TODO:  Fix/update this JSON
    ]
   },
  ],
- ["SMT_define_segment_operation",
+ ["smt_define_segment_operation",
   {
    "control_account"      : "beta",
    "end_time"             : "2017-07-01T00:00:00",
