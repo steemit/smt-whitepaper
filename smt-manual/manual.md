@@ -8,10 +8,10 @@ Status: DRAFT
 Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
 
 - [Introduction](#introduction)
-	- [Use Cases](#use-cases)
-		- [Use Case #1](#use-case-1)
-		- [Use Case #2](#use-case-2)
-		- [Use Case #3](#use-case-3)
+	- [SMT Use Cases](#use-cases)
+		- [SMT Use Case #1](#smt-use-case-1)
+		- [SMT Use Case #2](#smt-use-case-2)
+		- [SMT Use Case #3](#smt-use-case-3)
 - [Owner's manual](#owners-manual)
   - [Establish a Name Space](#establish-a-name-space)
     - [Token consensus](#token-consensus)
