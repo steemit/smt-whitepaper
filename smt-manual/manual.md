@@ -1012,6 +1012,10 @@ CAN WE CHANGE STEEMIT TO STEEM IN THE CHAIN?
 - `STEEMIT_MAX_PERMLINK_LENGTH` : Hardcoded
 - `STEEMIT_MAX_SHARE_SUPPLY` : Hardcoded
 
+### Arbitrary Reward Splitting
+
+All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer and more.  An interface can also provide this optionality to the author. Add to this.
+
 ## SMT Parameters Commentary
 
 # Decentralized Exchange
