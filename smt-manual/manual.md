@@ -8,10 +8,10 @@ Status: DRAFT
 Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
 
 - [Introduction](#introduction)
-	- [Sample Use Cases](#sample-use-cases)
-		- [Introduction Use Case #1](#introduction-use-case-1)
-		- [Introduction Use Case #2](#introduction-use-case-2)
-		- [Introduction Use Case #3](#introduction-use-case-3)
+	- [Use Cases](#use-cases)
+		- [Use Case #1](#use-case-1)
+		- [Use Case #2](#use-case-2)
+		- [Use Case #3](#use-case-3)
 - [Owner's manual](#owners-manual)
   - [Establish a Name Space](#establish-a-name-space)
     - [Token consensus](#token-consensus)
@@ -89,13 +89,13 @@ An up and coming forum business is looking to integrate cryptocurrency to create
 
 Add graphic.
 
-# Introduction Use Case #3
+### Introduction Use Case #3
 
 An entrpreneuer is looking to provide liqudiity in the Steem ecosystem. They issue an SMT without inflation properties and imply that they will provide structure to peg it to the USD, making it like an IOU or basic derivative.  The structure they provide to theasset includes buying and selling it near $1, similar to Tether. The entrepreneur sets up bank wire capabiltiies for buying and selling and takes a small % on each transaction. The derivative trades against STEEM and also brings capital into the ecosystem to be used across tokens. 
 
 Add graphic.
 
-### Owner's manual
+# Owner's manual
 
 This manual will explain the nuts and bolts of how SMTs work.
 The intended audience is technical users who want to create their
