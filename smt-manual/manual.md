@@ -8,6 +8,9 @@ Status: DRAFT
 Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
 
 - [Introduction](#introduction)
+- [Introduction Use Case #1](#introduction-use-case-1)
+- [Introduction Use Case #2](#introduction-use-case-2)
+- [Introduction Use Case #3](#introduction-use-case-3)
 - [Owner's manual](#owners-manual)
   - [Establish a Name Space](#establish-a-name-space)
     - [Token consensus](#token-consensus)
@@ -48,6 +51,7 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
   - [Dynamic Rewards Parameters](#dynamic-rewards-parameters)
     - [Parameter Constraints](#parameter-constraints)
   - [Hardcoded Token Parameters](#hardcoded-token-parameters)
+    - [Arbitrary Reward Splitting](#arbitrary-reward-splitting)
   - [SMT Parameters Commentary](#smt-parameters-commentary)
 - [Decentralized Exchange](#decentralized-exchange)
   - [Decentralized Order Matching](#decentralized-order-matching)
