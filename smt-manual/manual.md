@@ -516,10 +516,7 @@ From this data structure we get the following information:
 - At 0.006 BETA per unit, 18 billion BETA units is 10.8 million BETA.
 - Initially, BETA will be created at a rate of 1000 BETA units per STEEM unit.
 
-This spreadsheet will make the relationship clear.
-
-TODO:  Add screenshot
-TODO:  Add link to spreadsheet file
+[This spreadsheet](ito-parameters.ods) will make the relationship clear.
 
 #### Single-segment with min and cap
 
