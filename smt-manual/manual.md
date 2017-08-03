@@ -55,7 +55,7 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth
     - [Arbitrary Reward Splitting](#arbitrary-reward-splitting)
   - [SMT Parameters Commentary](#smt-parameters-commentary)
 - [Decentralized Exchange](#decentralized-exchange)
-  - [Decentralized Order Matching](#decentralized-order-matching)
+  - [Automatic Order Matching](#automatic-order-matching)
   - [Diverse Asset Types](#diverse-asset-types)
   - [Zero Trading Fees](#zero-trading-fees)
 - [Ecosystem Support](#ecosystem-support)
@@ -1005,8 +1005,8 @@ All Steem based interfaces have the option of splitting token rewards among a se
 # Decentralized Exchange
 One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM.
 
-## Decentralized Order Matching
-The Decentralized Exchange (DEX) structures of Steem allow assets to automatically be matched for best possible price when bids and asks overlap, unlike other DEXs which require a man in the middle to match orders.  This is important for security of Steem-based assets and for the replicability and safety of DEX interfaces.
+## Automatic Order Matching
+The Decentralized Exchange (DEX) structures of Steem allow assets to automatically be matched for best possible price when bids and asks overlap, unlike other DEXs which require a man in the middle to match orders.  Automatic, rather than middle-man-faciliated, order matching is important for security of Steem-based assets and for the replicability and safety of DEX interfaces.
 
 ## Diverse Asset Types
 There are several assets that SMT users and creators will have access to by way of the Steem DEX: STEEM; SBD; SMTs; Simple Derivatives (IOUs).  These neighboring assets can increase the visibility and network effect of all created SMTs.
