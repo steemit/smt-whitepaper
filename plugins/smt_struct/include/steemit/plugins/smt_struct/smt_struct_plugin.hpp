@@ -12,21 +12,6 @@ namespace detail {
 class smt_struct_plugin_impl;
 }
 
-class smt_struct_plugin : public steemit::app::plugin
-{
-   public:
-      smt_struct_plugin( steemit::app::application* app );
-      virtual ~smt_struct_plugin();
-
-      virtual std::string plugin_name()const override;
-      virtual void plugin_initialize( const boost::program_options::variables_map& options ) override;
-      virtual void plugin_startup() override;
-      virtual void plugin_shutdown() override;
-
-   private:
-      std::shared_ptr< detail::smt_struct_plugin_impl > my;
-};
-
 struct smt_generation_unit
 {
    flat_map< account_name_type, uint16_t >        steem_unit;
@@ -73,10 +58,25 @@ struct smt_setup_operation
 };
 
 
+class smt_struct_plugin : public steemit::app::plugin
+{
+   public:
+      smt_struct_plugin( steemit::app::application* app );
+      virtual ~smt_struct_plugin();
+
+      virtual std::string plugin_name()const override;
+      virtual void plugin_initialize( const boost::program_options::variables_map& options ) override;
+      virtual void plugin_startup() override;
+      virtual void plugin_shutdown() override;
+
+   private:
+      std::shared_ptr< detail::smt_struct_plugin_impl > my;
+};
+
 } } }
 
 
-/*FC_REFLECT(steemit::plugin::smt_struct::smt_generation_unit,
+FC_REFLECT(steemit::plugin::smt_struct::smt_generation_unit,
     (steem_unit)
     (token_unit)
 )
@@ -108,10 +108,4 @@ FC_REFLECT(steemit::plugin::smt_struct::smt_setup_operation,
     (extensions)
 )
 
-FC_REFLECT(steemit::plugin::smt_struct::stats_info,
-    (current_supply)
-    (block_id)
-    (user_accounts)
-    (timestamp)
-)
-*/
+

@@ -30,6 +30,7 @@ class smt_struct_plugin_impl
       virtual void plugin_shutdown();
       void on_applied_block( const chain::signed_block& b );
       void on_pre_operation( const operation_notification& o);
+      void create_test_data(smt_setup_operation& op);
 
       steemit::app::application& _app;
       boost::signals2::scoped_connection _applied_block_conn;
@@ -45,6 +46,13 @@ std::string smt_struct_plugin_impl::plugin_name()const
    return "smt_struct";
 }
 
+void smt_struct_plugin_impl::create_test_data( smt_setup_operation& op )
+{
+    std::cout << "In Func" << "\n";
+
+    return;
+}
+
 void smt_struct_plugin_impl::plugin_initialize( const boost::program_options::variables_map& options )
 {
     ilog("smt_struct init.");
@@ -53,8 +61,9 @@ void smt_struct_plugin_impl::plugin_initialize( const boost::program_options::va
     //_app.chain_database()->pre_apply_operation.connect(
     //  [this](const operation_notification& o){ on_pre_operation( o ); } );
 
-    //std::cout << "TEST HERE!" << "\n";
-    //smt_setup_operation op;
+    smt_setup_operation op;
+    create_test_data(op);
+    
     //std::cout << fc::json::to_string(op) << "\n";
 
 }
