@@ -48,7 +48,12 @@ std::string smt_struct_plugin_impl::plugin_name()const
 
 void smt_struct_plugin_impl::create_test_data( smt_setup_operation& op )
 {
-    std::cout << "In Func" << "\n";
+    auto& gen = op.initial_generation_policy.get<smt_capped_generation_policy>();
+    gen.pre_soft_cap_unit.steem_unit.emplace("fred", 3);
+    gen.pre_soft_cap_unit.steem_unit.emplace("george", 2);
+    gen.pre_soft_cap_unit.token_unit.emplace("$from", 7);
+    gen.pre_soft_cap_unit.token_unit.emplace("george", 1);
+    gen.pre_soft_cap_unit.token_unit.emplace("henry", 2);
 
     return;
 }
@@ -64,7 +69,7 @@ void smt_struct_plugin_impl::plugin_initialize( const boost::program_options::va
     smt_setup_operation op;
     create_test_data(op);
     
-    //std::cout << fc::json::to_string(op) << "\n";
+    std::cout << fc::json::to_string(op) << "\n";
 
 }
 
