@@ -408,8 +408,7 @@ possible compromise is to publish the previous and next power of 10, for example
 
 ### Launch
 
-The *launch time* is the time at which tokens become transferrable,
-it occurs sometime after the end of the distribution.
+The *launch time* is the time at which tokens become transferrable.
 
 The token cannot launch until the hidden cap and hidden minimum have
 been revealed.  If the control account does not publish the hidden cap
@@ -816,7 +815,8 @@ struct smt_setup_inflation_operation
    account_name_type   control_account;
 
    timestamp           schedule_time;
-   inflation_target    target;
+   flat_map< account_name_type, uint16_t >
+                       inflation_unit;
 
    int32_t             interval_seconds;
    uint32_t            interval_count;
@@ -832,8 +832,6 @@ struct smt_setup_inflation_operation
    uint8_t             rel_amount_denom_bits;
 };
 ```
-
-TODO:  Add more text.  Can we re-use data type for `inflation_target`?
 
 #### Inflation FAQ
 
@@ -969,6 +967,75 @@ Several dynamic parameters must be constrained to prevent abuse scenarios that c
 - `0 < SMT_VOTE_REGENERATION_SECONDS < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
 - `0 <= SMT_REVERSE_AUCTION_WINDOW_SECONDS + SMT_UPVOTE_LOCKOUT < SMT_CASHOUT_WINDOW_SECONDS < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
 - `0 <= SMT_REWARD_CURVE`
+
+## Votability and Rewardability
+
+In this section, we introduce the concepts of *votability* and *rewardability*.
+
+- A token is *votable* for a comment if the balance of that token influences the comment.
+- For a given vote, each votable token of the comment is either *rewardable* or *advisory*.
+- If a token is rewardable, then the vote affects the comment's reward in that token.
+- If a token is advisory, then the vote does not affect the comment's reward in that token.
+
+Advisory votes do not affect rewards or voting power.  However, the ranking algorithms and
+estimated reward calculations still apply advisory votes, so UI's may display advisory posts
+accordingly.
+
+The votable token set is determined by `allowed_vote_assets` which is a `comment_options_extension`.
+
+```
+struct allowed_vote_assets
+{
+   flat_map< account_name_type, votable_asset_info >      votable_assets;
+};
+
+struct votable_asset_info_v1
+{
+   share_type        max_accepted_payout    = 0;
+   bool              allow_curation_rewards = false;
+};
+
+typedef static_variant< votable_asset_info_v1 >           votable_asset_info;
+```
+
+The following rules are applied to determine whether tokens are votable:
+
+- STEEM is votable for every post.
+- A token is votable for a post if it appears in the post's `votable_assets`.
+- Otherwise, the token is not votable for this post.
+
+TODO:  Do we want to create rules in a token forbidding it from being votable?
+
+- In order to be rewardable for a post, a token must be votable for that post.
+- If, for some post/token, that post's `max_accepted_payout` of the token is zero,
+then the token is not rewardable for that post.
+- If some voter (i.e. upvoter / downvoter) has a zero balance of a token, then that token
+is not rewardable for that voter's votes.
+
+Implementation notes:
+
+- For an advisory vote, all rewards are zero, including curators and beneficiaries.  This is
+because the blockchain applies the `max_accepted_payout` cap before the curator / beneficiary
+computations.
+- Currently (as of hardfork 0.19), the Steem blockchain *does* deduct voting power for advisory
+Steem votes.  This behavior will be changed in a future hardfork (Steem issue #1380).
+- At most two tokens may be specified in `votable_assets`.  This means each post is voted
+with at most three tokens (including STEEM).
+
+No consensus level restriction forces any particular post to have any particular
+`allowed_vote_assets`.  As a consequence, any post may mark itself as eligible to
+be rewarded in any token.  However, UI's may impose their own non-consensus validation
+rules on `allowed_vote_assets`, and hide posts that violate these non-consensus
+validation rules.
+
+For example, in a Hivemind community with a corresponding token, there may be a
+validation rule that the `allowed_vote_assets` specified in each post in that
+Hivemind community must include the token of that community.  This is a
+non-consensus validation rule, since the entire concept of a post existing in
+a Hivemind community is a non-consensus concept.  Since it is a non-consensus
+validation rule, no consensus logic can enforce it.  However, UI's that are
+aware of Hivemind communities may refuse to index or display posts that violate
+this validation rule.
 
 ## Hardcoded Token Parameters
 
