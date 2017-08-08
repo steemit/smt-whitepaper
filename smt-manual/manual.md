@@ -446,8 +446,15 @@ TODO:  Fix/update this JSON
    "initial_generation_policy" : [0,
 	{
 	 "pre_soft_cap_unit"          : {
-	  "steem_unit":[],
-	  "token_unit":[]
+	  "steem_unit" : [
+	   ["fred",3],
+	   ["george",2]
+	  ],
+	  "token_unit" : [
+	   ["$from",7],
+	   ["george",1],
+	   ["henry",2]
+	  ]
 	 },
 	 "post_soft_cap_unit"         : {
 	  "steem_unit":[],
