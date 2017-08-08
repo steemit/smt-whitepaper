@@ -444,7 +444,7 @@ TODO:  Fix/update this JSON
   {
    "control_account"           : "beta",
    "decimal_places"            : 4,
-   "max_supply"                : STEEMIT_MAX_SHARE_SUPPLY,
+   "max_supply"                : SMT_MAX_SHARE_SUPPLY,
    "initial_generation_policy" : [0,
 	{
 	 "pre_soft_cap_unit"          : {
@@ -854,17 +854,12 @@ TODO:  Examples:  Steem old inflation scheme, Steem new inflation scheme, Bitcoi
 ### Token Precision Parameters
 These are values that may be set to determine how many digits a token supports. These values may only be set once.
 
-NB, we will change STEEMIT to STEEM in the chain, see [here](https://github.com/steemit/steem/issues/1268).
-This should be included in Token Generation Event / Initial Token Offering section, no?
+- `SMT_BLOCKCHAIN_PRECISION` : Configurable
+- `SMT_BLOCKCHAIN_PRECISION_DIGITS` : Configurable
 
-- `STEEMIT_BLOCKCHAIN_PRECISION` : Configurable
-- `STEEMIT_BLOCKCHAIN_PRECISION_DIGITS` : Configurable
+## Time-locked (aka Vesting aka Power Up) rewards
 
-## Vesting rewards
-
-TODO:  Do we want to rename vesting rewards to powerup rewards?
-
-Token inflation may be directed to vesting rewards.  These rewards are effectively
+Token inflation may be directed to tokens that are time-locked in the token's vesting contract.  These rewards are effectively
 split among all users with vesting balances proportional to the number of tokens
 they have vested.  As the number of tokens devoted to these rewards is independent
 of users' vesting balances, the percentage rate of return this represents will vary
