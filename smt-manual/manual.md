@@ -960,41 +960,40 @@ TODO:  Create operation.
 
 SMTs have several parameters adjustable at the launch of the token, such as inflation rate, token generation events and founder's issuance, that cannot be changed once the token is launched, however, SMTs also have dynamic parameters that allow the token launcher to adjust certain properties of the token refine the incentivized behaviors of the token's users. Some of the parameters will increase the flow of the rewards pool towards certain user behaviors while reducing the flow towards other less desired behaviors.
 
-- `STEEMIT_CASHOUT_WINDOW_SECONDS` : Dynamic  TODO CASH OUT the name in the chain already? (seems to be a bad name)  WHY IS STEEMIT listed here and not STEEM????
-- `STEEMIT_VOTE_REGENERATION_SECONDS` : Dynamic
-- `STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS` : Dynamic
-- `vote_power_reserve_rate` : Dynamic
-- `STEEMIT_CONTENT_REWARD_PERCENT` : Dynamic
-- `STEEMIT_VESTING_FUND_PERCENT` : Dynamic
+- `SMT_CASHOUT_WINDOW_SECONDS` : Dynamic  TODO CASH OUT the name in the chain already? (seems to be a bad name)  WHY IS STEEMIT listed here and not STEEM????
+- `SMT_VOTE_REGENERATION_SECONDS` : Dynamic
+- `SMT_REVERSE_AUCTION_WINDOW_SECONDS` : Dynamic
+- `SMT_POWER_RESERVE_RATE` : Dynamic
+- `SMT_CONTENT_REWARD_PERCENT` : Dynamic
+- `SMT_VESTING_FUND_PERCENT` : Dynamic
 
 ### Parameter Constraints
 
 Several dynamic parameters must be constrained to prevent abuse scenarios that could harm token users.
 
-- `0 < STEEMIT_VOTE_REGENERATION_SECONDS < STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS`
-- `0 <= STEEMIT_REVERSE_AUCTION_WINDOW_SECONDS + STEEMIT_UPVOTE_LOCKOUT < STEEMIT_CASHOUT_WINDOW_SECONDS < STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS`
+- `0 < SMT_VOTE_REGENERATION_SECONDS < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
+- `0 <= SMT_REVERSE_AUCTION_WINDOW_SECONDS + SMT_UPVOTE_LOCKOUT < SMT_CASHOUT_WINDOW_SECONDS < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
 - `0 <= SMT_REWARD_CURVE`
 
 ## Hardcoded Token Parameters
 
 Hardcoded parameters are aspects of tokens that interact with users in manners that have been found to increase security and safety of the assets as managed by the end user.  Though these hard coded parameters could change for all SMTs in the case of a STEEM-wide upgrade, it is proposed that SMTs leverage these parameters in the same manner as the STEEM asset for the benefit of continuity and common user knowledge.
 
-CAN WE CHANGE STEEMIT TO STEEM IN THE CHAIN?
-- `STEEMIT_UPVOTE_LOCKOUT_HF17` : Hardcoded -- This value locks out upvotes from posts at a certain time prior to "CASH OUT" to prevent downvote abuse immediately prior to "CASH OUT."
-- `STEEMIT_VESTING_WITHDRAW_INTERVALS` : Hardcoded
-- `STEEMIT_VESTING_WITHDRAW_INTERVAL_SECONDS` : Hardcoded
-- `STEEMIT_MAX_WITHDRAW_ROUTES` : Hardcoded
-- `STEEMIT_SAVINGS_WITHDRAW_TIME` : Hardcoded
-- `STEEMIT_SAVINGS_WITHDRAW_REQUEST_LIMIT` : Hardcoded
-- `STEEMIT_MAX_VOTE_CHANGES` : Hardcoded
-- `STEEMIT_MIN_VOTE_INTERVAL_SEC` : Hardcoded
-- `STEEMIT_MIN_ROOT_COMMENT_INTERVAL` : Hardcoded
-- `STEEMIT_MIN_REPLY_INTERVAL` : Hardcoded
-- `STEEMIT_MAX_COMMENT_DEPTH` : Hardcoded
-- `STEEMIT_SOFT_MAX_COMMENT_DEPTH` : Hardcoded
-- `STEEMIT_MIN_PERMLINK_LENGTH` : Hardcoded
-- `STEEMIT_MAX_PERMLINK_LENGTH` : Hardcoded
-- `STEEMIT_MAX_SHARE_SUPPLY` : Hardcoded
+- `SMT_UPVOTE_LOCKOUT_HF17` : Hardcoded -- This value locks out upvotes from posts at a certain time prior to "CASH OUT" to prevent downvote abuse immediately prior to "CASH OUT."
+- `SMT_VESTING_WITHDRAW_INTERVALS` : Hardcoded
+- `SMT_VESTING_WITHDRAW_INTERVAL_SECONDS` : Hardcoded
+- `SMT_MAX_WITHDRAW_ROUTES` : Hardcoded
+- `SMT_SAVINGS_WITHDRAW_TIME` : Hardcoded
+- `SMT_SAVINGS_WITHDRAW_REQUEST_LIMIT` : Hardcoded
+- `SMT_MAX_VOTE_CHANGES` : Hardcoded
+- `SMT_MIN_VOTE_INTERVAL_SEC` : Hardcoded
+- `SMT_MIN_ROOT_COMMENT_INTERVAL` : Hardcoded
+- `SMT_MIN_REPLY_INTERVAL` : Hardcoded
+- `SMT_MAX_COMMENT_DEPTH` : Hardcoded
+- `SMT_SOFT_MAX_COMMENT_DEPTH` : Hardcoded
+- `SMT_MIN_PERMLINK_LENGTH` : Hardcoded
+- `SMT_MAX_PERMLINK_LENGTH` : Hardcoded
+- `SMT_MAX_SHARE_SUPPLY` : Hardcoded
 
 ### Arbitrary Reward Splitting
 
