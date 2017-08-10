@@ -83,7 +83,7 @@ An SMT can be launched by anyone; she needs $1000 to cover the network fee (this
 
 Once the desired name space is secured, the entity issues the token in the interface by using a Steem-based Command Line Tool.  The token can be structured to allow for an intitial sale or distribution of the token. The token must also be defined, as in inflation properties of the token - these properties will dictate how the token is used inside applications and respective communities.
 
-From there, the token becomes immutable on the blockchain, and positioned correctly, the token could have dramtic effects on the growth of businesses that choose to integrate these tokens.
+From there, the token becomes immutable on the blockchain, and leveraged correctly, the token can have dramtic effects on the growth of businesses that choose to integrate these tokens.
 
 ## SMT Use Cases
 
