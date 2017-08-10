@@ -77,7 +77,7 @@ These tokens are designed to allow website operators flexibility during the inte
 
 ## SMTs - How Would My Entity Participate?
 
-SMTs are tokens issued on the Steem network that can be integrated into any content website or application. These tokens have the unique property in which new tokens are created continously and allocated to producers of content by the holders of the exisiting tokens by competitive voting.  This mechanic aligns the interest of existing token holders, content creators and the applications that support them. 
+SMTs are tokens issued on the Steem network that can be integrated into any content website or application. These tokens have the unique property in which new tokens are created continously and allocated to producers of content by the holders of the exisiting tokens through the process of competitive voting.  This mechanic aligns the interest of existing token holders, content creators and the applications that support them. 
 
 An SMT can be launched by anyone; she needs $1000 to cover the network fee (this prevents spam and unused tokens) and a namespace on Steem, which can be obtained by registering at anon.steem.network, steemit.com, steemconnect.com, or any other Steem sign-up service.
 
