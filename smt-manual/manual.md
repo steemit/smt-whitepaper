@@ -85,21 +85,21 @@ Once the desired name space is secured, the entity issues the token in the inter
 
 From there, the token becomes immutable on the blockchain, and leveraged correctly, the token can have dramtic effects on the growth of businesses that choose to integrate these tokens.
 
-## SMT Use Cases
+## Use Cases
 
-### Use Case 1
+### Use Case 1 - Content Publisher - Single Token Exposure
 
 A mainstream media website's growth has been slowing and they are looking for ways to get ahead of the changing tech landscape. This website is using Disqus for managing their comments.  The website migrates to a Disqus-like application based on Steem.  Now their viewers can be rewarded with crypto currency while commenting.  When the website is ready, they can issue their own token through the comments interface - the token will allow them to 1) earn money by selling tokens 2) catalyze autonomous growth.
 
 Add graphic.
 
-### Use Case 2
+### Use Case 2 - Forum - Multiple Token Exposure
 
 An up and coming forum business is looking to integrate cryptocurrency to create cash flow and spark growth to get the business to the next level.  They issue an SMT and integrate it into their website, however, they’re not cryptocurrency security experts and would prefer not to host a cryptocurrency wallet.  Focusing solely on the social aspects, the forum business can integrate other applications, such as SteemConnect, into their forum to handle wallet and transfer capabilities.  This allows the forum to focus on their business (growing communities) without focusing on the security aspects of cryptocurrency. 
 
 Add graphic.
 
-### Use Case 3
+### Use Case 3 - IOU Assets - Market Making and Liquidity of Tokens
 
 An entrepreneur is looking to provide liquidity in the Steem ecosystem. They issue an SMT without inflation properties and imply that they will provide structure to peg it to the USD, making it like an IOU or basic derivative.  The structure they provide to the asset includes buying and selling it near $1, similar to Tether. The entrepreneur sets up bank wire capabilities for buying and selling and takes a small % on each transaction. The derivative trades against STEEM and also brings capital into the ecosystem to be used across tokens. 
 
