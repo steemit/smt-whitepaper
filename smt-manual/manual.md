@@ -69,11 +69,21 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
 
 # Introduction
 
-Smart Media Tokens (SMTs) is a proposal to build a protocol on the Steem Blockchain that allows for meta-assets powered by STEEM as their bandwidth calculation token.  Inspired by the revolutionary  properties of the STEEM asset, SMTs will be an upgrade above previous blockchain's meta-asset protocols due to extensive, user-oriented programmability and the Steem ecosystem's tools for integrations at website and application layers.
+Smart Media Tokens (SMTs) is a proposal to build a meta-token protocol on the Steem blockchain.  Inspired by the revolutionary  properties of the STEEM asset, including automatic distributions to content creators, SMTs will be an upgrade above previous blockchain's meta-asset protocols due to extensive, user-oriented programmability and the Steem ecosystem's tools for integrations at website and application layers.
 
-Smart Media Tokens are an expansion of the successful relationship established between STEEM and the social websites sitting atop of it, such as steemit.com, which has grown to be a top 3000 website in Alexa rankings in less than one year, solely from integrating the incentive model of STEEM.  With SMTs, any website or content library across the internet may have one or more tokens integrated into its interface to facilitate fundraising and autonomous growth.
+SMTs are an evolution of the successful relationship established between STEEM and the social websites sitting atop of it, such as steemit.com, which has grown to be a top 3000 website in Alexa rankings in less than one year solely from integrating the incentive model of STEEM.  With SMTs, any website or content library across the internet may have one or more tokens integrated into its interface to facilitate fundraising and autonomous growth.
 
 These tokens are designed to allow website operators flexibility during the integration of the token into their community by choosing from many parameters that may be structured creatively at outset or refined over time.  Any tokens launched as Smart Media Tokens shall benefit from a blockchain ecosystem built with decentralized exchange as well as an ecosystem of open-source applications and libraries to support successful deployment, fundraising and growth.
+
+## SMTs - How Would My Entity Participate?
+
+SMTs are tokens issued on the Steem network that can be integrated into any content website or application. These tokens have the unique property in which new tokens are created continously and allocated to producers of content by the holders of the exisiting tokens by competitive voting.  This mechanic aligns the interest of existing token holders, content creators and the applications that support them. 
+
+An SMT can be launched by anyone; she needs $1000 to cover the network fee (this prevents spam and unused tokens) and a namespace on Steem, which can be obtained by registering at anon.steem.network, steemit.com, steemconnect.com, or any other Steem sign-up service.
+
+Once the desired name space is secured, the entity issues the token in the interface by using a Steem-based Command Line Tool.  The token can be structured to allow for an intitial sale or distribution of the token. The token must also be defined, as in inflation properties of the token - these properties will dictate how the token is used inside applications and respective communities.
+
+From there, the token becomes immutable on the blockchain, and positioned correctly, the token could have dramtic effects on the growth of businesses that choose to integrate these tokens.
 
 ## SMT Use Cases
 
