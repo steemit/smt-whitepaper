@@ -134,8 +134,6 @@ blockchain's consensus.
 
 ### Creation fee
 
-TODO:  Explain and justify the blockchain's fee to create an asset
-
 ### SMT setup
 
 Each SMT has an associated descriptor object which has
@@ -960,7 +958,6 @@ user casting that many max-strength votes will exactly cancel the regeneration.
 
 TODO:  File ticket to change from target votes per day to target votes per period
 TODO:  File ticket to refactor out voting computations
-TODO:  Make voting power upper bound constant, delegate voting power decision to UI
 TODO:  Create operation.
 
 ## Dynamic Rewards Parameters
@@ -1018,7 +1015,7 @@ The following rules are applied to determine whether tokens are votable:
 - A token is votable for a post if it appears in the post's `votable_assets`.
 - Otherwise, the token is not votable for this post.
 
-TODO:  Do we want to create rules in a token forbidding it from being votable?
+And these are the rules for whether a token is rewardable:
 
 - In order to be rewardable for a post, a token must be votable for that post.
 - If, for some post/token, that post's `max_accepted_payout` of the token is zero,
