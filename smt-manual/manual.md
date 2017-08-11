@@ -936,7 +936,7 @@ should be to reward successful predictions.  Which curve satisfies this criterio
 - If a post's future upvotes are *negatively correlated* with its current upvotes, we should choose some `ICR+` curve, ideally somehow tuned to the amount of correlation.
 
 In practice, independence or a modest positive correlation should be expected, so an `ICR=` or `ICR-` curve should be chosen.
-For STEEM itself, curation was originally the quadratic `ICR=`, as of (TODO: Hardfork number) it is the linear `ICR=`.
+For STEEM itself, curation was originally the quadratic `ICR=`, as of hardfork 0.19 it is the linear `ICR=`.
 
 TODO:  Operator to create fund
 TODO:  Do we want to allow these parameters to be dynamic?
