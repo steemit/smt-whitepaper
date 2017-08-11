@@ -134,6 +134,22 @@ blockchain's consensus.
 
 ### Creation fee
 
+Issuing an `smt_setup_operation` requires payment of `smt_creation_fee`.
+The current `smt_creation_fee` is set by the `smt_creation_fee` field of
+`dynamic_global_properties_object`.  This field may contain a value in STEEM
+or SBD.  If specified in SBD, an equivalent amount of STEEM will be accepted,
+at the current price feed.
+
+Initially, `smt_creation_fee` will be set to 1000 SBD, and no means will be
+provided to update it.  Updates to the `smt_creation_fee` amount may occur
+in future hardforks, however, so user-agents should read the `smt_creation_fee`
+value from the `dynamic_global_properties_object`.  User-agents should not assume
+the fee will always be 1000 SBD.
+
+The reason for this fee is to minimize creation of spam assets.
+
+The fee is destroyed by sending it to `STEEMIT_NULL_ACCOUNT`.
+
 ### SMT setup
 
 Each SMT has an associated descriptor object which has
@@ -151,6 +167,8 @@ struct smt_setup_operation
 
    time_point_sec          generation_end_time;
    time_point_sec          launch_time;
+
+   asset                   smt_creation_fee;
 
    extensions_type         extensions;
 };
