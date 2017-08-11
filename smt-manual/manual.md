@@ -10,8 +10,8 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
 - [Introduction](#introduction)
   - [SMTs - How Would My Entity Participate?](#smts---how-would-my-entity-participate)
   - [Use Cases](#use-cases)
-    - [1 - Content Publisher - Single Token Exposure](#1---content-publisher---single-token-exposure)
-    - [2 - Forum - Multiple Token Exposure](#2---forum---multiple-token-exposure)
+    - [1 - Content Publisher - Single Token Exposure - Single ICO - Website Growth](#1---content-publisher---single-token-exposure---single-ico---website-growth)
+    - [2 - Forum - Multiple Token Exposure - Multiple ICOs Support - Forum Growth](#2---forum---multiple-token-exposure---multiple-icos-support---forum-growth)
     - [3 - IOU Assets - Market Making and Liquidity of Tokens](#3---iou-assets---market-making-and-liquidity-of-tokens)
 - [Owner's manual](#owners-manual)
   - [Establish a Name Space](#establish-a-name-space)
@@ -25,7 +25,7 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
     - [Hidden caps](#hidden-caps)
     - [Generation policy data structure](#generation-policy-data-structure)
     - [Examples and rationale](#examples-and-rationale)
-      - [Example TGE](#example-tge)
+      - [Example ITO](#example-ito)
       - [Why unit ratios?](#why-unit-ratios)
       - [UI treatment of unit ratios](#ui-treatment-of-unit-ratios)
       - [Hidden cap FAQ](#hidden-cap-faq)
@@ -183,10 +183,10 @@ of decimals.
 
 Initial token generation is driven by a contributions of *STEEM
 units* from contributors.  To simplify rounding concerns, a
-contribution must be an integer number of STEEM units.  The TGE
+contribution must be an integer number of STEEM units.  The ITO
 creator sets the size of a STEEM unit, it can be large or small.
 It is better to keep the unit small (for example, 1 STEEM or
-0.1 STEEM), as this allows the TGE to be accessible to the
+0.1 STEEM), as this allows the ITO to be accessible to the
 maximum possible audience.
 
 A STEEM unit also specifies a *routing policy* which determines
@@ -194,7 +194,7 @@ where the STEEM goes when the token launches.  (STEEM for tokens
 which do not launch may be refunded on demand.)  The routing
 policy may split the STEEM in the unit among multiple parties.
 
-When the TGE occurs, the tokens are generated in *token units*.
+When the ITO occurs, the tokens are generated in *token units*.
 Multiple token units are generated per STEEM unit contributed.
 Token units also have a routing policy.
 
@@ -221,11 +221,11 @@ units in an R-for-1 ratio.  The number R is called the
 R are specified respectively in the `min_unit_ratio`
 and `max_unit_ratio` fields of `smt_generation_policy`.
 
-The maximum number of token units that can be created in the TGE
+The maximum number of token units that can be created in the ITO
 is limited to `max_token_units_generated`, a parameter which is set by
-the TGE creator.  (More tokens can be created after the
+the ITO creator.  (More tokens can be created after the
 token has launched, but this later creation is called *inflation*
-and is not considered to be part of the TGE.)
+and is not considered to be part of the ITO.)
 
 The unit ratio is set to the largest integer that would
 not result in exceeding `max_token_units_generated` for the number
@@ -233,29 +233,29 @@ of STEEM units actually contributed.
 
 ### Cap and min
 
-TGE's may specify a minimum number of STEEM units `min_steem_units`.
-If the TGE does not reach `min_steem_units` before `generation_end_time`,
+ITO's may specify a minimum number of STEEM units `min_steem_units`.
+If the ITO does not reach `min_steem_units` before `generation_end_time`,
 then it does not occur and contributors become eligible for refunds.
 
-Likewise, TGE's may specify two maximum numbers of STEEM units:
+Likewise, ITO's may specify two maximum numbers of STEEM units:
 A *hard cap* and a *soft cap*.  Units in excess of the soft cap
 have different routing for their STEEM and tokens.  STEEM units in
 excess of the hard cap are rejected and do not generate any SMT's.
 
 The effects of the soft cap are divided equally among all contributors.
-I.e. if a TGE has a soft cap of 8 million STEEM, and 10 contributors
+I.e. if a ITO has a soft cap of 8 million STEEM, and 10 contributors
 each contribute 1 million STEEM, then 0.2 million of
 *each user's* STEEM is routed via the soft cap's policy.
 
 The effects of the hard cap fall solely on the last contributors.
-I.e. if a TGE has a hard cap of 8 million STEEM, and 10 contributors each
+I.e. if a ITO has a hard cap of 8 million STEEM, and 10 contributors each
 contribute 1 million STEEM, then the first 8 users fully participate
-in the TGE, and the last 2 users are refunded 1 million STEEM.
+in the ITO, and the last 2 users are refunded 1 million STEEM.
 
 ### Hidden caps
 
 The min and hard cap are *hidden* in the generation policy.  This means
-that these numbers are fixed at setup time, but the TGE creator has the
+that these numbers are fixed at setup time, but the ITO creator has the
 option to keep it secret.  This functionality is implemented by a
 *commit/reveal* cryptographic protocol:  A hash called the *commitment*
 is published at setup time, and the actual amount must match the
@@ -291,7 +291,7 @@ struct smt_cap_reveal_operation
 ```
 
 All caps are hidden, but the cap may be revealed at any point in time.
-Therefore, a TGE with a non-hidden minimum or cap may be implemented by
+Therefore, a ITO with a non-hidden minimum or cap may be implemented by
 simply including the `smt_cap_reveal_operation` in the same transaction
 as the `smt_setup_operation`.  UI's should provide functionality for this.
 
@@ -342,7 +342,7 @@ generation policy semantics with different parameters.
 
 ### Examples and rationale
 
-#### Example TGE
+#### Example ITO
 
 ALPHA wants to sell a token to the crowd to raise funds
 where 7% of contributed STEEM goes to Founder Account A, 23% of contributed STEEM
@@ -380,7 +380,7 @@ has 4 decimal places).
 Next we define the *unit ratio* as the relative rate at which `token_unit`
 are issued as `steem_unit` are contributed.  So to match the specification
 of 6 ALPHA per 1 STEEM, we need to issue 1000 ALPHA-units per STEEM-unit.
-Therefore the unit ratio of this TGE is 1000.  This unit ratio is placed in
+Therefore the unit ratio of this ITO is 1000.  This unit ratio is placed in
 the `min_unit_ratio` and `max_unit_ratio` fields of the
 `smt_capped_generation_policy` data structure:
 
@@ -398,7 +398,7 @@ of the `$from` account.
 Why does the blockchain use unit ratios, rather than simply specifying
 prices?
 
-The answer is that it is possible to write TGE definitions for which
+The answer is that it is possible to write ITO definitions for which
 price is ill-defined.  For example:
 
 - `"$from"` does not occur in `token_unit`
@@ -406,14 +406,14 @@ price is ill-defined.  For example:
 - A combination of `"$from"` and `"$from.vesting"` occurs
 - Future expansion allows new special accounts
 
-All of these TGE definitions have a unit ratio, but defining a
+All of these ITO definitions have a unit ratio, but defining a
 single quantity to call "price" is complicated or impossible for
-TGE's like these.
+ITO's like these.
 
 #### UI treatment of unit ratios
 
-As a consequence of the above, the concept of "TGE price" is purely
-a UI-level concept.  UI's which provide a TGE price should do the following:
+As a consequence of the above, the concept of "ITO price" is purely
+a UI-level concept.  UI's which provide a ITO price should do the following:
 
 - Document the precise definition of "price" provided by the UI
 - Be well-behaved for pathological input like above
@@ -421,9 +421,9 @@ a UI-level concept.  UI's which provide a TGE price should do the following:
 
 #### Hidden cap FAQ
 
-- Q: Should my TGE have a cap?
-- A: Some set of people stay away from uncapped TGE's due to perceived "greed",
-or want a guaranteed lower bound on the percentage of the TGE their
+- Q: Should my ITO have a cap?
+- A: Some set of people stay away from uncapped ITO's due to perceived "greed",
+or want a guaranteed lower bound on the percentage of the ITO their
 contribution will buy.  If you want this set of people to participate,
 use a cap.
 
@@ -431,7 +431,7 @@ use a cap.
 - A: Some people like the transparency and certainty of a public cap.
 Other people think a hidden cap creates excitement and builds demand.  One
 possible compromise is to publish the previous and next power of 10, for example
-"this TGE's cap is between 1 million and 10 million STEEM."
+"this ITO's cap is between 1 million and 10 million STEEM."
 
 - Q: How do I disable the cap?
 - A: Set it so that the cap would occur above `STEEMIT_MAX_SHARE_SUPPLY`.
