@@ -461,12 +461,15 @@ TODO:  Fix/update this JSON
    "initial_generation_policy" : [0,
 	{
 	 "pre_soft_cap_unit"          : {
-	  "steem_unit":[],
-	  "token_unit":[]
-	 },
-	 "post_soft_cap_unit"         : {
-	  "steem_unit":[],
-	  "token_unit":[]
+	  "steem_unit" : [
+	   ["fred",3],
+	   ["george",2]
+	  ],
+	  "token_unit" : [
+	   ["$from",7],
+	   ["george",1],
+	   ["henry",2]
+	  ]
 	 },
 	 "min_steem_units_commitment" : {
 	  "lower_bound":0,
@@ -511,8 +514,8 @@ TODO:  Fix/update this JSON
    "unit_num"             : 1001,
    "min_steem_units"      : 1000000,
    "max_steem_units"      : 30000000,
-   "begin_unit_ratio"     : 1000,
-   "end_unit_ratio"       : 600
+   "max_unit_ratio"       : 1000,
+   "min_unit_ratio"       : 600
   }
  ]
 ]
@@ -549,8 +552,8 @@ STEEM-unit is 10 satoshis or 0.01 STEEM, so
 "token_unit"           : [["$from", 1]]
 "min_steem_units"      : 10000000
 "max_steem_units"      : 700000000
-"begin_unit_ratio"     : 1
-"end_unit_ratio"       : 1
+"max_unit_ratio"     : 1
+"min_unit_ratio"       : 1
 ```
 
 TODO:  Do billions and billions need to be quoted?
@@ -568,8 +571,8 @@ will be issued according to the amount of STEEM received.
 "token_unit"           : [["$from", 1]]
 "min_steem_units"      : 0
 "max_steem_units"      : 1000000000
-"begin_unit_ratio"     : 1000000000
-"end_unit_ratio"       : 1
+"max_unit_ratio"     : 1000000000
+"min_unit_ratio"       : 1
 ```
 
 In this example, if 1 STEEM is contributed, that
