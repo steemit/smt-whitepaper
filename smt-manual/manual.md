@@ -166,7 +166,7 @@ struct smt_setup_operation
    smt_generation_policy   initial_generation_policy;
 
    time_point_sec          generation_end_time;
-   time_point_sec          launch_time;
+   time_point_sec          announced_launch_time;
 
    asset                   smt_creation_fee;
 
@@ -438,15 +438,35 @@ possible compromise is to publish the previous and next power of 10, for example
 
 ### Launch
 
-The *launch time* is the time at which tokens become transferrable.
+The *effective launch time* is the time at which tokens become transferrable.
+Two possibilities occur based on the timing of revealing of the hard cap:
 
-The token cannot launch until the hidden cap and hidden minimum have
-been revealed.  If the control account does not publish the hidden cap
-for any reason [1], then contributors will be able to request a refund
-of their STEEM.
+- When `min_steem_units` and `hard_cap_steem_units` are revealed before the
+`announced_launch_time`, the launch is an *on-time launch*.  The launch
+logic is executed by the blockchain as soon as `announced_launch_time`
+arrives, regardless of further user action.
+- When `min_steem_units` and `hard_cap_steem_units` have not been revealed
+before the `announced_launch_time`, the launch will be a *delayed launch*.
+The launch logic is executed by the blockchain when `min_steem_units` and
+`hard_cap_steem_units` have been revealed.
+- If the launch is delayed, then any contributor may use `smt_refund_operation`
+to get their STEEM back at any time after `announced_launch_time` and before
+the launch logic is executed.
+
+The reasons for this design are as follows:
+
+- The hidden cap isn't published immediately (that's the definition of *hidden*).
+- Publishing the hidden cap is an action that must be done by the ITO creator
+(again, any action requiring non-public information to occur cannot happen
+automatically on a blockchain).
+- If the ITO creator never acts, then the launch logic will never execute.
+- In the case of such a malicious or unresponsive ITO creator, contributors'
+STEEM would effectively be trapped forever, and they would never receive any tokens.
+- To keep the STEEM from being trapped in this way, the `smt_refund_operation`
+is implemented.
 
 ```
-struct smt_refund
+struct smt_refund_operation
 {
    account_name_type       contributor;
    account_name_type       control_account;
@@ -457,7 +477,26 @@ struct smt_refund
 };
 ```
 
-[1] Possible reasons range from lost key / nonce to malicious intent.
+Note, users are not *required* to use `smt_refund_operation`; each individual
+contributor must opt-in to receiving a refund.  If the ITO creator publicizes a
+legitimate reason they failed to publish before `announced_launch_time`, it is
+possible that all/most contributors will voluntarily choose not to use
+`smt_refund_operation`.  In this case, the launch will occur as soon as the ITO
+creator publishes the hidden values.
+
+The launch logic considers a contribution followed by a refund to be
+equivalent to not having contributed at all.  Therefore, when a delayed launch
+occurs, each contributor will be in *exactly one* of the following two states:
+
+- The contributor has executed `smt_refund_operation`, received their STEEM back,
+and will not participate in the ITO
+- The contributor has not been issued a refund, and will participate in the ITO
+
+It is possible for a delayed launch to have exceeded its
+`min_steem_units` value at the announced launch time, but subsequently
+falls below its `min_steem_units` value as a result of refunds.  In such
+a case, the ITO will not occur; it will be treated as if it had never
+reached its `min_steem_units`.
 
 ### Examples
 
