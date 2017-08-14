@@ -165,6 +165,7 @@ struct smt_setup_operation
 
    smt_generation_policy   initial_generation_policy;
 
+   time_point_sec          generation_begin_time;
    time_point_sec          generation_end_time;
    time_point_sec          announced_launch_time;
 
