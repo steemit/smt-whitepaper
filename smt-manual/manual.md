@@ -180,6 +180,19 @@ of the control account becomes the name of the token.  The
 `decimal_places` field is used by UI's to display units as a number
 of decimals.
 
+The `generation_begin_time` is when participants can begin to contribute
+to the ITO.  It is allowed to be in the future so users have time
+to study the ITO's final terms before the ITO begins.
+
+The `generation_end_time` is when the ITO stops accepting contributions,
+and the `announced_launch_time` is when the ITO token is created (assuming
+the ITO reached the minimum participation level).  Some pause is allocated
+between the `generation_end_time` and `announced_launch_time` to allow for
+the possibility of ITO's that wish to have hidden caps that aren't revealed
+while the ITO is open for contributions.  It also gives the ITO creator
+time to use the final ITO numbers to aid in pre-launch business
+activities.
+
 ### Token units
 
 Initial token generation is driven by a contributions of *STEEM
