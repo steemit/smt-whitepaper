@@ -150,6 +150,17 @@ The reason for this fee is to minimize creation of spam assets.
 
 The fee is destroyed by sending it to `STEEMIT_NULL_ACCOUNT`.
 
+### SMT pre-setup
+
+Two pre-setup operations are included:  `smt_setup_inflation_operation` and
+`smt_setup_parameters`.  These operations must be issued before
+`smt_setup_operation`.  They may be issued in the same transaction, or in
+prior blocks.
+
+The reason pre-setup operations are not made a part of `smt_setup_operation`
+is to allow a large number of pre-setup operations to be executed over multiple
+blocks.
+
 ### SMT setup
 
 Each SMT has an associated descriptor object which has
@@ -916,6 +927,9 @@ struct smt_setup_inflation_operation
 };
 ```
 
+The `setup_inflation_operation` is a *pre-setup* operation which must be executed *before*
+the `smt_setup_operation`.   See the section on pre-setup operations.
+
 #### Inflation FAQ
 
 - Q:  Can the SMT inflation data structures express Steem's [current inflation scheme](https://github.com/steemit/steem/issues/551)?
@@ -932,11 +946,72 @@ struct smt_setup_inflation_operation
 TODO:  Make some pretty graphs
 TODO:  Examples:  Steem old inflation scheme, Steem new inflation scheme, Bitcoin, send % to founders, send % to founders after time
 
-### Token Precision Parameters
-These are values that may be set to determine how many digits a token supports. These values may only be set once.
+### Named token parameters
 
-- `SMT_BLOCKCHAIN_PRECISION` : Configurable
-- `SMT_BLOCKCHAIN_PRECISION_DIGITS` : Configurable
+Some behaviors of STEEM are influenced by compile-time configuration constants which are implemented by `#define`
+statements in the `steemd` C++ source code.  It makes sense for the equivalent behaviors for SMT's to be
+configurable by the SMT creator.
+
+These parameters are `runtime_parameters` and `setup_parameters`.  The `setup_parameters` are a field in
+`smt_setup_operation`; they must be set before `smt_setup_operation` and cannot be changed once
+`smt_setup_operation` is executed.  The `runtime_parameters` are a field in
+`smt_set_runtime_parameters_operation`, they can be changed by the token creator at any time.
+
+These operations are defined as follows:
+
+```
+struct smt_set_setup_parameters_operation
+{
+   account_name_type                                 control_account;
+
+   flat_set< smt_setup_parameter >                   setup_parameters;
+   extensions_type                                   extensions;
+};
+
+struct smt_set_runtime_parameters_operation
+{
+   account_name_type                                 control_account;
+
+   flat_set< smt_runtime_parameter >                 runtime_parameters;
+   extensions_type                                   extensions;
+};
+```
+
+Currently no `setup_parameters` are defined.
+
+```
+struct empty_parameter {};   /* invalid */
+
+struct smt_param_cashout_window_seconds         { uint32_t value = 0; };     // STEEM_CASHOUT_WINDOW_SECONDS
+struct smt_param_vote_regeneration_seconds      { uint32_t value = 0; };     // STEEM_VOTE_REGENERATION_SECONDS
+struct smt_param_reverse_auction_window_seconds { uint32_t value = 0; };     // STEEM_REVERSE_AUCTION_WINDOW_SECONDS
+struct smt_param_power_reserve_rate             { uint32_t value = 0; };     // STEEM_POWER_RESERVE_RATE
+struct smt_param_content_reward_percent         { uint16_t value = 0; };     // STEEM_CONTENT_REWARD_PERCENT
+struct smt_param_vesting_fund_percent           { uint16_t value = 0; };     // STEEM_VESTING_FUND_PERCENT
+
+typedef static_variant< empty_parameter > setup_parameters;
+typedef static_variant<
+   smt_param_cashout_window_seconds,
+   smt_param_vote_regeneration_seconds,
+   smt_param_reverse_auction_window_seconds,
+   smt_param_power_reserve_rate,
+   smt_param_content_reward_percent,
+   smt_param_vesting_fund_percent
+   > runtime_parameters;
+```
+
+UI's which allow inspecting or setting these parameters should be aware of
+the type and scale of each parameter.  In particular, percentage parameters
+are on a basis point scale (i.e. 100% corresponds to a value of
+`STEEMIT_100_PERCENT = 10000`), and UI's or other tools for creating or
+inspecting transactions *must* use the basis point scale.
+
+## Parameter constraints
+
+Several dynamic parameters must be constrained to prevent abuse scenarios that could harm token users.
+
+- `0 < vote_regeneration_seconds < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
+- `0 <= reverse_auction_window_seconds + SMT_UPVOTE_LOCKOUT < cashout_window_seconds < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
 
 ## Time-locked (aka Vesting aka Power Up) rewards
 
@@ -1031,25 +1106,6 @@ TODO:  File ticket to change from target votes per day to target votes per perio
 TODO:  File ticket to refactor out voting computations
 TODO:  Create operation.
 
-## Dynamic Rewards Parameters
-
-SMTs have several parameters adjustable at the launch of the token, such as inflation rate, token generation events and founder's issuance, that cannot be changed once the token is launched, however, SMTs also have dynamic parameters that allow the token launcher to adjust certain properties of the token refine the incentivized behaviors of the token's users. Some of the parameters will increase the flow of the rewards pool towards certain user behaviors while reducing the flow towards other less desired behaviors.
-
-- `SMT_CASHOUT_WINDOW_SECONDS` : Dynamic  TODO CASH OUT the name in the chain already? (seems to be a bad name)  WHY IS STEEMIT listed here and not STEEM????
-- `SMT_VOTE_REGENERATION_SECONDS` : Dynamic
-- `SMT_REVERSE_AUCTION_WINDOW_SECONDS` : Dynamic
-- `SMT_POWER_RESERVE_RATE` : Dynamic
-- `SMT_CONTENT_REWARD_PERCENT` : Dynamic
-- `SMT_VESTING_FUND_PERCENT` : Dynamic
-
-### Parameter Constraints
-
-Several dynamic parameters must be constrained to prevent abuse scenarios that could harm token users.
-
-- `0 < SMT_VOTE_REGENERATION_SECONDS < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
-- `0 <= SMT_REVERSE_AUCTION_WINDOW_SECONDS + SMT_UPVOTE_LOCKOUT < SMT_CASHOUT_WINDOW_SECONDS < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
-- `0 <= SMT_REWARD_CURVE`
-
 ## Votability and Rewardability
 
 In this section, we introduce the concepts of *votability* and *rewardability*.
@@ -1126,7 +1182,18 @@ this validation rule.
 
 ## Hardcoded Token Parameters
 
-Hardcoded parameters are aspects of tokens that interact with users in manners that have been found to increase security and safety of the assets as managed by the end user.  Though these hard coded parameters could change for all SMTs in the case of a STEEM-wide upgrade, it is proposed that SMTs leverage these parameters in the same manner as the STEEM asset for the benefit of continuity and common user knowledge.
+Hardcoded parameters are configuration constants that affect the behavior of
+SMT's, but are deliberately excluded from `smt_setup_parameters` or
+`smt_runtime_parameters`.  The reason they are designed to be non-configurable
+is that allowing these parameters to significantly deviate from the values
+used for STEEM results in significant risks, such as:
+
+- May result in a very complicated implementation
+- May result in extreme end-user frustration
+- May threaten the security and stability of the token
+- May threaten the security and stability of STEEM
+
+Here is the list of such hardcoded parameters:
 
 - `SMT_UPVOTE_LOCKOUT_HF17` : Hardcoded -- This value locks out upvotes from posts at a certain time prior to "CASH OUT" to prevent downvote abuse immediately prior to "CASH OUT."
 - `SMT_VESTING_WITHDRAW_INTERVALS` : Hardcoded
@@ -1142,7 +1209,17 @@ Hardcoded parameters are aspects of tokens that interact with users in manners t
 - `SMT_SOFT_MAX_COMMENT_DEPTH` : Hardcoded
 - `SMT_MIN_PERMLINK_LENGTH` : Hardcoded
 - `SMT_MAX_PERMLINK_LENGTH` : Hardcoded
-- `SMT_MAX_SHARE_SUPPLY` : Hardcoded
+
+## Mandatory token parameters
+
+The token parameters set by `smt_setup_parameters` or
+`smt_runtime_parameters` have default values.  A few STEEM-equivalent parameters
+are specified by `smt_setup_operation` fields, these are the parameters which
+do not have a default value, and thus, must be specified for every asset.
+
+- `SMT_MAX_SHARE_SUPPLY` : Set by `smt_setup_operation.max_supply`
+- `SMT_BLOCKCHAIN_PRECISION` : Set by `pow(10, smt_setup_operation.decimal_places)`
+- `SMT_BLOCKCHAIN_PRECISION_DIGITS` : Set by `smt_setup_operation.decimal_places`
 
 ### Arbitrary Reward Splitting
 
