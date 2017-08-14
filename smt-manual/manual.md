@@ -1040,6 +1040,8 @@ And these are the rules for whether a token is rewardable:
 then the token is not rewardable for that post.
 - If some voter (i.e. upvoter / downvoter) has a zero balance of a token, then that token
 is not rewardable for that voter's votes.
+- If the `max_accepted_payout` for any non-STEEM token is nonzero, then the
+`max_accepted_payout` for STEEM/SBD must be at least the default `max_accepted_payout`.
 
 Implementation notes:
 
@@ -1050,6 +1052,9 @@ computations.
 Steem votes.  This behavior will be changed in a future hardfork (Steem issue #1380).
 - At most two tokens may be specified in `votable_assets`.  This means each post is voted
 with at most three tokens (including STEEM).
+- The default `max_accepted_payout` is stored in `max_accepted_steem_payout_latch` member
+of `dynamic_global_properties_object`.  Clients should populate `max_accepted_payout` of
+a post based on this member, in case the default value changes in a future version.
 
 No consensus level restriction forces any particular post to have any particular
 `allowed_vote_assets`.  As a consequence, any post may mark itself as eligible to
