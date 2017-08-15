@@ -912,18 +912,20 @@ struct smt_setup_inflation_operation
    flat_map< account_name_type, uint16_t >
                        inflation_unit;
 
-   int32_t             interval_seconds;
-   uint32_t            interval_count;
+   int32_t             interval_seconds = 0;
+   uint32_t            interval_count = 0;
 
    timestamp           lep_time;
    timestamp           rep_time;
 
    asset               lep_abs_amount;
    asset               rep_abs_amount;
-   uint32_t            lep_rel_amount_numerator;
-   uint32_t            rep_rel_amount_numerator;
+   uint32_t            lep_rel_amount_numerator = 0;
+   uint32_t            rep_rel_amount_numerator = 0;
 
-   uint8_t             rel_amount_denom_bits;
+   uint8_t             rel_amount_denom_bits = 0;
+
+   extensions_type     extension;
 };
 ```
 
