@@ -345,10 +345,10 @@ struct smt_capped_generation_policy
    smt_cap_commitment  min_steem_units_commitment;
    smt_cap_commitment  hard_cap_steem_units_commitment;
 
-   uint16_t            soft_cap_percent;
+   uint16_t            soft_cap_percent = 0;
 
-   uint32_t            min_unit_ratio;
-   uint32_t            max_unit_ratio;
+   uint32_t            min_unit_ratio = 0;
+   uint32_t            max_unit_ratio = 0;
 
    extensions_type     extensions;
 };
@@ -997,8 +997,7 @@ struct smt_setup_inflation_operation
    account_name_type   control_account;
 
    timestamp           schedule_time;
-   flat_map< account_name_type, uint16_t >
-                       inflation_unit;
+   smt_inflation_unit  inflation_unit;
 
    int32_t             interval_seconds = 0;
    uint32_t            interval_count = 0;
@@ -1013,7 +1012,7 @@ struct smt_setup_inflation_operation
 
    uint8_t             rel_amount_denom_bits = 0;
 
-   extensions_type     extension;
+   extensions_type     extensions
 };
 ```
 
@@ -1073,6 +1072,11 @@ Currently no `setup_parameters` are defined.
 struct smt_param_allow_vesting                    { bool value = true;  };
 struct smt_param_allow_voting                     { bool value = true;  };
 
+typedef static_variant<
+   smt_param_allow_vesting,
+   smt_param_allow_voting
+   > smt_setup_parameter;
+
 struct smt_param_windows_v1
 {
    uint32_t cashout_window_seconds = 0;                // STEEM_CASHOUT_WINDOW_SECONDS
@@ -1095,14 +1099,10 @@ struct smt_param_rewards_v1
 };
 
 typedef static_variant<
-   smt_param_allow_vesting,
-   smt_param_allow_voting
-   > setup_parameters;
-typedef static_variant<
    smt_param_windows_v1,
    smt_param_vote_regeneration_period_seconds_v1,
    smt_param_rewards_v1
-   > runtime_parameters;
+   > smt_runtime_parameter;
 ```
 
 UI's which allow inspecting or setting these parameters should be aware of
