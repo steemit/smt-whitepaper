@@ -184,6 +184,9 @@ weight_curves = [
     SqrtCurve(),
     ]
 
+figure_letters = 'fdecab'
+f = 0
+
 for rc in reward_curves:
     for cc in weight_curves:
         rcp = RewardCurvePlotter(
@@ -195,12 +198,12 @@ for rc in reward_curves:
         plt.clf()
         fig = plt.figure(frameon=False)
         plt.subplots(nrows=3, ncols=1, figsize=(3, 6))
-        plt.tight_layout(pad=2)
+        plt.tight_layout(pad=2.25)
 
         ax_rc = plt.subplot(3, 1, 1, adjustable="box-forced")
         ax_rc.set_xticklabels([])
         ax_rc.set_yticklabels([])
-        plt.title("rc_"+rc.name+" + cc_"+cc.name)
+        plt.title("$\mathbf{Fig. 3"+figure_letters[f]+"}$\nrc_"+rc.name+" + cc_"+cc.name, y=1)
         plt.ylabel("Total reward")
         rcp.plot_reward_curve("k,-")
 
@@ -225,3 +228,4 @@ for rc in reward_curves:
         copy_bb_aspect(ax_cc, ax_curation)
 
         plt.savefig("rc-"+rc.name+"-cc-"+cc.name+".png", dpi=300)
+        f += 1
