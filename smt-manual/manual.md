@@ -980,27 +980,38 @@ struct smt_set_runtime_parameters_operation
 Currently no `setup_parameters` are defined.
 
 ```
-struct smt_param_allow_vesting                  { bool value = true;  };
-struct smt_param_allow_voting                   { bool value = true;  };
+struct smt_param_allow_vesting                    { bool value = true;  };
+struct smt_param_allow_voting                     { bool value = true;  };
 
-struct smt_param_cashout_window_seconds         { uint32_t value = 0; };     // STEEM_CASHOUT_WINDOW_SECONDS
-struct smt_param_vote_regeneration_seconds      { uint32_t value = 0; };     // STEEM_VOTE_REGENERATION_SECONDS
-struct smt_param_reverse_auction_window_seconds { uint32_t value = 0; };     // STEEM_REVERSE_AUCTION_WINDOW_SECONDS
-struct smt_param_power_reserve_rate             { uint32_t value = 0; };     // STEEM_POWER_RESERVE_RATE
-struct smt_param_content_reward_percent         { uint16_t value = 0; };     // STEEM_CONTENT_REWARD_PERCENT
-struct smt_param_vesting_fund_percent           { uint16_t value = 0; };     // STEEM_VESTING_FUND_PERCENT
+struct smt_param_windows_v1
+{
+   uint32_t cashout_window_seconds = 0;                // STEEM_CASHOUT_WINDOW_SECONDS
+   uint32_t reverse_auction_window_seconds = 0;        // STEEM_REVERSE_AUCTION_WINDOW_SECONDS
+};
+
+struct smt_param_vote_regeneration_period_seconds_v1
+{
+   uint32_t vote_regeneration_period_seconds = 0;      // STEEM_VOTE_REGENERATION_SECONDS
+   uint32_t votes_per_regeneration_period = 0;
+};
+
+struct smt_param_rewards_v1
+{
+   uint128_t               content_constant = 0;
+   uint16_t                percent_curation_rewards = 0;
+   uint16_t                percent_content_rewards = 0;
+   curve_id                author_reward_curve;
+   curve_id                curation_reward_curve;
+};
 
 typedef static_variant<
    smt_param_allow_vesting,
    smt_param_allow_voting
    > setup_parameters;
 typedef static_variant<
-   smt_param_cashout_window_seconds,
-   smt_param_vote_regeneration_seconds,
-   smt_param_reverse_auction_window_seconds,
-   smt_param_power_reserve_rate,
-   smt_param_content_reward_percent,
-   smt_param_vesting_fund_percent
+   smt_param_windows_v1,
+   smt_param_vote_regeneration_period_seconds_v1,
+   smt_param_rewards_v1
    > runtime_parameters;
 ```
 
@@ -1096,8 +1107,6 @@ should be to reward successful predictions.  Which curve satisfies this criterio
 In practice, independence or a modest positive correlation should be expected, so an `ICR=` or `ICR-` curve should be chosen.
 For STEEM itself, curation was originally the quadratic `ICR=`, as of hardfork 0.19 it is the linear `ICR=`.
 
-TODO:  Operator to create fund
-TODO:  Do we want to allow these parameters to be dynamic?
 TODO:  Possibly decreasing-slope reward curve?
 TODO:  Possibly `ICR-` curve for quadratic?
 
@@ -1116,7 +1125,6 @@ user casting that many max-strength votes will exactly cancel the regeneration.
 
 TODO:  File ticket to change from target votes per day to target votes per period
 TODO:  File ticket to refactor out voting computations
-TODO:  Create operation.
 
 ## Votability and Rewardability
 
