@@ -980,7 +980,8 @@ struct smt_set_runtime_parameters_operation
 Currently no `setup_parameters` are defined.
 
 ```
-struct empty_parameter {};   /* invalid */
+struct smt_param_allow_vesting                  { bool value = true;  };
+struct smt_param_allow_voting                   { bool value = true;  };
 
 struct smt_param_cashout_window_seconds         { uint32_t value = 0; };     // STEEM_CASHOUT_WINDOW_SECONDS
 struct smt_param_vote_regeneration_seconds      { uint32_t value = 0; };     // STEEM_VOTE_REGENERATION_SECONDS
@@ -989,7 +990,10 @@ struct smt_param_power_reserve_rate             { uint32_t value = 0; };     // 
 struct smt_param_content_reward_percent         { uint16_t value = 0; };     // STEEM_CONTENT_REWARD_PERCENT
 struct smt_param_vesting_fund_percent           { uint16_t value = 0; };     // STEEM_VESTING_FUND_PERCENT
 
-typedef static_variant< empty_parameter > setup_parameters;
+typedef static_variant<
+   smt_param_allow_vesting,
+   smt_param_allow_voting
+   > setup_parameters;
 typedef static_variant<
    smt_param_cashout_window_seconds,
    smt_param_vote_regeneration_seconds,
@@ -1013,11 +1017,19 @@ Several dynamic parameters must be constrained to prevent abuse scenarios that c
 - `0 < vote_regeneration_seconds < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
 - `0 <= reverse_auction_window_seconds + SMT_UPVOTE_LOCKOUT < cashout_window_seconds < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
 
-## Time-locked (aka Vesting aka Power Up) rewards
+## SMT vesting semantics
 
-Token inflation may be directed to tokens that are time-locked in the token's vesting contract.  These rewards are effectively
-split among all users with vesting balances proportional to the number of tokens
-they have vested.  As the number of tokens devoted to these rewards is independent
+SMT's have similar vesting (powerup / powerdown) semantics to STEEM.  In particular:
+
+- SMT's can be "powered up" into a vesting balance
+- SMT's in a vesting balance can be "powered down" over 13 weeks
+(controlled by hardcoded `SMT_VESTING_WITHDRAW_INTERVALS`, `SMT_VESTING_WITHDRAW_INTERVAL_SECONDS` parameters)
+- Voting is affected only by powered-up tokens
+- Vesting balance cannot be transferred or sold
+
+Additionally, some token inflation may be directed to vesting balances.  These newly "printed"
+tokens are effectively split among all users with vesting balances proportional to the number of tokens
+they have vested.  As the number of tokens printed is independent
 of users' vesting balances, the percentage rate of return this represents will vary
 depending on how many tokens are vested at a time.
 
@@ -1224,6 +1236,26 @@ do not have a default value, and thus, must be specified for every asset.
 ### Arbitrary Reward Splitting
 
 All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer and more.  An interface can also provide this optionality to the author. Add to this.
+
+## SMT interaction with existing operations
+
+- `comment_payout_beneficiaries` : The existing `comment_payout_beneficiaries` will only redirect STEEM.  In the future, `comment_payout_beneficiaries` functionality which allows redirecting SMT rewards may be added.
+- `comment_options` : `max_accepted_payout`, `allow_votes` only affects STEEM, see [here](#votability-and-rewardability) to restrict `max_accepted_payout` for assets.  `allow_curation_rewards` affects all tokens.
+- `vote_operation` : Multiple tokens in the comment's votable set vote.
+- `transfer_operation` : Supports all SMT's.
+- Escrow operations:  Do not support SMT's.
+- `transfer_to_vesting_operation` : Supports all SMT's that support vesting.
+- `withdraw_vesting_operation` : Supports all SMT's that support vesting.
+- `set_withdraw_vesting_route_operation` : Does not support SMT's.
+- `account_witness_vote_operation` : SMT's do not affect witness votes.
+- `account_witness_proxy_operation` : SMT's do not affect witness votes.
+- `feed_publish_operation` : Feeds may not be published for SMT's.
+- `convert_operation` : SMT's cannot be converted.
+- Limit order operations : Limit orders are fully supported by SMT's trading against STEEM.
+- `transfer_to_savings_operation` : SMT's support savings.
+- `decline_voting_rights_operation` : Affects SMT votes as well as STEEM votes.
+- `claim_reward_balance_operation` : Restrictions on this operation are relaxed to allow any asset in any of the three fields, including SMT's.
+- `delegate_vesting_shares_operation` : Supports all SMT's that support vesting.
 
 ## SMT Parameters Commentary
 
