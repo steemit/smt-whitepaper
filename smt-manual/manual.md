@@ -1,7 +1,10 @@
-CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
-Proposal by Steemit Inc
-Copyright (c) Steemit, Inc. 2017
-Status: DRAFT
+
+# Metadata
+
+* CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
+* Originator: Steemit Inc
+* Copyright (c) Steemit, Inc. 2017
+* Status: DRAFT
 
 # Smart Media Tokens
 
