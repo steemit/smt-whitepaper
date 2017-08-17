@@ -31,8 +31,9 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
       - [UI treatment of unit ratios](#ui-treatment-of-unit-ratios)
       - [Hidden cap FAQ](#hidden-cap-faq)
     - [Launch](#launch)
-    - [Examples](#examples)
-      - [Full JSON example](#full-json-example)
+    - [Full JSON examples](#full-json-examples)
+      - [ALPHA](#alpha)
+      - [BETA](#beta)
       - [Single-segment with min and cap](#single-segment-with-min-and-cap)
       - [Fixed-float no-reserve](#fixed-float-no-reserve)
       - [Vesting contributions](#vesting-contributions)
@@ -377,6 +378,7 @@ goes to Founder Account B, and 70% of contributed STEEM goes to Founder Account 
 
 ALPHA defines a STEEM unit as:
 
+
 ```
 steem_unit = [["founder_a", 7], ["founder_b", 23], ["founder_c", 70]]
 ```
@@ -525,94 +527,175 @@ falls below its `min_steem_units` value as a result of refunds.  In such
 a case, the ITO will not occur; it will be treated as if it had never
 reached its `min_steem_units`.
 
-### Examples
+### Full JSON examples
 
-#### Full JSON example
+#### ALPHA
 
-Suppose BETA is defined with the following definitions:
+This example builds on the ALPHA example from earlier.  This ITO
+has the following characteristics:
 
-TODO:  Fix/update this JSON
+- 7% of contributed STEEM goes to Founder Account A
+- 23% of contributed STEEM goes to Founder Account B
+- 70% of contributed STEEM goes to Founder Account C
+- Minimum unit of contribution is 0.1 STEEM
+- For every 1 STEEM contributed, the contributor gets 5 ALPHA
+- For every 1 STEEM contributed, Founder Account D gets 1 ALPHA
+- No minimum, hard cap, or soft cap
+- No post-launch inflation after launch
+
+These are the operations for the ALPHA launch:
 
 ```
 [
- ["smt_setup_operation",
+ ["smt_setup",
   {
-   "control_account"           : "beta",
-   "decimal_places"            : 4,
-   "max_supply"                : SMT_MAX_SHARE_SUPPLY,
+   "control_account" : "alpha",
+   "decimal_places" : 4,
+   "max_supply" : "1000000000000000",
    "initial_generation_policy" : [0,
-	{
-	 "pre_soft_cap_unit"          : {
-	  "steem_unit" : [
-	   ["fred",3],
-	   ["george",2]
-	  ],
-	  "token_unit" : [
-	   ["$from",7],
-	   ["george",1],
-	   ["henry",2]
-	  ]
-	 },
-	 "min_steem_units_commitment" : {
-	  "lower_bound":0,
-	  "upper_bound":0,
-	  "hash":"abcd123"
-	 },
-	 "hard_cap_steem_units_commitment" : {
-	  "lower_bound" : 0,
-	  "upper_bound" : 0,
-	  "hash"        : "abcd123"
-	 },
-	 "soft_cap_percent":0,
-	 "min_unit_ratio":0,
-	 "max_unit_ratio":0,
-	 "extensions":[]
-	}
+    {
+     "pre_soft_cap_unit" : {
+      "steem_unit" : [["founder_a", 7], ["founder_b", 23], ["founder_c", 70]],
+      "token_unit" : [["$from", 5], ["founder_d", 1]]
+     },
+     "post_soft_cap_unit" : {
+      "steem_unit" : [],
+      "token_unit" : []
+     },
+     "min_steem_units_commitment" : {
+      "lower_bound" : 1,
+      "upper_bound" : 1,
+      "hash" : "32edb6022c0921d99aa347e9cda5dc2db413f5574eebaaa8592234308ffebd2b"
+     },
+     "hard_cap_steem_units_commitment" : {
+      "lower_bound" : "166666666666",
+      "upper_bound" : "166666666666",
+      "hash" : "93c5a6b892de788c5b54b63b91c4b692e36099b05d3af0d16d01c854723dda21"
+     },
+     "soft_cap_percent" : 10000,
+     "min_unit_ratio" : 1000,
+     "max_unit_ratio" : 1000,
+     "extensions" : []
+    }
    ],
-   "generation_end_time"       : "2017-06-01T00:00:00",
-   "launch_time"               : "2017-06-01T00:00:00",
-   "extensions"                : []
-  },
+   "generation_begin_time" : "2017-08-10T00:00:00",
+   "generation_end_time" : "2017-08-17T00:00:00",
+   "announced_launch_time" : "2017-08-21T00:00:00",
+   "smt_creation_fee" : "1000.000 SBD",
+   "extensions" : []
+  }
  ],
- ["smt_define_unit_operation",
+ ["smt_cap_reveal",
   {
-   "control_account"      : "beta",
-   "unit_num"             : 1001,
-   "steem_unit"           : [
-    ["founder_a",  7],
-    ["founder_b", 23],
-    ["founder_c", 70]
-   ],
-   "token_unit"           : [
-   ["$from", 5],
-   ["founder_d", 1]
-   ]
-  },
+   "control_account" : "alpha",
+   "cap" : { "amount" : 1, "nonce" : "0" },
+   "extensions" : []
+  }
  ],
- ["smt_define_segment_operation",
+ ["smt_cap_reveal",
   {
-   "control_account"      : "beta",
-   "end_time"             : "2017-07-01T00:00:00",
-   "unit_num"             : 1001,
-   "min_steem_units"      : 1000000,
-   "max_steem_units"      : 30000000,
-   "max_unit_ratio"       : 1000,
-   "min_unit_ratio"       : 600
+   "control_account" : "alpha",
+   "cap" : { "amount" : "166666666666", "nonce" : "0" },
+   "extensions" : []
   }
  ]
 ]
 ```
 
-From this data structure we get the following information:
+Some things to note:
 
-- This crowdsale will occur for the month of June, 2017.
-- Each STEEM unit is 100 STEEM-satoshis, or 0.1 STEEM.
-- Each BETA unit is 6 BETA-satoshis, or 0.0006 BETA.
-- The minimum raised is 1 million STEEM-units, or 100,000 STEEM.
-- The maximum raised is 30 million STEEM-units, or 3 million STEEM.
-- The maximum BETA created is 30 million * 600 = 18 billion BETA units.
-- At 0.006 BETA per unit, 18 billion BETA units is 10.8 million BETA.
-- Initially, BETA will be created at a rate of 1000 BETA units per STEEM unit.
+- We disable the soft cap by setting `soft_cap_percent` to `STEEM_100_PERCENT = 10000`
+- `post_soft_cap_unit` must be empty when the soft cap is disabled
+- The unit ratio does not change so `min_unit_ratio` / `max_unit_ratio` must be set accordingly
+- We disable the hidden caps by using a zero nonce and setting `lower_bound == upper_bound`
+- We still need to reveal the caps with `smt_cap_reveal_operation`
+
+#### BETA
+
+The BETA token is created with the following rules:
+
+- For every 5 STEEM contributed, 3 STEEM go to founder account Fred
+- For every 5 STEEM contributed, 2 STEEM go to founder account George
+- 10% of the initial token supply goes to founder account George
+- 20% of the initial token supply goes to founder acconut Henry
+- 70% of the initial token supply is divided among contributors according to their contribution
+- Each STEEM unit is 0.005 STEEM
+- Each token unit is 0.0010 BETA
+- The minimum raised is 5 million STEEM units, or 25,000 STEEM
+- The maximum raised is 30 million STEEM units, or 150,000 STEEM
+- Each contributor receives 7-14 BETA per STEEM contributed, depending on total contributions.
+- George receives 1-2 BETA per STEEM contributed, depending on total contributions.
+- Harry receives 2-4 BETA per STEEM contributed, depending on total contributions.
+- If the maximum of 30 million STEEM units are raised, then `min_unit_ratio = 50` applies
+- The maximum number of token units is `min_unit_ratio` times 30 million, or 1.5 billion token units
+- Since each token unit is 0.0010 BETA, at most 1.5 million BETA tokens will be generated.
+- If 75,000 STEEM or less is contributed, the contributors, George and Harry will receive the maximum of 14, 2, and 4 BETA per STEEM contributed (respectively).
+- If more than 75,000 STEEM is contributed, the contributors, George and Harry will receive BETA in a 70% / 10% / 20% ratio, such that the total is fixed at 1.5 million BETA.
+- As a consequence of the hard cap, the contributors, George and Harry will receive at least 7, 1, and 2 BETA per STEEM contributed (respectively).
+
+This example is chosen to demonstrate how the ratios work.  It is not a realistic example, as most ITO's
+will choose to either set `min_unit_ratio = max_unit_ratio` like ALPHA, or choose to use a large `max_unit_ratio` like
+BETA.
+
+```
+[
+ [
+  "smt_setup",
+  {
+   "control_account" : "beta",
+   "decimal_places" : 4,
+   "max_supply" : "1000000000000000",
+   "initial_generation_policy" : [0,
+    {
+     "pre_soft_cap_unit" : {
+      "steem_unit" : [["fred", 3], ["george", 2]],
+      "token_unit" : [["$from", 7], ["george", 1], ["henry", 2]]
+     },
+     "post_soft_cap_unit" : {
+      "steem_unit" : [],
+      "token_unit" : []
+     },
+     "min_steem_units_commitment" : {
+      "lower_bound" : 5000000,
+      "upper_bound" : 5000000,
+      "hash" : "dff2e4aed5cd054439e045e1216722aa8c4758b22df0a4b0251d6f16d58e0f3b"
+     },
+     "hard_cap_steem_units_commitment" : {
+      "lower_bound" : 30000000,
+      "upper_bound" : 30000000,
+      "hash" : "f8e6ab0e8f2c06a9d94881fdf370f0849b4c7864f62242040c88ac82ce5e40d6"
+     },
+     "soft_cap_percent" : 10000,
+     "min_unit_ratio" : 50,
+     "max_unit_ratio" : 100,
+     "extensions" : []
+    }
+   ],
+   "generation_begin_time" : "2017-06-01T00:00:00",
+   "generation_end_time" : "2017-06-30T00:00:00",
+   "announced_launch_time" : "2017-07-01T00:00:00",
+   "smt_creation_fee" : "1000.000 SBD",
+   "extensions" : []
+  }
+ ],
+ [
+  "smt_cap_reveal",
+  {
+   "control_account" : "beta",
+   "cap" : { "amount" : 5000000, "nonce" : "0" },
+   "extensions" : []
+  }
+ ],
+ [
+  "smt_cap_reveal",
+  {
+   "control_account" : "beta",
+   "cap" : { "amount" : 30000000, "nonce" : "0" },
+   "extensions" : []
+  }
+ ]
+]
+```
 
 [This spreadsheet](ito-parameters.ods) will make the relationship clear.
 
