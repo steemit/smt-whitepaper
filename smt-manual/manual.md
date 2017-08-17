@@ -37,8 +37,8 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
     - [Full JSON examples](#full-json-examples)
       - [ALPHA](#alpha)
       - [BETA](#beta)
-      - [Single-segment with min and cap](#single-segment-with-min-and-cap)
-      - [Fixed-float no-reserve](#fixed-float-no-reserve)
+      - [GAMMA](#gamma)
+      - [DELTA](#delta)
       - [Vesting contributions](#vesting-contributions)
       - [Burning contributed STEEM](#burning-contributed-steem)
       - [Vesting as cost](#vesting-as-cost)
@@ -612,6 +612,7 @@ Some things to note:
 - The unit ratio does not change so `min_unit_ratio` / `max_unit_ratio` must be set accordingly
 - We disable the hidden caps by using a zero nonce and setting `lower_bound == upper_bound`
 - We still need to reveal the caps with `smt_cap_reveal_operation`
+- The hard cap specified is the largest hard cap that does not result in created tokens exceeding `STEEMIT_MAX_SHARE_SUPPLY`
 
 #### BETA
 
@@ -702,51 +703,141 @@ BETA.
 
 [This spreadsheet](ito-parameters.ods) will make the relationship clear.
 
-#### Single-segment with min and cap
+#### GAMMA
 
-This is an example where 1 STEEM for 1 token,
-100,000 STEEM minimum, 7 million maximum.
-
-Note that, for a token with 2 decimal places,
-we must issue 1 token-satoshis for every
-10 STEEM-satoshis.  Furthermore, we have
-`min_steem_units = 10,000,000` because one
-STEEM-unit is 10 satoshis or 0.01 STEEM, so
-100,000 STEEM is 10 million STEEM-units.
+The GAMMA token is like BETA, but with one difference:  The
+large `max_unit_ratio` means that the maximum issue of 1.5 million
+tokens is reached very early in the ITO.  This ITO effectively
+divides 1.5 million GAMMA tokens between contributors (provided at least
+5 STEEM is contributed).
 
 ```
-"decimal_places"       : 2
-"steem_unit"           : [["founder", 10]]
-"token_unit"           : [["$from", 1]]
-"min_steem_units"      : 10000000
-"max_steem_units"      : 700000000
-"max_unit_ratio"     : 1
-"min_unit_ratio"       : 1
+[
+ [
+  "smt_setup",
+  {
+   "control_account" : "gamma",
+   "decimal_places" : 4,
+   "max_supply" : "1000000000000000",
+   "initial_generation_policy" : [0,
+    {
+     "pre_soft_cap_unit" : {
+      "steem_unit" : [["fred", 3], ["george", 2]],
+      "token_unit" : [["$from", 7], ["george", 1], ["henry", 2]]
+     },
+     "post_soft_cap_unit" : {
+      "steem_unit" : [],
+      "token_unit" : []
+     },
+     "min_steem_units_commitment" : {
+      "lower_bound" : 5000000,
+      "upper_bound" : 5000000,
+      "hash" : "dff2e4aed5cd054439e045e1216722aa8c4758b22df0a4b0251d6f16d58e0f3b"
+     },
+     "hard_cap_steem_units_commitment" : {
+      "lower_bound" : 30000000,
+      "upper_bound" : 30000000,
+      "hash" : "f8e6ab0e8f2c06a9d94881fdf370f0849b4c7864f62242040c88ac82ce5e40d6"
+     },
+     "soft_cap_percent" : 10000,
+     "min_unit_ratio" : 50,
+     "max_unit_ratio" : 300000,
+     "extensions" : []
+    }
+   ],
+   "generation_begin_time" : "2017-06-01T00:00:00",
+   "generation_end_time" : "2017-06-30T00:00:00",
+   "announced_launch_time" : "2017-07-01T00:00:00",
+   "smt_creation_fee" : "1000.000 SBD",
+   "extensions" : []
+  }
+ ],
+ [
+  "smt_cap_reveal",
+  {
+   "control_account" : "gamma",
+   "cap" : { "amount" : 5000000, "nonce" : "0" },
+   "extensions" : []
+  }
+ ],
+ [
+  "smt_cap_reveal",
+  {
+   "control_account" : "gamma",
+   "cap" : { "amount" : 30000000, "nonce" : "0" },
+   "extensions" : []
+  }
+ ]
+]
 ```
 
-TODO:  Do billions and billions need to be quoted?
-TODO:  Write script to process this into operations
-TODO:  Test this
+#### DELTA
 
-#### Fixed-float no-reserve
-
-This is an example where 1 million tokens
-will be issued according to the amount of STEEM received.
+In this ITO we have one million DELTA tokens created
+for the founder, and none for contributors.  A modest
+contribution of 0.1 STEEM can be made by any user
+(including the founder themselves) to trigger the
+generation.
 
 ```
-"decimal_places"       : 3
-"steem_unit"           : [["founder", 1000]]
-"token_unit"           : [["$from", 1]]
-"min_steem_units"      : 0
-"max_steem_units"      : 1000000000
-"max_unit_ratio"     : 1000000000
-"min_unit_ratio"       : 1
+[
+ [
+  "smt_setup",
+  {
+   "control_account" : "delta",
+   "decimal_places" : 5,
+   "max_supply" : "1000000000000000",
+   "initial_generation_policy" : [0,
+    {
+     "pre_soft_cap_unit" : {
+      "steem_unit" : [["founder", 1]],
+      "token_unit" : [["founder", 10000]]
+     },
+     "post_soft_cap_unit" : {
+      "steem_unit" : [],
+      "token_unit" : []
+     },
+     "min_steem_units_commitment" : {
+      "lower_bound" : 10000000,
+      "upper_bound" : 10000000,
+      "hash" : "4e12522945b8cc2d87d54debd9563a1bb6461f1b1fa1c31876afe3514e9a1511"
+     },
+     "hard_cap_steem_units_commitment" : {
+      "lower_bound" : 10000000,
+      "upper_bound" : 10000000,
+      "hash" : "4e12522945b8cc2d87d54debd9563a1bb6461f1b1fa1c31876afe3514e9a1511"
+     },
+     "soft_cap_percent" : 10000,
+     "min_unit_ratio" : 1000,
+     "max_unit_ratio" : 1000,
+     "extensions" : []
+    }
+   ],
+   "generation_begin_time" : "2017-06-01T00:00:00",
+   "generation_end_time" : "2017-06-30T00:00:00",
+   "announced_launch_time" : "2017-07-01T00:00:00",
+   "smt_creation_fee" : "1000.000 SBD",
+   "extensions" : []
+  }
+ ],
+ [
+  "smt_cap_reveal",
+  {
+   "control_account" : "delta",
+   "cap" : { "amount" : 10000000, "nonce" : "0" },
+   "extensions" : []
+  }
+ ],
+ [
+  "smt_cap_reveal",
+  {
+   "control_account" : "delta",
+   "cap" : { "amount" : 10000000,  "nonce" : "0" },
+   "extensions" : []
+  }
+ ]
+]
 ```
-
-In this example, if 1 STEEM is contributed, that
-contributor will receive the whole 1 million tokens.
-More contributions will lower the ratio, the ratio
-can drop as low as 1 STEEM per token-satoshi.
 
 #### Vesting contributions
 
