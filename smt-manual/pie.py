@@ -198,7 +198,7 @@ for rc in reward_curves:
         plt.clf()
         fig = plt.figure(frameon=False)
         plt.subplots(nrows=3, ncols=1, figsize=(3, 6))
-        plt.tight_layout(pad=2.25)
+        plt.tight_layout(pad=3.5)
 
         ax_rc = plt.subplot(3, 1, 1, adjustable="box-forced")
         ax_rc.set_xticklabels([])
