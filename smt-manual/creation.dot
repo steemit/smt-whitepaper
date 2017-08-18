@@ -23,4 +23,7 @@ digraph {
     post2_curators -> alice[label="cc"];
     post2_curators -> bob[label="cc"];
 
+    // Title
+    labelloc = "t";
+	label = "Fig. 1";
 }
