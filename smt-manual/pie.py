@@ -203,7 +203,7 @@ for rc in reward_curves:
         ax_rc = plt.subplot(3, 1, 1, adjustable="box-forced")
         ax_rc.set_xticklabels([])
         ax_rc.set_yticklabels([])
-        plt.title("$\mathbf{Fig. 3"+figure_letters[f]+"}$\nrc_"+rc.name+" + cc_"+cc.name, y=1)
+        plt.title("$\mathbf{Fig. 2"+figure_letters[f]+"}$\nrc_"+rc.name+" + cc_"+cc.name, y=1)
         plt.ylabel("Total reward")
         rcp.plot_reward_curve("k,-")
 
