@@ -81,7 +81,7 @@ Smart Media Tokens (SMTs) is a proposal to build a meta-token protocol on the St
 
 SMTs are an evolution of the successful relationship established between STEEM and the social websites sitting atop of it, such as steemit.com, which has grown to be a top 2500 website in Alexa rankings in less than one year solely from integrating the incentive model of STEEM. With SMTs, any website or content library across the internet may have one or more tokens integrated into its interface to facilitate fundraising and autonomous growth.
 
-These tokens are designed to allow website operators flexibility during the integration of the token into their community by choosing from many parameters that may be structured creatively at outset or refined over time. Any tokens launched as Smart Media Tokens shall benefit from a blockchain ecosystem built with decentralized exchange as well as an ecosystem of open-source applications and libraries to support successful deployment, fundraising and growth.
+These tokens are designed to allow website operators flexibility during the integration of the token into their community by choosing from many parameters that may be structured creatively at outset or refined over time. Any tokens launched as SMTs shall benefit from a blockchain ecosystem built with decentralized exchange as well as an ecosystem of open-source applications and libraries to support successful deployment, fundraising and growth.
 
 
 ## Leveraging Tokens for Autonomous User Growth
