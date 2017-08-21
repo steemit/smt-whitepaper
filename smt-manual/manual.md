@@ -83,7 +83,11 @@ SMTs are an evolution of the successful relationship established between STEEM a
 
 These tokens are designed to allow website operators flexibility during the integration of the token into their community by choosing from many parameters that may be structured creatively at outset or refined over time.  Any tokens launched as Smart Media Tokens shall benefit from a blockchain ecosystem built with decentralized exchange as well as an ecosystem of open-source applications and libraries to support successful deployment, fundraising and growth.
 
-## SMTs - How Would My Entity Participate?
+## How SMTs create Autonmous User Growth
+
+## How SMTs create a Fundraising Opportunity
+
+## How Could My Entity Participate?
 
 SMTs are tokens issued on the Steem network that can be integrated into any content website or application. These tokens have the unique property of continuous generation of new units that are allocated to producers of content by the holders of the exisiting tokens through the process of competitive voting.  This mechanic aligns the interest of existing token holders, content creators and the applications that support them. 
 
