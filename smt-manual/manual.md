@@ -13,6 +13,7 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
 - [Introduction](#introduction)
   - [Leveraging Tokens for Autonomous User Growth](#leveraging-tokens-for-autonomous-user-growth)
   - [New Fundraising Opportunities](#new-fundraising-opportunities)
+  - [Immediate Liquidity](#immediate-liquidity)
   - [Can my Entity Participate in SMTs?](#can-my-entity-participate-in-smts?)
   - [Use Cases](#use-cases)
     - [1 - Content Publishers - Single Token Exposure](#1---content-publisher---single-token-exposure)
@@ -66,7 +67,6 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
   - [SMT Parameters Commentary](#smt-parameters-commentary)
 - [Decentralized Exchange](#decentralized-exchange)
   - [Automatic Order Matching](#automatic-order-matching)
-  - [Immediate Liquidity](#immediate-liquidity)
   - [Diverse Asset Types](#diverse-asset-types)
   - [Zero Trading Fees](#zero-trading-fees)
 - [Ecosystem Support](#ecosystem-support)
@@ -96,6 +96,10 @@ Entrepreneurs and established entities may rely on SMTs to grow their content ne
 ## New Fundraising Opportunities
 
 Blockchain-based tokens, beginning strongly with the advent of ERC20s on Ethereum, represent a new manner of bringing capital into an organization through the process of Initial Coin Offerings (ICOs).  ICOs are an opportunity for one group to sell an initial supply of tokens, privately or publically, for-specific-purpose, for-profit or not-for-profit. Depending on how these tokens are sold, different regulatory bodies could see them as commodities, securities, derivatives or as none of the above.  Regardless, it is clear we have seen north of one billion dollars (USD) raised through ICOs in 2017, and to support this trend, it’s possible to sell tokens in convenient manners via the built in launch contract of SMTs. The launch of SMTs can be structured for ICOs with hard, soft and no caps, and can be tailored to receive STEEM and cryptocurrencies on other blockchains.
+
+## Immediate Liquidity
+
+By leveraging a concept of automated market makers, SMT-based ICOs allow a portion of STEEM tokens received to be sent into an SMT’s on-chain market maker and taker in order to provide liquidity to the SMT at a specified reserve ratio. Beyond the social and specialized distribution mechanisms of SMTs, this market maker advances the concept of automated market makers by designing the contract to act as a participant inside the SMT’s decentralized markets, thereby providing automated liquidity as well as freedom for human actors to place bids and asks.
 
 ## Can My Entity Participate in SMTs?
 
@@ -1465,10 +1469,6 @@ All Steem based interfaces have the option of splitting token rewards among a se
 
 # Decentralized Exchange
 One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM.
-
-## Immediate Liquidity
-
-Borrowing a concept of built in market makers first popularized by Bancor, SMT-based ICOs allow a portion of STEEM tokens received to be sent into an SMT’s on-chain market maker, which will provide liquidity to the SMT at a specified reserve ratio.  Beyond the social and specialized distribution mechanisms of SMTs also bring the concept a step further than Bancor tokens by designing the market maker to act as a participant inside the SMT’s decentralized markets, thereby providing automated liquidity as well as freedom for human actors to place bids and asks.
 
 ## Automatic Order Matching
 The Decentralized Exchange (DEX) structures of Steem allow assets to automatically be matched for best possible price when bids and asks overlap, unlike other DEXs which require a man in the middle to match orders.  Automatic, rather than middle-man-faciliated, order matching is important for security of Steem-based assets and for the replicability and safety of DEX interfaces.
