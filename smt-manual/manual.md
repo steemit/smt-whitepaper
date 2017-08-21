@@ -1484,9 +1484,13 @@ The Steem DEX is the first DEX to exist without trading fees, to the benefit of 
 
 # Ecosystem Support
 
-## How to integrate tokens
+## How to Integrate SMTs
+
+### APIs and Documentation
 
 Several APIs exist ......... Sneak / Ben ?
+
+### Shared Tools for Signup, Key Signing and Wallet Functions
 
 Several shared tools exist to support applications that wish to outsource signup, transaction signing and wallet functions, such as SteemConnect (ADD link).
 
