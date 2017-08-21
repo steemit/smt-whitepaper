@@ -13,7 +13,7 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
 - [Introduction](#introduction)
   - [How SMTs Create Autonomous User Growth](#smts---how-smts-create-autonomous-user-growth)
   - [How SMTs Create Fundraising Opportunities](#smts---how-smts-create-fundraising-opportunities)
-  - [SMTs - How Would My Entity Participate?](#smts---how-would-my-entity-participate)
+  - [How Could My Entity Participate in SMTs?](#smts---how-could-my-entity-participate-in-smts?)
   - [Use Cases](#use-cases)
     - [1 - Content Publisher - Single Token Exposure - Single ICO - Website Growth](#1---content-publisher---single-token-exposure---single-ico---website-growth)
     - [2 - Forum - Multiple Token Exposure - Multiple ICOs Support - Forum Growth](#2---forum---multiple-token-exposure---multiple-icos-support---forum-growth)
@@ -89,7 +89,7 @@ These tokens are designed to allow website operators flexibility during the inte
 
 ## How SMTs Create Fundraising Opportunities
 
-## How Could My Entity Participate?
+## How Could My Entity Participate in SMTs?
 
 SMTs are tokens issued on the Steem network that can be integrated into any content website or application. These tokens have the unique property of continuous generation of new units that are allocated to producers of content by the holders of the exisiting tokens through the process of competitive voting.  This mechanic aligns the interest of existing token holders, content creators and the applications that support them. 
 
