@@ -16,8 +16,8 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
   - [Immediate Liquidity](#immediate-liquidity)
   - [Can my Entity Participate in SMTs?](#can-my-entity-participate-in-smts?)
   - [Use Cases](#use-cases)
-    - [1 - Content Publishers - Single Token Exposure](#1---content-publisher---single-token-exposure)
-    - [2 - Forums - Multiple Token Exposure](#2---forum---multiple-token-exposure)
+    - [1 - Content Publishers - Single Token Exposure](#1---content-publisher---single-token-support)
+    - [2 - Forums - Multiple Token Exposure](#2---forum---multiple-token-support)
     - [3 - IOU Assets - Tokens Representing Real World Assets](#3---iou-assets---tokens-representing-real-world-assets)
 - [Owner's manual](#owners-manual)
   - [Establish a Name Space](#establish-a-name-space)
@@ -113,13 +113,13 @@ From there, the token becomes immutable on the blockchain, and leveraged correct
 
 The use for tokens is unlimited, but we have identified three ways in which existing businesses and future entrpepreneurs can leverage the specially designed SMTs and transform the internet. Among these use cases you may notice other ways of structuring the tokens and leveraging them inside applications, as you should because this list is by no means exhaustive, however, we'll update this paper as more use cases begin to appear concrete.
 
-### 1 - Content Publishers - Single Token Exposure
+### 1 - Content Publishers - Single Token Support
 
 A mainstream media website's growth has been slowing and they are looking for ways to get ahead of the changing tech landscape. This website is using Disqus for managing their comments.  The website migrates to a Disqus-like application based on Steem.  Now their viewers can be rewarded with crypto currency while commenting.  When the website is ready, they can issue their own token through the comments interface - the token will allow them to 1) earn money by selling tokens 2) catalyze autonomous growth.
 
 Add graphic.
 
-### 2 - Forums - Multiple Token Exposure
+### 2 - Forums - Multiple Token Support
 
 An up and coming forum business is looking to integrate cryptocurrency to create cash flow and spark growth to get the business to the next level.  They issue an SMT and integrate it into their website, however, they’re not cryptocurrency security experts and would prefer not to host a cryptocurrency wallet.  Focusing solely on the social aspects, the forum business can integrate other applications, such as SteemConnect, into their forum to handle wallet and transfer capabilities.  This allows the forum to focus on their business (growing communities) without focusing on the security aspects of cryptocurrency. 
 
