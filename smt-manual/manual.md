@@ -1488,13 +1488,17 @@ The Steem DEX is the first DEX to exist without trading fees, to the benefit of 
 
 ### APIs and Documentation
 
-Several APIs exist ......... Sneak / Ben ?
+Several APIs exist ......... @Sneak / @Ben please add a paragraph here and the documentation we want to point out.
 
 ### Shared Tools for Signup, Key Signing and Wallet Functions
 
-Several shared tools exist to support applications that wish to outsource signup, transaction signing and wallet functions, such as SteemConnect (ADD link).
+Several shared tools exist to support applications that wish to outsource signup, transaction signing and wallet functions, such as SteemConnect (ADD link to SteemConnect launch post).
+
+## How to Integrate Content Support from Steem into my Website
 
 # Conclusion
+
+Through a combination of asset-issuance, bandwidth rate limiting, autonomous distribution for content, decentralized exchange, automated market making and ICO contracts, Steem will offer the premier token protocol to publishers across the internet, large and small.  Publishers will also use Steem for content provenance and censorship resistance, adding robustness to the internet of the future.
 
 # References
 
