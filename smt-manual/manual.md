@@ -103,7 +103,7 @@ By leveraging a recently discovered automated market maker concept [1], SMT-base
 
 ## Can My Entity Participate in SMTs?
 
-An SMT can be launched by person or entity; he or she only needs $1000 to cover the network fee (this prevents spam and unused tokens) and a namespace on Steem, which can be obtained by registering at anon.steem.network, steemit.com, steemconnect.com, or any other Steem sign-up service.
+An SMT can be launched by person or entity; she only needs $1000 to cover the network fee (this prevents spam and unused tokens) and a namespace on Steem, which can be obtained by registering at anon.steem.network, steemit.com, steemconnect.com, or any other Steem sign-up service.
 
 Once the desired name space is secured, the entity issues the token in the interface by using a Steem-based Command Line Tool or another tool created in the future. The token can be structured to support an intitial sale or distribution of the token. The token must also be defined, as in inflation properties of the token - these properties will dictate how the token is used inside applications and respective communities.
 
