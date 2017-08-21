@@ -1498,7 +1498,7 @@ Several shared tools exist to support applications that wish to outsource signup
 
 # Conclusion
 
-Through a combination of asset-issuance, bandwidth rate limiting, autonomous distribution for content, decentralized exchange, automated market making and ICO contracts, Steem will offer the premier token protocol to publishers across the internet, large and small.  Publishers will also use Steem for content provenance and censorship resistance, adding robustness to the internet of the future.
+Through a combination of asset-issuance, bandwidth rate limiting, real-time transaction speeds, autonomous distribution for content, decentralized exchange, automated market making and ICO contracts, Steem will offer the premier token protocol to publishers across the internet, large and small.  Publishers will also use Steem for content provenance and censorship resistance, adding robustness to the internet of the future.
 
 # References
 
