@@ -66,6 +66,7 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
   - [SMT Parameters Commentary](#smt-parameters-commentary)
 - [Decentralized Exchange](#decentralized-exchange)
   - [Automatic Order Matching](#automatic-order-matching)
+  - [Immediate Liquidity](#immediate-liquidity)
   - [Diverse Asset Types](#diverse-asset-types)
   - [Zero Trading Fees](#zero-trading-fees)
 - [Ecosystem Support](#ecosystem-support)
@@ -1459,6 +1460,10 @@ All Steem based interfaces have the option of splitting token rewards among a se
 
 # Decentralized Exchange
 One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM.
+
+## Immediate Liquidity
+
+Borrowing a concept of built in market makers first popularized by Bancor, SMT-based ICOs allow a portion of STEEM tokens received to be sent into an SMT’s on-chain market maker, which will provide liquidity to the SMT at a specified reserve ratio.  Beyond the social and specialized distribution mechanisms of SMTs also bring the concept a step further than Bancor tokens by designing the market maker to act as a participant inside the SMT’s decentralized markets, thereby providing automated liquidity as well as freedom for human actors to place bids and asks.
 
 ## Automatic Order Matching
 The Decentralized Exchange (DEX) structures of Steem allow assets to automatically be matched for best possible price when bids and asks overlap, unlike other DEXs which require a man in the middle to match orders.  Automatic, rather than middle-man-faciliated, order matching is important for security of Steem-based assets and for the replicability and safety of DEX interfaces.
