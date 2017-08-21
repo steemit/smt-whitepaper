@@ -99,7 +99,7 @@ Blockchain-based tokens, beginning strongly with the advent of ERC20s on Ethereu
 
 ## Immediate Liquidity
 
-By leveraging a concept of automated market makers [1], SMT-based ICOs allow a portion of STEEM tokens received to be sent into an SMT’s on-chain market maker and taker in order to provide liquidity to the SMT at a specified reserve ratio. Beyond the social and specialized distribution mechanisms of SMTs, this feature advances the concept of automated market makers by design; Instead of existing outside of real markets, the SMT market maker smart contract acts as a participant inside the SMT’s decentralized markets, thereby providing automated liquidity as well as freedom for human actors to place bids and asks.
+By leveraging a recently discoverd automated market maker concept [1], SMT-based ICOs allow a portion of STEEM tokens received to be sent into an SMT’s on-chain market maker and taker in order to provide liquidity to the SMT at a specified reserve ratio. Beyond the social and specialized distribution mechanisms of SMTs, this feature advances the concept of automated market makers by design; Instead of existing outside of real markets, the SMT market maker smart contract acts as a participant inside the SMT’s decentralized markets, thereby providing automated liquidity as well as freedom for human actors to place bids and asks.
 
 ## Can My Entity Participate in SMTs?
 
