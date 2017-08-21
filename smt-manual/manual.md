@@ -1496,5 +1496,7 @@ Several shared tools exist to support applications that wish to outsource signup
 
 # Conclusion
 
+# References
+
 [1] Eyal Hertzog, Guy Benartzi & Galia Benartzi. Bancor Protocol. Continuous Liquidity and Asynchronous Price
 Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)
