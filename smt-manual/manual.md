@@ -1494,7 +1494,7 @@ Several APIs exist ......... @Sneak / @Ben please add a paragraph here and the d
 
 Several shared tools exist to support applications that wish to outsource signup, transaction signing and wallet functions, such as SteemConnect (ADD link to SteemConnect launch post).
 
-## How to Integrate Content Support from Steem into my Website
+## How to Integrate Content from Steem into Websites and Apps
 
 # Conclusion
 
