@@ -64,15 +64,12 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
   - [Mandatory token parameters](#mandatory-token-parameters)
     - [Arbitrary Reward Splitting](#arbitrary-reward-splitting)
   - [SMT interaction with existing operations](#smt-interaction-with-existing-operations)
-  - [SMT Parameters Commentary](#smt-parameters-commentary)
 - [Decentralized Exchange](#decentralized-exchange)
   - [Automatic Order Matching](#automatic-order-matching)
   - [Diverse Asset Types](#diverse-asset-types)
   - [Zero Trading Fees](#zero-trading-fees)
 - [Ecosystem Support](#ecosystem-support)
   - [How to integrate tokens](#how-to-integrate-tokens)
-  - [Existing publisher](#existing-publisher)
-  - [New application](#new-application)
 - [Conclusion](#conclusion)
 
 - Github: https://github.com/steemit/smt-whitepaper/blob/collab/smt-manual/manual.md
@@ -1465,8 +1462,6 @@ All Steem based interfaces have the option of splitting token rewards among a se
 - `claim_reward_balance_operation` : Restrictions on this operation are relaxed to allow any asset in any of the three fields, including SMT's.
 - `delegate_vesting_shares_operation` : Supports all SMT's that support vesting.
 
-## SMT Parameters Commentary
-
 # Decentralized Exchange
 One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM.
 
@@ -1491,9 +1486,9 @@ The Steem DEX is the first DEX to exist without trading fees, to the benefit of 
 
 ## How to integrate tokens
 
-## Existing publisher
+Several APIs exist ......... Sneak / Ben ?
 
-## New application
+Several shared tools exist to support applications that wish to outsource signup, transaction signing and wallet functions, such as SteemConnect (ADD link).
 
 # Conclusion
 
