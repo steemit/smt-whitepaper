@@ -11,9 +11,9 @@
 Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth in Online Communities
 
 - [Introduction](#introduction)
-  - [SMTs Create Autonomous User Growth](#smts---how-smts-create-autonomous-user-growth)
-  - [SMTs Create Fundraising Opportunities](#smts---how-smts-create-fundraising-opportunities)
-  - [Can my Entity Participate in SMTs?](#smts---how-could-my-entity-participate-in-smts?)
+  - [Leveraging Tokens for Autonomous User Growth](#leveraging-tokens-for-autonomous-user-growth)
+  - [New Fundraising Opportunities](#new-fundraising-opportunities)
+  - [Can my Entity Participate in SMTs?](#can-my-entity-participate-in-smts?)
   - [Use Cases](#use-cases)
     - [1 - Content Publishers - Single Token Exposure](#1---content-publisher---single-token-exposure)
     - [2 - Forums - Multiple Token Exposure](#2---forum---multiple-token-exposure)
@@ -85,9 +85,9 @@ SMTs are an evolution of the successful relationship established between STEEM a
 
 These tokens are designed to allow website operators flexibility during the integration of the token into their community by choosing from many parameters that may be structured creatively at outset or refined over time.  Any tokens launched as Smart Media Tokens shall benefit from a blockchain ecosystem built with decentralized exchange as well as an ecosystem of open-source applications and libraries to support successful deployment, fundraising and growth.
 
-## SMTs Create Autonomous User Growth
+## Leveraging Tokens for Autonomous User Growth
 
-## SMTs Create Fundraising Opportunities
+## New Fundraising Opportunities
 
 ## Can My Entity Participate in SMTs?
 
