@@ -19,7 +19,7 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
     - [1 - Content Publishers - Single Token Support](#1---content-publishers---single-token-support)
     - [2 - Forums - Multiple Token Support](#2---forums---multiple-token-support)
     - [3 - Comments Widget for Online Publishers](#3---comments-widget-for-online-publishers)
-    - [4 - Sub-Community Managers on Forums](#4---sub--community-managers-on-forums)
+    - [4 - Sub-Community Managers](#4---sub--community-managers)
     - [5 - IOU Assets - Tokens Representing Real World Assets](#5---iou-assets---tokens-representing-real-world-assets)
 - [Owner's manual](#owners-manual)
   - [Establish a Name Space](#establish-a-name-space)
@@ -134,7 +134,7 @@ One of the ways in which publishers will be faster onboarded to SMT integrations
 
 Add graphic.
 
-### 4 - Sub-Communities on Forums
+### 4 - Sub-Community Managers
 
 Add graphic.
 
