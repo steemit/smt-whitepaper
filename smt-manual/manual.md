@@ -14,10 +14,10 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
   - [Leveraging Tokens for Autonomous User Growth](#leveraging-tokens-for-autonomous-user-growth)
   - [New Fundraising Opportunities](#new-fundraising-opportunities)
   - [Immediate Liquidity](#immediate-liquidity)
-  - [Can my Entity Participate in SMTs?](#can-my-entity-participate-in-smts?)
+  - [Can My Entity Participate in SMTs?](#can-my-entity-participate-in-smts)
   - [Use Cases](#use-cases)
-    - [1 - Content Publishers - Single Token Support](#1---content-publisher---single-token-support)
-    - [2 - Forums - Multiple Token Support](#2---forum---multiple-token-support)
+    - [1 - Content Publishers - Single Token Support](#1---content-publishers---single-token-support)
+    - [2 - Forums - Multiple Token Support](#2---forums---multiple-token-support)
     - [3 - IOU Assets - Tokens Representing Real World Assets](#3---iou-assets---tokens-representing-real-world-assets)
 - [Owner's manual](#owners-manual)
   - [Establish a Name Space](#establish-a-name-space)
@@ -69,8 +69,12 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
   - [Diverse Asset Types](#diverse-asset-types)
   - [Zero Trading Fees](#zero-trading-fees)
 - [Ecosystem Support](#ecosystem-support)
-  - [How to integrate tokens](#how-to-integrate-tokens)
+  - [How to Integrate SMTs](#how-to-integrate-smts)
+    - [APIs and Documentation](#apis-and-documentation)
+    - [Shared Tools for Signup, Key Signing and Wallet Functions](#shared-tools-for-signup-key-signing-and-wallet-functions)
+  - [How to Integrate Content from Steem into Websites and Apps](#how-to-integrate-content-from-steem-into-websites-and-apps)
 - [Conclusion](#conclusion)
+- [References](#references)
 
 - Github: https://github.com/steemit/smt-whitepaper/blob/collab/smt-manual/manual.md
 - Git Changes: https://github.com/steemit/smt-whitepaper/commit/6eab36d3b941f52f65e78f3be72efdd5bf5afc2e
