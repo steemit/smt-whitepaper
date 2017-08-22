@@ -1284,8 +1284,6 @@ Possible curation curves are:
 - Square-root `cc(r) = sqrt(r)`
 - Bounded `cc(r) = r / (r + 2s)`.
 
-TODO:  File a ticket to rename `quadratic_curation` to `bounded` in the code
-
 To help visualize, here are some plots called *pie charts*.  Each colored area
 represents how curation rewards are divided among curators with equal voting power.
 
@@ -1308,9 +1306,6 @@ should be to reward successful predictions.  Which curve satisfies this criterio
 In practice, independence or a modest positive correlation should be expected, so an `ICR=` or `ICR-` curve should be chosen.
 For STEEM itself, curation was originally the quadratic `ICR=`, as of hardfork 0.19 it is the linear `ICR=`.
 
-TODO:  Possibly decreasing-slope reward curve?
-TODO:  Possibly `ICR-` curve for quadratic?
-
 ## Target votes per day
 
 Each account has a `voting_power`, which is essentially a "mana bar" that fills from 0% to 100% over time at a constant rate.
@@ -1323,9 +1318,6 @@ The `vote_regeneration_period_seconds` is specified directly.  For (b), instead 
 specifying the voting power of a maximum-strength vote directly, instead you specify
 `votes_per_regeneration_period`.  Then the maximum-strength vote is set such that a
 user casting that many max-strength votes will exactly cancel the regeneration.
-
-TODO:  File ticket to change from target votes per day to target votes per period
-TODO:  File ticket to refactor out voting computations
 
 ## Votability and Rewardability
 
