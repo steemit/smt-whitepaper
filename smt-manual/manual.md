@@ -18,7 +18,9 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
   - [Use Cases](#use-cases)
     - [1 - Content Publishers - Single Token Support](#1---content-publishers---single-token-support)
     - [2 - Forums - Multiple Token Support](#2---forums---multiple-token-support)
-    - [3 - IOU Assets - Tokens Representing Real World Assets](#3---iou-assets---tokens-representing-real-world-assets)
+    - [3 - Comments Widget for Online Publishers](#3---comments-widget-for-online-publishers)
+    - [4 - Sub-Community Managers on Forums](#4---sub--community-managers-on-forums)
+    - [5 - IOU Assets - Tokens Representing Real World Assets](#5---iou-assets---tokens-representing-real-world-assets)
 - [Owner's manual](#owners-manual)
   - [Establish a Name Space](#establish-a-name-space)
     - [Token consensus](#token-consensus)
@@ -116,17 +118,27 @@ The use for tokens is unlimited, but we have identified three ways in which exis
 
 ### 1 - Content Publishers - Single Token Support
 
-A mainstream media website's growth has been slowing and they are looking for ways to get ahead of the changing tech landscape. This website is using Disqus for managing their comments.  The website migrates to a Disqus-like application based on Steem.  Now their subscribers can be rewarded with crypto currency while commenting.  When the website is ready, they can issue their own token through the comments interface - the token will allow them to 1) raise capital by selling tokens 2) catalyze autonomous growth.
+A mainstream media website's growth has been slowing and they are looking for ways to get ahead of the changing tech landscape.  The website migrates to a Disqus-like application based on Steem or taps directly into Steem APIs for a custom integraton.  Now their subscribers can be rewarded with crypto currency while commenting.  When the website is ready, they can issue their own token through the comments interface - the token will allow them to 1) raise capital by selling tokens 2) catalyze autonomous growth.
 
 Add graphic.
 
 ### 2 - Forums - Multiple Token Support
 
-An up and coming forum business is looking to integrate cryptocurrency to create cash flow and spark growth to get the business to the next level.  They issue an SMT and integrate it into their website, however, they’re not cryptocurrency security experts and would prefer not to host a cryptocurrency wallet.  Focusing solely on the social aspects, the forum business can integrate other applications, such as SteemConnect, into their forum to handle wallet and transfer capabilities.  This allows the forum to focus on their business (growing communities) without focusing on the security aspects of cryptocurrency. 
+An up and coming forum business is looking to integrate cryptocurrency to create cash flow and spark growth to get the business to the next level.  They issue an SMT and integrate it into their website, however, they’re not cryptocurrency security experts and would prefer not to host a cryptocurrency wallet.  Focusing solely on the social aspects, the forum business can integrate other applications, such as SteemConnect, into their forum to handle wallet and transfer capabilities.  This allows the forum to focus on their business (growing communities) without focusing on the security aspects of cryptocurrency. The forum enables additional tokens to be exposed or launched to represent specific topics of discussion. The ability to launch these tokens can be retained by the company behind the website or granted to the website's community managers.  Tokens dedicated to the website's specific topics will further spur autonmous growth of the website niche by niche.
 
 Add graphic.
 
-### 3 - IOU Assets - Tokens Representing Real World Assets
+### 3 - Comments Widget for Online Publishers
+
+One of the ways in which publishers will be faster onboarded to SMT integrations is by offering a Steem-based comments widget that can easily be integrated by existing blogs that are built on software such as WordPress and Blogger.  A comments widget would be able to set arbitrary fees on the tokens distributed through its aplication, thereby creating a business opportunity for the next generation of Disqus-like companies that are cryptocurrency enabled.  It would alleviate the burdens of transaction signing support, wallet functionality and hosting costs for the publisher by outsourcing the key these to the comments widget maintainer.
+
+Add graphic.
+
+### 4 - Sub-Communities on Forums
+
+Add graphic.
+
+### 5 - IOU Assets - Tokens Representing Real World Assets
 
 An entrepreneur is looking to provide liquidity in the Steem ecosystem. They issue an SMT without inflation properties and imply that they will provide structure to peg it to the USD, making it like an IOU or basic derivative.  The structure they provide to the asset includes buying and selling it near $1, similar to Tether. The entrepreneur sets up bank wire capabilities for buying and selling and takes a small % on each transaction. The derivative trades against STEEM and also brings capital into the ecosystem to be used across tokens. 
 
