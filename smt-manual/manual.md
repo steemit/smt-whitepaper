@@ -144,6 +144,10 @@ An entrepreneur is looking to provide liquidity in the Steem ecosystem. They iss
 
 Add graphic.
 
+### 6 - Token Exchanges
+
+Add graphic.
+
 # Owner's manual
 
 This manual will explain the nuts and bolts of how SMTs work.
