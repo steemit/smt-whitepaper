@@ -34,7 +34,7 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
     - [Hidden caps](#hidden-caps)
     - [Generation policy data structure](#generation-policy-data-structure)
     - [Examples and rationale](#examples-and-rationale)
-      - [Example ITO](#example-ito)
+      - [Example ICO](#example-ico)
       - [Why unit ratios?](#why-unit-ratios)
       - [UI treatment of unit ratios](#ui-treatment-of-unit-ratios)
       - [Hidden cap FAQ](#hidden-cap-faq)
@@ -47,7 +47,7 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
       - [Vesting contributions](#vesting-contributions)
       - [Burning contributed STEEM](#burning-contributed-steem)
       - [Vesting as cost](#vesting-as-cost)
-      - [Non-STEEM & Hybrid ITO's](#non-steem--hybrid-itos)
+      - [Non-STEEM & Hybrid ICO's](#non-steem--hybrid-icos)
     - [Inflation Parameters](#inflation-parameters)
       - [Possible inflation target](#possible-inflation-target)
       - [Event sequences](#event-sequences)
@@ -227,26 +227,26 @@ of the control account becomes the name of the token.  The
 of decimals.
 
 The `generation_begin_time` is when participants can begin to contribute
-to the ITO.  It is allowed to be in the future so users have time
-to study the ITO's final terms before the ITO begins.
+to the ICO.  It is allowed to be in the future so users have time
+to study the ICO's final terms before the ICO begins.
 
-The `generation_end_time` is when the ITO stops accepting contributions,
-and the `announced_launch_time` is when the ITO token is created (assuming
-the ITO reached the minimum participation level).  Some pause is allocated
+The `generation_end_time` is when the ICO stops accepting contributions,
+and the `announced_launch_time` is when the ICO token is created (assuming
+the ICO reached the minimum participation level).  Some pause is allocated
 between the `generation_end_time` and `announced_launch_time` to allow for
-the possibility of ITO's that wish to have hidden caps that aren't revealed
-while the ITO is open for contributions.  It also gives the ITO creator
-time to use the final ITO numbers to aid in pre-launch business
+the possibility of ICO's that wish to have hidden caps that aren't revealed
+while the ICO is open for contributions.  It also gives the ICO creator
+time to use the final ICO numbers to aid in pre-launch business
 activities.
 
 ### Token units
 
 Initial token generation is driven by a contributions of *STEEM
 units* from contributors.  To simplify rounding concerns, a
-contribution must be an integer number of STEEM units.  The ITO
+contribution must be an integer number of STEEM units.  The ICO
 creator sets the size of a STEEM unit, it can be large or small.
 It is better to keep the unit small (for example, 1 STEEM or
-0.1 STEEM), as this allows the ITO to be accessible to the
+0.1 STEEM), as this allows the ICO to be accessible to the
 maximum possible audience.
 
 A STEEM unit also specifies a *routing policy* which determines
@@ -254,7 +254,7 @@ where the STEEM goes when the token launches.  (STEEM for tokens
 which do not launch may be refunded on demand.)  The routing
 policy may split the STEEM in the unit among multiple parties.
 
-When the ITO occurs, the tokens are generated in *token units*.
+When the ICO occurs, the tokens are generated in *token units*.
 Multiple token units are generated per STEEM unit contributed.
 Token units also have a routing policy.
 
@@ -281,11 +281,11 @@ units in an R-for-1 ratio.  The number R is called the
 R are specified respectively in the `min_unit_ratio`
 and `max_unit_ratio` fields of `smt_generation_policy`.
 
-The maximum number of token units that can be created in the ITO
+The maximum number of token units that can be created in the ICO
 is limited to `max_token_units_generated`, a parameter which is set by
-the ITO creator.  (More tokens can be created after the
+the ICO creator.  (More tokens can be created after the
 token has launched, but this later creation is called *inflation*
-and is not considered to be part of the ITO.)
+and is not considered to be part of the ICO.)
 
 The unit ratio is set to the largest integer that would
 not result in exceeding `max_token_units_generated` for the number
@@ -293,29 +293,29 @@ of STEEM units actually contributed.
 
 ### Cap and min
 
-ITO's may specify a minimum number of STEEM units `min_steem_units`.
-If the ITO does not reach `min_steem_units` before `generation_end_time`,
+ICO's may specify a minimum number of STEEM units `min_steem_units`.
+If the ICO does not reach `min_steem_units` before `generation_end_time`,
 then it does not occur and contributors become eligible for refunds.
 
-Likewise, ITO's may specify two maximum numbers of STEEM units:
+Likewise, ICO's may specify two maximum numbers of STEEM units:
 A *hard cap* and a *soft cap*.  Units in excess of the soft cap
 have different routing for their STEEM and tokens.  STEEM units in
 excess of the hard cap are rejected and do not generate any SMT's.
 
 The effects of the soft cap are divided equally among all contributors.
-I.e. if a ITO has a soft cap of 8 million STEEM, and 10 contributors
+I.e. if a ICO has a soft cap of 8 million STEEM, and 10 contributors
 each contribute 1 million STEEM, then 0.2 million of
 *each user's* STEEM is routed via the soft cap's policy.
 
 The effects of the hard cap fall solely on the last contributors.
-I.e. if a ITO has a hard cap of 8 million STEEM, and 10 contributors each
+I.e. if a ICO has a hard cap of 8 million STEEM, and 10 contributors each
 contribute 1 million STEEM, then the first 8 users fully participate
-in the ITO, and the last 2 users are refunded 1 million STEEM.
+in the ICO, and the last 2 users are refunded 1 million STEEM.
 
 ### Hidden caps
 
 The min and hard cap are *hidden* in the generation policy.  This means
-that these numbers are fixed at setup time, but the ITO creator has the
+that these numbers are fixed at setup time, but the ICO creator has the
 option to keep it secret.  This functionality is implemented by a
 *commit/reveal* cryptographic protocol:  A hash called the *commitment*
 is published at setup time, and the actual amount must match the
@@ -351,7 +351,7 @@ struct smt_cap_reveal_operation
 ```
 
 All caps are hidden, but the cap may be revealed at any point in time.
-Therefore, a ITO with a non-hidden minimum or cap may be implemented by
+Therefore, a ICO with a non-hidden minimum or cap may be implemented by
 simply including the `smt_cap_reveal_operation` in the same transaction
 as the `smt_setup_operation`.  UI's should provide functionality for this.
 
@@ -402,7 +402,7 @@ generation policy semantics with different parameters.
 
 ### Examples and rationale
 
-#### Example ITO
+#### Example ICO
 
 ALPHA wants to sell a token to the crowd to raise funds
 where 7% of contributed STEEM goes to Founder Account A, 23% of contributed STEEM
@@ -441,7 +441,7 @@ has 4 decimal places).
 Next we define the *unit ratio* as the relative rate at which `token_unit`
 are issued as `steem_unit` are contributed.  So to match the specification
 of 6 ALPHA per 1 STEEM, we need to issue 1000 ALPHA-units per STEEM-unit.
-Therefore the unit ratio of this ITO is 1000.  This unit ratio is placed in
+Therefore the unit ratio of this ICO is 1000.  This unit ratio is placed in
 the `min_unit_ratio` and `max_unit_ratio` fields of the
 `smt_capped_generation_policy` data structure:
 
@@ -459,7 +459,7 @@ of the `$from` account.
 Why does the blockchain use unit ratios, rather than simply specifying
 prices?
 
-The answer is that it is possible to write ITO definitions for which
+The answer is that it is possible to write ICO definitions for which
 price is ill-defined.  For example:
 
 - `"$from"` does not occur in `token_unit`
@@ -467,14 +467,14 @@ price is ill-defined.  For example:
 - A combination of `"$from"` and `"$from.vesting"` occurs
 - Future expansion allows new special accounts
 
-All of these ITO definitions have a unit ratio, but defining a
+All of these ICO definitions have a unit ratio, but defining a
 single quantity to call "price" is complicated or impossible for
-ITO's like these.
+ICO's like these.
 
 #### UI treatment of unit ratios
 
-As a consequence of the above, the concept of "ITO price" is purely
-a UI-level concept.  UI's which provide a ITO price should do the following:
+As a consequence of the above, the concept of "ICO price" is purely
+a UI-level concept.  UI's which provide a ICO price should do the following:
 
 - Document the precise definition of "price" provided by the UI
 - Be well-behaved for pathological input like above
@@ -482,9 +482,9 @@ a UI-level concept.  UI's which provide a ITO price should do the following:
 
 #### Hidden cap FAQ
 
-- Q: Should my ITO have a cap?
-- A: Some set of people stay away from uncapped ITO's due to perceived "greed",
-or want a guaranteed lower bound on the percentage of the ITO their
+- Q: Should my ICO have a cap?
+- A: Some set of people stay away from uncapped ICO's due to perceived "greed",
+or want a guaranteed lower bound on the percentage of the ICO their
 contribution will buy.  If you want this set of people to participate,
 use a cap.
 
@@ -492,7 +492,7 @@ use a cap.
 - A: Some people like the transparency and certainty of a public cap.
 Other people think a hidden cap creates excitement and builds demand.  One
 possible compromise is to publish the previous and next power of 10, for example
-"this ITO's cap is between 1 million and 10 million STEEM."
+"this ICO's cap is between 1 million and 10 million STEEM."
 
 - Q: How do I disable the cap?
 - A: Set it so that the cap would occur above `STEEMIT_MAX_SHARE_SUPPLY`.
@@ -517,11 +517,11 @@ the launch logic is executed.
 The reasons for this design are as follows:
 
 - The hidden cap isn't published immediately (that's the definition of *hidden*).
-- Publishing the hidden cap is an action that must be done by the ITO creator
+- Publishing the hidden cap is an action that must be done by the ICO creator
 (again, any action requiring non-public information to occur cannot happen
 automatically on a blockchain).
-- If the ITO creator never acts, then the launch logic will never execute.
-- In the case of such a malicious or unresponsive ITO creator, contributors'
+- If the ICO creator never acts, then the launch logic will never execute.
+- In the case of such a malicious or unresponsive ICO creator, contributors'
 STEEM would effectively be trapped forever, and they would never receive any tokens.
 - To keep the STEEM from being trapped in this way, the `smt_refund_operation`
 is implemented.
@@ -539,10 +539,10 @@ struct smt_refund_operation
 ```
 
 Note, users are not *required* to use `smt_refund_operation`; each individual
-contributor must opt-in to receiving a refund.  If the ITO creator publicizes a
+contributor must opt-in to receiving a refund.  If the ICO creator publicizes a
 legitimate reason they failed to publish before `announced_launch_time`, it is
 possible that all/most contributors will voluntarily choose not to use
-`smt_refund_operation`.  In this case, the launch will occur as soon as the ITO
+`smt_refund_operation`.  In this case, the launch will occur as soon as the ICO
 creator publishes the hidden values.
 
 The launch logic considers a contribution followed by a refund to be
@@ -550,20 +550,20 @@ equivalent to not having contributed at all.  Therefore, when a delayed launch
 occurs, each contributor will be in *exactly one* of the following two states:
 
 - The contributor has executed `smt_refund_operation`, received their STEEM back,
-and will not participate in the ITO
-- The contributor has not been issued a refund, and will participate in the ITO
+and will not participate in the ICO
+- The contributor has not been issued a refund, and will participate in the ICO
 
 It is possible for a delayed launch to have exceeded its
 `min_steem_units` value at the announced launch time, but subsequently
 falls below its `min_steem_units` value as a result of refunds.  In such
-a case, the ITO will not occur; it will be treated as if it had never
+a case, the ICO will not occur; it will be treated as if it had never
 reached its `min_steem_units`.
 
 ### Full JSON examples
 
 #### ALPHA
 
-This example builds on the ALPHA example from earlier.  This ITO
+This example builds on the ALPHA example from earlier.  This ICO
 has the following characteristics:
 
 - 7% of contributed STEEM goes to Founder Account A
@@ -666,7 +666,7 @@ The BETA token is created with the following rules:
 - If more than 75,000 STEEM is contributed, the contributors, George and Harry will receive BETA in a 70% / 10% / 20% ratio, such that the total is fixed at 1.5 million BETA.
 - As a consequence of the hard cap, the contributors, George and Harry will receive at least 7, 1, and 2 BETA per STEEM contributed (respectively).
 
-This example is chosen to demonstrate how the ratios work.  It is not a realistic example, as most ITO's
+This example is chosen to demonstrate how the ratios work.  It is not a realistic example, as most ICO's
 will choose to either set `min_unit_ratio = max_unit_ratio` like ALPHA, or choose to use a large `max_unit_ratio` like
 BETA.
 
@@ -730,13 +730,13 @@ BETA.
 ]
 ```
 
-[This spreadsheet](ito-parameters.ods) will make the relationship clear.
+[This spreadsheet](ico-parameters.ods) will make the relationship clear.
 
 #### GAMMA
 
 The GAMMA token is like BETA, but with one difference:  The
 large `max_unit_ratio` means that the maximum issue of 1.5 million
-tokens is reached very early in the ITO.  This ITO effectively
+tokens is reached very early in the ICO.  This ICO effectively
 divides 1.5 million GAMMA tokens between contributors (provided at least
 5 STEEM is contributed).
 
@@ -802,7 +802,7 @@ divides 1.5 million GAMMA tokens between contributors (provided at least
 
 #### DELTA
 
-In this ITO we have one million DELTA tokens created
+In this ICO we have one million DELTA tokens created
 for the founder, and none for contributors.  A modest
 contribution of 0.1 STEEM can be made by any user
 (including the founder themselves) to trigger the
@@ -880,8 +880,8 @@ liquidity.  This example puts 95% in vesting.
 
 #### Burning contributed STEEM
 
-In this ITO, the STEEM is permanently destroyed rather than going into the wallet of any person.
-This mimics the structure of the Counterparty ITO.
+In this ICO, the STEEM is permanently destroyed rather than going into the wallet of any person.
+This mimics the structure of the Counterparty ICO.
 
 ```
 {
@@ -892,7 +892,7 @@ This mimics the structure of the Counterparty ITO.
 
 #### Vesting as cost
 
-In this ITO, you don't send STEEM to the issuer in exchange for tokens.  Instead, you vest STEEM (to yourself),
+In this ICO, you don't send STEEM to the issuer in exchange for tokens.  Instead, you vest STEEM (to yourself),
 and tokens are issued to you equal to the STEEM you vested.
 
 ```
@@ -902,10 +902,10 @@ and tokens are issued to you equal to the STEEM you vested.
 }
 ```
 
-#### Non-STEEM & Hybrid ITO's
+#### Non-STEEM & Hybrid ICO's
 
-ITO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. --
-cannot be done fully automatically on-chain.   However, such ITO's can be
+ICO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. --
+cannot be done fully automatically on-chain.   However, such ICO's can be
 managed by manually transferring some founder account's distribution to
 buyers' Steem accounts in proportion to their non-STEEM contribution.
 
