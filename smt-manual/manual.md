@@ -1190,7 +1190,7 @@ struct smt_set_runtime_parameters_operation
 };
 ```
 
-Currently no `setup_parameters` are defined.
+Currently the following `setup_parameters` and `runtime_parameters` are defined:
 
 ```
 struct smt_param_allow_vesting                    { bool value = true;  };
