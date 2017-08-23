@@ -302,10 +302,11 @@ A *hard cap* and a *soft cap*.  Units in excess of the soft cap
 have different routing for their STEEM and tokens.  STEEM units in
 excess of the hard cap are rejected and do not generate any SMT's.
 
-The effects of the soft cap are divided equally among all contributors.
-I.e. if a ITO has a soft cap of 8 million STEEM, and 10 contributors
-each contribute 1 million STEEM, then 0.2 million of
-*each user's* STEEM is routed via the soft cap's policy.
+The effects of the soft cap are divided proportionally among
+all contributors.  I.e. if a ITO has a soft cap of 8 million
+STEEM, and 10 contributors each contribute 1 million STEEM,
+then 0.2 million of *each user's* STEEM is routed via the
+soft cap's policy.
 
 The effects of the hard cap fall solely on the last contributors.
 I.e. if a ITO has a hard cap of 8 million STEEM, and 10 contributors each
