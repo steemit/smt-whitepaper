@@ -114,7 +114,7 @@ From there, the token becomes immutable on the blockchain, and leveraged correct
 
 ## Use Cases
 
-The use for tokens is unlimited, but we have identified three ways in which existing businesses and future entrpepreneurs can leverage the specially designed SMTs and transform the internet. Among these use cases you may notice other ways of structuring the tokens and leveraging them inside applications, as you should because this list is by no means exhaustive, however, we'll update this paper as more use cases begin to appear concrete.
+The use for tokens is unlimited, but we have identified five ways in which existing businesses and future entrpepreneurs can leverage the specially designed SMTs and transform the internet. Among these use cases you may notice other ways of structuring the tokens and leveraging them inside applications, as you should because this list is by no means exhaustive, however, we'll update this paper as more use cases begin to appear concrete.
 
 ### 1 - Content Publishers - Single Token Support
 
