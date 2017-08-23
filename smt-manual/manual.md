@@ -243,7 +243,7 @@ activities.
 
 ### Token units
 
-Initial token generation is driven by a contributions of *STEEM
+Initial token generation is driven by a contribution of *STEEM
 units* from contributors.  To simplify rounding concerns, a
 contribution must be an integer number of STEEM units.  The ICO
 creator sets the size of a STEEM unit, it can be large or small.
