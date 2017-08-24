@@ -1517,3 +1517,9 @@ Through a combination of asset-issuance, bandwidth rate limiting, real-time tran
 
 [1] Eyal Hertzog, Guy Benartzi & Galia Benartzi. Bancor Protocol. Continuous Liquidity and Asynchronous Price
 Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)
+
+# Appendix
+
+## Implementation Notes
+
+## Unit Tests
