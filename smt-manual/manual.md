@@ -19,7 +19,7 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
     - [1 - Content Publishers - Single Token Support](#1---content-publishers---single-token-support)
     - [2 - Forums - Multiple Token Support](#2---forums---multiple-token-support)
     - [3 - Comments Widget for Online Publishers](#3---comments-widget-for-online-publishers)
-    - [4 - Sub-Community Moderators and Managers](#4---sub--community-moderators-and-managers)
+    - [4 - Sub-Community Moderators and Managers](#4---sub-community-moderators-and-managers)
     - [5 - IOU Assets - Tokens Representing Real World Assets](#5---iou-assets---tokens-representing-real-world-assets)
 - [Owner's manual](#owners-manual)
   - [Establish a Name Space](#establish-a-name-space)
@@ -77,6 +77,9 @@ Steem Proposal: A Token Issuance Protocol for Fundraising and Autonomous Growth 
   - [How to Integrate Content from Steem into Websites and Apps](#how-to-integrate-content-from-steem-into-websites-and-apps)
 - [Conclusion](#conclusion)
 - [References](#references)
+- [Appendix](#appendix)
+  - [Implementation Notes](#implementation-notes)
+  - [Unit Tests](#unit-tests)
 
 - Github: https://github.com/steemit/smt-whitepaper/blob/collab/smt-manual/manual.md
 - Git Changes: https://github.com/steemit/smt-whitepaper/commit/6eab36d3b941f52f65e78f3be72efdd5bf5afc2e
