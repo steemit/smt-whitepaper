@@ -1484,7 +1484,7 @@ Like STEEM, SMTs can be transferred across Steem at zero cost. Steem enables thi
 
 ## Demand for Steem 
 
-Because users need to increasingly hold STEEM in order to participate at a rate commensurate with their growing potentials in respective SMT ecosystems, there is growing demand for users to hold STEEM. At an application level, the demand for bandwidth may be satisfied by users or by businesses, which can delegate surplus bandwidth to their users.  At a platform level, other cause for demand may include exclusive financing opportunities, increased rate of holding due to market maker reserve ratios and growing attention on the base currency.
+Because users need to increasingly hold STEEM in order to participate at a rate commensurate with their growing potentials in respective SMT ecosystems, there is growing demand for users to hold STEEM. At an application level, the demand for bandwidth may be satisfied by users or by businesses, which can delegate surplus bandwidth to their users.  At a platform level, other cause for demand may include exclusive financing opportunities, increased rate of holding due to market maker reserve ratios and growing attention to the base currency.
 
 ## Costless Operations Necessary for Quality User Experience
 
