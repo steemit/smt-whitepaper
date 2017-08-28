@@ -1478,6 +1478,12 @@ All Steem based interfaces have the option of splitting token rewards among a se
 - `claim_reward_balance_operation` : Restrictions on this operation are relaxed to allow any asset in any of the three fields, including SMT's.
 - `delegate_vesting_shares_operation` : Supports all SMT's that support vesting.
 
+# Costless SMT Transfers And Demand for Steem as Bandwidth Allowance
+
+Like STEEM, SMTs can be transferred across Steem at zero cost. Steem enables this due to bandwidth rate limiting based on percentage of stake in the network, which means the blockchain calculates how much STEEM an account has temporaily vested to determine how much bandwidth the account is permitted for transfers, posting and other operations across a period of time. Because users need to hold STEEM in order to participate to their full ability in SMTs, there is growing demand for STEEM, among other cause for demand, such as exclusive financing opportunities and growing attention to the base currency.  The demand for bandwidth may be satisfied by users or by businesses, which can delegate surplus bandwidth to their users.
+
+*It may be worth noting that in a future version of Steem, possesion of an account name could permit some small degree of bandwidth to allow for even greater user experience.  
+
 # Decentralized Exchange
 One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM.
 
