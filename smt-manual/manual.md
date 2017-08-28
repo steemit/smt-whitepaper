@@ -8,7 +8,7 @@
 
 # Smart Media Tokens
 
-Smart media tokens on Steem give anyone the power to incentivize systems that make content better, while monetizing that content at the same time. This model, tested and proven by steemit.com, will make tokenizing content and media possible in a way never before seen.
+Smart media tokens on Steem give anyone the power to incentivize systems that make content better, while monetizing that content at the same time. This model, tested and proven by steemit.com, makes tokenizing content and media possible in a way never before seen.
 
 Several token protocols, such as Ethereum ERC-20s, allow you to create and launch arbitrary tokens, but no protocol lets content businesses launch tokens that align incentives between users and websites.Due to suboptimal fee structures, private key hierarchies and transaction speeds, none of these protocols could ever provide an acceptable user experience for content websites, such as Twitter, Reddit (even subreddits) or The New York Times.
 
