@@ -1506,7 +1506,7 @@ The Steem DEX is the first DEX to exist without trading fees, to the benefit of 
 
 ### APIs and Documentation
 
-Several APIs exist ......... @Sneak / @Ben please add a paragraph here and the documentation we want to point out.
+To be published here later.
 
 ### Shared Tools for Signup, Key Signing and Wallet Functions
 
@@ -1514,7 +1514,7 @@ Several shared tools exist to support applications that wish to outsource signup
 
 ## How to Integrate Content from Steem into Websites and Apps
 
-Several APIs exist ......... @Sneak / @Ben please add a paragraph here and the documentation we want to point out.
+To be published here later.
 
 # Conclusion
 
