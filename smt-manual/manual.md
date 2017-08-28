@@ -1486,7 +1486,7 @@ Like STEEM, SMTs can be transferred across Steem at zero cost. Steem enables thi
 
 Because users need to increasingly hold STEEM in order to participate at a rate commensurate with their growing potentials in respective SMT ecosystems, there is growing demand for users to hold STEEM. At an application level, the demand for bandwidth may be satisfied by users or by businesses, which can delegate surplus bandwidth to their users.  At a platform level, other cause for demand may include exclusive financing opportunities, increased rate of holding due to market maker reserve ratios and growing attention to the base currency.
 
-## Costless Operations Necessary for Quality User Experience
+## Fee-less Operations Necessary for Quality User Experience
 
 SMTs represent best in class tokens for content for several reasons highlighted throughout this paper, but perhaps the most point-blank reason comes from the fee structure.  Because of bandiwdth rate limiting, Steem may never charge applications or users transaction fees for basic operations such as voting, posting and transferring.  This lack of fees allows Steem based apps to compete with their non-blockchain counterparts, such as Facebook or Reddit, which certainly do not charge fees for actions such as 'Like' and 'Upvote'.  If these applications did charge fees they would become far less used and could be more easily competed against.
 
