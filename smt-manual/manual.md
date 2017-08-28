@@ -1482,9 +1482,9 @@ All Steem based interfaces have the option of splitting token rewards among a se
 
 Like STEEM, SMTs can be transferred across Steem at zero cost. Steem enables this due to bandwidth rate limiting based on percentage of stake in the network, which means the blockchain calculates how much STEEM an account has temporaily vested to determine how much bandwidth the account is permitted for transfers, posting and other operations across a period of time. Because users need to increasingly hold STEEM in order to participate to their growing potentials in respective SMT ecosystems, there is growing demand for users to hold STEEM. The demand for bandwidth may be satisfied by users or by businesses, which can delegate surplus bandwidth to their users.
 
-*Other cause for demand may include exclusive financing opportunities, increased rate of holding due to market maker reserve ratios and growing attention on the base currency. 
+*Other cause for demand may include exclusive financing opportunities, increased rate of holding due to market maker reserve ratios and growing attention on the base currency.*
 
-*It may be worth noting that in a future version of Steem, possesion of an account name could permit some small degree of bandwidth to allow for even greater user experience.  
+*It may be worth noting that in a future version of Steem, possesion of an account name could permit some small degree of bandwidth to allow for even greater user experience.*
 
 # Decentralized Exchange
 One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM.
