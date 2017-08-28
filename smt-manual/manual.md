@@ -8,11 +8,11 @@
 
 # Smart Media Tokens
 
-Smart Media Tokens is the first token protocol to support incentive alignment and user experience for any and all content websites across the internet, and all participants will have the benefit of ICOs that flow seamlessly into actual use and utility of the tokens inside content websites.
+Smart media tokens on Steem give anyone the power to incentivize systems that make content better, while monetizing that content at the same time. This model, tested and proven by steemit.com, will make tokenizing content and media possible in a way never before seen.
 
-Several token protocols, such as Ethereum ERC-20s, exist to allow businesses to launch tokens, but none exist to allow content businesses to launch tokens that align incentives between users and websites, and because of suboptimal fee structures, private key hierarchies and transaction speeds, none of these protocols support tokens that could provide an acceptable user experience for content websites, such as Twitter, Reddit (even subreddits) or the New York Times.
+Several token protocols, such as Ethereum ERC-20s, allow you to create and launch arbitrary tokens, but no protocol lets content businesses launch tokens that align incentives between users and websites.Due to suboptimal fee structures, private key hierarchies and transaction speeds, none of these protocols could ever provide an acceptable user experience for content websites, such as Twitter, Reddit (even subreddits) or The New York Times.
 
-For content websites and tokens, incentive alignment between websites and users comes from a mathematically guaranteed and steady release of new tokens that must be allocated to the users, such as bloggers, vloggers and curators, and quality user experience comes from tokens that can be transacted safely (including private keys for social actions versus financial), without fees and at real-time speeds.  Further, incentive alignment comes from a company’s ability to raise capital in ICOs - the ICO contract needs to be supported natively by the token protocol.
+For content websites and tokens, incentive alignment between websites and users comes from a mathematically guaranteed and steady release of new tokens that must be allocated to the users. Users could be bloggers, vloggers and curators, and quality user experience comes from tokens that can be transacted safely (through separate private keys for distinct sets of actions), without fees and at real-time speeds.  Further, incentive alignment comes from a company’s ability to raise capital in ICOs, therefore the ICO contract needs to be supported natively by the token protocol.
 
 - [Introduction](#introduction)
   - [Leveraging Tokens for Autonomous User Growth](#leveraging-tokens-for-autonomous-user-growth)
