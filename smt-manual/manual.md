@@ -1478,13 +1478,17 @@ All Steem based interfaces have the option of splitting token rewards among a se
 - `claim_reward_balance_operation` : Restrictions on this operation are relaxed to allow any asset in any of the three fields, including SMT's.
 - `delegate_vesting_shares_operation` : Supports all SMT's that support vesting.
 
-# Costless SMT Transfers And Demand for Steem as Bandwidth Allowance
+# Costless SMT Operations And Bandwidth Rate Limiting
 
-Like STEEM, SMTs can be transferred across Steem at zero cost. Steem enables this due to bandwidth rate limiting based on percentage of stake in the network, which means the blockchain calculates how much STEEM an account has temporaily vested to determine how much bandwidth the account is permitted for transfers, posting and other operations across a period of time. Because users need to increasingly hold STEEM in order to participate to their growing potentials in respective SMT ecosystems, there is growing demand for users to hold STEEM. The demand for bandwidth may be satisfied by users or by businesses, which can delegate surplus bandwidth to their users.
+Like STEEM, SMTs can be transferred across Steem at zero cost. Steem enables this due to bandwidth rate limiting based on percentage of stake in the network, which means the blockchain calculates how much STEEM an account has temporaily vested to determine how much bandwidth the account is permitted for transfers, posting and other operations across a period of time. In a future version of Steem, possesion of an account name could permit some small degree of bandwidth to allow for even greater user experience.
 
-*Other cause for demand may include exclusive financing opportunities, increased rate of holding due to market maker reserve ratios and growing attention on the base currency.*
+## Demand for Steem 
 
-*It may be worth noting that in a future version of Steem, possesion of an account name could permit some small degree of bandwidth to allow for even greater user experience.*
+Because users need to increasingly hold STEEM in order to participate to their growing potentials in respective SMT ecosystems, there is growing demand for users to hold STEEM. At an application level, the demand for bandwidth may be satisfied by users or by businesses, which can delegate surplus bandwidth to their users.  At a platform level, other cause for demand may include exclusive financing opportunities, increased rate of holding due to market maker reserve ratios and growing attention on the base currency.
+
+## Costless Operations Necessary for Quality User Experience
+
+SMTs represent best in class tokens for content for several reasons highlighted throughout this paper, but perhaps the most point-blank reason comes from the fee structure.  Because of bandiwdth rate limiting, Steem may never charge applications or users transaction fees for basic operations such as voting, posting and transferring.  This lack of fees allows Steem based apps to compete with their non-blockchain counterparts, such as Facebook or Reddit, which certainly do not charge fees for actions such as 'Like' and 'Upvote'.  If these applications did charge fees they would become far less used and could be more easily competed against.
 
 # Decentralized Exchange
 One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM.
