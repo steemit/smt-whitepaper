@@ -10,7 +10,7 @@
 
 Smart media tokens on Steem give anyone the power to incentivize systems that make content better, while monetizing that content at the same time. This model, tested and proven by steemit.com, makes tokenizing content and media possible in a way never before seen.
 
-Several token protocols, such as Ethereum ERC-20s, allow you to create and launch arbitrary tokens, but no protocol lets content businesses launch tokens that align incentives between users and websites.Due to suboptimal fee structures, private key hierarchies and transaction speeds, none of these protocols could ever provide an acceptable user experience for content websites, such as Twitter, Reddit (even subreddits) or The New York Times.
+Several token protocols, such as Ethereum ERC-20s, allow you to create and launch arbitrary tokens, but no protocol lets content businesses launch tokens that align incentives between users and websites. Due to suboptimal fee structures, private key hierarchies and transaction speeds, none of these protocols could ever provide an acceptable user experience for content websites, such as Twitter, Reddit (even subreddits) or The New York Times.
 
 For content websites and tokens, incentive alignment between websites and users comes from a mathematically guaranteed and steady release of new tokens that must be allocated to the users. Users could be bloggers, vloggers and curators, and quality user experience comes from tokens that can be transacted safely (through separate private keys for distinct sets of actions), without fees and at real-time speeds.  Further, incentive alignment comes from a company’s ability to raise capital in ICOs, therefore the ICO contract needs to be supported natively by the token protocol.
 
