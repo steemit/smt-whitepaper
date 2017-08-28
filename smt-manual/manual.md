@@ -1518,7 +1518,7 @@ To be published here later.
 
 # Conclusion
 
-Through a combination of asset-issuance, bandwidth rate limiting, real-time transaction speeds, autonomous distribution of tokens, decentralized exchange, automated market making and ICO contracts, Steem will offer the premier token protocol for publishers across the internet.  Publishers, brought into Steem by their use of SMTs, will use the Steem blockchain for high content availability, adding robustness to user-generated content and paving the way forward for an internet with censorship resistance.
+Through a combination of open asset-issuance, bandiwdth rate limiting as transaction costs, permanent-availability of content, real-time transaction speeds, autonomous distribution of tokens, decentralized exchange, automated market making and ICO contracts, Steem offers the premier token protocol for publishers across the internet.  
 
 # References
 
