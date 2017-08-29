@@ -10,7 +10,7 @@
 
 ## A Token Protocol for Content Websites Seeking Funding, Monetization and User Growth
 
-[Steem](http://steem.io/steem-whitepaper-2-0)’s Smart Media Tokens (SMTs) give anyone the power to launch tokens that make content better, while monetizing that content at the same time. This model, tested and proven by steemit.com and other Steem interfaces, makes monetizing content and media possible in a way never before seen.
+[Steem](https://docs.google.com/document/d/1Jb3-Bnwmmo9lURmiwfYDPa1-29fi98f_oUShmgiU9oI/edit#heading=h.rchyypyc9pfy)’s Smart Media Tokens (SMTs) give anyone the power to launch tokens that make content better, while monetizing that content at the same time. This model, tested and proven by steemit.com and other Steem interfaces, makes monetizing content and media possible in a way never before seen.
 
 Several token protocols, such as Ethereum and ERC-20s, allow you to create and launch arbitrary tokens, but no protocol enables content businesses to launch tokens that align growth incentives between users and websites. Further, due to suboptimal fee structures, private key hierarchies and transaction speeds, none of these protocols could ever provide an acceptable user experience for content websites, such as Twitter, Reddit (even subreddits) or The New York Times.
 
