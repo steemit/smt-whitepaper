@@ -8,6 +8,8 @@
 
 # Smart Media Tokens
 
+## A Token Protocol for Content Websites Seeking Funding and User Growth
+
 [Steem](http://steem.io/steem-whitepaper-2-0)’s Smart Media Tokens give anyone the power to launch tokens that make content better, while monetizing that content at the same time. This model, tested and proven by steemit.com and other Steem interfaces, makes monetizing content and media possible in a way never before seen.
 
 Several token protocols, such as Ethereum ERC-20s, allow you to create and launch arbitrary tokens, but no protocol lets content businesses launch tokens that align incentives between users and websites. Due to suboptimal fee structures, private key hierarchies and transaction speeds, none of these protocols could ever provide an acceptable user experience for content websites, such as Twitter, Reddit (even subreddits) or The New York Times.
