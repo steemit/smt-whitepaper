@@ -147,7 +147,7 @@ Imagine you are a moderator for a specific topic inside a forum, such as a Reddi
 
 ![Sub-community wireframe](img/uc4-subcommunity.png)
 
-### 5 - Basic Derivative Assets - Tokens Representing Real World Assets
+### 5 - Arbitrary Assets - Tokens Representing Real World Assets
 
 An entrepreneur is looking to provide liquidity in the Steem ecosystem. They issue an SMT without inflation properties and imply that they will provide structure to peg it to the USD, making it like an IOU or basic derivative. The structure they provide to the asset includes buying and selling it near $1, similar to Tether. The entrepreneur sets up bank wire capabilities for buying and selling and takes a small % on each transaction. The derivative trades against STEEM and also brings capital into the ecosystem to be used across tokens.
 
