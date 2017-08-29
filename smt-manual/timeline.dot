@@ -1,0 +1,162 @@
+digraph {
+   {
+      smt_account_elevation_operation[shape=ellipse group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">smt_account_elevation_operation</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Fee paid by SMT creator to prevent spam assets</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+      ]
+
+      setup_phase[shape=rectangle group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">setup_phase</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Lasts until smt_setup_operation occurs</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+      ]
+
+      pre_contribution_pause[shape=rectangle group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">pre_contribution_pause</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Terms are finalized, contributions not yet accepted</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Gives contributors time to study terms before ICO starts</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+      ]
+
+      contribution_begin_time[shape=house group=mainline]
+
+      contribution_phase[shape=rectangle group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">contribution_phase</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Users can contribute STEEM to ICO during this period</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+      ]
+
+      contribution_end_time[shape=house group=mainline]
+
+      post_contribution_pause[shape=rectangle group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">post_contribution_pause</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Contributions are closed, refunds may not yet be requested</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Pause allows SMT creator time to make technical/marketing/business</TD></TR>
+                        <TR><TD BGCOLOR="#e8eef7">preparations for launch once ICO outcome is known</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+      ]
+
+      announced_launch_time[shape=house group=mainline]
+
+      cap_revealed[shape=diamond group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD BGCOLOR="#b7c9e3">Have hard_cap, min_steem both been revealed?</TD></TR>
+			</TABLE>
+			</FONT>
+		>]
+
+      sufficient_contributions[shape=diamond group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD BGCOLOR="#b7c9e3">Do non-refunded contributions total at least min_steem?</TD></TR>
+			</TABLE>
+			</FONT>
+		>]
+
+      launch[shape=rectangle group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">launch</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Non-refunded contributions sent automatically to founder(s)</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Newly created SMT's sent automatically to contributors, possibly founder(s)</TD></TR>
+                        <TR><TD BGCOLOR="#e8eef7">Amount and recipient details specified by unit definitions</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+      ]
+
+      active_phase[shape=rectangle group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">active_phase</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Tokens fully liquid, may be transferred, traded, vested, etc.</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">New tokens created over time according to smt_setup_inflation</TD></TR>
+                        <TR><TD BGCOLOR="#e8eef7">operation(s) issued in setup_phase</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+      ]
+
+      smt_setup_operation[shape=ellipse]
+
+      smt_cap_reveal_operation_1[shape=ellipse label=smt_cap_reveal_operation]
+      smt_cap_reveal_operation_2[shape=ellipse label=smt_cap_reveal_operation]
+      smt_cap_reveal_operation_3[shape=ellipse label=smt_cap_reveal_operation]
+      smt_cap_reveal_operation_4[shape=ellipse label=smt_cap_reveal_operation]
+
+      smt_refund_operation[shape=ellipse]
+   }
+
+   smt_account_elevation_operation -> setup_phase;
+   setup_phase -> smt_setup_operation;
+   smt_setup_operation -> pre_contribution_pause;
+   pre_contribution_pause -> contribution_begin_time;
+   contribution_begin_time -> contribution_phase;
+   contribution_phase -> contribution_end_time;
+   contribution_end_time -> post_contribution_pause;
+   post_contribution_pause -> announced_launch_time;
+   announced_launch_time -> cap_revealed;
+   cap_revealed -> sufficient_contributions [label="Yes"];
+   sufficient_contributions -> launch [label="Yes"];
+   sufficient_contributions -> inactive_phase [label="No"];
+   cap_revealed -> inactive_phase [label="No"];
+   launch -> active_phase;
+
+   inactive_phase -> smt_cap_reveal_operation_4;
+   inactive_phase -> smt_refund_operation;
+   smt_cap_reveal_operation_4 -> cap_revealed;
+
+   setup_phase -> smt_set_setup_parameters_operation;
+   setup_phase -> smt_set_runtime_parameters_operation;
+   setup_phase -> smt_set_inflation_operation;
+
+   pre_contribution_pause -> smt_cap_reveal_operation_1;
+   contribution_phase -> smt_cap_reveal_operation_2;
+   post_contribution_pause -> smt_cap_reveal_operation_3;
+
+   contribution_phase -> smt_contribute_operation;
+
+   active_phase -> transfer_operation;
+   active_phase -> limit_order_create2_operation;
+   active_phase -> transfer_to_vesting_operation;
+}
