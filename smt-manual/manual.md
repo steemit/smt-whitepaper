@@ -6,7 +6,7 @@
 * Copyright (c) Steemit, Inc. 2017
 * Status: DRAFT
 
-# Smart Media Tokens
+# Smart Media Tokens (SMTs)
 
 ## A Token Protocol for Content Websites Seeking Funding, Monetization and User Growth
 
