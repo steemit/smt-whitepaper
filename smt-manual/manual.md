@@ -1508,7 +1508,7 @@ SMTs as described in this proposal are an important part of growing the token ec
 Simple Derivatives (IOUs) will be possible via SMT issuance.  For instance, if an SMT is issued without inflation or rewards pool properties, then the issuer can reliably back the token with another real world asset such as bitcoin or USD.  In this instance, the issuer could create business as a gateway by trading their IOU for btc or USD.  Users would buy the IOU to gain access to the Steem DEX. This market would add diversity and value flow to the Steem ecosystem while adding to the DEX's network effect.
 
 ## Zero Trading and Transfer Fees
-The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike.  This is made possible by [bandwidth rate limiting](#fee--less-operations-necessary-for-quality-user-experience).
+The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike.  This is made possible by [bandwidth rate limiting](#--fee--less-operations-necessary-for-quality-user-experience).
 
 # Ecosystem Support
 
