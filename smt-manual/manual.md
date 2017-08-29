@@ -1512,7 +1512,7 @@ The Steem DEX is the first DEX to exist without trading fees, to the benefit of 
 
 # Ecosystem Support
 
-## How to Integrate SMTs into Websites and Apps
+## Integrating SMTs into Websites and Apps
 
 ### APIs and Documentation
 
