@@ -32,3 +32,4 @@ convert \
    -append rc-cc.png
 
 dot -Tpng -o creation.png ../creation.dot
+dot -Tpng -o timeline.png ../timeline.dot

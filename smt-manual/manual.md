@@ -1543,4 +1543,8 @@ Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/
 
 ## Implementation Notes
 
+Here is a timeline / state diagram of the events in an SMT launch:
+
+![Timeline of implementation](img/timeline.png)
+
 ## Unit Tests
