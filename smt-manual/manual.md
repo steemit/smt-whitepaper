@@ -1516,15 +1516,11 @@ The Steem DEX is the first DEX to exist without trading fees, to the benefit of 
 
 ### APIs and Documentation
 
-To be published here.
+To be continously updated for SMTs.  Current *STEEM* APIs exist here: http://steem.readthedocs.io/en/latest/index.html and https://steemit.github.io/steemit-docs/
 
 ### Shared Tools for Signup, Key Signing and Wallet Functions
 
 Several shared tools exist to support applications that wish to outsource signup, transaction signing and wallet functions, such as SteemConnect (Add link to SteemConnect launch post).
-
-## How to Integrate Content from Steem into Websites and Apps
-
-To be published here.
 
 # Conclusion
 
