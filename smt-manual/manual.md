@@ -141,7 +141,7 @@ One of the ways in which publishers will be onboarded faster to SMT integrations
 
 ### 4 - Sub-Community Moderators and Managers
 
-Imagine you are a moderator for a specific topic inside a forum, such as a Reddit "subreddit" or a Steemit "community". If the main website integrates SMTs for these specific topics, then the moderator/s can launch these tokens to empower the subscribers of their topic, raise funds and increase the quality of content curation for the community.
+Imagine you are a moderator for a specific topic inside a forum, such as a Reddit "subreddit" or a Steemit "community". If a website integrates SMTs for these specific topics, then the topic moderator/s can launch these tokens to empower the subscribers of their topic, raise funds and increase the quality of content curation for the community.
 
 ![Sub-community wireframe](img/uc4-subcommunity.png)
 
