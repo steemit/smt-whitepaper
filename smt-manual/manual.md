@@ -8,7 +8,7 @@
 
 # Smart Media Tokens
 
-## A Token Protocol for Content Websites Seeking Funding and User Growth
+## A Token Protocol for Content Websites Seeking Funding, Monetization and User Growth
 
 [Steem](http://steem.io/steem-whitepaper-2-0)’s Smart Media Tokens give anyone the power to launch tokens that make content better, while monetizing that content at the same time. This model, tested and proven by steemit.com and other Steem interfaces, makes monetizing content and media possible in a way never before seen.
 
