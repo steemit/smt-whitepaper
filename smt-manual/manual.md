@@ -1508,7 +1508,7 @@ SMTs as described in this proposal are an important part of growing the token ec
 Simple Derivatives (IOUs) will be possible via SMT issuance.  For instance, if an SMT is issued without inflation or rewards pool properties, then the issuer can reliably back the token with another real world asset such as bitcoin or USD.  In this instance, the issuer could create business as a gateway by trading their IOU for btc or USD.  Users would buy the IOU to gain access to the Steem DEX. This market would add diversity and value flow to the Steem ecosystem while adding to the DEX's network effect.
 
 ## Zero Trading and Transfer Fees
-The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike.  This is made possible by bandwidth rate limiting, a concept first introduced in the [original Steem White Paper](https://steem.io/SteemWhitePaper.pdf).
+The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike.  This is made possible by [bandwidth rate limiting](#fee--less-operations-necessary-for-quality-user-experience).
 
 # Ecosystem Support
 
@@ -1532,8 +1532,6 @@ Through a combination of open asset-issuance, bandiwdth rate limiting as transac
 
 [2] Eyal Hertzog, Guy Benartzi & Galia Benartzi, 2017. Bancor Protocol. Continuous Liquidity and Asynchronous Price
 Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)
-
-[3] Steemit, Inc., 2016. Larimer, Scott, Zavgorodnev, Johnson, Calfee, Vandeberg. Steem. An incentivized, blockchain-based social media platform. https://steem.io/SteemWhitePaper.pdf
 
 # Appendix
 
