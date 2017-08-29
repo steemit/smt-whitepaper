@@ -1496,7 +1496,7 @@ SMTs represent best in class tokens for content for several reasons highlighted 
 One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM.
 
 ## Automatic Order Matching
-The Decentralized Exchange (DEX) structures of Steem allow assets to automatically be matched for best possible price when bids and asks overlap, unlike other DEXs which require a "man in the middle" or user-agent, to match orders.  Automatic, rather than middle-man-faciliated order matching is important for security of Steem-based assets and for the replicability and safety of DEX interfaces.
+The Decentralized Exchange (DEX) structures of Steem allow assets to automatically be matched for best possible price when bids and asks overlap, unlike other DEXs, which require a "man in the middle" or user-agent, to match orders.  Automatic, rather than middle-man-faciliated order matching is important for security of Steem-based assets and for the replicability and safety of DEX interfaces.
 
 ## Diverse Asset Types
 There are several assets that SMT users and creators will have access to by way of the Steem DEX: STEEM; SBD; SMTs; Simple Derivatives (IOUs).  These neighboring assets can increase the visibility and network effect of all created SMTs.
