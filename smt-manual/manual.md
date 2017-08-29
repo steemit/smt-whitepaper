@@ -8,7 +8,7 @@
 
 # Smart Media Tokens
 
-[Steem](http://steemit.com/steem-wp-2.0)’s Smart Media Tokens give anyone the power to launch tokens that make content better, while monetizing that content at the same time. This model, tested and proven by steemit.com and other Steem interfaces, makes monetizing content and media possible in a way never before seen.
+[Steem](http://steem.io/steem-whitepaper-2-0)’s Smart Media Tokens give anyone the power to launch tokens that make content better, while monetizing that content at the same time. This model, tested and proven by steemit.com and other Steem interfaces, makes monetizing content and media possible in a way never before seen.
 
 Several token protocols, such as Ethereum ERC-20s, allow you to create and launch arbitrary tokens, but no protocol lets content businesses launch tokens that align incentives between users and websites. Due to suboptimal fee structures, private key hierarchies and transaction speeds, none of these protocols could ever provide an acceptable user experience for content websites, such as Twitter, Reddit (even subreddits) or The New York Times.
 
@@ -1528,7 +1528,9 @@ Through a combination of open asset-issuance, bandiwdth rate limiting as transac
 
 # References
 
-[1] Eyal Hertzog, Guy Benartzi & Galia Benartzi. Bancor Protocol. Continuous Liquidity and Asynchronous Price
+[1] Steemit, Inc. Scott, et al. Steem Whitepaper 2.0. A protocol for bringing smart, social currency to publishers and content businesses across the internet. (https://www.steem.io/steem-whitepaper-2-0)
+
+[2] Eyal Hertzog, Guy Benartzi & Galia Benartzi. Bancor Protocol. Continuous Liquidity and Asynchronous Price
 Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)
 
 # Appendix
