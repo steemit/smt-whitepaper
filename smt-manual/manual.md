@@ -1528,10 +1528,12 @@ Through a combination of open asset-issuance, bandiwdth rate limiting as transac
 
 # References
 
-[1] Steemit, Inc. Scott, et al. Steem Whitepaper 2.0. A protocol for bringing smart, social currency to publishers and content businesses across the internet. (https://www.steem.io/steem-whitepaper-2-0)
+[1] Steemit, Inc, 2017. Scott, et al. Steem Whitepaper 2.0. A protocol for bringing smart, social currency to publishers and content businesses across the internet. (https://www.steem.io/steem-whitepaper-2-0)
 
-[2] Eyal Hertzog, Guy Benartzi & Galia Benartzi. Bancor Protocol. Continuous Liquidity and Asynchronous Price
+[2] Eyal Hertzog, Guy Benartzi & Galia Benartzi, 2017. Bancor Protocol. Continuous Liquidity and Asynchronous Price
 Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)
+
+[3] Steemit, Inc, 2016. Larimer, Scott, Zavgorodnev, Johnson, Calfee, Vandeberg. Steem. An incentivized, blockchain-based social media platform. https://steem.io/SteemWhitePaper.pdf
 
 # Appendix
 
