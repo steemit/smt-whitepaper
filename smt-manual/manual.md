@@ -1532,7 +1532,7 @@ Through a pragmatic combination of open asset-issuance, bandwidth rate limiting 
 
 # References
 
-[1] Steemit, Inc., 2017. Scott, et al. Steem Whitepaper 2.0. A protocol for bringing smart, social currency to publishers and content businesses across the internet. (https://www.steem.io/steem-whitepaper-2-0)
+[1] Steemit, Inc., 2017. Steem Bluepaper. A protocol for bringing smart, social currency to publishers and content businesses across the internet. (https://www.steem.io/steem-whitepaper-2-0)
 
 [2] Eyal Hertzog, Guy Benartzi & Galia Benartzi, 2017. Bancor Protocol. Continuous Liquidity and Asynchronous Price
 Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)
