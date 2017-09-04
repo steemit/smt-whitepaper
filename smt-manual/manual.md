@@ -180,10 +180,24 @@ blockchain's consensus.
 
 ## Token Generation and Initialized Parameters
 
-### Creation fee
+### SMT account elevation
 
-Issuing an `smt_setup_operation` requires payment of `smt_creation_fee`.
-The current `smt_creation_fee` is set by the `smt_creation_fee` field of
+The first operation to be executed is an `smt_elevate_account_operation`.
+The account which executes this operation will become the control account
+for an SMT when `smt_setup_operation` occurs.  The
+`smt_elevate_account_operation` executes as follows:
+
+```
+struct smt_elevate_account_operation
+{
+   account_name_type account;
+   asset             fee;
+   extensions_type   extensions;
+};
+```
+
+Issuing an `smt_elevate_account_operation` requires payment of `fee`.
+The current `fee` is set by the `smt_creation_fee` field of
 `dynamic_global_properties_object`.  This field may contain a value in STEEM
 or SBD.  If specified in SBD, an equivalent amount of STEEM will be accepted,
 at the current price feed.
@@ -201,7 +215,8 @@ The fee is destroyed by sending it to `STEEMIT_NULL_ACCOUNT`.
 ### SMT pre-setup
 
 Two pre-setup operations are included:  `smt_setup_inflation_operation` and
-`smt_setup_parameters`.  These operations must be issued before
+`smt_setup_parameters`.  These operations must be issued after
+`smt_elevate_account_operation` and before
 `smt_setup_operation`.  They may be issued in the same transaction, or in
 prior blocks.
 
@@ -227,8 +242,6 @@ struct smt_setup_operation
    time_point_sec          generation_begin_time;
    time_point_sec          generation_end_time;
    time_point_sec          announced_launch_time;
-
-   asset                   smt_creation_fee;
 
    extensions_type         extensions;
 };
