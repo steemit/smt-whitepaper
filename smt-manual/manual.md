@@ -89,7 +89,6 @@ For content websites and tokens, incentive alignment between websites and users 
   - [Implementation Notes](#implementation-notes)
   - [Unit Tests](#unit-tests)
 
-- Github: https://github.com/steemit/smt-whitepaper/blob/collab/smt-manual/manual.md
 - Git Changes: https://github.com/steemit/smt-whitepaper/commit/6eab36d3b941f52f65e78f3be72efdd5bf5afc2e
 
 # Introduction
