@@ -89,8 +89,6 @@ For content websites and tokens, incentive alignment between websites and users 
   - [Implementation Notes](#implementation-notes)
   - [Unit Tests](#unit-tests)
 
-- Git Changes: https://github.com/steemit/smt-whitepaper/commit/6eab36d3b941f52f65e78f3be72efdd5bf5afc2e
-
 # Introduction
 
 Smart Media Tokens (SMTs) is a proposal to build a meta-token protocol on the Steem blockchain. Inspired by the revolutionary properties of the STEEM token, including automatic distributions to content creators, SMTs will be an upgrade beyond previously created blockchain token protocols due to carefully designed token sale programmability, automated liquidity providers and dynamic token distribution parameters as well as a large ecosystem of tools (open source wallets, shared key signing tools, etc.) for integrations at website and application layers.
