@@ -8,7 +8,7 @@
 
 # Smart Media Tokens (SMTs)
 
-## A Token Protocol for Content Websites Seeking Funding, Monetization and User Growth
+## A Token Protocol for Content Websites and Communities Seeking Funding, Monetization and User Growth
 
 [Steem's](https://docs.google.com/document/d/1Jb3-Bnwmmo9lURmiwfYDPa1-29fi98f_oUShmgiU9oI/edit#heading=h.rchyypyc9pfy) Smart Media Tokens (SMTs) give anyone the power to launch and sell [Proof-of-Brain](https://docs.google.com/document/d/1Jb3-Bnwmmo9lURmiwfYDPa1-29fi98f_oUShmgiU9oI/edit#heading=h.rchyypyc9pfy) tokens that integrate with websites to align incentives and spur growth while websites are empowered to adopt sustainable, currency-centric revenue models. This model, tested and proven by steemit.com, busy.org, chainbb.com and other Steem interfaces, makes monetizing content and media possible in a way never before seen.
 
