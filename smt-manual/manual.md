@@ -1169,9 +1169,6 @@ the `smt_setup_operation`.   See the section on pre-setup operations.
 - Q:  Can we model the inflation as a function of time with complete accuracy?
 - A:  The inflation data structures can be fully modeled / simulated.  For some issue structures, the amount issued depends on how much is raised, so the issue structures cannot be modeled with complete accuracy.
 
-TODO:  Make some pretty graphs
-TODO:  Examples:  Steem old inflation scheme, Steem new inflation scheme, Bitcoin, send % to founders, send % to founders after time
-
 ### Named token parameters
 
 Some behaviors of STEEM are influenced by compile-time configuration constants which are implemented by `#define`
