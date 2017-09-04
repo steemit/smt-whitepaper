@@ -31,7 +31,7 @@ For content websites and tokens, incentive alignment between websites and users 
   - [Establish a Name Space](#establish-a-name-space)
     - [Token consensus](#token-consensus)
   - [Token Generation and Initialized Parameters](#token-generation-and-initialized-parameters)
-    - [Creation fee](#creation-fee)
+    - [SMT account elevation](#smt-account-elevation)
     - [SMT pre-setup](#smt-pre-setup)
     - [SMT setup](#smt-setup)
     - [Token units](#token-units)
