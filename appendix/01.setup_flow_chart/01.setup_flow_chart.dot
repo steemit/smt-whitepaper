@@ -1,0 +1,92 @@
+digraph structs {
+
+    node [shape=plaintext];
+	a -> b -> c -> d -> e -> f -> g;
+	edge[constraint=false];
+	a -> note [style="dotted", arrowhead="none"];
+
+	note
+	[
+		shape=note,  color="#b7c9e3", fontname="dialog", fontsize=10,
+		label="Not in whitepaper - possible place to check 'smt_creation_fee'"
+	]
+
+	a
+	[
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">smt_account_elevation_operation</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Elevate control account - only when 'smt_creation_fee' was paid ?</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+	]
+	b
+	[
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">smt_set_setup_parameters_operation</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Set parameters in smt_setup_parameters structure</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+	]
+	c
+	[
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">smt_set_runtime_parameters_operation</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Set parameters in smt_runtime_parameters structure</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+	]
+	d
+	[
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">smt_setup_inflation_operation</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Set data in smt_setup_inflation structure</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+	]
+	e
+	[
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">smt_setup_operation</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Set data in smt_setup structure</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+	]
+	f
+	[
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">smt_cap_reveal_operation</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Reveal hidden cap</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+	]
+
+	g
+	[
+		color="#b7c9e3", style="rounded, filled", fontname="dialog", fontsize=10,
+		label="Contribution period"
+	]
+}
