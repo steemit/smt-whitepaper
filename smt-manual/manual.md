@@ -113,6 +113,10 @@ Blockchain-based tokens, beginning strongly with the advent of ERC20s on Ethereu
 
 By leveraging a recently discovered automated market maker concept [1], SMT-based ICOs allow a portion of STEEM tokens received to be sent into an SMT’s on-chain market maker and taker in order to provide liquidity to the SMT at a specified reserve ratio. Beyond the social and specialized distribution mechanisms of SMTs, this feature advances the concept of automated market makers by design; Instead of existing only as the sole actor inside a market, the SMT market maker smart contract acts as a participant inside the SMT’s decentralized markets, which also facilitate bid and asks by human participants.
 
+## Shared Bootstrap Tools
+
+Tokens may be created with parameters tuned for "Shared Influence" between Steem Power and a vesting SMT, meaning that the SMT creator may specify that Steem Power can control a portion of the SMT's[rewards pool](https://docs.google.com/document/d/1Jb3-Bnwmmo9lURmiwfYDPa1-29fi98f_oUShmgiU9oI/edit#heading=h.rchyypyc9pfy) for an unlimited or limited amount of time with increasing or decreasing influence. Altogether Shared Influence may allow SMTs to be wholly or partially bootstrapped by the interest of existing and active Steem or other SMT community members.  Through these tools, community managers and entrepreneurs launching a token may leverage existing user bases to accelerate the distribution of the SMT to a target market.
+
 ## Can My Entity Participate in SMTs?
 An SMT can be launched by a person or entity; she only needs $1000 to cover the network fee (this prevents spam and unused tokens) and a namespace on Steem, which can be obtained by registering at anon.steem.network, steemit.com, steemconnect.com, or any other Steem sign-up service.
 
