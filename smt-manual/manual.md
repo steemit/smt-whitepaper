@@ -1515,6 +1515,7 @@ All Steem based interfaces have the option of splitting token rewards among a se
 - `decline_voting_rights_operation` : Affects SMT votes as well as STEEM votes.
 - `claim_reward_balance_operation` : Restrictions on this operation are relaxed to allow any asset in any of the three fields, including SMT's.
 - `delegate_vesting_shares_operation` : Supports all SMT's that support vesting.
+- Multisig:  There is nothing "special" about multisig handling of SMT operations.  If you set up your account to require a multisig authority, then everything your account signs will need to be signed with multiple signatures, as you specified.  Including operations your account does as a control account managing an SMT, or operations your account does as a user holding SMT tokens.
 
 # Costs of SMT Operations And Bandwidth Rate Limiting
 
