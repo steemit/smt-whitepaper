@@ -245,6 +245,7 @@ struct smt_setup_operation
    time_point_sec          generation_begin_time;
    time_point_sec          generation_end_time;
    time_point_sec          announced_launch_time;
+   time_point_sec          launch_expiration_time;
 
    extensions_type         extensions;
 };
@@ -274,6 +275,13 @@ the possibility of ICO's that wish to have hidden caps that aren't revealed
 while the ICO is open for contributions.  It also gives the ICO creator
 time to use the final ICO numbers to aid in pre-launch business
 activities.
+
+At `launch_expiration_time`, if the ICO has not yet launched, all
+contributors will be automatically refunded (with virtual
+operations) and the ICO will be cancelled.  The symbol will remain
+reserved to the specified `control_account`.  However, in order to
+launch the token, an `smt_elevate_account_operation` must
+be issued and the `smt_creation_fee` must be paid again.
 
 ### Token units
 
