@@ -1541,7 +1541,7 @@ Several shared tools exist to support applications that wish to outsource signup
 
 # Conclusion
 
-Through a pragmatic combination of open asset-issuance, bandwidth rate limiting as transaction costs, permanent-availability of content, real-time transaction speeds, autonomous distribution of tokens, decentralized exchange, automated market making and ICO contracts, Steem offers the premier token protocol for publishers across the internet.  
+Through a combination of specialized designs for open asset-issuance, bandwidth rate limiting as transaction costs, permanent-availability of content, real-time transaction speeds, autonomous distribution of tokens, decentralized exchange, automated market making and ICO contracts, Steem offers the premier token protocol for publishers across the internet.  
 
 # References
 
