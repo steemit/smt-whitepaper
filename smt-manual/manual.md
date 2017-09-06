@@ -171,7 +171,8 @@ the SMT's *control account*.  This control account will be able to
 design the SMT's policies, launch the SMT, and modify certain SMT
 parameters after launch.
 
-The SMT's name will be the same as the name of its control account.
+SMT names exist in their own namespace.  You must pay `smt_account_fee`
+to establish a name in this namespace.
 
 ### Token consensus
 
@@ -191,7 +192,8 @@ for an SMT when `smt_setup_operation` occurs.  The
 ```
 struct smt_elevate_account_operation
 {
-   account_name_type account;
+   account_name_type control_account;
+   asset_symbol_type smt_name;
    asset             fee;
    extensions_type   extensions;
 };
@@ -235,7 +237,7 @@ The descriptor is set by the `smt_setup_operation`:
 struct smt_setup_operation
 {
    account_name_type       control_account;
-   uint8_t                 decimal_places = 0;
+   asset_symbol_type       smt_name;
    int64_t                 max_supply = STEEMIT_MAX_SHARE_SUPPLY;
 
    smt_generation_policy   initial_generation_policy;
@@ -248,8 +250,15 @@ struct smt_setup_operation
 };
 ```
 
-The operation must be signed by the `control_account` key.  The name
-of the control account becomes the name of the token.  The
+The symbol precision in `smt_setup_operation` is authoritative, it may
+differ from, and will override, any previously specified operations'
+precision.  Subsequently issued operations must have matching precision.
+
+The operation must be signed by the `control_account` key.  The named
+SMT must have been created earlier by the `control_account`.  The
+symbol's embedded decimal places may be distinct from prior
+`smt_setup_operation`
+
 `decimal_places` field is used by UI's to display units as a number
 of decimals.
 
@@ -372,6 +381,7 @@ struct smt_revealed_cap
 struct smt_cap_reveal_operation
 {
    account_name_type     control_account;
+   asset_symbol_type     smt_name;
    smt_revealed_cap      cap;
 
    extensions_type       extensions;
@@ -558,7 +568,7 @@ is implemented.
 struct smt_refund_operation
 {
    account_name_type       contributor;
-   account_name_type       control_account;
+   asset_symbol_type       smt_name;
 
    asset                   amount;
 
@@ -1146,6 +1156,7 @@ The inflation operation is specified as follows:
 struct smt_setup_inflation_operation
 {
    account_name_type   control_account;
+   asset_symbol_type   smt_name;
 
    timestamp           schedule_time;
    smt_inflation_unit  inflation_unit;
@@ -1200,6 +1211,7 @@ These operations are defined as follows:
 struct smt_set_setup_parameters_operation
 {
    account_name_type                                 control_account;
+   asset_symbol_type                                 smt_name;
 
    flat_set< smt_setup_parameter >                   setup_parameters;
    extensions_type                                   extensions;
@@ -1208,6 +1220,7 @@ struct smt_set_setup_parameters_operation
 struct smt_set_runtime_parameters_operation
 {
    account_name_type                                 control_account;
+   asset_symbol_type                                 smt_name;
 
    flat_set< smt_runtime_parameter >                 runtime_parameters;
    extensions_type                                   extensions;
