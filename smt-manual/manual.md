@@ -93,7 +93,7 @@ For content websites and tokens, incentive alignment between websites and users 
 
 Smart Media Tokens (SMTs) is a proposal to build a meta-token protocol on the Steem blockchain. Inspired by the revolutionary properties of the STEEM token, including automatic distributions to content creators, SMTs will be an upgrade beyond previously created blockchain token protocols due to carefully designed token sale programmability, automated liquidity providers and dynamic token distribution parameters as well as a large ecosystem of tools (open source wallets, shared key signing tools, etc.) for integrations at website and application layers.
 
-SMTs are an evolution of the successful relationship established between STEEM and the social websites sitting atop of it, such as steemit.com, which has grown to be a top 2500 website in Alexa rankings in less than one year solely from integrating the incentive model of STEEM. With SMTs, any website or content library across the internet may have one or more tokens integrated into its interface to facilitate fundraising and autonomous growth.
+SMTs are an evolution of the successful relationship established between STEEM and the social websites sitting atop of it, such as steemit.com, which has grown to be a top 2100 website in Alexa rankings in less than one year solely from integrating the incentive model of STEEM. With SMTs, any website or content library across the internet may have one or more tokens integrated into its interface to facilitate fundraising and autonomous growth.
 
 These tokens are designed to allow website operators flexibility during the integration of the token into their community by choosing from many parameters that may be structured creatively at outset or refined over time. Any tokens launched as SMTs shall benefit from a blockchain ecosystem built with an inbuilt decentralized exchange as well as an ecosystem of open-source applications and libraries to support successful deployment, fundraising and growth.
 
@@ -118,7 +118,7 @@ By leveraging a recently discovered automated market maker concept [1], SMT-base
 SMTs may be created with [reward pool](https://docs.google.com/document/d/1Jb3-Bnwmmo9lURmiwfYDPa1-29fi98f_oUShmgiU9oI/edit#heading=h.rchyypyc9pfy) parameters tuned for "Shared Influence" between Steem Power and other vesting SMTs, which means a SMT creator may specify that Steem Power can control a portion of the SMT's rewards pool for an unlimited or limited amount of time with increasing or decreasing influence. Altogether, Shared Influence may allow SMTs to be wholly or partially bootstrapped by the interest of existing and active Steem or other SMT community members.  Through these tools, community managers and entrepreneurs launching a token may leverage existing user bases to accelerate the distribution of the SMT to a target market.
 
 ## Can My Entity Participate in SMTs?
-An SMT can be launched by a person or entity; she only needs $1000 to cover the network fee (this prevents spam and unused tokens) and a namespace on Steem, which can be obtained by registering at anon.steem.network, steemit.com, steemconnect.com, or any other Steem sign-up service.
+An SMT can be launched by a person or entity; she only needs $3000 to cover the network fee (this prevents spam and unused tokens) and a namespace on Steem, which can be obtained by registering at anon.steem.network, steemit.com, steemconnect.com, or any other Steem sign-up service.
 
 Once the desired name space is secured, the entity issues the token by using a Steem-based Command Line Tool or another tool created in the future for token launches. The token can be structured to support an initial sale or distribution of the token. Certain properties of an SMT, such as its inflation rate, must also be defined by the person or entity creating the token. These properties dictate how the token is used inside applications and respective communities.
 
@@ -205,11 +205,11 @@ The current `fee` is set by the `smt_creation_fee` field of
 or SBD.  If specified in SBD, an equivalent amount of STEEM will be accepted,
 at the current price feed.
 
-Initially, `smt_creation_fee` will be set to 1000 SBD, and no means will be
+Initially, `smt_creation_fee` will be set to 3000 SBD, and no means will be
 provided to update it.  Updates to the `smt_creation_fee` amount may occur
 in future hardforks, however, so user-agents should read the `smt_creation_fee`
 value from the `dynamic_global_properties_object`.  User-agents should not assume
-the fee will always be 1000 SBD.
+the fee will always be 3000 SBD.
 
 The reason for this fee is to minimize creation of spam assets.
 
