@@ -1559,7 +1559,7 @@ To be continously updated for SMTs.  Current Steem APIs exist here: http://steem
 
 ### Shared Tools for Account Creation, Key Signing and Wallet Functions
 
-Several shared tools exist to support applications that wish to outsource signup, transaction signing and wallet functions, such as SteemConnect (Add link to SteemConnect launch post).
+Several shared tools exist to support applications that wish to outsource signup, transaction signing and wallet functions, such as [SteemConnect](https://v2.steemconnect.com/).
 
 # Conclusion
 
