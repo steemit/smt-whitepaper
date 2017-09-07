@@ -213,7 +213,7 @@ the fee will always be 3000 SBD.
 
 The reason for this fee is to minimize creation of spam assets.
 
-The fee is destroyed by sending it to `STEEMIT_NULL_ACCOUNT`.
+The fee is destroyed by sending it to `STEEM_NULL_ACCOUNT`.
 
 ### SMT pre-setup
 
@@ -238,7 +238,7 @@ struct smt_setup_operation
 {
    account_name_type       control_account;
    asset_symbol_type       smt_name;
-   int64_t                 max_supply = STEEMIT_MAX_SHARE_SUPPLY;
+   int64_t                 max_supply = STEEM_MAX_SHARE_SUPPLY;
 
    smt_generation_policy   initial_generation_policy;
 
@@ -541,7 +541,7 @@ possible compromise is to publish the previous and next power of 10, for example
 "this ICO's cap is between 1 million and 10 million STEEM."
 
 - Q: How do I disable the cap?
-- A: Set it so that the cap would occur above `STEEMIT_MAX_SHARE_SUPPLY`.
+- A: Set it so that the cap would occur above `STEEM_MAX_SHARE_SUPPLY`.
 
 ### Launch
 
@@ -687,7 +687,7 @@ Some things to note:
 - The unit ratio does not change so `min_unit_ratio` / `max_unit_ratio` must be set accordingly
 - We disable the hidden caps by using a zero nonce and setting `lower_bound == upper_bound`
 - We still need to reveal the caps with `smt_cap_reveal_operation`
-- The hard cap specified is the largest hard cap that does not result in created tokens exceeding `STEEMIT_MAX_SHARE_SUPPLY`
+- The hard cap specified is the largest hard cap that does not result in created tokens exceeding `STEEM_MAX_SHARE_SUPPLY`
 
 #### BETA
 
@@ -1277,7 +1277,7 @@ typedef static_variant<
 UI's which allow inspecting or setting these parameters should be aware of
 the type and scale of each parameter.  In particular, percentage parameters
 are on a basis point scale (i.e. 100% corresponds to a value of
-`STEEMIT_100_PERCENT = 10000`), and UI's or other tools for creating or
+`STEEM_100_PERCENT = 10000`), and UI's or other tools for creating or
 inspecting transactions *must* use the basis point scale.
 
 ## Parameter constraints
