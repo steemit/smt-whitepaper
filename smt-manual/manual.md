@@ -1492,9 +1492,9 @@ do not have a default value, and thus, must be specified for every asset.
 - `SMT_BLOCKCHAIN_PRECISION` : Set by `pow(10, smt_setup_operation.decimal_places)`
 - `SMT_BLOCKCHAIN_PRECISION_DIGITS` : Set by `smt_setup_operation.decimal_places`
 
-### Arbitrary Reward Splitting
+### Rewards Sharing
 
-All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer and more.  An interface can also provide this optionality to the author. Add to this.
+All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer and more.  An interface can also provide this optionality to the author.
 
 ## SMT interaction with existing operations
 
