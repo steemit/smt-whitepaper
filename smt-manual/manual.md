@@ -449,14 +449,14 @@ generation policy semantics with different parameters.
 #### Example ICO
 
 ALPHA wants to sell a token to the crowd to raise funds
-where 7% of contributed STEEM goes to Founder Account A, 23% of contributed STEEM
-goes to Founder Account B, and 70% of contributed STEEM goes to Founder Account C.
+where 70% of contributed STEEM goes to the Alpha Organization Account (@alpha_org), 23% of contributed STEEM
+goes to Founder Account A (@founder_a), and 7% of contributed STEEM goes to Founder Account b (@founder_b).
 
 ALPHA defines a STEEM unit as:
 
 
 ```
-steem_unit = [["founder_a", 7], ["founder_b", 23], ["founder_c", 70]]
+steem_unit = [["alpha_org", 70], ["founder_a", 23], ["founder_b", 7]]
 ```
 
 This STEEM-unit contains 100 STEEM-satoshis, or 0.1 STEEM.
@@ -466,7 +466,7 @@ ALPHA tokens, and Founder Account D will receive 1 ALPHA token.  This
 five-sixths / one-sixth split is expressed as:
 
 ```
-token_unit = [["$from", 5], ["founder_d", 1]]
+token_unit = [["$from", 5], ["founder_c", 1]]
 ```
 
 This ratio is defined in the following data structure:
@@ -609,14 +609,17 @@ reached its `min_steem_units`.
 This example builds on the ALPHA example from earlier.  This ICO
 has the following characteristics:
 
-- 7% of contributed STEEM goes to Founder Account A
-- 23% of contributed STEEM goes to Founder Account B
-- 70% of contributed STEEM goes to Founder Account C
+- 70% of contributed STEEM goes to Alpha Organization Account (@alpha_org)
+- 23% of contributed STEEM goes to Founder Account A (@founder_a)
+- 7% of contributed STEEM goes to Founder Account B (@founder_b)
 - Minimum unit of contribution is 0.1 STEEM
-- For every 1 STEEM contributed, the contributor gets 5 ALPHA
-- For every 1 STEEM contributed, Founder Account D gets 1 ALPHA
+- For every 1 STEEM contributed, the contributor gets 5 ALPHA (@contibutor_a)
+- For every 1 STEEM contributed, Founder Account C gets 1 ALPHA (@founder_c)
 - No minimum, hard cap, or soft cap
 - No post-launch inflation after launch
+
+
+![Alpha ICO example](img/ico-example-alpha.png)
 
 These are the operations for the ALPHA launch:
 
@@ -630,8 +633,8 @@ These are the operations for the ALPHA launch:
    "initial_generation_policy" : [0,
     {
      "pre_soft_cap_unit" : {
-      "steem_unit" : [["founder_a", 7], ["founder_b", 23], ["founder_c", 70]],
-      "token_unit" : [["$from", 5], ["founder_d", 1]]
+      "steem_unit" : [["alpha_org", 70], ["founder_a", 23], ["founder_b", 7]],
+      "token_unit" : [["$from", 5], ["founder_c", 1]]
      },
      "post_soft_cap_unit" : {
       "steem_unit" : [],
@@ -676,6 +679,7 @@ These are the operations for the ALPHA launch:
  ]
 ]
 ```
+
 
 Some things to note:
 
