@@ -1521,7 +1521,7 @@ Like STEEM, SMTs can be transferred across Steem with zero fees. Steem replaces 
 
 ## Fee-less Operations Necessary for Quality User Experience
 
-Because of bandiwdth rate limiting, Steem may never charge applications or users transaction fees for basic operations such as voting, posting and transferring.  This lack of fees allows Steem based apps to compete with their non-blockchain counterparts, such as Facebook or Reddit, which certainly do not charge fees for actions such as 'Like' and 'Upvote'.  If these applications did charge fees they would become far less used and could be more easily competed against.
+Because of bandwidth rate limiting, Steem may never charge applications or users transaction fees for basic operations such as voting, posting and transferring.  This lack of fees allows Steem based apps to compete with their non-blockchain counterparts, such as Facebook or Reddit, which certainly do not charge fees for actions such as 'Like' and 'Upvote'.  If these applications did charge fees they would become far less used and could be more easily competed against.
 
 ## Increasing Market Demand for Steem with Implicit Value Drivers rather than Fees
 
