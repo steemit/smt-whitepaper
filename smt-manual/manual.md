@@ -1377,7 +1377,7 @@ specifying the voting power of a maximum-strength vote directly, instead you spe
 `votes_per_regeneration_period`.  Then the maximum-strength vote is set such that a
 user casting that many max-strength votes will exactly cancel the regeneration.
 
-## SMT GUI Sketch
+## SMT Setup GUI Sketch
 ![SMT configuration sketch](img/SMT-setup.png)
 
 ## Votability and Rewardability
