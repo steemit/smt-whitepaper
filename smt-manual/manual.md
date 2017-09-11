@@ -133,37 +133,40 @@ We have identified five ways in which existing businesses and future entrepreneu
 
 A mainstream media website's growth has been slowing and they are looking for ways to get ahead of the changing tech landscape. The website migrates to a Disqus-like application based on Steem or taps directly into Steem APIs for a custom integration. Now their subscribers can be rewarded with crypto currency while commenting. When the website is ready, they can issue their own token through the comments interface - the token will allow them to 1) raise capital by selling tokens 2) catalyze autonomous growth.
 
-![Single Token Content Publishers wireframe](img/uc1-Content-Publishers.png)
+![Single Token Content Publishers sketcch](img/uc1-Content-Publishers.png)
 
 ### 2 - Forums - Multiple Token Support
 
 An up and coming forum business is looking to integrate cryptocurrency to create cash flow and spark growth to get the business to the next level. They issue an SMT and integrate it into their website, however, they are not cryptocurrency security experts and would prefer not to host a cryptocurrency wallet. Focusing solely on the social aspects, the forum business can integrate other applications, such as SteemConnect, into their forum to handle wallet and transfer capabilities. This allows the forum to focus on their business (growing communities) without focusing on the security aspects of cryptocurrency. The forum enables additional tokens to be exposed or launched to represent specific topics of discussion. The ability to launch these tokens can be retained by the company behind the website or granted to the website's community managers. Tokens dedicated to the website's specific topics will further spur autonomous growth of the website niche by niche. An example of this multi-token model could eventually be found in organizations such as ChainBB (chainbb.com) if it were to enable its own globally available token on its domain as well as narrowly available tokens for specific community niches, such as "gardening."
 
-![Multiple tokens Forum wireframe](img/uc2-Forums.png)
+![Multiple tokens Forum sketcch](img/uc2-Forums.png)
 
 ### 3 - Comments Widget for Online Publishers
 
 One of the ways in which publishers will be onboarded faster to SMT integrations is by offering a Steem-based comments widget that can easily be integrated into existing blogs that are built on software such as WordPress and Blogger. The developer employing the widget would be able to take a percentage of the tokens (called “arbitrary fees”) distributed to the commenters for themselves, thereby creating a business opportunity for the next generation of Disqus-like companies that are cryptocurrency enabled. It would alleviate the burdens of transaction signing support, private key management, wallet functionality and hosting costs for the publisher by outsourcing these to the comments widget maintainer.
 
-![Comment Widget wireframe](img/uc3-Comment-Widget.png)
+![Comment Widget sketcch](img/uc3-Comment-Widget.png)
 
 ### 4 - Sub-Community Moderators and Managers
 
 Imagine you are a moderator for a specific topic inside a forum, such as a Reddit "subreddit" or a Steemit "community". If a website integrates SMTs for these specific topics, then the topic moderator/s can launch these tokens to empower the subscribers of their topic, raise funds and increase the quality of content curation for the community.
 
-![Sub-community wireframe](img/uc4-subcommunity.png)
+![Sub-community sketcch](img/uc4-subcommunity.png)
 
 ### 5 - Arbitrary Assets - Tokens Representing Real World Assets
 
 An entrepreneur is looking to provide liquidity in the Steem ecosystem. They issue an SMT without inflation properties and imply that they will provide structure to peg it to the USD, making it like an IOU or basic derivative. The structure they provide to the asset includes buying and selling it near $1, similar to Tether. The entrepreneur sets up bank wire capabilities for buying and selling and takes a small % on each transaction. The derivative trades against STEEM and also brings capital into the ecosystem to be used across tokens.
 
-![IOU Asset Token Exchange wireframe](img/uc5-IOU-assets.png)
+![IOU Asset Token Exchange sketcch](img/uc5-IOU-assets.png)
 
 # Owner's manual
 
 This manual will explain the nuts and bolts of how SMTs work.
 The intended audience is technical users who want to create their
 own SMT.
+
+![SMT configuration sketch](img/SMT-setup.png)
+
 
 ## Establish a Name Space
 
