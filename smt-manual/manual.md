@@ -68,7 +68,7 @@ For content websites and tokens, incentive alignment between websites and users 
   - [Content rewards](#content-rewards)
   - [Curve definitions](#curve-definitions)
   - [Target votes per day](#target-votes-per-day)
-  - [SMT Sketch Setup](#smt-sketch-setup)
+  - [SMT Sketch GUI Setup](#smt-sketch-gui-setup)
   - [Votability and Rewardability](#votability-and-rewardability)
   - [Hardcoded Token Parameters](#hardcoded-token-parameters)
   - [Mandatory token parameters](#mandatory-token-parameters)
@@ -1378,7 +1378,7 @@ specifying the voting power of a maximum-strength vote directly, instead you spe
 `votes_per_regeneration_period`.  Then the maximum-strength vote is set such that a
 user casting that many max-strength votes will exactly cancel the regeneration.
 
-## SMT Setup Sketch
+## SMT Setup GUI Sketch
 ![SMT configuration sketch](img/SMT-setup.png)
 
 ## Votability and Rewardability
