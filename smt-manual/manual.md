@@ -2,7 +2,7 @@
 # Metadata
 
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
-* Originator: Steemit Inc
+* Originator: Steemit
 * Authors: Scott, Johnson, et al.
 * Copyright (c) Steemit, Inc. 2017
 * Status: DRAFT
