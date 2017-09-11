@@ -165,8 +165,6 @@ This manual will explain the nuts and bolts of how SMTs work.
 The intended audience is technical users who want to create their
 own SMT.
 
-![SMT configuration sketch](img/SMT-setup.png)
-
 
 ## Establish a Name Space
 
@@ -1378,6 +1376,8 @@ The `vote_regeneration_period_seconds` is specified directly.  For (b), instead 
 specifying the voting power of a maximum-strength vote directly, instead you specify
 `votes_per_regeneration_period`.  Then the maximum-strength vote is set such that a
 user casting that many max-strength votes will exactly cancel the regeneration.
+
+![SMT configuration sketch](img/SMT-setup.png)
 
 ## Votability and Rewardability
 
