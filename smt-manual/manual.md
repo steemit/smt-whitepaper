@@ -21,6 +21,7 @@ For content websites and tokens, incentive alignment between websites and users 
   - [Leveraging Tokens for Autonomous User Growth](#leveraging-tokens-for-autonomous-user-growth)
   - [New Fundraising Opportunities](#new-fundraising-opportunities)
   - [Immediate Liquidity](#immediate-liquidity)
+  - [Shared Bootstrap Tools](#shared-bootstrap-tools)
   - [Can My Entity Participate in SMTs?](#can-my-entity-participate-in-smts)
   - [Use Cases](#use-cases)
     - [1 - Content Publishers - Single Token Support](#1---content-publishers---single-token-support)
@@ -68,15 +69,15 @@ For content websites and tokens, incentive alignment between websites and users 
   - [Content rewards](#content-rewards)
   - [Curve definitions](#curve-definitions)
   - [Target votes per day](#target-votes-per-day)
-  - [SMT Sketch GUI Setup](#smt-sketch-gui-setup)
+  - [SMT Setup GUI](#smt-setup-gui)
   - [Votability and Rewardability](#votability-and-rewardability)
   - [Hardcoded Token Parameters](#hardcoded-token-parameters)
   - [Mandatory token parameters](#mandatory-token-parameters)
-    - [Arbitrary Reward Splitting](#arbitrary-reward-splitting)
+    - [Rewards Sharing](#rewards-sharing)
   - [SMT interaction with existing operations](#smt-interaction-with-existing-operations)
-- [Costless SMT Operations And Bandwidth Rate Limiting](#costless-smt-operations-and-bandwidth-rate-limiting)
-  - [Demand for Steem](#demand-for-steem)
+- [Costs of SMT Operations And Bandwidth Rate Limiting](#costs-of-smt-operations-and-bandwidth-rate-limiting)
   - [Fee-less Operations Necessary for Quality User Experience](#fee-less-operations-necessary-for-quality-user-experience)
+  - [Increasing Market Demand for Steem with Implicit Value Drivers rather than Fees](#increasing-market-demand-for-steem-with-implicit-value-drivers-rather-than-fees)
 - [Decentralized Exchange](#decentralized-exchange)
   - [Automatic Order Matching](#automatic-order-matching)
   - [Diverse Asset Types](#diverse-asset-types)
@@ -134,31 +135,36 @@ We have identified five ways in which existing businesses and future entrepreneu
 
 A mainstream media website's growth has been slowing and they are looking for ways to get ahead of the changing tech landscape. The website migrates to a Disqus-like application based on Steem or taps directly into Steem APIs for a custom integration. Now their subscribers can be rewarded with crypto currency while commenting. When the website is ready, they can issue their own token through the comments interface - the token will allow them to 1) raise capital by selling tokens 2) catalyze autonomous growth.
 
-![Single Token Content Publishers sketcch](img/uc1-Content-Publishers.png)
+![Single Token Content Publishers](img/uc1-Content-Publishers.png)
+\begin{center}Figure 1: Single Token Content Publishers\end{center}
 
 ### 2 - Forums - Multiple Token Support
 
 An up and coming forum business is looking to integrate cryptocurrency to create cash flow and spark growth to get the business to the next level. They issue an SMT and integrate it into their website, however, they are not cryptocurrency security experts and would prefer not to host a cryptocurrency wallet. Focusing solely on the social aspects, the forum business can integrate other applications, such as SteemConnect, into their forum to handle wallet and transfer capabilities. This allows the forum to focus on their business (growing communities) without focusing on the security aspects of cryptocurrency. The forum enables additional tokens to be exposed or launched to represent specific topics of discussion. The ability to launch these tokens can be retained by the company behind the website or granted to the website's community managers. Tokens dedicated to the website's specific topics will further spur autonomous growth of the website niche by niche. An example of this multi-token model could eventually be found in organizations such as ChainBB (chainbb.com) if it were to enable its own globally available token on its domain as well as narrowly available tokens for specific community niches, such as "gardening."
 
-![Multiple tokens Forum sketcch](img/uc2-Forums.png)
+![Multiple tokens Forum](img/uc2-Forums.png)
+\begin{center}Figure 2: Multiple tokens Forum\end{center}
 
 ### 3 - Comments Widget for Online Publishers
 
 One of the ways in which publishers will be onboarded faster to SMT integrations is by offering a Steem-based comments widget that can easily be integrated into existing blogs that are built on software such as WordPress and Blogger. The developer employing the widget would be able to take a percentage of the tokens (called “arbitrary fees”) distributed to the commenters for themselves, thereby creating a business opportunity for the next generation of Disqus-like companies that are cryptocurrency enabled. It would alleviate the burdens of transaction signing support, private key management, wallet functionality and hosting costs for the publisher by outsourcing these to the comments widget maintainer.
 
-![Comment Widget sketcch](img/uc3-Comment-Widget.png)
+![Comment Widget](img/uc3-Comment-Widget.png)
+\begin{center}Figure 3: Comment Widget\end{center}
 
 ### 4 - Sub-Community Moderators and Managers
 
 Imagine you are a moderator for a specific topic inside a forum, such as a Reddit "subreddit" or a Steemit "community". If a website integrates SMTs for these specific topics, then the topic moderator/s can launch these tokens to empower the subscribers of their topic, raise funds and increase the quality of content curation for the community.
 
-![Sub-community sketcch](img/uc4-subcommunity.png)
+![Sub-community](img/uc4-subcommunity.png)
+\begin{center}Figure 4: Sub-community\end{center}
 
 ### 5 - Arbitrary Assets - Tokens Representing Real World Assets
 
 An entrepreneur is looking to provide liquidity in the Steem ecosystem. They issue an SMT without inflation properties and imply that they will provide structure to peg it to the USD, making it like an IOU or basic derivative. The structure they provide to the asset includes buying and selling it near $1, similar to Tether. The entrepreneur sets up bank wire capabilities for buying and selling and takes a small % on each transaction. The derivative trades against STEEM and also brings capital into the ecosystem to be used across tokens.
 
-![IOU Asset Token Exchange sketcch](img/uc5-IOU-assets.png)
+![IOU Asset Token Exchange](img/uc5-IOU-assets.png)
+\begin{center}Figure 5: IOU Asset Token Exchange\end{center}
 
 # Owner's manual
 
@@ -621,8 +627,8 @@ has the following characteristics:
 - No minimum, hard cap, or soft cap
 - No post-launch inflation after launch
 
-
 ![Alpha ICO example](img/ico-example-alpha.png)
+\begin{center}Figure 6: Alpha ICO example\end{center}
 
 These are the operations for the ALPHA launch:
 
@@ -1319,7 +1325,8 @@ The algorithms to solve these problems operate as follows:
 - (2b) The author receives the remainder (after applying any beneficiaries or limited/declined author reward).
 - (2c) Curators are weighted *against other curators of that post* according to the *curation curve* or `cc`.
 
-![creation.png](img/creation.png)
+![Creation](img/creation.png)
+\begin{center}Figure 7: Creation\end{center}
 
 ## Curve definitions
 
@@ -1347,6 +1354,7 @@ To help visualize, here are some plots called *pie charts*.  Each colored area
 represents how curation rewards are divided among curators with equal voting power.
 
 ![Reward curves and curation curves](img/rc-cc.png)
+\begin{center}Figure 8: Reward curves and curation curves\end{center}
 
 - The rectangular vertical column shows the immediate reward upon making an upvote.
 - The colored area extending to the right shows how the rewards of a curator grow as later curators vote.
@@ -1378,8 +1386,9 @@ specifying the voting power of a maximum-strength vote directly, instead you spe
 `votes_per_regeneration_period`.  Then the maximum-strength vote is set such that a
 user casting that many max-strength votes will exactly cancel the regeneration.
 
-## SMT Setup GUI Sketch
-![SMT configuration sketch](img/SMT-setup.png)
+## SMT Setup GUI
+![SMT configuration](img/SMT-setup.png)
+\begin{center}Figure 9: SMT configuration\end{center}
 
 ## Votability and Rewardability
 
@@ -1583,5 +1592,6 @@ Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/
 Here is a timeline / state diagram of the events in an SMT launch:
 
 ![Timeline of implementation](img/timeline.png)
+\begin{center}Figure 10: Timeline of implementation\end{center}
 
 ## Unit Tests
