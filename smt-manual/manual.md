@@ -69,7 +69,7 @@ For content websites and tokens, incentive alignment between websites and users 
   - [Content rewards](#content-rewards)
   - [Curve definitions](#curve-definitions)
   - [Target votes per day](#target-votes-per-day)
-  - [SMT Setup GUI](#smt-setup-gui)
+  - [SMT Setup GUI Sketch](#smt-setup-gui-sketch)
   - [Votability and Rewardability](#votability-and-rewardability)
   - [Hardcoded Token Parameters](#hardcoded-token-parameters)
   - [Mandatory token parameters](#mandatory-token-parameters)
