@@ -628,7 +628,7 @@ has the following characteristics:
 - No post-launch inflation after launch
 
 ![Alpha ICO example](img/ico-example-alpha.png)
-\begin{center}Figure 6: Alpha ICO example\end{center}
+\begin{center}Figure 6: Alpha ICO Flow\end{center}
 
 These are the operations for the ALPHA launch:
 
@@ -1312,7 +1312,7 @@ depending on how many tokens are vested at a time.
 
 ## Content rewards
 
-Tokens flow from SMT inflation into the reward fund.  The blockchain uses algorithms
+Tokens flow from SMT emissions into the reward fund.  The blockchain uses algorithms
 to decide:
 
 - (1) How to divide the token-wide rewards among posts
@@ -1326,7 +1326,7 @@ The algorithms to solve these problems operate as follows:
 - (2c) Curators are weighted *against other curators of that post* according to the *curation curve* or `cc`.
 
 ![Creation](img/creation.png)
-\begin{center}Figure 7: Creation\end{center}
+\begin{center}Figure 7: Flow of initial tokens and SMT emissions\end{center}
 
 ## Curve definitions
 
@@ -1386,9 +1386,9 @@ specifying the voting power of a maximum-strength vote directly, instead you spe
 `votes_per_regeneration_period`.  Then the maximum-strength vote is set such that a
 user casting that many max-strength votes will exactly cancel the regeneration.
 
-## SMT Setup GUI
+## SMT Setup GUI Sketch
 ![SMT configuration](img/SMT-setup.png)
-\begin{center}Figure 9: SMT configuration\end{center}
+\begin{center}Figure 9: SMT Configuration\end{center}
 
 ## Votability and Rewardability
 
@@ -1592,6 +1592,6 @@ Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/
 Here is a timeline / state diagram of the events in an SMT launch:
 
 ![Timeline of implementation](img/timeline.png)
-\begin{center}Figure 10: Timeline of implementation\end{center}
+\begin{center}Figure 10: Timeline of SMT Launch\end{center}
 
 ## Unit Tests
