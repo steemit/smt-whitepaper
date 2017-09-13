@@ -1507,7 +1507,7 @@ do not have a default value, and thus, must be specified for every asset.
 
 ### Rewards Sharing
 
-All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer and more.  An interface can also provide this optionality to the author.
+All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer and more.  An interface can also provide this optionality to the author. Steem Witnesses have currently soft-capped maximum beneficiaries at eight while the feature proves its use, however, the blockchain is capable of handling up to 256 beneficiaries per post.
 
 ## SMT interaction with existing operations
 
