@@ -223,7 +223,7 @@ blockchain's consensus.
 
 The first operation to be executed is an `smt_create_operation`.
 This operation creates an SMT object in the blockchain state.
-After executing the `smt_elevate_account_operation`, the newly
+After executing the `smt_create_operation`, the newly
 created SMT object is not yet fully configured.
 
 Most of the configuration occurs in subsequent operations
@@ -232,7 +232,7 @@ and `smt_setup_operation`).  These later operations may occur in the
 same transaction, but they may also occur at any later point in time.
 
 ```
-struct smt_elevate_account_operation
+struct smt_create_operation
 {
    account_name_type control_account;
    asset             smt_creation_fee;
@@ -247,7 +247,7 @@ An SMT is referred to by a *numerical asset identifier*
 or NAI, consisting of two at-signs followed by nine decimal
 digits, for example `@@314159265`.  The blockchain enforces
 that the identifier placed by a UI into the
-`smt_elevate_account_operation` must match the result of the
+`smt_create_operation` must match the result of the
 `get_next_smt_identifier` RPC.  Therefore, an NAI cannot be
 chosen freely by the SMT creator.  It is not even possible
 to "mine" a "vanity NAI" (analogous to the
@@ -279,7 +279,7 @@ the publisher chooses to enforce.
 
 #### SMT creation fee
 
-Issuing an `smt_elevate_account_operation` requires payment of `smt_creation_fee`.
+Issuing an `smt_create_operation` requires payment of `smt_creation_fee`.
 The amount required is set by the `smt_creation_fee` field of
 `dynamic_global_properties_object`.  This field may contain a value in STEEM
 or SBD.  If specified in SBD, an equivalent amount of STEEM will be accepted,
@@ -297,7 +297,7 @@ The fee is destroyed by sending it to `STEEM_NULL_ACCOUNT`.
 
 Two pre-setup operations are included:  `smt_setup_inflation_operation` and
 `smt_setup_parameters`.  These operations must be issued after
-`smt_elevate_account_operation` and before
+`smt_create_operation` and before
 `smt_setup_operation`.  They may be issued in the same transaction, or in
 prior blocks.
 
@@ -358,7 +358,7 @@ At `launch_expiration_time`, if the ICO has not yet launched, all
 contributors will be automatically refunded (with virtual
 operations) and the ICO will be cancelled.  The symbol will remain
 reserved to the specified `control_account`.  However, in order to
-launch the token, an `smt_elevate_account_operation` must
+launch the token, an `smt_create_operation` must
 be issued and the `smt_creation_fee` must be paid again.
 
 ### Token units

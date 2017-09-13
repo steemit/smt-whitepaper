@@ -1,11 +1,11 @@
 digraph {
    {
-      smt_account_elevation_operation[shape=ellipse group=mainline
+      smt_create_operation[shape=ellipse group=mainline
 		label=
 		<
 			<FONT POINT-SIZE="10" FACE="dialog">
 			<TABLE BORDER="0" CELLSPACING="0">
-			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">smt_account_elevation_operation</TD></TR>
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">smt_create_operation</TD></TR>
 			<TR><TD BGCOLOR="#e8eef7">Fee paid by SMT creator to prevent spam assets</TD></TR>
 			</TABLE>
 			</FONT>
@@ -127,7 +127,7 @@ digraph {
       smt_refund_operation[shape=ellipse]
    }
 
-   smt_account_elevation_operation -> setup_phase;
+   smt_create_operation -> setup_phase;
    setup_phase -> smt_setup_operation;
    smt_setup_operation -> pre_contribution_pause;
    pre_contribution_pause -> contribution_begin_time;
