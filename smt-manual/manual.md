@@ -1,3 +1,6 @@
+---
+urlcolor: blue
+---
 
 # Metadata
 
