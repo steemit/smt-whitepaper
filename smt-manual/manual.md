@@ -6,7 +6,7 @@ urlcolor: blue
 
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
-* Authors: N. Scott, B. Johnson, et al.
+* Authors: Scott, Johnson, et al.
 * Copyright (c) Steemit, Inc. 2017
 * Status: DRAFT
 
