@@ -1641,6 +1641,20 @@ Simple Derivatives (IOUs) will be possible via SMT issuance.  For instance, if a
 ## Zero Trading and Transfer Fees
 The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike.  This is made possible by [bandwidth rate limiting](#--fee--less-operations-necessary-for-quality-user-experience), described in the original Steem Whitepaper and Bluepaper as the process by which the blockchain calculates transaction prices on a per byte basis and deducts transaction bandwidth available to an account temporarily.
 
+# From a Blockchain Layer Perspective, What Makes SMTs Better Suited to Steem than Eth, Tezos or GEOS?
+
+## SMTs in a hard-coded environment are safe and cost effective.
+
+The value of SMTs in a hard-coded environment, such as Steem, comes from reliability of the code and efficiencies created by reliability, whereas general purpose platforms require costly and highly-assumptive audits on each new token and issuer to be deemed safe. 
+
+## SMTs on Steem have aligned Proof-of-Brain incentives with the core token. 
+
+Core tokens, such as Eth, which do not carry Proof-of-Brain content rewards cannot offer monetization and bootstrapping benefits to new SMT communities.
+
+## SMTs have effective pricing for transactions. Whether using bandwidth costs or outright fees, no general purpose blockchain will price transactions effectively for more than a small fraction of its applications.
+
+## Scaling SMTs on Steem will be achieved far more effectively than a general purpose platform where multi-parallelism can be attacked.
+
 # Ecosystem Support
 
 ## Integrating SMTs into Websites and Apps
