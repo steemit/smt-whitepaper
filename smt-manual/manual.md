@@ -1649,7 +1649,7 @@ The value of SMTs in a hard-coded environment, such as Steem, comes from reliabi
 
 ## SMTs on Steem have aligned Proof-of-Brain incentives with the core token. 
 
-Core tokens, such as Eth, which do not carry Proof-of-Brain content rewards cannot offer monetization and bootstrapping benefits to new SMT communities.
+Unlike STEEM, core tokens, such as eth, that do not carry Proof-of-Brain content rewards, cannot offer monetization and bootstrapping benefits to new SMT communities.
 
 ## SMTs have effective pricing for transactions. Whether using bandwidth costs or outright fees, no general purpose blockchain will price transactions effectively for more than a small fraction of its applications.
 
