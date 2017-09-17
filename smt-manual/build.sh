@@ -3,8 +3,6 @@
 set -e
 set -x
 
-./md-to-toc.py manual.md
-
 # Dependencies:
 # Python 3
 # Matplotlib
