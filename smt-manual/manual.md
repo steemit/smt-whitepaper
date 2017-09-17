@@ -1543,11 +1543,11 @@ For one, there is growing demand for users to hold STEEM with the advent of SMTS
 
 Second, the ratio of demand to supply will be augmented by each SMT that leverages Automated Market Makers, which serve to create liquidity in SMTs as a point of attraction for the SMT.  A valuable side effect of the Automated Market Maker to STEEM is that each Automated Market Maker represents a permanent holding pool for STEEM, which represents a decrease available supply - and given demand were to stay equal, the price of STEEM is caused to rise with the advent of each new Automated Market Maker. 
 
-## STEEM Demand Increase with Advent of New Powers of Influence
+## STEEM Demand Increases with Advent of New Powers of Influence
 
 Third, demand for STEEM increases as each SMT is created with Influence Sharing for Steem Power over an SMT's rewards pool. The advent of each trace of Steem Power-based Shared Influence over an SMT's Reward Pool gives new rights and usage to STEEM, which in turn drives demand for STEEM. 
 
-## STEEM Demand Increased as Reserve and Gateway Currency for SMT ICOs
+## STEEM Demand Increases with Use as Currency for SMT ICOs
 
 Fourth, at a platform level, other cause for demand may include exclusive financing opportunities, such as ICOs, which attract new capital into ecosystems, first flowing into the base asset, STEEM, then flowing into SMTs. Increased capital in the ecosystem due to ICOs always presents an opportunity for net positive capital retained in STEEM, and at worst, a wash on the value of the base asset, where all of the STEEM is sold by the ICO'ing organization. The example of the worst case sceanrio is that an ICO occurs and $100 USD buys STEEM to buy the ICO'd SMT, then 100% of the STEEM received by the ICO is sold for USD - and explicity no net effect has occured on the value of STEEM.  However, even when the net effect contribution of an ICO to the value of STEEM is apparently zero, it is an implicit net benefit in terms of attention received to STEEM. Further, it is reasonable to expect based on the behavior of SMTs that majority of the STEEM received by the ICO'ing organization will continue to be held on a speculative or promisory basis and therefore create holding value - further each ICO will consider the value they can bring buyers by creating Automated Market Makers and Shared Influence properties, which both further drive implicit value creation in STEEM.
 
