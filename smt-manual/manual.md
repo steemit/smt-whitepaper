@@ -1535,7 +1535,7 @@ Because of bandwidth rate limiting, Steem may never charge applications or users
 
 There are several new value drivers to STEEM with the creation of SMTs. 
 
-## STEEM Purchased for Transaction Bandwidth Allowing for Maximally Profitable Participation across SMTs
+## STEEM Purchased for Transaction Bandwidth Enables Maximally Profitable Participation across SMTs
 
 For one, there is growing demand for users to hold STEEM with the advent of SMTS because users need to increasingly hold STEEM in order to participate, consume and use Steem services at a rate maximally commensurate with their growing potentials in respective SMT ecosystems. Put simply, as power users are growing their earning potential in SMT communities, they need more STEEM to achieve the bandwidth allowance needed to perform at their highest possible rate of return in SMT ecosystems. At an application level, the demand for bandwidth may be satisfied by users or by businesses, which can delegate surplus bandwidth to their users. 
 
@@ -1577,23 +1577,25 @@ The Steem DEX is the first DEX to exist without trading fees, to the benefit of 
 
 # What Makes SMTs Better Suited to Steem than Other Blockchains?
 
-## SMTs are Safer and Cost Effective in Hard-coded Blockchain Environments.
+Some wonder whether general purpose blockchains, which have shown their use for discovering new cryptocurrency concepts, will have advantages in hosting SMTs. The answer is that it is very unlikely for general puporse platforms to support Steem better than a specialized platform, such as Steem.  Without delving into Steem's advantages in network effect and dev team experience, the advantages for Steem can be laid out very plainly from a set of computer science, consumer safety and economic perspectives.  As we've seen throughout histories of our world's industries, specialization, such that Steem provides, has the potential to greatly outperform generalization, such that Eth and others provide.
 
-The value of SMTs in a native, specialized-programmability environment, such as Steem, comes from reliability of the code and efficiencies created by reliability, whereas general, open-programmability platforms, such as Eth and Tezos, require costly and highly-assumptive audits on each new token and issuer to be deemed safe.  Some of these open-programmability protocols claim to have [formal verification](https://en.wikipedia.org/wiki/Formal_verification), which is valuable, however, majority of the audit cost remains due the need to audit the issuer's choice of token mechanics, choice of client for writing the code and choice of code with which issue the token.  Because of their hard-coded blockchain environment, Steem, and SMT's designs for hardcoded versus dynamic properties that cannot harm token holders, SMTs will have reliable interfaces and surrounding descriptions from which the necessary audits become trivial.
+## SMTs are Safer and Cost Effective in Hard-coded, Specialized Blockchain Environments
+
+The value of SMTs in a native, specialized-programmability environment, such as Steem, comes from reliability of the code and efficiencies created by reliability, whereas general, open-programmability platforms, such as Eth and Tezos, require costly and highly-assumptive audits on each new token and issuer to be deemed safe.  Some of these open-programmability protocols claim to have [formal verification](https://en.wikipedia.org/wiki/Formal_verification), which is valuable, however, majority of the audit cost remains due the need to audit the issuer's choice of token mechanics, choice of client for writing the code and choice of code with which issue the token.  Because of the hard-coded blockchain environment, Steem, and SMT's designs for Hardcoded versus Dynamic cryptoeconomic properties that cannot harm token holders, SMTs will have reliable interfaces and surrounding descriptions from which the necessary audits become trivial.
 
 To elucidate this issue, imagine someone is offering you 20% of their currency in exchange for $100 USD.  You will have additional questions for the seller, essentialy a need to audit tertiary realities of the deal, such as, "does the seller maintain a right to print more coins and therefore dilute me?"  In SMTs, holders of SMTs largely will have high reliability of the core economics of the SMTs they purchase due to hardcoded nature of SMT's economic properties, such as emissions or inflation rates, which cannot be changed by the issuer after launch, and therefore, there can be no unexpected new currency emmissions to harm the consumer. In general purpose, open-programmability blockchain protocols, such as Eth and Tezos, there can be no such platform-spanning design principles and reliabilities that protect consumer safety.
 
-## SMTs on Steem have aligned Proof-of-Brain incentives with the core token. 
+## SMTs on Steem have Aligned Proof-of-Brain Incentives with the Core Token
 
 Unlike STEEM, core tokens, such as eth, that do not carry Proof-of-Brain content rewards, cannot offer monetization, primed active user-base, Shared Influence and bootstrapping benefits to new SMT communities. STEEM, on the other hand, is able to lend its reward pool features and primed-user base to new networks to help them bootstrap, market and become succesful independent clusters of partipants on the network.
 
-## SMTs on Steem have more effective pricing for transactions. 
+## SMTs on Steem Have More Efficient Pricing for Transactions
 
 Whether operating with bandwidth rate limiting or outright fees, no general purpose blockchain will price transactions effectively for more than a small fraction of its applications, and SMTs would have reduced UX on open-programmability blockchains, such as Eth, as a result.  The clear example is that on blockchains such as ethereum there are outright fees for all transactions, however, no content publisher would expect users to pay fees to leave comments on their articles.  With SMTs on Eth, those fees would be required, which makes Eth as an SMT platform a non-starter.
 
 Unlike, Eth, some open-programmability blockchains of the future may use bandwidth rate limiting as transaction costs, however, bandwidth rate limiting requires fine tuning to meet UX requirements of specific applications.  As an example, in Steem, bandwidth rate limiting is specifically tailored to support content applications and their user interactions by leveraging bandwidth rights according to two objects: amount of token ownership and account ownership - and it’s taken over a year of production-level research to refine the optimal bandwidth allowances to each. In general purpose, open-programmability platforms, the burden and the need for accurate pricing may hinder the ability for applications to have their users' actions priced appropriately and the problem may be exacerbated as a greater myriad of potential application experiments come to exist, stretch and share the blockchain's resources.  Therefore, blockchains that support native specialized-programmability may yield more suitable transaction pricing as it pertains to the UX with tokens in related applications.
 
-## Scaling SMTs on Steem will be achieved far more effectively than a general purpose platform where multi-parallelism can be attacked.
+## SMTs Require Blockchains with Scaling Processes that are Specialized
 
 # Ecosystem Support
 
