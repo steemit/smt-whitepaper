@@ -1641,15 +1641,17 @@ Simple Derivatives (IOUs) will be possible via SMT issuance.  For instance, if a
 ## Zero Trading and Transfer Fees
 The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike.  This is made possible by [bandwidth rate limiting](#--fee--less-operations-necessary-for-quality-user-experience), described in the original Steem Whitepaper and Bluepaper as the process by which the blockchain calculates transaction prices on a per byte basis and deducts transaction bandwidth available to an account temporarily.
 
-# What Makes SMTs Better Suited to Steem than an Open-Programmability Environment, such as Eth, Tezos or [GEOS](https://geos.org)?
+# FAQ: What Makes SMTs Better Suited to Steem than other blockchains, such as Eth, Tezos or [GEOS](https://geos.org)?
 
 ## SMTs in a hard-coded environment are safe and cost effective.
 
-The value of SMTs in a hard-coded environment, such as Steem, comes from reliability of the code and efficiencies created by reliability, whereas general purpose platforms require costly and highly-assumptive audits on each new token and issuer to be deemed safe. 
+The value of SMTs in a hard-coded environment, such as Steem, comes from reliability of the code and efficiencies created by reliability, whereas general purpose platforms, such as Eth, Tezos and GEOS, require costly and highly-assumptive audits on each new token and issuer to be deemed safe.  Some of these open-programmability protocols claim to have [formal verification](https://en.wikipedia.org/wiki/Formal_verification), which is valuable, however, majority of the audit cost remains due the need to audit the issuer's choice of token mechanics, choice of client for writing the code and choice of code with which issue the token.  SMTs, because of their reliable under-layer, Steem, and designs for hardcoded versus dynamic properties that cannot harm token holders, will have reliable interfaces and surrounding descriptions from which the necessary audits become trivial.
+
+To illucidate this issue, imagine someone is offering you 20% of their currency in exchange for $100 USD.  You will have additional questions for the seller, essentialy a need to audit tertiary realities of the deal, such as, "does the seller maintain a right to print more coins and therefore dilute me?"  In SMTs, holders of SMTs largely will have high reliability of the core economics of the SMTs they purchase due to hardcoded nature of SMT's economic properties, such as emissions or inflation rates, which cannot be changed by the issuer after launch, and therefore, there can be no unexpected new currency emmissions to harm the consumer. In Eth, Tezos and GEOS there can be no such platform-spanning design principles and reliabilities that protect consumer safety.
 
 ## SMTs on Steem have aligned Proof-of-Brain incentives with the core token. 
 
-Unlike STEEM, core tokens, such as eth, that do not carry Proof-of-Brain content rewards, cannot offer monetization and bootstrapping benefits to new SMT communities.
+Unlike STEEM, core tokens, such as eth, that do not carry Proof-of-Brain content rewards, cannot offer monetization, primed active user-base, Shared Influence and bootstrapping benefits to new SMT communities. STEEM, on the other hand, is able to lend its reward pool features and primed-user base to new networks to help them bootstrap, market and become succesful independent clusters of partipants on the network.
 
 ## SMTs have effective pricing for transactions. Whether using bandwidth costs or outright fees, no general purpose blockchain will price transactions effectively for more than a small fraction of its applications.
 
