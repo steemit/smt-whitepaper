@@ -1589,7 +1589,7 @@ To elucidate this issue, imagine someone is offering you 20% of their currency i
 
 Unlike STEEM, core tokens, such as eth, that do not carry Proof-of-Brain content rewards, cannot offer monetization, primed active user-base, Shared Influence and bootstrapping benefits to new SMT communities. STEEM, on the other hand, is able to lend its reward pool features and primed-user base to new networks to help them bootstrap, market and become succesful independent clusters of partipants on the network.
 
-## SMTs on Steem Have More Efficient Pricing for Transactions
+## SMTs on Steem Have Transaction Pricing that Contribute to Quality UX
 
 Whether operating with bandwidth rate limiting or outright fees, no general purpose blockchain will price transactions effectively for more than a small fraction of its applications, and SMTs would have reduced UX on open-programmability blockchains, such as Eth, as a result.  The clear example is that on blockchains such as ethereum there are outright fees for all transactions, however, no content publisher would expect users to pay fees to leave comments on their articles.  With SMTs on Eth, those fees would be required, which makes Eth as an SMT platform a non-starter.
 
