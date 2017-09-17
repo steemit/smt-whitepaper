@@ -1539,7 +1539,7 @@ There are several new value drivers to STEEM with the creation of SMTs.
 
 For one, there is growing demand for users to hold STEEM with the advent of SMTS because users need to increasingly hold STEEM in order to participate, consume and use Steem services at a rate maximally commensurate with their growing potentials in respective SMT ecosystems. Put simply, as power users are growing their earning potential in SMT communities, they need more STEEM to achieve the bandwidth allowance needed to perform at their highest possible rate of return in SMT ecosystems. At an application level, the demand for bandwidth may be satisfied by users or by businesses, which can delegate surplus bandwidth to their users. 
 
-## STEEM Supply Locked into Liquidity Pools by Austomated Market Makers
+## STEEM Supply Locked into Liquidity Pools by Automated Market Makers
 
 Second, the ratio of demand to supply will be augmented by each SMT that leverages Automated Market Makers, which serve to create liquidity in SMTs as a point of attraction for the SMT.  A valuable side effect of the Automated Market Maker to STEEM is that each Automated Market Maker represents a permanent holding pool for STEEM, which represents a decrease available supply - and given demand were to stay equal, the price of STEEM is caused to rise with the advent of each new Automated Market Maker. 
 
