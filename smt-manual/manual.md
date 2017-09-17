@@ -1595,7 +1595,7 @@ Whether operating with bandwidth rate limiting or outright fees, no general purp
 
 Unlike, Eth, some open-programmability blockchains of the future may use bandwidth rate limiting as transaction costs, however, bandwidth rate limiting requires fine tuning to meet UX requirements of specific applications.  As an example, in Steem, bandwidth rate limiting is specifically tailored to support content applications and their user interactions by leveraging bandwidth rights according to two objects: amount of token ownership and account ownership - and it’s taken over a year of production-level research to refine the optimal bandwidth allowances to each. In general purpose, open-programmability platforms, the burden and the need for accurate pricing may hinder the ability for applications to have their users' actions priced appropriately and the problem may be exacerbated as a greater myriad of potential application experiments come to exist, stretch and share the blockchain's resources.  Therefore, blockchains that support native specialized-programmability may yield more suitable transaction pricing as it pertains to the UX with tokens in related applications.
 
-## SMTs Require Blockchains with Scaling Processes that are Specialized
+## SMTs Benefit from Blockchains with Scaling Processes that are Application-Oriented and Specialized
 
 # Steem Ecosystem Support for SMTs
 
