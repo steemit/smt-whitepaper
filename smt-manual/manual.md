@@ -1597,7 +1597,7 @@ Unlike, Eth, some open-programmability blockchains of the future may use bandwid
 
 ## SMTs Require Blockchains with Scaling Processes that are Specialized
 
-# Ecosystem Support
+# Steem Ecosystem Support for SMTs
 
 ## Integrating SMTs into Websites and Apps
 
