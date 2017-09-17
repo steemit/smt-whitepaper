@@ -1547,7 +1547,7 @@ Second, the ratio of demand to supply will be augmented by each SMT that leverag
 
 Third, demand for STEEM increases as each SMT is created with Influence Sharing for Steem Power over an SMT's rewards pool. The advent of each trace of Steem Power-based Shared Influence over an SMT's Reward Pool gives new rights and usage to STEEM, which in turn drives demand for STEEM. 
 
-## STEEM Demand Increases along with SMT ICOs
+## STEEM Demand Increases with Proliferation of SMT ICOs
 
 Fourth, at a platform level, other cause for demand may include exclusive financing opportunities, such as ICOs, which attract new capital into ecosystems, first flowing into the base asset, STEEM, then flowing into SMTs. Increased capital in the ecosystem due to ICOs always presents an opportunity for net positive capital retained in STEEM, and at worst, a wash on the value of the base asset, where all of the STEEM is sold by the ICO'ing organization. The example of the worst case scenario is that an ICO occurs and $100 USD buys STEEM to buy the ICO'd SMT, then 100% of the STEEM received by the ICO is sold for USD - and no explicit net effect has occurred on the value of STEEM.  However, even when the net effect contribution of an ICO to the value of STEEM is apparently zero, it is an implicit net benefit in terms of attention received to STEEM. Further, it is reasonable to expect based on the behavior of SMTs that majority of the STEEM received by the ICO'ing organization will continue to be held on a speculative or promissory basis and therefore create holding value.
 
