@@ -53,6 +53,10 @@ By leveraging a recently architected automated market maker concept [2](https://
 
 SMTs may be created with [reward pool](https://steem.io/steem-bluepaper.pdf) parameters tuned for "Shared Influence" between Steem Power and other vesting SMTs, which means a SMT creator may specify that Steem Power can control a portion of the SMT's rewards pool for an unlimited or limited amount of time with increasing or decreasing influence. Altogether, Shared Influence may allow SMTs to be wholly or partially bootstrapped by the interest of existing and active Steem or other SMT community members.  Through these tools, community managers and entrepreneurs launching a token may leverage existing user bases to accelerate the distribution of the SMT to a target market.
 
+## Monetizing with Shared Token Rewards
+
+All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer and more.  An interface can also provide this optionality to the author. The number of potential Reward Sharing beneficiaries is soft capped by block producers at eight while the feature proves its use, however, the blockchain is capable of handling up to 256 beneficiaries per post.
+
 ## Can My Entity Participate in SMTs?
 An SMT can be launched by a person or entity; she only needs $75 to cover the network fee (this prevents spam and unused tokens) and a namespace on Steem, which can be obtained by registering at [anon.steem.network](https://anon.steem.network), [steemit.com](https://steemit.com), [steemconnect.com](https://v2.steemconnect.com), or any other Steem sign-up service.
 
@@ -1498,10 +1502,6 @@ do not have a default value, and thus, must be specified for every asset.
 - `SMT_MAX_SHARE_SUPPLY` : Set by `smt_setup_operation.max_supply`
 - `SMT_BLOCKCHAIN_PRECISION` : Set by `pow(10, smt_setup_operation.decimal_places)`
 - `SMT_BLOCKCHAIN_PRECISION_DIGITS` : Set by `smt_setup_operation.decimal_places`
-
-### Rewards Sharing
-
-All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer and more.  An interface can also provide this optionality to the author. Steem Witnesses have currently soft-capped maximum beneficiaries at eight while the feature proves its use, however, the blockchain is capable of handling up to 256 beneficiaries per post.
 
 ## SMT interaction with existing operations
 
