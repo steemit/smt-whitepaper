@@ -1571,7 +1571,7 @@ To elucidate this issue, imagine someone is offering you 20% of their currency i
 
 ## SMTs on Steem have Aligned Proof-of-Brain Incentives with the Core Token
 
-Unlike STEEM, core tokens, such as eth, that do not carry Proof-of-Brain content rewards, cannot offer monetization, primed active user-base, Shared Influence and bootstrapping benefits to new SMT communities. STEEM, on the other hand, is able to lend its reward pool features and primed-user base to new networks to help them bootstrap, market and become successful independent clusters of participants on the network.
+Unlike STEEM, core tokens, such as ETH, that do not carry Proof-of-Brain content rewards, cannot offer monetization, primed active user-base, Shared Influence and bootstrapping benefits to new SMT communities. STEEM, on the other hand, is able to lend its reward pool features and primed-user base to new networks to help them bootstrap, market and become successful independent clusters of participants on the network.  Conversely, some entrepreneurs will identify that a strategy in which they would like to employ SMTs indepedent from STEEM, and like ERC20's to Ethereum, SMTs can run while only having STEEM run in the background to calculate the necessary bandwidth for transaction costs.
 
 ## SMTs on Steem Have Transaction Pricing that Contributes to Quality UX
 
