@@ -125,7 +125,7 @@ is not the best match for the SMT brand.
 
 ### Control account security
 
-Security on the control account is important:
+Security on the control account is important for persons who plan to use the account post launch:
 
 - The control account should use 2-of-3 or 3-of-5 multisig.
 - The control account's authorities should have accounts, not keys, as multisig members.
@@ -139,7 +139,7 @@ is still able to transact.  It may be advisable to test your authorities
 and transaction signing setup using a testnet, or some non-important
 account on the main network.
 
-Once the token is launched, and alternative to an passive or active management approach, the keys may be burned to initiate a token for which the Dynamic properties can never be adjusted.
+Once the token is launched, the issuer may consider burning the account's keys to initiate a token for which the Dynamic properties can never be adjusted.  
 
 ### Token consensus
 
