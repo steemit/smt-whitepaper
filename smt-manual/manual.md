@@ -139,6 +139,8 @@ is still able to transact.  It may be advisable to test your authorities
 and transaction signing setup using a testnet, or some non-important
 account on the main network.
 
+Once the token is launched, and alternative to an passive or active management approach, the keys may be burned to initiate a token for which the Dynamic properties can never be adjusted.
+
 ### Token consensus
 
 Since tokens participate in atomic transactions also involving
