@@ -70,7 +70,7 @@ We have identified five ways in which existing businesses and future entrepreneu
 
 ### 1 - Content Publishers - Single Token Support
 
-A mainstream media website's growth has been slowing and they are looking for ways to get ahead of the changing tech landscape. The website migrates to a Disqus-like application based on Steem or taps directly into Steem APIs for a custom integration. Now their subscribers can be rewarded with crypto currency while commenting. When the website is ready, they can issue their own token through the comments interface - the token will allow them to 1) raise capital by selling tokens 2) catalyze autonomous growth.
+A mainstream media website's growth has been slowing and they are looking for ways to get ahead of the changing tech landscape. The website migrates to a Disqus-like application based on Steem or taps directly into Steem APIs for a custom integration. Now their subscribers can be rewarded with cryptocurrency while commenting. When the website is ready, they can issue their own token through the comments interface - the token will allow them to 1) raise capital by selling tokens 2) catalyze autonomous growth.
 
 ![Single Token Content Publishers](img/uc1-Content-Publishers.png)
 \begin{center}Figure 1: Single Token Content Publishers\end{center}
