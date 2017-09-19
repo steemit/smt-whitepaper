@@ -11,6 +11,7 @@ urlcolor: blue
 * Authors: Scott, Johnson, et al.
 * Copyright (c) Steemit, Inc. 2017
 * Status: DRAFT
+* GitHub: [link](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md)
 
 # Smart Media Tokens (SMTs)
 
