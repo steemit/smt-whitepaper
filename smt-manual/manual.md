@@ -58,7 +58,7 @@ SMTs may be created with [reward pool](https://steem.io/steem-bluepaper.pdf) par
 All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer and more.  An interface can also provide this optionality to the author. The number of potential Reward Sharing beneficiaries is soft capped by block producers at eight while the feature proves its use, however, the blockchain is capable of handling up to 256 beneficiaries per post.
 
 ## Can My Entity Participate in SMTs?
-An SMT can be launched by a person or entity; she only needs $75 to cover the network fee (this prevents spam and unused tokens) and a namespace on Steem, which can be obtained by registering at [anon.steem.network](https://anon.steem.network), [steemit.com](https://steemit.com), [steemconnect.com](https://v2.steemconnect.com), or any other Steem sign-up service.
+An SMT can be launched by a person or entity; she only needs 0.99 USD to cover the network fee (this prevents spam and unused tokens) and a namespace on Steem, which can be obtained by registering at [anon.steem.network](https://anon.steem.network), [steemit.com](https://steemit.com), [steemconnect.com](https://v2.steemconnect.com), or any other Steem sign-up service.
 
 Once the desired name space is secured, the entity issues the token by using a Steem-based Command Line Tool or another tool created in the future for token launches. The token can be structured to support an initial sale or distribution of the token. Certain properties of an SMT, such as its inflation rate, must also be defined by the person or entity creating the token. These properties dictate how the token is used inside applications and respective communities.
 
@@ -213,11 +213,11 @@ The amount required is set by the `smt_creation_fee` field of
 or SBD.  If specified in SBD, an equivalent amount of STEEM will be accepted,
 at the current price feed.
 
-Initially, `smt_creation_fee` will be set to 75 SBD, and no means will be
+Initially, `smt_creation_fee` will be set to 0.99 SBD, and no means will be
 provided to update it.  Updates to the `smt_creation_fee` amount may occur
 in future hardforks, however, so user-agents should read the `smt_creation_fee`
 value from the `dynamic_global_properties_object`.  User-agents should not assume
-the fee will always be 75 SBD.
+the fee will always be 0.99 SBD.
 
 The fee is destroyed by sending it to `STEEM_NULL_ACCOUNT`.
 
