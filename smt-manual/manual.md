@@ -1565,7 +1565,7 @@ The Steem DEX is the first DEX to exist without trading fees, to the benefit of 
 # What Makes SMTs Better Suited to Steem than Other Blockchains?
 
 As we've seen throughout histories of our world's industries, specialization, such that Steem provides, has the potential to greatly outperform generalization, such that Ethereum and others provide. Some wonder how a specialized, specific-natured blockchain such as Steem, is more suited to SMTs than general purpose blockchains, such as 
-ereum, which has shown its use for discovering new cryptocurrency concepts.  Without delving into Steem's advantages in network effect and dev team experience, the advantages for Steem can be seen through a set of computer science, consumer safety and economic perspectives.  
+Ethereum, which has shown its use for discovering new cryptocurrency concepts.  Without delving into Steem's advantages in network effect and dev team experience, the advantages for Steem can be seen through a set of computer science, consumer safety and economic perspectives.  
 
 ## SMTs are Safer and More Cost Effective in Hard-coded, Specialized Blockchain Environments
 
