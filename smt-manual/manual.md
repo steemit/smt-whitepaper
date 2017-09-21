@@ -1,7 +1,9 @@
 ---
 header-includes:
     - \renewcommand{\contentsname}{Table of Contents}
+    - \usepackage[top=4cm,bottom=4cm,left=4cm,right=4cm]{geometry}
 urlcolor: blue
+linkcolor: blue
 ---
 
 # Metadata
@@ -11,7 +13,7 @@ urlcolor: blue
 * Authors: Scott, Johnson, et al.
 * Copyright (c) Steemit, Inc. 2017
 * Status: DRAFT
-* GitHub: https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md
+* GitHub: [https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md)
 
 # Smart Media Tokens (SMTs)
 
@@ -24,6 +26,7 @@ Several popular token protocols, such as Ethereum's ERC-20s, allow you to create
 For content websites and tokens, incentive alignment between websites and users comes from a steady, as well as decentralized and mathematically guaranteed, release of new tokens and incentives that must be allocated to the users, including bloggers, vloggers, commenters and curators. The distribution of new tokens occurs based on stake-weighted voting to prevent gaming and eliminate the need for a counterparty. Quality user experience comes from tokens that can be transacted safely (through separate private keys for distinct sets of actions), without fees, and at real-time speeds.  Further incentive alignment comes from a company’s ability to raise capital in ICOs, and all Smart Media Tokens have built-in ICO support, should the issuer wish to launch one.
 
 \tableofcontents
+\newpage
 
 # Introduction
 
@@ -1619,7 +1622,7 @@ Lastly, along with these new value creating mechanisms, it is imperative to reco
 
 ### APIs and Documentation
 
-To be continously updated for SMTs.  Current Steem APIs exist here: http://steem.readthedocs.io/en/latest/index.html and https://steemit.github.io/steemit-docs/
+To be continously updated for SMTs.  Current Steem APIs exist here: [http://steem.readthedocs.io/en/latest/index.html](http://steem.readthedocs.io/en/latest/index.html) and [https://steemit.github.io/steemit-docs/](https://steemit.github.io/steemit-docs/)
 
 ### Shared Tools for Account Creation, Key Signing and Wallet Functions
 
@@ -1631,10 +1634,10 @@ Through a combination of specialized designs for open asset-issuance, bandwidth 
 
 # References
 
-[1] Steemit, Inc., 2017. Steem Bluepaper. A protocol for bringing smart, social currency to publishers and content businesses across the internet. (https://www.steem.io/steem-bluepaper.pdf)
+[1] Steemit, Inc., 2017. Steem Bluepaper. A protocol for bringing smart, social currency to publishers and content businesses across the internet. ([https://www.steem.io/steem-bluepaper.pdf](https://www.steem.io/steem-bluepaper.pdf))
 
 [2] Eyal Hertzog, Guy Benartzi & Galia Benartzi, 2017. Bancor Protocol. Continuous Liquidity and Asynchronous Price
-Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)
+Discovery for Tokens through their Smart Contracts. ([https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf))
 
 # Appendix
 
