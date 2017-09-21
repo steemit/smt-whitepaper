@@ -55,7 +55,7 @@ SMTs may be created with [reward pool](https://steem.io/steem-bluepaper.pdf) par
 
 ## Community Building With Paid Positions
 
-SMTs may be created with [Guild Positions](https://github.com/steemit/smt-whitepaper/issues/132) or jobs that are coded to the token and may receive some portion of the token's overall inflation.  The paid roles may be leveraged to support the community applications, games and businesses built around the token. The number of positions and their salaries may be chosen by the issuer of the token and described in a sort of constitution that encourages adherence to job descriptions. There can be over 200 paid positions per token and the paid positions can receive up to 100% of the overall inflation.
+SMTs may be created with [Paid Positions](https://github.com/steemit/smt-whitepaper/issues/132), guild roles or jobs that are coded to the token and may receive some portion of the token's overall inflation.  The paid roles may be leveraged to support the community applications, games and businesses built around the token. The number of positions and their salaries may be chosen by the issuer of the token and described in a sort of constitution that encourages adherence to job descriptions. There can be over 200 paid positions per token and the paid positions can receive up to 100% of the overall inflation.
 
 ## Monetizing with Shared Token Rewards
 
