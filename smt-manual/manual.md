@@ -53,9 +53,9 @@ By leveraging a recently architected automated market maker concept [[2](https:/
 
 SMTs may be created with [reward pool](https://steem.io/steem-bluepaper.pdf) parameters tuned for "Shared Influence" between Steem Power and other vesting SMTs, which means a SMT creator may specify that Steem Power can control a portion of the SMT's rewards pool for an unlimited or limited amount of time with increasing or decreasing influence. Altogether, Shared Influence may allow SMTs to be wholly or partially bootstrapped by the interest of existing and active Steem or other SMT community members.  Through these tools, community managers and entrepreneurs launching a token may leverage existing user bases to accelerate the distribution of the SMT to a target market.
 
-## Community and Guild Building With Paid Positions
+## Autonomous Community Building With Paid Positions
 
-SMTs may be created with [Guild Positions](https://github.com/steemit/smt-whitepaper/issues/132) or roles that are coded to the token and may receive some portion of the token's overall inflation.  The paid roles may be leveraged to support the community applications, games and businesses built around the token. The number of positions and their salaries may be chosen by the issuer of the token and described in a sort of constitution that encourages adherence to job descriptions. There can be over 200 paid positions per token and the paid positions can receive up to 100% of the overall inflation.
+SMTs may be created with [Guild Positions](https://github.com/steemit/smt-whitepaper/issues/132) or jobs that are coded to the token and may receive some portion of the token's overall inflation.  The paid roles may be leveraged to support the community applications, games and businesses built around the token. The number of positions and their salaries may be chosen by the issuer of the token and described in a sort of constitution that encourages adherence to job descriptions. There can be over 200 paid positions per token and the paid positions can receive up to 100% of the overall inflation.
 
 ## Monetizing with Shared Token Rewards
 
