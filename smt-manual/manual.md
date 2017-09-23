@@ -1594,6 +1594,8 @@ In blockchain scaling there are cutting-edge concepts of "sharding" (originated 
 
 Looking to the 90s and early 00’s for analogy, when the computer science world started writing code specifically optimized for GPUs, the boundary pushing for greater scale occurred through FPGAs - field programmable gate arrays, which are essentially processors for programming how all the gates of information operate with each other. This is not quite ASIC but significantly faster than CPU. As these platforms move to more and more generalizations, such as the idea that any contract may call on any other contract, they will move further away from ability to optimize for scale, as contracts that call on all other contracts can reduce the capacity for multi-parallel processing to single-core processing. By analogy, like CPUs do not optimize better than GPUs, platforms like Ethereum, GEOS and Tezos do not optimize better than a hard-coded, application-specific blockchains like Steem.  These CPU-like blockchains will be bottlenecked by unpredictable processing requirements, while the ultimate blockchain platforms will be specially-designed, like Steem, and will scale by optimizing in the way FPGAs were optimized for GPUs.
 
+## SMTs Benefit from a Blockchain with Content Management System [(CMS)](https://en.wikipedia.org/wiki/Content_management_system) Primitives
+
 # Increasing Market Demand for Steem with Implicit Value Drivers rather than Fees
 
 There are several new value drivers to Steem with the creation of SMTs.  
