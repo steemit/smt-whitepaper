@@ -8,8 +8,10 @@ urlcolor: blue
 
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
-* Authors: N.Scott, B.Johnson
-* Sketch Designs: P.Kattera
+* Authors: @ned; @theoretical
+* Coders: @theoretical; @vandeberg; @bwrona; @lbujak; @mkochanowicz; @mtrela; @picokernel
+* Contributors: @sneak; @vandeberg; @valzav; et al.
+* Sketch Designs: @pkattera
 * Copyright (c) Steemit, Inc. 2017
 * Status: DRAFT
 * GitHub: https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md
