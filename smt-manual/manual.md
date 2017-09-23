@@ -10,7 +10,7 @@ linkcolor: blue
 
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
-* Authors: @ned; @theoretical
+* Creators: @ned; @theoretical
 * Coders: @theoretical; @vandeberg; @vogel; @lbujak; @mkochanowicz; @mtrela; @picokernel
 * Contributors: @sneak; @vandeberg; @valzav; et al.
 * Sketch designs: @pkattera
