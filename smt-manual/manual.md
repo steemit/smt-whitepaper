@@ -1596,6 +1596,8 @@ Looking to the 90s and early 00’s for analogy, when the computer science world
 
 ## SMTs Benefit from a Blockchain with Content Management System [(CMS)](https://en.wikipedia.org/wiki/Content_management_system) Primitives
 
+Unlike application-general blockchains, such as Ethereum, that inherently avoid application-specific primitives at the core of the protocol, Steem offers a structured public content database for storing plain text in tandem with content primitives that developers can build from, including Account Names, Posts, Comments, Votes and Account Balance.  These primitives benefit the blockchain-based applications by helping to establish application-interoperability and fast developer onboarding.  Without these primitives, second order databases need to be structured to specifically for a blockchain-based application, which may give rise to many second-order application-specific databases competing with each other.  The rise of multiple second layer content databases likely splits the potential network effect for the blockchain as a CMS and reduces the potential for application-interoperability, which provides consumer safety benefits by allowing end users to move fluidly from one blockchain-based application to another.
+
 # Increasing Market Demand for Steem with Implicit Value Drivers rather than Fees
 
 There are several new value drivers to Steem with the creation of SMTs.  
