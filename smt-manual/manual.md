@@ -9,7 +9,6 @@ urlcolor: blue
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
 * Authors: N.Scott, B.Johnson
-* Contributors: J.Paul; M.Vandeberg, V.Zavgorodnev, et al.
 * Sketch Designs: P.Kattera
 * Copyright (c) Steemit, Inc. 2017
 * Status: DRAFT
