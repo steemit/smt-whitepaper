@@ -9,7 +9,7 @@ urlcolor: blue
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
 * Authors: @ned; @theoretical
-* Coders: @theoretical; @vandeberg; @bwrona; @lbujak; @mkochanowicz; @mtrela; @picokernel
+* Coders: @theoretical; @vandeberg; @vogel; @lbujak; @mkochanowicz; @mtrela; @picokernel
 * Contributors: @sneak; @vandeberg; @valzav; et al.
 * Sketch designs: @pkattera
 * Copyright (c) Steemit, Inc. 2017
