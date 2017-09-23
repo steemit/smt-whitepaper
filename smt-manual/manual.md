@@ -11,7 +11,7 @@ linkcolor: blue
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
 * Creators: @ned; @theoretical
-* Software Engineers: @theoretical; @vandeberg; @vogel; @lbujak; @mkochanowicz; @mtrela; @youkaicountry; @picokernel
+* Coders: @theoretical; @vandeberg; @vogel; @lbujak; @mkochanowicz; @mtrela; @youkaicountry; @picokernel
 * Contributors: @sneak; @vandeberg; @valzav; et al.
 * Sketch designs: @pkattera
 * Copyright (c) Steemit, Inc. 2017
