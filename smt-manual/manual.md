@@ -6,7 +6,7 @@ urlcolor: blue
 linkcolor: blue
 ---
 
-#### Metadata
+### Metadata
 
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
