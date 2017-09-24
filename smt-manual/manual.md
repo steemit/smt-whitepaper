@@ -1260,7 +1260,7 @@ Because of bandwidth rate limiting, Steem may never charge applications or users
 
 # Decentralized Exchange
 
-One of the valuable features of SMTs is their immediate access to functioning, unmanned markets against the liquid asset, STEEM.
+One of the valuable features of SMTs is their immediate access to functioning unmanned markets against the liquid asset, STEEM.
 
 ## Automatic Order Matching
 
