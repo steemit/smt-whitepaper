@@ -1296,7 +1296,11 @@ The paid roles may be leveraged to support various applications, games, and busi
 
 ## Democratic SMTs using Whitelist Oracles
 
+SMTs represent completely open access to tokens, however, some entities may wish to enable one-whitelisted-account, one-vote-per-post and X-number-of-target-votes-per-day algorithms to increase their token's potential for accurate widom-of-the-crowd content discovery mechanics and the democratic nature of their token communnity.  To incorporate this, the Rewards Pool for a token will need to have a mangeable whitelist that can be enabled only at launch.  Whitelist management may be handled by the entity launching the token or outsourced to an identity mangement service, such as Civic or Jumio.  The service would need to continually provide a list of known individual's single Steem handle into the Steem blockchain.  As the blockchain pays rewards to a token, it verifies the account receiving the token is on the whitelist, otherwise the tokens are returned to the reward pool.
+
 ## Secondary ICOs for Contiguous Fundraising
+
+Entrepreneurs leveraging SMTs to finance ventures may want to have the option to perform token auctions after the intitial launch of the token.  The entrepreneur can reserve Founders tokens at launch and earmark them for later sale, however, they may want to auction these tokens rather than sell them into Bid/Ask order books or sell them OTC.  To enable secondary auction-style ICOs, a secondary auction contract may be established.  This contract requires definitions for when an ICO begins and how long it lasts. The entrepreneuer will send tokens to this contract prior to the beginning of the auction and the tokens will be distributed to the auction participants immediately following the close of auction period.
 
 # What Makes SMTs Better Suited to Application-Specific Blockchains, such as Steem, than Application-General Blockchains, such as Ethereum?
 
