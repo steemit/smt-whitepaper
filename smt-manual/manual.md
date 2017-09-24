@@ -1064,13 +1064,13 @@ Several dynamic parameters must be constrained to prevent abuse scenarios that c
 
 SMT's have similar vesting (powerup / powerdown) semantics to STEEM.  In particular:
 
-- SMT's can be "powered up" into a vesting balance
+- SMT's can be "powered up" into a vesting balance.
 - SMT's in a vesting balance can be "powered down" over 13 weeks
-(controlled by hardcoded `SMT_VESTING_WITHDRAW_INTERVALS`, `SMT_VESTING_WITHDRAW_INTERVAL_SECONDS` parameters)
-- Voting is affected only by powered-up tokens
-- Vesting balance cannot be transferred or sold
+(controlled by hardcoded `SMT_VESTING_WITHDRAW_INTERVALS`, `SMT_VESTING_WITHDRAW_INTERVAL_SECONDS` parameters).
+- Voting is affected only by powered-up tokens.
+- Vesting balance cannot be transferred or sold.
 
-Additionally, some token inflation may be directed to vesting balances. These newly "printed" tokens are effectively split among all users with vesting balances proportional to the number of tokens they have vested. As the number of tokens printed is independent of users' vesting balances, the percentage rate of return this represents will vary depending on how many tokens are vested at a time.
+Additionally, some token inflation may be directed to vesting balances. These newly "printed" tokens are effectively split among all users with vesting balances, proportional to the number of tokens they have vested. As the number of tokens printed is independent of users' vesting balances, the percentage rate of return this represents will vary depending on how many tokens are vested at a time.
 
 ## Content rewards
 
