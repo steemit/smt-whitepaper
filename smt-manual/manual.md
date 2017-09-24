@@ -1223,7 +1223,7 @@ Here is the list of such hardcoded parameters:
 
 ## Mandatory token parameters
 
-The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` have default values.  A few STEEM-equivalent parameters are specified by `smt_setup_operation` fields, these are the parameters which do not have a default value, and thus, must be specified for every asset.
+The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` have default values. A few STEEM-equivalent parameters are specified by `smt_setup_operation` fields. These are the parameters which do not have a default value, and thus, must be specified for every asset.
 
 - `SMT_MAX_SHARE_SUPPLY` : Set by `smt_setup_operation.max_supply`
 - `SMT_BLOCKCHAIN_PRECISION` : Set by `pow(10, smt_setup_operation.decimal_places)`
