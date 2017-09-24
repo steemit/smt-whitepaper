@@ -8,6 +8,7 @@ linkcolor: blue
 
 **Metadata**
 
+* CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
 * Creators: @ned; @theoretical
 * Coders: @theoretical; @vandeberg; @vogel; @lbujak; @mkochanowicz; @mtrela; @youkaicountry; @picokernel
