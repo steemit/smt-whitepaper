@@ -243,21 +243,11 @@ Each `(key, value)` pair in the `flat_map` determines the routing of some satosh
 
 ### Unit ratios
 
-When an SMT launches, token units are created for STEEM
-units in an R-for-1 ratio.  The number R is called the
-*unit ratio*.  Maximum and minimum allowable values for
-R are specified respectively in the `min_unit_ratio`
-and `max_unit_ratio` fields of `smt_generation_policy`.
+When an SMT launches, token units are created for STEEM units in a R-for-1 ratio. The number R is called the *unit ratio*. Maximum and minimum allowable values for R are specified respectively in the `min_unit_ratio` and `max_unit_ratio` fields of `smt_generation_policy`.
 
-The maximum number of token units that can be created in the ICO
-is limited to `max_token_units_generated`, a parameter which is set by
-the ICO creator.  (More tokens can be created after the
-token has launched, but this later creation is called *inflation*
-and is not considered to be part of the ICO.)
+The maximum number of token units that can be created in the ICO is limited to `max_token_units_generated`, a parameter which is set by the ICO creator. (More tokens can be created after the token has launched, but this later creation is called *inflation* and is not considered to be part of the ICO.)
 
-The unit ratio is set to the largest integer that would
-not result in exceeding `max_token_units_generated` for the number
-of STEEM units actually contributed.
+The unit ratio is set to the largest integer that would not result in exceeding `max_token_units_generated` for the number of STEEM units actually contributed.
 
 ### Cap and min
 
