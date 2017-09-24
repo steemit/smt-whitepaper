@@ -1231,8 +1231,8 @@ The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` h
 
 ## SMT interaction with existing operations
 
-- `comment_payout_beneficiaries` : The existing `comment_payout_beneficiaries` will only redirect STEEM.  In the future, `comment_payout_beneficiaries` functionality which allows redirecting SMT rewards may be added.
-- `comment_options` : `max_accepted_payout`, `allow_votes` only affects STEEM, see [here](#votability-and-rewardability) to restrict `max_accepted_payout` for assets.  `allow_curation_rewards` affects all tokens.
+- `comment_payout_beneficiaries` : The existing `comment_payout_beneficiaries` will only redirect STEEM. In the future, `comment_payout_beneficiaries` functionality which allows redirecting SMT rewards may be added.
+- `comment_options` : `max_accepted_payout`, `allow_votes` only affects STEEM, see [here](#votability-and-rewardability) to restrict `max_accepted_payout` for assets. `allow_curation_rewards` affects all tokens.
 - `vote_operation` : Multiple tokens in the comment's votable set vote.
 - `transfer_operation` : Supports all SMT's.
 - Escrow operations:  Do not support SMT's.
@@ -1248,7 +1248,7 @@ The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` h
 - `decline_voting_rights_operation` : Affects SMT votes as well as STEEM votes.
 - `claim_reward_balance_operation` : Restrictions on this operation are relaxed to allow any asset in any of the three fields, including SMT's.
 - `delegate_vesting_shares_operation` : Supports all SMT's that support vesting.
-- Multisig:  There is nothing "special" about multisig handling of SMT operations.  If you set up your account to require a multisig authority, then everything your account signs will need to be signed with multiple signatures, as you specified.  Including operations your account does as a control account managing an SMT, or operations your account does as a user holding SMT tokens.
+- Multisig:  There is nothing "special" about multisig handling of SMT operations. If you set up your account to require a multisig authority, then everything your account signs will need to be signed with multiple signatures, as you specified. This includes operations your account does as a control account managing an SMT, and operations your account does as a user holding SMT tokens.
 
 # Costs of SMT Operations And Bandwidth Rate Limiting
 
