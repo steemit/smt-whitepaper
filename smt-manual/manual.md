@@ -334,7 +334,7 @@ This `typedef` allows the potential for future protocol versions to allow additi
 
 #### Example ICO
 
-ALPHA wants to sell a token to the crowd to raise funds where 70% of contributed STEEM goes to the Alpha Organization Account (@alpha_org), 23% of contributed STEEM goes to Founder Account A (@founder_a), and 7% of contributed STEEM goes to Founder Account b (@founder_b).
+ALPHA wants to sell a token to the crowd to raise funds where: 70% of contributed STEEM goes to the Alpha Organization Account (@alpha_org), 23% of contributed STEEM goes to Founder Account A (@founder_a), and 7% of contributed STEEM goes to Founder Account B (@founder_b).
 
 ALPHA defines a STEEM unit as:
 
@@ -362,43 +362,43 @@ struct smt_generation_unit
 
 This token-unit contains 6 ALPHA-satoshis, or 0.0006 ALPHA (if ALPHA has 4 decimal places).
 
-Next we define the *unit ratio* as the relative rate at which `token_unit` are issued as `steem_unit` are contributed.  So to match the specification of 6 ALPHA per 1 STEEM, we need to issue 1000 ALPHA-units per STEEM-unit. Therefore the unit ratio of this ICO is 1000.  This unit ratio is placed in the `min_unit_ratio` and `max_unit_ratio` fields of the `smt_capped_generation_policy` data structure:
+Next we define the *unit ratio* as the relative rate at which `token_unit` are issued as `steem_unit` are contributed. So to match the specification of 6 ALPHA per 1 STEEM, we need to issue 1000 ALPHA-units per STEEM-unit. Therefore the unit ratio of this ICO is 1000.  This unit ratio is placed in the `min_unit_ratio` and `max_unit_ratio` fields of the `smt_capped_generation_policy` data structure:
 
 ```
 min_unit_ratio = 1000
 max_unit_ratio = 1000
 ```
 
-A special account name, `$from`, represents the contributor.  Also supported is `$from.vesting`, which represents the vesting balance of the `$from` account.
+A special account name, `$from`, represents the contributor. Also supported is `$from.vesting`, which represents the vesting balance of the `$from` account.
 
 #### Why unit ratios?
 
 Why does the blockchain use unit ratios, rather than simply specifying prices?
 
-The answer is that it is possible to write ICO definitions for which price is ill-defined.  For example:
+The answer is that it is possible to write ICO definitions for which price is ill-defined. For example:
 
-- `"$from"` does not occur in `token_unit`
-- `"$from"` occurs in both `token_unit` and `steem_unit`
-- A combination of `"$from"` and `"$from.vesting"` occurs
-- Future expansion allows new special accounts
+- `"$from"` does not occur in `token_unit`.
+- `"$from"` occurs in both `token_unit` and `steem_unit`.
+- A combination of `"$from"` and `"$from.vesting"` occurs.
+- Future expansion allows new special accounts.
 
 All of these ICO definitions have a unit ratio, but defining a single quantity to call "price" is complicated or impossible for ICO's like these.
 
 #### UI treatment of unit ratios
 
-As a consequence of the above, the concept of "ICO price" is purely a UI-level concept.  UI's which provide a ICO price should do the following:
+As a consequence of the above, the concept of "ICO price" is purely a UI-level concept. UI's which provide an ICO price should do the following:
 
-- Document the precise definition of "price" provided by the UI
-- Be well-behaved for pathological input like above
-- Have a button for switching between a unit ratio display and price display
+- Document the precise definition of "price" provided by the UI.
+- Be well-behaved for pathological input like above.
+- Have a button for switching between a unit ratio display and price display.
 
 #### Hidden cap FAQ
 
 - Q: Should my ICO have a cap?
-- A: Some set of people stay away from uncapped ICO's due to perceived "greed", or want a guaranteed lower bound on the percentage of the ICO their contribution will buy.  If you want this set of people to participate, use a cap.
+- A: Some set of people stay away from uncapped ICO's due to perceived "greed", or want a guaranteed lower bound on the percentage of the ICO their contribution will buy. If you want this set of people to participate, use a cap.
 
 - Q: Should my cap be hidden?
-- A: Some people like the transparency and certainty of a public cap. Other people think a hidden cap creates excitement and builds demand.  One possible compromise is to publish the previous and next power of 10, for example "this ICO's cap is between 1 million and 10 million STEEM."
+- A: Some people like the transparency and certainty of a public cap. Other people think a hidden cap creates excitement and builds demand. One possible compromise is to publish the previous and next power of 10, for example "this ICO's cap is between 1 million and 10 million STEEM."
 
 - Q: How do I disable the cap?
 - A: Set it so that the cap would occur above `STEEM_MAX_SHARE_SUPPLY`.
