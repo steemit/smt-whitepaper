@@ -1268,15 +1268,15 @@ The Decentralized Exchange (DEX) structures of Steem allow assets to be automati
 
 ## Diverse Asset Types
 
-There are several assets that SMT users and creators will have access to by way of the Steem DEX: STEEM; SBD; SMTs; Simple Derivatives (IOUs).  These neighboring assets can increase the visibility and network effect of all created SMTs.
+There are several assets that SMT users and creators will have access to by way of the Steem DEX: STEEM, SBD, SMTs, and Simple Derivatives (IOUs). These neighboring assets can increase the visibility and network effect of all created SMTs.
 
-STEEM is the gateway token for assets issued on Steem, staying relevant by acting as the bandwidth usage measuring stick across Steem's meta-assets.  STEEM is also the common denominator asset, acting as a trading pair for all of Steem's meta-assets.
+STEEM is the gateway token for assets issued on Steem, staying relevant by acting as the bandwidth usage measuring stick across Steem's meta-assets. STEEM is also the common denominator asset, acting as a trading pair for all of Steem's meta-assets.
 
-SBD (Steem Blockchain Dollars) are an experimental asset on Steem that relate to the US Dollar originating back to Steem's launch in 2016. It is unclear if SBD will bring value to holders of USD as they will compete, possibly poorly, with IOU USDs, however, SBDs will bring value to speculators.
+SBD (Steem Blockchain Dollars) are an experimental asset on Steem that relate to the US Dollar, originating back to Steem's launch in 2016. It is unclear if SBD will bring value to holders of USD as they will compete, possibly poorly, with IOU USDs; however, SBDs will bring value to speculators.
 
-SMTs as described in this proposal are an important part of growing the token ecosystem and bringing crypto assets to the mainstream.  SMTs will trade against STEEM across the DEX.
+SMTs as described in this proposal are an important part of growing the token ecosystem, and bringing crypto assets to the mainstream.  SMTs will trade against STEEM across the DEX.
 
-Simple Derivatives (IOUs) will be possible via SMT issuance.  For instance, if an SMT is issued without inflation or rewards pool properties, then the issuer can reliably back the token with another real world asset such as bitcoin or USD.  In this instance, the issuer could create business as a gateway by trading their IOU for btc or USD.  Users would buy the IOU to gain access to the Steem DEX. This market would add diversity and value flow to the Steem ecosystem while adding to the DEX's network effect.
+Simple Derivatives (IOUs) will be possible via SMT issuance. For instance, if an SMT is issued without inflation or rewards pool properties, then the issuer can reliably back the token with another real world asset such as bitcoin or USD. In this instance, the issuer could create business as a gateway, by trading their IOU for BTC or USD. Users would buy the IOU to gain access to the Steem DEX. This market would add diversity and value flow to the Steem ecosystem, while adding to the DEX's network effect.
 
 ## Zero Trading and Transfer Fees
 
