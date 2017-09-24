@@ -57,7 +57,7 @@ By leveraging a recently architected automated market maker concept [[2](https:/
 
 ## Shared Bootstrap Tools
 
-SMTs may be created with [reward pool](https://steem.io/steem-bluepaper.pdf) parameters tuned for "Shared Influence" between Steem Power and other vesting SMTs, which means a SMT creator may specify that Steem Power can control a portion of the SMT's rewards pool for an unlimited or limited amount of time with increasing or decreasing influence. Altogether, Shared Influence may allow SMTs to be wholly or partially bootstrapped by the interest of existing and active Steem or other SMT community members.  Through these tools, community managers and entrepreneurs launching a token may leverage existing user bases to accelerate the distribution of the SMT to a target market.
+SMTs may be created with [reward pool](https://steem.io/steem-bluepaper.pdf) parameters tuned for "Shared Influence" between Steem Power and other vesting SMTs, which means a SMT creator may specify that Steem Power can control a portion of the SMT's rewards pool for an unlimited or limited amount of time, with increasing or decreasing influence. Altogether, Shared Influence may allow SMTs to be wholly or partially bootstrapped by the interest of existing and active Steem or other SMT community members. Through these tools, community managers and entrepreneurs launching a token may leverage existing user bases to accelerate the distribution of the SMT to a target market.
 
 ## Community Building with Paid Positions
 
