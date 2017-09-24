@@ -116,10 +116,7 @@ Let's examine an instance in which an entrepreneur is looking to provide liquidi
 
 # Owner's manual
 
-This manual will explain the nuts and bolts of how SMTs work.
-The intended audience is technical users who want to create their
-own SMT.
-
+This manual will explain the nuts and bolts of how SMTs work. The intended audience is technical users who want to create their own SMT.
 
 ## Create a control account
 
