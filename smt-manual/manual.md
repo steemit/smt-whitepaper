@@ -1152,7 +1152,7 @@ In this section, we introduce the concepts of *votability* and *rewardability*.
 - If a token is rewardable, then the vote affects the comment's reward in that token.
 - If a token is advisory, then the vote does not affect the comment's reward in that token.
 
-Advisory votes do not affect rewards or voting power.  However, the ranking algorithms and estimated reward calculations still apply advisory votes, so UI's may display advisory posts accordingly.
+Advisory votes do not affect rewards or voting power. However, the ranking algorithms and estimated reward calculations still apply advisory votes, so UI's may display advisory posts accordingly.
 
 The votable token set is determined by `allowed_vote_assets` which is a `comment_options_extension`.
 
@@ -1188,12 +1188,12 @@ Implementation notes:
 
 - For an advisory vote, all rewards are zero, including curators and beneficiaries. This is because the blockchain applies the `max_accepted_payout` cap before the curator / beneficiary computations.
 - Currently (as of hardfork 0.19), the Steem blockchain *does* deduct voting power for advisory Steem votes. This behavior will be changed in a future hardfork (Steem issue #1380).
-- At most two tokens may be specified in `votable_assets`. This means each post is voted with at most three tokens (including STEEM).
+- At most two tokens may be specified in `votable_assets`. This means that each post is voted with at most three tokens (including STEEM).
 - The default `max_accepted_payout` is stored in `max_accepted_steem_payout_latch` member of `dynamic_global_properties_object`.  Clients should populate `max_accepted_payout` of a post based on this member, in case the default value changes in a future version.
 
-No consensus level restriction forces any particular post to have any particular `allowed_vote_assets`.  As a consequence, any post may mark itself as eligible to be rewarded in any token.  However, UI's may impose their own non-consensus validation rules on `allowed_vote_assets`, and hide posts that violate these non-consensus validation rules.
+No consensus level restriction forces any particular post to have any particular `allowed_vote_assets`. As a consequence, any post may mark itself as eligible to be rewarded in any token. However, UI's may impose their own non-consensus validation rules on `allowed_vote_assets`, and hide posts that violate these non-consensus validation rules.
 
-For example, in a Hivemind community with a corresponding token, there may be a validation rule that the `allowed_vote_assets` specified in each post in that Hivemind community must include the token of that community. This is a non-consensus validation rule, since the entire concept of a post existing in a Hivemind community is a non-consensus concept. Since it is a non-consensus validation rule, no consensus logic can enforce it.  However, UI's that are aware of Hivemind communities may refuse to index or display posts that violate this validation rule.
+For example, in a Hivemind community with a corresponding token, there may be a validation rule that the `allowed_vote_assets` specified in each post within that Hivemind community must include the token of that community. This is a non-consensus validation rule, since the entire concept of a post existing within a Hivemind community is a non-consensus concept. Since it is a non-consensus validation rule, no consensus logic can enforce it. However, UI's that are aware of Hivemind communities may refuse to index or display posts that violate this validation rule.
 
 ## Hardcoded Token Parameters
 
