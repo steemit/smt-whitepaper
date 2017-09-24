@@ -320,9 +320,9 @@ struct smt_capped_generation_policy
 };
 ```
 
-Note, the `max_token_units_generated` parameter does not appear anywhere in the operation. The reason is that it is actually a derived parameter, `max_token_units_generated = min_unit_ratio * hard_cap_steem_units`.
+Note, the `max_token_units_generated` parameter does not appear anywhere in the operation. The reason is that it is actually a derived parameter: `max_token_units_generated = min_unit_ratio * hard_cap_steem_units`.
 
-Additionally, the `smt_generation_policy` is defined as a `static_variant` of which `smt_capped_generation_policy` is the only member:
+Additionally, the `smt_generation_policy` is defined as a `static_variant`, of which `smt_capped_generation_policy` is the only member:
 
 ```
 typedef static_variant< smt_capped_generation_policy > smt_generation_policy;
