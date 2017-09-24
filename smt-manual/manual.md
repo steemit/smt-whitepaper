@@ -1197,16 +1197,16 @@ For example, in a Hivemind community with a corresponding token, there may be a 
 
 ## Hardcoded Token Parameters
 
-Hardcoded parameters are configuration constants that affect the behavior of SMT's, but are deliberately excluded from `smt_setup_parameters` or `smt_runtime_parameters`. The reason they are designed to be non-configurable is that allowing these parameters to significantly deviate from the values used for STEEM results in significant risks, such as:
+Hardcoded parameters are configuration constants that affect the behavior of SMT's, but are deliberately excluded from `smt_setup_parameters` or `smt_runtime_parameters`. The reason they are designed to be non-configurable is that allowing these parameters to significantly deviate from the values used for STEEM would result in significant risks, such as:
 
-- May result in a very complicated implementation
-- May result in extreme end-user frustration
-- May threaten the security and stability of the token
-- May threaten the security and stability of STEEM
+- May result in a very complicated implementation.
+- May result in extreme end-user frustration.
+- May threaten the security and stability of the token.
+- May threaten the security and stability of STEEM.
 
 Here is the list of such hardcoded parameters:
 
-- `SMT_UPVOTE_LOCKOUT_HF17` : Hardcoded -- This value locks out upvotes from posts at a certain time prior to "CASH OUT" to prevent downvote abuse immediately prior to "CASH OUT."
+- `SMT_UPVOTE_LOCKOUT_HF17` : Hardcoded -- This value locks out upvotes from posts at a certain time prior to "CASH OUT", to prevent downvote abuse immediately prior to "CASH OUT."
 - `SMT_VESTING_WITHDRAW_INTERVALS` : Hardcoded
 - `SMT_VESTING_WITHDRAW_INTERVAL_SECONDS` : Hardcoded
 - `SMT_MAX_WITHDRAW_ROUTES` : Hardcoded
