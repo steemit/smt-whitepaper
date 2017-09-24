@@ -1076,8 +1076,8 @@ Additionally, some token inflation may be directed to vesting balances. These ne
 
 Tokens flow from SMT emissions into the reward fund. The blockchain uses algorithms to decide:
 
-- (1) How to divide the token-wide rewards among posts
-- (2) How to divide rewards within a post among the author and curators (upvoters) of that post
+- (1) How to divide the token-wide rewards among posts.
+- (2) How to divide rewards within a post among the author and curators (upvoters) of that post.
 
 The algorithms to solve these problems operate as follows:
 
