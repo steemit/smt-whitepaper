@@ -95,7 +95,7 @@ An up-and-coming forum business is looking to integrate cryptocurrency to create
 
 ### 3 - Comments Widget for Online Publishers
 
-One of the ways in which publishers will be onboarded faster to SMT integrations is by offering a Steem-based comments widget that can easily be integrated into existing blogs that are built on software such as WordPress and Blogger. The developer employing the widget would be able to take a percentage of the tokens (called “Shared Rewards”) distributed to the commenters for themselves, thereby creating a business opportunity for the next generation of Disqus-like companies that are cryptocurrency enabled. It would alleviate the burdens of transaction signing support, private key management, wallet functionality and hosting costs for the publisher by outsourcing these to the comments widget maintainer.
+One of the ways in which publishers will be onboarded faster to SMT integrations is by offering a Steem-based comments widget that can easily be integrated into existing blogs that are built on software such as WordPress and Blogger. The developer employing the widget would be able to take a percentage of the tokens (called “Shared Rewards”) distributed to the commenters for themselves, thereby creating a business opportunity for the next generation of Disqus-like companies that are cryptocurrency enabled. It would alleviate the burdens of transaction signing support, private key management, wallet functionality, and hosting costs for the publisher - by outsourcing all of these functions to the comments widget maintainer.
 
 ![Comment Widget](img/uc3-Comment-Widget.png)
 \begin{center}Figure 3: Comment Widget\end{center}
