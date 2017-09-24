@@ -189,9 +189,7 @@ The reason pre-setup operations are not made a part of `smt_setup_operation` is 
 
 ### SMT setup
 
-Each SMT has an associated descriptor object which has
-*permanent configuration data*.  This data cannot be changed after launch!
-The descriptor is set by the `smt_setup_operation`:
+Each SMT has an associated descriptor object which has *permanent configuration data*. This data cannot be changed after launch! The descriptor is set by the `smt_setup_operation`:
 
 ```
 struct smt_setup_operation
@@ -211,37 +209,17 @@ struct smt_setup_operation
 };
 ```
 
-The symbol precision in `smt_setup_operation` is authoritative, it may
-differ from, and will override, any previously specified operations'
-precision.  Subsequently issued operations must have matching precision.
+The symbol precision in `smt_setup_operation` is authoritative. It may differ from, and will override, any previously specified operations' precision. Subsequently issued operations must have matching precision.
 
-The operation must be signed by the `control_account` key.  The named
-SMT must have been created earlier by the `control_account`.  The
-symbol's embedded decimal places may be distinct from prior
-`smt_setup_operation`
+The operation must be signed by the `control_account` key. The named SMT must have been created earlier by the `control_account`. The symbol's embedded decimal places may be distinct from prior `smt_setup_operation`.
 
-`decimal_places` field is used by UI's to display units as a number
-of decimals.
+The `decimal_places` field is used by UI's to display units as a number of decimals.
 
-The `generation_begin_time` is when participants can begin to contribute
-to the ICO.  It is allowed to be in the future so users have time
-to study the ICO's final terms before the ICO begins.
+The `generation_begin_time` is when participants can begin to contribute to the ICO. It is allowed to be in the future so users have time to study the ICO's final terms before the ICO begins.
 
-The `generation_end_time` is when the ICO stops accepting contributions,
-and the `announced_launch_time` is when the ICO token is created (assuming
-the ICO reached the minimum participation level).  Some pause is allocated
-between the `generation_end_time` and `announced_launch_time` to allow for
-the possibility of ICO's that wish to have hidden caps that aren't revealed
-while the ICO is open for contributions.  It also gives the ICO creator
-time to use the final ICO numbers to aid in pre-launch business
-activities.
+The `generation_end_time` is when the ICO stops accepting contributions, and the `announced_launch_time` is when the ICO token is created (assuming the ICO reached the minimum participation level). Some pause is allocated between the `generation_end_time` and `announced_launch_time` to allow for the possibility of ICO's that wish to have hidden caps that aren't revealed while the ICO is open for contributions. It also gives the ICO creator time to use the final ICO numbers to aid in pre-launch business activities.
 
-At `launch_expiration_time`, if the ICO has not yet launched, all
-contributors will be automatically refunded (with virtual
-operations) and the ICO will be cancelled.  The symbol will remain
-reserved to the specified `control_account`.  However, in order to
-launch the token, an `smt_create_operation` must
-be issued and the `smt_creation_fee` must be paid again.
+At `launch_expiration_time`, if the ICO has not yet launched, all contributors will be automatically refunded (with virtual operations) and the ICO will be cancelled. The symbol will remain reserved to the specified `control_account`. However, in order to launch the token, an `smt_create_operation` must be issued and the `smt_creation_fee` must be paid again.
 
 ### Token units
 
