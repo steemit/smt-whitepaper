@@ -1280,7 +1280,7 @@ Simple Derivatives (IOUs) will be possible via SMT issuance. For instance, if an
 
 ## Zero Trading and Transfer Fees
 
-The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike.  This is made possible by [bandwidth rate limiting](#--fee--less-operations-necessary-for-quality-user-experience), described in the original Steem Whitepaper and Bluepaper as the process by which the blockchain calculates transaction prices on a per byte basis and deducts transaction bandwidth available to an account temporarily.
+The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike. This is made possible by [bandwidth rate limiting](#--fee--less-operations-necessary-for-quality-user-experience) (described in the original Steem Whitepaper and Bluepaper), as the process by which the blockchain calculates transaction prices on a per byte basis, and deducts transaction bandwidth available to an account temporarily.
 
 # What Makes SMTs Better Suited to Application-Specific Blockchains, such as Steem, than Application-General Blockchains, such as Ethereum?
 
