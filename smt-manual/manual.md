@@ -799,7 +799,7 @@ This event prints `num_units` units of the SMT token.
 
 #### Possible inflation target
 
-The target is the entity to which the inflation is directed.  The target may be a normal Steem account controlled by an individual founder, or a multisig of several founders.
+The target is the entity to which the inflation is directed. The target may be a normal Steem account controlled by an individual founder, or a multisig of several founders.
 
 In addition, several special targets are possible representing trustless functions provided by the blockchain itself:
 
@@ -810,7 +810,7 @@ In addition, several special targets are possible representing trustless functio
 
 Traditionally blockchains compute inflation on a per-block basis, as block production rewards are the main (often, only) means of inflation.
 
-However, there is no good reason to couple inflation to block production for SMT's.  In fact, SMT's have no block rewards, since they have no blocks (the underlying functionality of block production being supplied by the Steem witnesses, who are rewarded with Steem).
+However, there is no good reason to couple inflation to block production for SMT's. In fact, SMT's have no block rewards, since they have no blocks (the underlying functionality of block production being supplied by the Steem witnesses, who are rewarded with Steem).
 
 Repeating inflation at regular intervals can be enabled by adding `interval_seconds` and `interval_count` to the `token_inflation_event` data structure. The result is a new data structure called `token_inflation_event_seq_v1`:
 
@@ -827,9 +827,9 @@ struct token_inflation_event_seq_v1
 };
 ```
 
-The data structure represents a token inflation event that repeats every `interval_seconds` seconds, for `interval_count` times.  The maximum integer value `0xFFFFFFFF` is a special sentinel value that represents an event sequence that repeats forever.
+The data structure represents a token inflation event that repeats every `interval_seconds` seconds, for `interval_count` times. The maximum integer value `0xFFFFFFFF` is a special sentinel value that represents an event sequence that repeats forever.
 
-Note, the `new_smt` is a quantity of SMT, not a number of units.  The number of units is determined by dividing `new_smt` by the sum of `unit` members.
+Note, the `new_smt` is a quantity of SMT, not a number of units. The number of units is determined by dividing `new_smt` by the sum of `unit` members.
 
 #### Adding relative inflation
 
@@ -858,7 +858,7 @@ rel_amount = (smt_supply * rel_amount_numerator) / SMT_REL_AMOUNT_DENOMINATOR;
 new_smt = max( abs_amount, rel_amount );
 ```
 
-If we set `SMT_REL_AMOUNT_DENOMINATOR` to a power of two, the division can be optimized to a bit-shift operation.  To gain more dynamic range from the bits, we can let the shift be variable:
+If we set `SMT_REL_AMOUNT_DENOMINATOR` to a power of two, the division can be optimized to a bit-shift operation. To gain a more dynamic range from the bits, we can let the shift be variable:
 
 ```
 // Event seq v3:  v2 + specify shift in struct
@@ -914,9 +914,7 @@ struct token_inflation_event_seq_v4
 Some notes about this:
 
 - Only the numerator of relative amounts is interpolated, the denominator is the same for both endpoints.
-
 - For times before the left endpoint time, the amount at the left endpoint time is used.
-
 - For times after the right endpoint time, the amount at the right endpoint time is used.
 
 Code looks something like this:
@@ -973,8 +971,7 @@ struct smt_setup_inflation_operation
 };
 ```
 
-The `setup_inflation_operation` is a *pre-setup* operation which must be executed *before*
-the `smt_setup_operation`.   See the section on pre-setup operations.
+The `setup_inflation_operation` is a *pre-setup* operation which must be executed *before* the `smt_setup_operation`.  See the section on pre-setup operations.
 
 #### Inflation FAQ
 
@@ -982,12 +979,12 @@ the `smt_setup_operation`.   See the section on pre-setup operations.
 - A:  Yes (except for rounding errors).
 - Q:  Can the SMT inflation data structures reward founders directly after X months/years?
 - A:  Yes.
-- Q:  I don't care about time modulation.  Can I disable it?
+- Q:  I don't care about time modulation. Can I disable it?
 - A:  Yes, just set the `lep_abs_amount == rep_abs_amount` and `lep_rel_amount_numerator == rep_rel_amount_numerator` to the same value, and set `lep_time = rep_time` (any value will do).
 - Q:  Can some of this complexity be hidden by a well-designed UI?
 - A:  Yes.
 - Q:  Can we model the inflation as a function of time with complete accuracy?
-- A:  The inflation data structures can be fully modeled / simulated.  For some issue structures, the amount issued depends on how much is raised, so the issue structures cannot be modeled with complete accuracy.
+- A:  The inflation data structures can be fully modeled / simulated. For some issue structures, the amount issued depends on how much is raised, so the issue structures cannot be modeled with complete accuracy.
 
 ### Named token parameters
 
