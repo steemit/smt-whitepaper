@@ -1264,7 +1264,7 @@ One of the valuable features of SMTs is their immediate access to functioning un
 
 ## Automatic Order Matching
 
-The Decentralized Exchange (DEX) structures of Steem allow assets to automatically be matched for best possible price when bids and asks overlap, unlike other DEXs, which require a "man in the middle" or user-agent, to match orders.  Automatic, rather than middle-man-faciliated, order matching is important for security of Steem-based assets and for the replicability and safety of DEX interfaces.
+The Decentralized Exchange (DEX) structures of Steem allow assets to be automatically matched for best possible price when bids and asks overlap, unlike other DEXs - which require a "man in the middle" or user-agent to match orders. Automatic, rather than middle-man-faciliated, order matching is important for the security of Steem-based assets, and for the replicability and safety of DEX interfaces.
 
 ## Diverse Asset Types
 
