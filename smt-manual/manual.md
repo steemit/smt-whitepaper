@@ -1134,8 +1134,8 @@ In practice, independence or a modest positive correlation should be expected, s
 
 Each account has a `voting_power`, which is essentially a "mana bar" that fills from 0% to 100% over time at a constant rate. That rate is determined by two parameters:
 
-- (a) The time it takes to regenerate the bar to 100%, `vote_regeneration_period_seconds`
-- (b) The `voting_power` used by a maximum-strength vote
+- (a) The time it takes to regenerate the bar to 100%, `vote_regeneration_period_seconds`.
+- (b) The `voting_power` used by a maximum-strength vote.
 
 The `vote_regeneration_period_seconds` is specified directly. For (b), instead of specifying the voting power of a maximum-strength vote directly, instead you specify `votes_per_regeneration_period`. Then the maximum-strength vote is set such that a user casting that many max-strength votes will exactly cancel the regeneration.
 
