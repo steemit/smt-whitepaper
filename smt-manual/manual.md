@@ -68,7 +68,8 @@ SMT communities may be bolstered with [paid positions](https://github.com/steemi
 All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer and more. An interface can also provide this optionality of how to split the tokens to the authors. The number of potential Reward Sharing beneficiaries is initially soft capped by block producers at eight while the feature proves its use, however the blockchain is capable of handling up to 256 beneficiaries per post.
 
 ## Can My Entity Participate in SMTs?
-An SMT can be launched by a person or entity; she only needs 99 USD to cover the network fee (this fee prevents spam and unused tokens while accruing value to the network) and a namespace on Steem, which can be obtained by registering at [anon.steem.network](https://anon.steem.network), [steemit.com](https://steemit.com), [steemconnect.com](https://v2.steemconnect.com), or any other Steem sign-up service.
+
+An SMT can be launched by a person or entity; they only need 99 USD to cover the network fee (this fee prevents spam and unused tokens while accruing value to the network), and a namespace on Steem - which can be obtained by registering at [anon.steem.network](https://anon.steem.network), [steemit.com](https://steemit.com), [steemconnect.com](https://v2.steemconnect.com), or any other Steem sign-up service.
 
 Once an account name to register the token with is secured, the account issues the token by using a Steem-based Command Line Tool or another tool created in the future for token launches. The token can be structured to support an initial sale or distribution of the token. Certain properties of an SMT, such as its inflation rate, must also be defined by the person or entity creating the token. These properties dictate how the token is used inside applications and respective communities.
 
