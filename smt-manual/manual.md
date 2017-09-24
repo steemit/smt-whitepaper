@@ -223,25 +223,13 @@ At `launch_expiration_time`, if the ICO has not yet launched, all contributors w
 
 ### Token units
 
-Initial token generation is driven by a contributions of *STEEM
-units* from contributors.  To simplify rounding concerns, a
-contribution must be an integer number of STEEM units.  The ICO
-creator sets the size of a STEEM unit, it can be large or small.
-It is better to keep the unit small (for example, 1 STEEM or
-0.1 STEEM), as this allows the ICO to be accessible to the
-maximum possible audience.
+Initial token generation is driven by a contributions of *STEEM units* from contributors. To simplify rounding concerns, a contribution must be an integer number of STEEM units. The ICO creator sets the size of a STEEM unit - it can be large or small. It is better to keep the unit small (for example, 1 STEEM or 0.1 STEEM), as this allows the ICO to be accessible to the maximum possible audience.
 
-A STEEM unit also specifies a *routing policy* which determines
-where the STEEM goes when the token launches.  (STEEM for tokens
-which do not launch may be refunded on demand.)  The routing
-policy may split the STEEM in the unit among multiple parties.
+A STEEM unit also specifies a *routing policy* which determines where the STEEM goes when the token launches. (STEEM for tokens which do not launch may be refunded on demand.) The routing policy may split the STEEM in the unit among multiple parties.
 
-When the ICO occurs, the tokens are generated in *token units*.
-Multiple token units are generated per STEEM unit contributed.
-Token units also have a routing policy.
+When the ICO occurs, the tokens are generated in *token units*. Multiple token units are generated per STEEM unit contributed. Token units also have a routing policy.
 
-The units and their routing policies are specified in the
-`smt_generation_unit` structure:
+The units and their routing policies are specified in the `smt_generation_unit` structure:
 
 ```
 struct smt_generation_unit
@@ -251,9 +239,7 @@ struct smt_generation_unit
 };
 ```
 
-Each `(key, value)` pair in the `flat_map` determines the routing
-of some satoshis.  The total STEEM/tokens in each unit is
-simply the sum of the values.
+Each `(key, value)` pair in the `flat_map` determines the routing of some satoshis. The total STEEM/tokens in each unit is simply the sum of the values.
 
 ### Unit ratios
 
