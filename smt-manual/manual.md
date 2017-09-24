@@ -147,15 +147,9 @@ Since tokens participate in atomic transactions also involving STEEM, they have 
 
 ### SMT object creation
 
-The first operation to be executed is an `smt_create_operation`.
-This operation creates an SMT object in the blockchain state.
-After executing the `smt_create_operation`, the newly
-created SMT object is not yet fully configured.
+The first operation to be executed is an `smt_create_operation`. This operation creates an SMT object in the blockchain state. After executing the `smt_create_operation`, the newly created SMT object is not yet fully configured.
 
-Most of the configuration occurs in subsequent operations
-(`smt_set_setup_parameters_operation`, `smt_setup_inflation_operation`
-and `smt_setup_operation`).  These later operations may occur in the
-same transaction, but they may also occur at any later point in time.
+Most of the configuration occurs in subsequent operations (`smt_set_setup_parameters_operation`, `smt_setup_inflation_operation` and `smt_setup_operation`). These later operations may occur in the same transaction, but they may also occur at any later point in time.
 
 ```
 struct smt_create_operation
@@ -169,24 +163,9 @@ struct smt_create_operation
 
 #### Numerical asset identifiers
 
-An SMT is referred to by a *numerical asset identifier*
-or NAI, consisting of two at-signs followed by nine decimal
-digits, for example `@@314159265`.  The blockchain enforces
-that the identifier placed by a UI into the
-`smt_create_operation` must match the result of the
-`get_next_smt_identifier` RPC.  Therefore, an NAI cannot be
-chosen freely by the SMT creator.  It is not even possible
-to "mine" a "vanity NAI" (analogous to the
-"vanity Bitcoin address" some people use).
+An SMT is referred to by a *numerical asset identifier* or NAI, consisting of two at-signs followed by nine decimal digits, for example `@@314159265`. The blockchain enforces that the identifier placed by a UI into the `smt_create_operation` must match the result of the `get_next_smt_identifier` RPC. Therefore, an NAI cannot be chosen freely by the SMT creator. It is not even possible to "mine" a "vanity NAI" (analogous to the "vanity Bitcoin address" some people use).
 
-The reason for this restriction is that the blockchain
-designers want to discourage users from using the consensus
-level identifiers as symbol names, and instead use a
-non-consensus directory system to attach human meaningful
-symbols to assets.  Distinguishing a "namesquatter" from
-the legitimate owner of a brand is not a task that a
-blockchain can do, especially if the squatter is
-willing to pay the SMT creation fee.
+The reason for this restriction is that the blockchain designers want to discourage users from using the consensus level identifiers as symbol names, and instead use a non-consensus directory system to attach human meaningful symbols to assets. Distinguishing a "namesquatter" from the legitimate owner of a brand is not something that a blockchain can do, especially if the squatter is willing to pay the SMT creation fee.
 
 #### SMT naming
 
