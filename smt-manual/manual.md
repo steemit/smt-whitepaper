@@ -65,7 +65,7 @@ SMT communities may be bolstered with [paid positions](https://github.com/steemi
 
 ## Monetizing with Shared Token Rewards
 
-All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, paid position donation pool, community manager, referrer, and more. An interface can also provide this optionality of how to split the tokens to the authors. The number of potential Reward Sharing beneficiaries is initially soft capped by block producers at eight while the feature proves its use, however the blockchain is capable of handling up to 256 beneficiaries per post.
+All Steem based interfaces have the option of splitting token rewards among a set of arbitrary recipients, which could include an interface, community manager, referrer, a paid position donation pool, and more. An interface can also provide this optionality of how to split the tokens to the authors. The number of potential Reward Sharing beneficiaries is initially soft capped by block producers at eight while the feature proves its use, however the blockchain is capable of handling up to 256 beneficiaries per post.
 
 ## Can My Entity Participate in SMTs?
 
