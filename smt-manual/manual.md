@@ -1393,7 +1393,7 @@ Reserved
 
 A `Listed` or `Deprecated` NAI has an associated name, which should be listed as `Reserved` in the mapping.
 
-UI's may provide *asset directory union* functionality to augment directories by combining multiple asset directories into a single asset directory.  Asset directory union should use the following algorithm to resolve situations where an NAI is listed differently by different directories:
+UI's may provide *asset directory union* functionality to augment directories by combining multiple asset directories into a single asset directory. Asset directory union should use the following algorithm to resolve situations where an NAI is listed differently by different directories:
 
 - (1) If the NAI is `Blacklisted` in any component directory, return `Blacklisted`.
 - (2) If the NAI is `Listed` or `Deprecated` in multiple component directories, and all of the component directories *do not* agree on the associated name, return `Unlisted`.
@@ -1410,18 +1410,18 @@ A dynamic directory (based on a URL or blockchain account) should not be cached 
 
 ### UI guidelines for SMT names
 
-- A UI may, but need not, have a default asset directory
-- A UI may choose to hide unlisted NAI's
-- A UI should allow users to override or augment the UI's defaults with their own asset director(ies)
-- A UI should reconsider hiding unlisted NAI's in which the user has actively transacted
+- A UI may, but need not, have a default asset directory.
+- A UI may choose to hide unlisted NAI's.
+- A UI should allow users to override or augment the UI's defaults with their own asset director(ies).
+- A UI should reconsider hiding unlisted NAI's in which the user has actively transacted.
 
 ### Operational guidelines for asset directories
 
-- An asset directory should not confuse users by setting a well-known NAI to refer to a different name, or setting a well-known name to refer to a different NAI
-- An asset directory should make the process for listing clear to both SMT creators seeking to add their asset to the directory, and UI developers considering adding the directory to their UI
+- An asset directory should not confuse users by setting a well-known NAI to refer to a different name, or setting a well-known name to refer to a different NAI.
+- An asset directory should make the process for listing clear to both SMT creators seeking to add their asset to the directory, and UI developers considering adding the directory to their UI.
 
 ### Asset directory formats
 
-URL- and file-based asset directories will be a JSON format, the details will be developed concurrently with the implementation.  Blockchain based asset directories will use a custom JSON operation, again, the details will be developed concurrently with the implementation.
+URL and file-based asset directories will be a JSON format. The details will be developed concurrently with the implementation.  Blockchain based asset directories will use a custom JSON operation. Again, the details will be developed concurrently with the implementation.
 
 ## Unit Tests
