@@ -141,9 +141,7 @@ Once the token is launched, you may consider burning the account's keys by assig
 
 ### Token consensus
 
-Since tokens participate in atomic transactions also involving
-STEEM, they have been designed as part of the STEEM
-blockchain's consensus.
+Since tokens participate in atomic transactions also involving STEEM, they have been designed as part of the STEEM blockchain's consensus.
 
 ## Token Generation and Initialized Parameters
 
