@@ -1100,7 +1100,7 @@ For an illustration of the meaning of reward curves, imagine grouping the most-u
 
 Here's how the rewards differ:
 
-- With either reward curve, Section A posts will have greater rewards than Section B posts since they have more upvotes.
+- With either reward curve, Section A posts will have greater rewards than Section B posts, since they have more upvotes.
 - With the quadratic reward curve, Section A posts will have an *additional boost* relative to Section B posts, since Section A posts will get *more rewards per upvote*.
 - With the linear reward curve, Section A and Section B will get the same reward per upvote.
 
@@ -1108,9 +1108,9 @@ Possible curation curves are:
 
 - Linear `cc(r) = r`
 - Square-root `cc(r) = sqrt(r)`
-- Bounded `cc(r) = r / (r + 2s)`.
+- Bounded `cc(r) = r / (r + 2s)`
 
-To help visualize, here are some plots called *pie charts*.  Each colored area represents how curation rewards are divided among curators with equal voting power.
+To help visualize, here are some plots called *pie charts*. Each colored area represents how curation rewards are divided among curators with equal voting power.
 
 ![Reward curves and curation curves](img/rc-cc.png)
 \begin{center}Figure 8: Reward curves and curation curves\end{center}
@@ -1118,9 +1118,9 @@ To help visualize, here are some plots called *pie charts*.  Each colored area r
 - The rectangular vertical column shows the immediate reward upon making an upvote.
 - The colored area extending to the right shows how the rewards of a curator grow as later curators vote.
 - When both curves are linear, everyone gets the same curation reward regardless of which post they vote on.
-- In the case of `rc_linear + cc_sqrt` and `rc_quadratic + cc_bounded`, the same height rectangles mean everyone gets about the same initial curation reward, call this `ICR=`.
-- In the case of `rc_linear + cc_bounded`, the rectangles are decreasing in height.  This represents a progressive *handicap* against voting for already-popular posts, call this `ICR-`.
-- In the case of `rc_quadratic + cc_sqrt` and `rc_quadratic + cc_linear`, the rectangles are increasing in height.  Call this `ICR+`.
+- In the case of `rc_linear + cc_sqrt` and `rc_quadratic + cc_bounded`, the same height rectangles means everyone gets about the same initial curation reward, call this `ICR=`.
+- In the case of `rc_linear + cc_bounded`, the rectangles are decreasing in height. This represents a progressive *handicap* against voting for already-popular posts, call this `ICR-`.
+- In the case of `rc_quadratic + cc_sqrt` and `rc_quadratic + cc_linear`, the rectangles are increasing in height. Call this `ICR+`.
 
 Fundamentally, curation is making a prediction that upvotes will occur in the future. As reward system designers, our criterion for selecting a curve should be to reward successful predictions. Which curve satisfies this criterion depends on the relationship between current and future upvotes.
 
