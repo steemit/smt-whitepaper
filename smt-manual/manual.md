@@ -183,15 +183,9 @@ The fee is destroyed by sending it to `STEEM_NULL_ACCOUNT`.
 
 ### SMT pre-setup
 
-Two pre-setup operations are included:  `smt_setup_inflation_operation` and
-`smt_setup_parameters`.  These operations must be issued after
-`smt_create_operation` and before
-`smt_setup_operation`.  They may be issued in the same transaction, or in
-prior blocks.
+Two pre-setup operations are included: `smt_setup_inflation_operation` and `smt_setup_parameters`. These operations must be issued after `smt_create_operation`, and before `smt_setup_operation`. They may be issued in the same transaction, or in prior blocks.
 
-The reason pre-setup operations are not made a part of `smt_setup_operation`
-is to allow a large number of pre-setup operations to be executed over multiple
-blocks.
+The reason pre-setup operations are not made a part of `smt_setup_operation` is to allow a large number of pre-setup operations to be executed over multiple blocks.
 
 ### SMT setup
 
