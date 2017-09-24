@@ -169,18 +169,9 @@ The reason for this restriction is that the blockchain designers want to discour
 
 #### SMT naming
 
-The solution to the namesquatting problem is to publish
-an *asset directory* mapping NAI's to names.  An asset
-directory is *non-consensus*, meaning that all blockchain
-operations are serialized with NAI's.  Asset names are
-only used for UI presentation.
+The solution to the namesquatting problem is to publish an *asset directory* mapping NAI's to names.  An asset directory is *non-consensus*, meaning that all blockchain operations are serialized with NAI's. Asset names are only used for UI presentation.
 
-A UI may include an asset directory as a file, URL,
-or a blockchain account which publishes directory
-entries with custom operations.  The publisher of an
-asset directory should ensure that directory entries
-meet whatever standards of legitimate brand ownership
-the publisher chooses to enforce.
+A UI may include an asset directory as a file, URL, or a blockchain account which publishes directory entries with custom operations. The publisher of an asset directory should ensure that directory entries meet whatever standards of legitimate brand ownership the publisher chooses to enforce.
 
 #### SMT creation fee
 
