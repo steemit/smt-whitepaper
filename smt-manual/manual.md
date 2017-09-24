@@ -1,12 +1,12 @@
 ---
 header-includes:
     - \renewcommand{\contentsname}{Table of Contents}
-    - \usepackage[top=4cm,bottom=4cm,left=4cm,right=4cm]{geometry}
+    - \usepackage[top=3.5cm,bottom=3.5cm,left=3.5cm,right=3.5cm]{geometry}
 urlcolor: blue
 linkcolor: blue
 ---
 
-### Metadata
+**Metadata**
 
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
@@ -20,7 +20,7 @@ linkcolor: blue
 
 # Smart Media Tokens (SMTs)
 
-## A Token Protocol for Content Websites, Applications, Online Communities and Guilds Seeking Funding, Monetization and User Growth
+**A Token Protocol for Content Websites, Applications, Online Communities and Guilds Seeking Funding, Monetization and User Growth**
 
 [Steem's](https://steem.io/steem-bluepaper.pdf) Smart Media Tokens (SMTs) give anyone the power to launch and sell [Proof-of-Brain [1]](https://steem.io/steem-bluepaper.pdf) tokens, which are tokens distributed by "upvote" and "like"-based algorithms that integrate with websites to align incentives and spur growth while websites are empowered to adopt sustainable, currency-centric revenue models. This model has been tested and continues to be proven on medium and small scale by [steemit.com](https://steemit.com), [busy.org](https://busy.org), [chainbb.com](https://chainbb.com), [dsound.audio](https://dsound.audio), [dtube.video](https://dtube.video) and other Steem interfaces, which are monetizing content, tokens and media in a way never before seen.
 
