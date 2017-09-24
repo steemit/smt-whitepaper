@@ -1284,7 +1284,7 @@ Simple Derivatives (IOUs) will be possible via SMT issuance. For instance, if an
 
 The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike. This is made possible by [bandwidth rate limiting](#--fee--less-operations-necessary-for-quality-user-experience) (described in the original Steem Whitepaper and Bluepaper), as the process by which the blockchain calculates transaction prices on a per byte basis, and deducts transaction bandwidth available to an account temporarily.
 
-# Augmenting SMTs with Native Contracting for Creative Entrepreneurs
+# Augmenting SMTs with Additional Native Contracts
 
 There are several potentialy valuable programmable contracts that are not in SMT's immediate scope, however, these contracts would increase the the creativity in how SMTs are utilized and are proposed to be included in relevant discussions.
 
