@@ -77,7 +77,7 @@ From launch, the token becomes immutable on the blockchain, and leveraged correc
 
 ## Use Cases
 
-We have identified five ways in which existing businesses and future entrepreneurs can leverage specially designed SMTs to transform the internet. Among these use cases you may notice other ways of structuring and leveraging tokens inside applications. This list is by no means exhaustive and we will update this paper as more use cases demonstrate their value.
+We have identified five ways in which existing businesses and future entrepreneurs can leverage specially designed SMTs to transform the internet. Among these use cases you may discover other ways of structuring and leveraging tokens inside applications. This list is by no means exhaustive, and we will update this paper as more use cases demonstrate their value.
 
 ### 1 - Content Publishers - Single Token Support
 
