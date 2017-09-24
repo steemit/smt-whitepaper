@@ -149,7 +149,7 @@ is still able to transact.  It may be advisable to test your authorities
 and transaction signing setup using a testnet, or some non-important
 account on the main network.
 
-Once the token is launched, the issuer may consider burning the account's keys to initiate a token for which the Dynamic properties can never be adjusted.  
+Once the token is launched, you may consider burning the account's keys by assigning them to @null to initiate a token for which the Dynamic properties can never be adjusted.  
 
 ### Token consensus
 
