@@ -409,7 +409,7 @@ The *effective launch time* is the time at which tokens become transferrable. Tw
 
 - When `min_steem_units` and `hard_cap_steem_units` are revealed before the `announced_launch_time`, the launch is an *on-time launch*.  The launch logic is executed by the blockchain as soon as `announced_launch_time` arrives, regardless of further user action.
 - When `min_steem_units` and `hard_cap_steem_units` have not been revealed before the `announced_launch_time`, the launch will be a *delayed launch*. The launch logic is executed by the blockchain when `min_steem_units` and `hard_cap_steem_units` have been revealed.
-- If the launch is delayed, then any contributor may use `smt_refund_operation` to get their STEEM back at any time after `announced_launch_time` and before the launch logic is executed.
+- If the launch is delayed, then any contributor may use `smt_refund_operation` to get their STEEM back at any time after `announced_launch_time`, and before the launch logic is executed.
 
 The reasons for this design are as follows:
 
@@ -423,21 +423,19 @@ The reasons for this design are as follows:
 struct smt_refund_operation
 {
    account_name_type       contributor;
-
    asset                   amount;
-
    extensions_type         extensions;
 };
 ```
 
-Note, users are not *required* to use `smt_refund_operation`; each individual contributor must opt-in to receiving a refund.  If the ICO creator publicizes a legitimate reason they failed to publish before `announced_launch_time`, it is possible that all/most contributors will voluntarily choose not to use `smt_refund_operation`.  In this case, the launch will occur as soon as the ICO creator publishes the hidden values.
+Note, users are not *required* to use `smt_refund_operation`; each individual contributor must opt-in to receiving a refund. If the ICO creator publicizes a legitimate reason they failed to publish before `announced_launch_time`, it is possible that all/most contributors will voluntarily choose not to use `smt_refund_operation`. In this case, the launch will occur as soon as the ICO creator publishes the hidden values.
 
-The launch logic considers a contribution followed by a refund to be equivalent to not having contributed at all.  Therefore, when a delayed launch occurs, each contributor will be in *exactly one* of the following two states:
+The launch logic considers a contribution followed by a refund to be equivalent to not having contributed at all. Therefore, when a delayed launch occurs, each contributor will be in *exactly one* of the following two states:
 
-- The contributor has executed `smt_refund_operation`, received their STEEM back, and will not participate in the ICO
-- The contributor has not been issued a refund, and will participate in the ICO
+- The contributor has executed `smt_refund_operation`, received their STEEM back, and will not participate in the ICO.
+- The contributor has not been issued a refund, and will participate in the ICO.
 
-It is possible for a delayed launch to have exceeded its `min_steem_units` value at the announced launch time, but subsequently falls below its `min_steem_units` value as a result of refunds.  In such a case, the ICO will not occur; it will be treated as if it had never reached its `min_steem_units`.
+It is possible for a delayed launch to have exceeded its `min_steem_units` value at the announced launch time, but subsequently falls below its `min_steem_units` value as a result of refunds. In such a case, the ICO will not occur; it will be treated as if it had never reached its `min_steem_units`.
 
 ### Full JSON examples
 
