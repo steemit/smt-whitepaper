@@ -1344,9 +1344,9 @@ Along with these new value creating mechanisms, it is imperative to recognize th
 
 To be continously updated for SMTs.  Current Steem APIs exist here: [http://steem.readthedocs.io/en/latest/index.html](http://steem.readthedocs.io/en/latest/index.html) and [https://steemit.github.io/steemit-docs/](https://steemit.github.io/steemit-docs/)
 
-### Shared Tools for Account Creation, Key Signing and Wallet Functions
+### Shared Tools for Account Creation, Key Signing, and Wallet Functions
 
-Several shared tools exist to support applications that wish to outsource signup, transaction signing and wallet functions, such as [SteemConnect](https://v2.steemconnect.com/).
+Several shared tools exist to support applications that wish to outsource signup, transaction signing, and wallet functions - such as [SteemConnect](https://v2.steemconnect.com/).
 
 # Conclusion
 
