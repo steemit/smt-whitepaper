@@ -261,9 +261,9 @@ The effects of the hard cap fall solely on the last contributors. I.e. if a ICO 
 
 ### Hidden caps
 
-The min and hard cap are *hidden* in the generation policy.  This means that these numbers are fixed at setup time, but the ICO creator has the option to keep it secret.  This functionality is implemented by a *commit/reveal* cryptographic protocol:  A hash called the *commitment* is published at setup time, and the actual amount must match the commitment.  (A nonce is also included in the hash to prevent an attacker from finding the hidden cap with a brute-force guess-and-test approach.)
+The min and hard caps are *hidden* in the generation policy. This means that these numbers are fixed at setup time, but the ICO creator has the option to keep them secret. This functionality is implemented by a *commit/reveal* cryptographic protocol: A hash called the *commitment* is published at setup time, and the actual amount must match the commitment. (A nonce is also included in the hash to prevent an attacker from finding the hidden cap with a brute-force guess-and-test approach.)
 
-The SMT designer may wish to pre-publish a guarantee that the hidden values are within a certain range.  The `lower_bound` and `upper_bound` fields provide this functionality:  A revealed amount that is not in the specified range is treated the same as a hash mismatch.
+The SMT designer may wish to pre-publish a guarantee that the hidden values are within a certain range. The `lower_bound` and `upper_bound` fields provide this functionality: A revealed amount that is not in the specified range is treated the same as a hash mismatch.
 
 ```
 struct smt_cap_commitment
@@ -288,15 +288,15 @@ struct smt_cap_reveal_operation
 };
 ```
 
-All caps are hidden, but the cap may be revealed at any point in time. Therefore, a ICO with a non-hidden minimum or cap may be implemented by simply including the `smt_cap_reveal_operation` in the same transaction as the `smt_setup_operation`.  UI's should provide functionality for this.
+All caps are hidden, but the cap may be revealed at any point in time. Therefore, an ICO with a non-hidden minimum or cap may be implemented by simply including the `smt_cap_reveal_operation` in the same transaction as the `smt_setup_operation`. UI's should provide functionality for this.
 
 A UI should provide one or more of the following means to ensure the `nonce` and `amount` are recoverable:
 
-- Force the user to type in the `amount` and `nonce` again as confirmation they have been backed up
+- Force the user to type in the `amount` and `nonce` again, as confirmation they have been backed up.
 - Set `nonce` to some deterministic function of the private key and public data, for example
-`nonce = H(privkey + control_account + lower_bound + upper_bound + current_date)`
-- Provide functionality to brute-force the uncertain fields when the nonce is known (e.g. the current date and `amount`)
-- Require the amount to be low-entropy to facilitate brute-forcing when the nonce is known (e.g. a number between 1-999 times a power of 10)
+`nonce = H(privkey + control_account + lower_bound + upper_bound + current_date)`.
+- Provide functionality to brute-force the uncertain fields when the nonce is known (e.g. the current date and `amount`).
+- Require the amount to be low-entropy to facilitate brute-forcing when the nonce is known (e.g. a number between 1-999 times a power of 10).
 
 ### Generation policy data structure
 
