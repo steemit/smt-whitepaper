@@ -441,16 +441,16 @@ It is possible for a delayed launch to have exceeded its `min_steem_units` value
 
 #### ALPHA
 
-This example builds on the ALPHA example from earlier.  This ICO has the following characteristics:
+This example builds on the ALPHA example from earlier. This ICO has the following characteristics:
 
-- 70% of contributed STEEM goes to Alpha Organization Account (@alpha_org)
-- 23% of contributed STEEM goes to Founder Account A (@founder_a)
-- 7% of contributed STEEM goes to Founder Account B (@founder_b)
-- Minimum unit of contribution is 0.1 STEEM
-- For every 1 STEEM contributed, the contributor gets 5 ALPHA (@contibutor_a)
-- For every 1 STEEM contributed, Founder Account C gets 1 ALPHA (@founder_c)
-- No minimum, hard cap, or soft cap
-- No post-launch inflation after launch
+- 70% of contributed STEEM goes to Alpha Organization Account (@alpha_org).
+- 23% of contributed STEEM goes to Founder Account A (@founder_a).
+- 7% of contributed STEEM goes to Founder Account B (@founder_b).
+- Minimum unit of contribution is 0.1 STEEM.
+- For every 1 STEEM contributed, the contributor gets 5 ALPHA (@contibutor_a).
+- For every 1 STEEM contributed, Founder Account C gets 1 ALPHA (@founder_c).
+- No minimum, hard cap, or soft cap.
+- No post-launch inflation after launch.
 
 ![Alpha ICO example](img/ico-example-alpha.png)
 \begin{center}Figure 6: Alpha ICO Flow\end{center}
@@ -514,36 +514,35 @@ These are the operations for the ALPHA launch:
 ]
 ```
 
-
 Some things to note:
 
-- We disable the soft cap by setting `soft_cap_percent` to `STEEM_100_PERCENT = 10000`
-- `post_soft_cap_unit` must be empty when the soft cap is disabled
-- The unit ratio does not change so `min_unit_ratio` / `max_unit_ratio` must be set accordingly
-- We disable the hidden caps by using a zero nonce and setting `lower_bound == upper_bound`
-- We still need to reveal the caps with `smt_cap_reveal_operation`
-- The hard cap specified is the largest hard cap that does not result in created tokens exceeding `STEEM_MAX_SHARE_SUPPLY`
+- We disable the soft cap by setting `soft_cap_percent` to `STEEM_100_PERCENT = 10000`.
+- `post_soft_cap_unit` must be empty when the soft cap is disabled.
+- The unit ratio does not change so `min_unit_ratio` / `max_unit_ratio` must be set accordingly.
+- We disable the hidden caps by using a zero nonce and setting `lower_bound == upper_bound`.
+- We still need to reveal the caps with `smt_cap_reveal_operation`.
+- The hard cap specified is the largest hard cap that does not result in created tokens exceeding `STEEM_MAX_SHARE_SUPPLY`.
 
 #### BETA
 
 The BETA token is created with the following rules:
 
-- For every 5 STEEM contributed, 3 STEEM go to founder account Fred
-- For every 5 STEEM contributed, 2 STEEM go to founder account George
-- 10% of the initial token supply goes to founder account George
-- 20% of the initial token supply goes to founder acconut Henry
-- 70% of the initial token supply is divided among contributors according to their contribution
-- Each STEEM unit is 0.005 STEEM
-- Each token unit is 0.0010 BETA
-- The minimum raised is 5 million STEEM units, or 25,000 STEEM
-- The maximum raised is 30 million STEEM units, or 150,000 STEEM
+- For every 5 STEEM contributed, 3 STEEM go to founder account Fred.
+- For every 5 STEEM contributed, 2 STEEM go to founder account George.
+- 10% of the initial token supply goes to founder account George.
+- 20% of the initial token supply goes to founder acconut Henry.
+- 70% of the initial token supply is divided among contributors according to their contribution.
+- Each STEEM unit is 0.005 STEEM.
+- Each token unit is 0.0010 BETA.
+- The minimum raised is 5 million STEEM units, or 25,000 STEEM.
+- The maximum raised is 30 million STEEM units, or 150,000 STEEM.
 - Each contributor receives 7-14 BETA per STEEM contributed, depending on total contributions.
 - George receives 1-2 BETA per STEEM contributed, depending on total contributions.
 - Harry receives 2-4 BETA per STEEM contributed, depending on total contributions.
-- If the maximum of 30 million STEEM units are raised, then `min_unit_ratio = 50` applies
-- The maximum number of token units is `min_unit_ratio` times 30 million, or 1.5 billion token units
+- If the maximum of 30 million STEEM units are raised, then `min_unit_ratio = 50` applies.
+- The maximum number of token units is `min_unit_ratio` times 30 million, or 1.5 billion token units.
 - Since each token unit is 0.0010 BETA, at most 1.5 million BETA tokens will be generated.
-- If 75,000 STEEM or less is contributed, the contributors, George and Harry will receive the maximum of 14, 2, and 4 BETA per STEEM contributed (respectively).
+- If 75,000 STEEM or less is contributed, the contributors George and Harry will receive the maximum of 14, 2, and 4 BETA per STEEM contributed (respectively).
 - If more than 75,000 STEEM is contributed, the contributors, George and Harry will receive BETA in a 70% / 10% / 20% ratio, such that the total is fixed at 1.5 million BETA.
 - As a consequence of the hard cap, the contributors, George and Harry will receive at least 7, 1, and 2 BETA per STEEM contributed (respectively).
 
@@ -613,7 +612,7 @@ This example is chosen to demonstrate how the ratios work.  It is not a realisti
 
 #### GAMMA
 
-The GAMMA token is like BETA, but with one difference:  The large `max_unit_ratio` means that the maximum issue of 1.5 million tokens is reached very early in the ICO.  This ICO effectively divides 1.5 million GAMMA tokens between contributors (provided at least 5 STEEM is contributed).
+The GAMMA token is like BETA, but with one difference:  The large `max_unit_ratio` means that the maximum issue of 1.5 million tokens is reached very early in the ICO. This ICO effectively divides 1.5 million GAMMA tokens between contributors (provided at least 5 STEEM is contributed).
 
 ```
 [
@@ -677,7 +676,7 @@ The GAMMA token is like BETA, but with one difference:  The large `max_unit_rati
 
 #### DELTA
 
-In this ICO we have one million DELTA tokens created for the founder, and none for contributors.  A modest contribution of 0.1 STEEM can be made by any user (including the founder themselves) to trigger the generation.
+In this ICO we have one million DELTA tokens created for the founder, and none for contributors. A modest contribution of 0.1 STEEM can be made by any user (including the founder themselves) to trigger the generation.
 
 ```
 [
@@ -741,7 +740,7 @@ In this ICO we have one million DELTA tokens created for the founder, and none f
 
 #### Vesting contributions
 
-It is possible to send part or all of contributions to a vesting balance, instead of permitting immediate liquidity.  This example puts 95% in vesting.
+It is possible to send part or all of contributions to a vesting balance, instead of permitting immediate liquidity. This example puts 95% in vesting.
 
 ```
 "token_unit"           : [["$from.vesting", 95], ["$from", 5]]
@@ -760,7 +759,7 @@ In this ICO, the STEEM is permanently destroyed rather than going into the walle
 
 #### Vesting as cost
 
-In this ICO, you don't send STEEM to the issuer in exchange for tokens.  Instead, you vest STEEM (to yourself), and tokens are issued to you equal to the STEEM you vested.
+In this ICO, you don't send STEEM to the issuer in exchange for tokens. Instead, you vest STEEM (to yourself), and tokens are issued to you equal to the STEEM you vested.
 
 ```
 {
@@ -771,7 +770,7 @@ In this ICO, you don't send STEEM to the issuer in exchange for tokens.  Instead
 
 #### Non-STEEM & Hybrid ICO's
 
-ICO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. -- cannot be done fully automatically on-chain.   However, such ICO's can be managed by manually transferring some founder account's distribution to buyers' Steem accounts in proportion to their non-STEEM contribution.
+ICO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. -- cannot be done fully automatically on-chain. However, such ICO's can be managed by manually transferring some founder account's distribution to buyers' Steem accounts in proportion to their non-STEEM contribution.
 
 ### Inflation Parameters
 
