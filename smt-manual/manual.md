@@ -1284,6 +1284,20 @@ Simple Derivatives (IOUs) will be possible via SMT issuance. For instance, if an
 
 The Steem DEX is the first DEX to exist without trading fees, to the benefit of SMT creators and traders alike. This is made possible by [bandwidth rate limiting](#--fee--less-operations-necessary-for-quality-user-experience) (described in the original Steem Whitepaper and Bluepaper), as the process by which the blockchain calculates transaction prices on a per byte basis, and deducts transaction bandwidth available to an account temporarily.
 
+# Augmenting SMTs with Native Contracting for Creative Entrepreneurs
+
+These are several programmable contracts that are not in SMT's immediate scope, however, are proposed to increase the possiblities for how SMTs are utilized.
+
+## Community Building with Paid Positions
+
+SMT communities may be bolstered with paid positions, guild roles or jobs that are defined in programmable, native smart contracts and matched with continuously elected participants. Rewards received through the elected position come from some portion of the token's Founder allocations or donations that are sent to a paid position contract. Paid position contracts may be defined for length of position, frequency and volume of payments, particular token used for stake-weighted elections, percentage of the token required for a participant to be elected, and how tokens in paid position contracts are socialized or forfeited given no participant is elected.
+
+The paid roles may be leveraged to support various applications, games, and businesses built around an SMT. A contract for a paid position, the postion's reward schedule, and the voting thresholds required to elect an account into a paid position may be created by anyone for a fee. To establish the purpose of these positions, job desciptions or constitutions that encourage adherence to performance expectations may be established by the issuer or the token's community. There can be an unlimited number of paid positions, and paid position contracts can receive any amount of a token's Founder allocations or community donations. The types of paid positions that may be employed includes everything from front end developer, to evangelist, including educational content creator, business development representative, and many roles that have yet to be imagined.
+
+## Democratic SMTs using Whitelist Oracles
+
+## Secondary ICOs for Contiguous Fundraising
+
 # What Makes SMTs Better Suited to Application-Specific Blockchains, such as Steem, than Application-General Blockchains, such as Ethereum?
 
 Throughout history of software and hardware development, it has been observed that specialized systems have the potential to greatly outperform generalized systems. An example of this can be seen in [GPU outcompeteing CPU](https://www.quora.com/Whats-the-difference-between-a-CPU-and-a-GPU-When-I-switch-on-my-computer-it-shows-GPU-information-What-does-it-mean) through speciaization, which was followed by [ASIC outcompeting GPU](https://arstechnica.com/civis/viewtopic.php?t=1203755). In turn, some wonder how a specialized, specific-natured blockchain, such as Steem, which hosts application-specific programmability, and native smart contracts embedded in consensus, is more suited to SMTs than application-general, open-programmability blockchains, such as Ethereum, which hosts [turing-complete](https://en.wikipedia.org/wiki/Turing_completeness) ("infinitely") programmable smart contracts in a layer beyond consensus, and has shown its use for discovering new cryptocurrency concepts. Without delving into Steem's advantages in network effect and developer team experience, the advantages for SMTs on Steem can be seen through a set of computer science, consumer safety, and economic perspectives.   
