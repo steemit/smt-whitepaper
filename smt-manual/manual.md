@@ -120,16 +120,9 @@ This manual will explain the nuts and bolts of how SMTs work. The intended audie
 
 ## Create a control account
 
-The first step to creating an SMT is to create a *control account*
-for the SMT.  Any STEEM account may serve as a control account,
-however it is highly recommended to create a dedicated account for
-the purpose.  It is also highly recommended that a control account
-does not post, vote, or hold any STEEM, SBD or tokens (other than
-a small amount of vesting STEEM for transaction bandwidth).
+The first step to creating an SMT is to create a *control account* for the SMT.  Any STEEM account may serve as a control account, however it is highly recommended to create a dedicated account solely for the purpose. It is also highly recommended that a control account does not post, vote, or hold any STEEM, SBD, or other tokens (other than a small amount of vested STEEM for transaction bandwidth).
 
-The control account's name will not occupy a high visibility position
-in most UI's, so it does not much matter if the control account name
-is not the best match for the SMT brand.
+The control account's name will not occupy a high visibility position in most UI's, so it does not much matter if the control account's name is not the best match for the SMT brand.
 
 ### Control account security
 
