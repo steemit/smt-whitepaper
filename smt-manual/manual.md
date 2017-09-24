@@ -810,7 +810,7 @@ In addition, several special targets are possible representing trustless functio
 
 Traditionally blockchains compute inflation on a per-block basis, as block production rewards are the main (often, only) means of inflation.
 
-However, there is no good reason to couple inflation to block production for SMT's. In fact, SMT's have no block rewards, since they have no blocks (the underlying functionality of block production being supplied by the Steem witnesses, who are rewarded with Steem).
+However, there is no good reason to couple inflation to block production for SMTs. In fact, SMTs have no block rewards, since they have no blocks (the underlying functionality of block production being supplied by the Steem witnesses, who are rewarded with Steem).
 
 Repeating inflation at regular intervals can be enabled by adding `interval_seconds` and `interval_count` to the `token_inflation_event` data structure. The result is a new data structure called `token_inflation_event_seq_v1`:
 
@@ -988,7 +988,7 @@ The `setup_inflation_operation` is a *pre-setup* operation which must be execute
 
 ### Named token parameters
 
-Some behaviors of STEEM are influenced by compile-time configuration constants which are implemented by `#define` statements in the `steemd` C++ source code. It makes sense for the equivalent behaviors for SMT's to be configurable by the SMT creator.
+Some behaviors of STEEM are influenced by compile-time configuration constants which are implemented by `#define` statements in the `steemd` C++ source code. It makes sense for the equivalent behaviors for SMTs to be configurable by the SMT creator.
 
 These parameters are `runtime_parameters` and `setup_parameters`. The `setup_parameters` are a field in `smt_setup_operation`; they must be set before `smt_setup_operation`, and cannot be changed once `smt_setup_operation` is executed. The `runtime_parameters` are a field in `smt_set_runtime_parameters_operation`, and they can be changed by the token creator at any time.
 
@@ -1062,10 +1062,10 @@ Several dynamic parameters must be constrained to prevent abuse scenarios that c
 
 ## SMT vesting semantics
 
-SMT's have similar vesting (powerup / powerdown) semantics to STEEM.  In particular:
+SMTs have similar vesting (powerup / powerdown) semantics to STEEM.  In particular:
 
-- SMT's can be "powered up" into a vesting balance.
-- SMT's in a vesting balance can be "powered down" over 13 weeks
+- SMTs can be "powered up" into a vesting balance.
+- SMTs in a vesting balance can be "powered down" over 13 weeks
 (controlled by hardcoded `SMT_VESTING_WITHDRAW_INTERVALS`, `SMT_VESTING_WITHDRAW_INTERVAL_SECONDS` parameters).
 - Voting is affected only by powered-up tokens.
 - Vesting balance cannot be transferred or sold.
@@ -1197,7 +1197,7 @@ For example, in a Hivemind community with a corresponding token, there may be a 
 
 ## Hardcoded Token Parameters
 
-Hardcoded parameters are configuration constants that affect the behavior of SMT's, but are deliberately excluded from `smt_setup_parameters` or `smt_runtime_parameters`. The reason they are designed to be non-configurable is that allowing these parameters to significantly deviate from the values used for STEEM would result in significant risks, such as:
+Hardcoded parameters are configuration constants that affect the behavior of SMTs, but are deliberately excluded from `smt_setup_parameters` or `smt_runtime_parameters`. The reason they are designed to be non-configurable is that allowing these parameters to significantly deviate from the values used for STEEM would result in significant risks, such as:
 
 - May result in a very complicated implementation.
 - May result in extreme end-user frustration.
@@ -1234,20 +1234,20 @@ The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` h
 - `comment_payout_beneficiaries` : The existing `comment_payout_beneficiaries` will only redirect STEEM. In the future, `comment_payout_beneficiaries` functionality which allows redirecting SMT rewards may be added.
 - `comment_options` : `max_accepted_payout`, `allow_votes` only affects STEEM, see [here](#votability-and-rewardability) to restrict `max_accepted_payout` for assets. `allow_curation_rewards` affects all tokens.
 - `vote_operation` : Multiple tokens in the comment's votable set vote.
-- `transfer_operation` : Supports all SMT's.
-- Escrow operations:  Do not support SMT's.
-- `transfer_to_vesting_operation` : Supports all SMT's that support vesting.
-- `withdraw_vesting_operation` : Supports all SMT's that support vesting.
-- `set_withdraw_vesting_route_operation` : Does not support SMT's.
-- `account_witness_vote_operation` : SMT's do not affect witness votes.
-- `account_witness_proxy_operation` : SMT's do not affect witness votes.
-- `feed_publish_operation` : Feeds may not be published for SMT's.
-- `convert_operation` : SMT's cannot be converted.
-- Limit order operations : Limit orders are fully supported by SMT's trading against STEEM.
-- `transfer_to_savings_operation` : SMT's support savings.
+- `transfer_operation` : Supports all SMTs.
+- Escrow operations:  Do not support SMTs.
+- `transfer_to_vesting_operation` : Supports all SMTs that support vesting.
+- `withdraw_vesting_operation` : Supports all SMTs that support vesting.
+- `set_withdraw_vesting_route_operation` : Does not support SMTs.
+- `account_witness_vote_operation` : SMTs do not affect witness votes.
+- `account_witness_proxy_operation` : SMTs do not affect witness votes.
+- `feed_publish_operation` : Feeds may not be published for SMTs.
+- `convert_operation` : SMTs cannot be converted.
+- Limit order operations : Limit orders are fully supported by SMTs trading against STEEM.
+- `transfer_to_savings_operation` : SMTs support savings.
 - `decline_voting_rights_operation` : Affects SMT votes as well as STEEM votes.
-- `claim_reward_balance_operation` : Restrictions on this operation are relaxed to allow any asset in any of the three fields, including SMT's.
-- `delegate_vesting_shares_operation` : Supports all SMT's that support vesting.
+- `claim_reward_balance_operation` : Restrictions on this operation are relaxed to allow any asset in any of the three fields, including SMTs.
+- `delegate_vesting_shares_operation` : Supports all SMTs that support vesting.
 - Multisig:  There is nothing "special" about multisig handling of SMT operations. If you set up your account to require a multisig authority, then everything your account signs will need to be signed with multiple signatures, as you specified. This includes operations your account does as a control account managing an SMT, and operations your account does as a user holding SMT tokens.
 
 # Costs of SMT Operations And Bandwidth Rate Limiting
@@ -1288,9 +1288,9 @@ Throughout history of software and hardware development, it has been observed th
 
 ## SMTs are Safer and More Cost Effective in Application-Specific Blockchain Environments
 
-The value of SMTs in a native, specialized-programmability environment, such as Steem, comes from reliability of the code and efficiencies created by that reliability, whereas application-general platforms, such as Ethereum and Tezos, require costly and highly-assumptive audits on each new token and issuer to be deemed safe. Some of these application-general protocols claim to have [formal verification](https://en.wikipedia.org/wiki/Formal_verification), which is valuable, however, majority of the audit cost remains due the need to audit the issuer's choice of token mechanics, choice of client for writing the code, and choice of code with which to issue the token. Enabled by the purposeful design of its code, Steem enables SMT's to support Hardcoded versus Dynamic crypto-economic properties that can be tuned after the token’s launch without harming their token holders. The purposeful delineation between economic properties that should be Hardcoded versus Dynamic makes the necessary token audits for safety simple and inexpensive to accomplish.
+The value of SMTs in a native, specialized-programmability environment, such as Steem, comes from reliability of the code and efficiencies created by that reliability, whereas application-general platforms, such as Ethereum and Tezos, require costly and highly-assumptive audits on each new token and issuer to be deemed safe. Some of these application-general protocols claim to have [formal verification](https://en.wikipedia.org/wiki/Formal_verification), which is valuable, however, majority of the audit cost remains due the need to audit the issuer's choice of token mechanics, choice of client for writing the code, and choice of code with which to issue the token. Enabled by the purposeful design of its code, Steem enables SMTs to support Hardcoded versus Dynamic crypto-economic properties that can be tuned after the token’s launch without harming their token holders. The purposeful delineation between economic properties that should be Hardcoded versus Dynamic makes the necessary token audits for safety simple and inexpensive to accomplish.
 
-To elucidate this issue, imagine someone is offering you 20% of their currency in exchange for $100 USD.  You will have additional questions for the seller - essentially questions to audit tertiary realities of the deal, such as: "does the seller maintain a right to print more currency and therefore dilute me?" In SMTs, holders of SMTs largely will have high reliability of the core economics of the SMTs they purchase, due to hardcoded nature of SMT's economic properties - such as emissions or inflation rates, which cannot be changed by the issuer after launch. Therefore, there can be no unexpected new currency emissions to harm the consumer. In application-general, open-programmability blockchain protocols, such as Ethereum and Tezos, there can be no such platform-spanning design principles and reliabilities that protect consumer safety.
+To elucidate this issue, imagine someone is offering you 20% of their currency in exchange for $100 USD.  You will have additional questions for the seller - essentially questions to audit tertiary realities of the deal, such as: "does the seller maintain a right to print more currency and therefore dilute me?" In SMTs, holders of SMTs largely will have high reliability of the core economics of the SMTs they purchase, due to hardcoded nature of SMTs economic properties - such as emissions or inflation rates, which cannot be changed by the issuer after launch. Therefore, there can be no unexpected new currency emissions to harm the consumer. In application-general, open-programmability blockchain protocols, such as Ethereum and Tezos, there can be no such platform-spanning design principles and reliabilities that protect consumer safety.
 
 ## SMTs on Steem have Aligned Proof-of-Brain Incentives with the Core Token
 
