@@ -8,14 +8,12 @@ linkcolor: blue
 
 **Metadata**
 
-* CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
 * Creators: @ned; @theoretical
 * Coders: @theoretical; @vandeberg; @vogel; @lbujak; @mkochanowicz; @mtrela; @youkaicountry; @picokernel
 * Contributors: @sneak; @vandeberg; @valzav; et al.
 * Sketch designs: @pkattera
 * Copyright (c) Steemit, Inc. 2017
-* Status: DRAFT
 * GitHub: [https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md)
 
 # Smart Media Tokens (SMTs)
