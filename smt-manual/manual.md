@@ -988,9 +988,9 @@ The `setup_inflation_operation` is a *pre-setup* operation which must be execute
 
 ### Named token parameters
 
-Some behaviors of STEEM are influenced by compile-time configuration constants which are implemented by `#define` statements in the `steemd` C++ source code.  It makes sense for the equivalent behaviors for SMT's to be configurable by the SMT creator.
+Some behaviors of STEEM are influenced by compile-time configuration constants which are implemented by `#define` statements in the `steemd` C++ source code. It makes sense for the equivalent behaviors for SMT's to be configurable by the SMT creator.
 
-These parameters are `runtime_parameters` and `setup_parameters`.  The `setup_parameters` are a field in `smt_setup_operation`; they must be set before `smt_setup_operation` and cannot be changed once `smt_setup_operation` is executed.  The `runtime_parameters` are a field in `smt_set_runtime_parameters_operation`, they can be changed by the token creator at any time.
+These parameters are `runtime_parameters` and `setup_parameters`. The `setup_parameters` are a field in `smt_setup_operation`; they must be set before `smt_setup_operation`, and cannot be changed once `smt_setup_operation` is executed. The `runtime_parameters` are a field in `smt_set_runtime_parameters_operation`, and they can be changed by the token creator at any time.
 
 These operations are defined as follows:
 
@@ -1051,7 +1051,7 @@ typedef static_variant<
    > smt_runtime_parameter;
 ```
 
-UI's which allow inspecting or setting these parameters should be aware of the type and scale of each parameter.  In particular, percentage parameters are on a basis point scale (i.e. 100% corresponds to a value of `STEEM_100_PERCENT = 10000`), and UI's or other tools for creating or inspecting transactions *must* use the basis point scale.
+UI's which allow inspecting or setting these parameters should be aware of the type and scale of each parameter. In particular, percentage parameters are on a basis point scale (i.e. 100% corresponds to a value of `STEEM_100_PERCENT = 10000`), and UI's or other tools for creating or inspecting transactions *must* use the basis point scale.
 
 ## Parameter constraints
 
