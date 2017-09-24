@@ -251,11 +251,11 @@ The unit ratio is set to the largest integer that would not result in exceeding 
 
 ### Cap and min
 
-ICO's may specify a minimum number of STEEM units `min_steem_units`. If the ICO does not reach `min_steem_units` before `generation_end_time`, then it does not occur and contributors become eligible for refunds.
+ICO's may specify a minimum number of STEEM units `min_steem_units`. If the ICO does not reach `min_steem_units` before `generation_end_time`, then it does not occur, and contributors become eligible for refunds.
 
-Likewise, ICO's may specify two maximum numbers of STEEM units: A *hard cap* and a *soft cap*.  Units in excess of the soft cap have different routing for their STEEM and tokens.  STEEM units in excess of the hard cap are rejected and do not generate any SMT's.
+Likewise, ICO's may specify two maximum numbers of STEEM units: A *hard cap* and a *soft cap*. Units in excess of the soft cap have different routing for their STEEM and tokens. STEEM units in excess of the hard cap are rejected and do not generate any SMTs.
 
-The effects of the soft cap are divided proportionally among all contributors.  I.e. if a ICO has a soft cap of 8 million STEEM, and 10 contributors each contribute 1 million STEEM, then 0.2 million of *each user's* STEEM is routed via the soft cap's policy.
+The effects of the soft cap are divided proportionally among all contributors. I.e. if a ICO has a soft cap of 8 million STEEM, and 10 contributors each contribute 1 million STEEM, then 0.2 million of *each user's* STEEM is routed via the soft cap's policy.
 
 The effects of the hard cap fall solely on the last contributors. I.e. if a ICO has a hard cap of 8 million STEEM, and 10 contributors each contribute 1 million STEEM, then the first 8 users fully participate in the ICO, and the last 2 users are refunded 1 million STEEM.
 
