@@ -1358,7 +1358,7 @@ To be continously updated for SMTs.  Current Steem APIs exist here: [http://stee
 
 ### Shared Tools for Account Creation, Key Signing, and Wallet Functions
 
-Several shared tools exist to support applications that wish to outsource signup, transaction signing, and wallet functions - such as [SteemConnect](https://v2.steemconnect.com/).
+Several shared tools exist to support applications that wish to outsource signup, transaction signing, and wallet functions - such as [SteemConnect](https://v2.steemconnect.com/). SteemConnect enables applications to support SMTs while the applications are backed by entrepreneurs who may have little to no cryptocurrency experience.
 
 # Conclusion
 
