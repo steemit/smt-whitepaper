@@ -32,7 +32,7 @@ For content websites and tokens, incentive alignment between websites and users 
 
 # Introduction
 
-Smart Media Tokens (SMTs) is a proposal to build a meta-token protocol on the Steem blockchain. Inspired by the revolutionary properties of the STEEM token, including automatic distributions to content creators, SMTs will be an upgrade beyond previously created blockchain token protocols due to carefully designed token sale programmability, automated liquidity providers, and dynamic token distribution parameters, as well as a large ecosystem of tools (open source wallets, shared key signing tools, etc.) for integrations at website and application layers.
+Smart Media Tokens (SMTs) is a proposal to build a meta-token protocol, like Ethereum's ERC20, on the Steem blockchain, but for tokens with application-specific programmability, quality UX and economics that integrate with web applications to grow online communities. Inspired by the revolutionary properties of the STEEM token, including automatic distributions to content creators, SMTs will be an upgrade beyond previously created blockchain token protocols due to carefully designed token sale programmability, automated liquidity providers, and dynamic token distribution parameters, as well as a large ecosystem of tools (open source wallets, shared key signing tools, etc.) for integrations at website and application layers.
 
 SMTs are an evolution of the successful relationship established between STEEM and the social websites sitting atop of it, such as [steemit.com](https://steemit.com), which has grown to be a top 2100 website in Alexa rankings in less than one year, solely from integrating the incentive model of STEEM. With SMTs, any website or content library across the internet may have one or more tokens integrated into its interface to facilitate fundraising and autonomous growth.
 
@@ -1325,7 +1325,7 @@ Looking to the 90s and early 00’s for analogy, when the computer science world
 
 Unlike application-general blockchains, such as Ethereum, that inherently avoid application-specific primitives at the core of the protocol, Steem offers a structured public content database for storing plain text in tandem with content primitives that developers can build from - including Account Names, Posts, Comments, Votes and Account Balance. These primitives benefit the blockchain-based applications by helping to establish application-interoperability and fast developer onboarding. Without these primitives, second order databases need to be structured specifically for a blockchain-based application, which may give rise to many second-order application-specific databases competing with each other. The rise of multiple second layer content databases likely splits the potential network effect for the blockchain as a CMS, and reduces the potential for application-interoperability - which provides consumer safety benefits by allowing end users to move fluidly from one blockchain-based application to another.
 
-# Increasing Market Demand for STEEM with Implicit Value Drivers rather than Fees
+# Increasing Market Demand for STEEM with SMTs and Implicit Value Drivers rather than Fees
 
 There are several new value drivers to STEEM with the creation of SMTs.  
 
