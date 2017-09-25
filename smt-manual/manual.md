@@ -6,7 +6,8 @@ urlcolor: blue
 linkcolor: blue
 ---
 
-# Metadata
+# 
+data
 
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Originator: Steemit, Inc.
@@ -23,7 +24,7 @@ linkcolor: blue
 
 [Steem's](https://steem.io/steem-bluepaper.pdf) Smart Media Tokens (SMTs) give anyone the power to launch and sell [Proof-of-Brain [1]](https://steem.io/steem-bluepaper.pdf) tokens, which are tokens distributed by "upvote" and "like"-based algorithms and can be integrated with websites to align incentives and spur growth, while websites are empowered to adopt sustainable, currency-centric revenue models. This model has been tested and continues to be proven by [steemit.com](https://steemit.com), [busy.org](https://busy.org), [chainbb.com](https://chainbb.com), [dsound.audio](https://dsound.audio), [dtube.video](https://dtube.video) and other Steem interfaces, which are monetizing content, tokens and media in a way never before seen.
 
-Several popular token protocols, such as Ethereum's ERC-20s, allow you to create and launch arbitrary tokens, but no protocol enables content businesses to leverage those tokens by aligning incentives between users and applications. Due to suboptimal transaction cost structures that incur fees for basic actions such as voting or posting, misalignment of interests between meta tokens and core tokens which aren’t built for influencing distributions based on Proof-of-Brain, private key hierarchies that don’t cater to social versus financial operations, and slow transaction speeds that are out of sync with real-time websites - none of these protocols could ever provide an acceptable user experience for content websites, such as Twitter, Reddit (even subreddits) or The New York Times.
+Several popular token protocols, such as Ethereum's ERC-20s, allow you to create and launch arbitrary tokens, but no protocol enables content businesses to leverage those tokens by aligning incentives between users and applications. Due to suboptimal transaction cost structures that incur fees for basic actions such as voting or posting, misalignment of interests between meta-tokens and core blockchain tokens that aren’t built for influencing distributions based on Proof-of-Brain, private key hierarchies that don’t cater to social versus financial operations, and slow transaction speeds that are out of sync with real-time websites - none of these protocols could ever provide an acceptable user experience for content websites, such as Twitter, Reddit (even subreddits) or The New York Times.
 
 For content websites and tokens, incentive alignment between websites and users comes from a steady, as well as decentralized and mathematically guaranteed, release of new tokens, and incentives that must be allocated to the users - including bloggers, vloggers, commenters and curators. The distribution of new tokens occurs based on stake-weighted voting to prevent gaming and eliminate the need for a counterparty. Quality user experience comes from tokens that can be transacted safely (through separate private keys for distinct sets of actions), without fees, and at real-time speeds. Further incentive alignment comes from a company’s ability to raise capital in ICOs. All Smart Media Tokens have built-in ICO support, should the issuer wish to launch one.
 
@@ -32,7 +33,7 @@ For content websites and tokens, incentive alignment between websites and users 
 
 # Introduction
 
-Smart Media Tokens (SMTs) is a proposal to build a token issuance protocol on the Steem blockchain. Inspired by the revolutionary properties of the STEEM token, including automatic distributions to content creators, SMTs will be an upgrade beyond previously created blockchain token issuance protocols due to carefully designed token sale programmability, automated liquidity providers, decentralized token markets and dynamic token distribution parameters, as well as a large ecosystem of tools (open source wallets, shared key signing tools, etc.) for integrations at website and application layers.
+Smart Media Tokens (SMTs) is a proposal to build a consensus-level token issuance protocol on the Steem blockchain. Inspired by the revolutionary properties of the STEEM token, including automatic distributions to content creators, SMTs will be an upgrade beyond previously created blockchain token issuance protocols due to carefully designed token sale programmability, automated liquidity providers, decentralized token markets and dynamic token distribution parameters, as well as a large ecosystem of tools (open source wallets, shared key signing tools, etc.) for integrations at website and application layers.
 
 SMTs are an evolution of the successful relationship established between STEEM and the social websites sitting atop of it, such as [steemit.com](https://steemit.com), which has grown to be a top 2100 website in Alexa rankings in less than one year, solely from integrating the incentive model of STEEM. With SMTs, any website or content library across the internet may have one or more tokens integrated into its interface to facilitate fundraising and autonomous growth.
 
@@ -1265,7 +1266,7 @@ The Decentralized Exchange (DEX) structures of Steem allow assets to be automati
 
 There are several assets that SMT users and creators will have access to by way of the Steem DEX: STEEM, SBD, SMTs, and Simple Derivatives (IOUs). These neighboring assets can increase the visibility and network effect of all created SMTs.
 
-STEEM is the gateway token for assets issued on Steem, staying relevant by acting as the bandwidth usage measuring stick across Steem's meta-assets. STEEM is also the common denominator asset, acting as a trading pair for all of Steem's meta-assets.
+STEEM is the gateway token for assets issued on Steem, staying relevant by acting as the bandwidth usage measuring stick across Steem's SMTs. STEEM is also the common denominator asset, acting as a trading pair for all of Steem's SMTs.
 
 SBD (Steem Blockchain Dollars) are an experimental asset on Steem that relate to the US Dollar, originating back to Steem's launch in 2016. It is unclear if SBD will bring value to holders of USD as they will compete, possibly poorly, with IOU USDs; however, SBDs will bring value to speculators.
 
