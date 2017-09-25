@@ -14,7 +14,6 @@ linkcolor: blue
 * Contributors: @sneak; @vandeberg; @valzav; et al.
 * Sketch designs: @pkattera
 * Copyright (c) Steemit, Inc. 2017
-* Maintainer: @ned
 * GitHub: [https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md)
 
 # Smart Media Tokens (SMTs)
