@@ -1334,7 +1334,7 @@ With the advent of SMTs, there is growing demand for users to hold STEEM, becaus
 
 ## STEEM Supply is Locked into Liquidity Pools by Automated Market Makers
 
-Each SMT that leverages Automated Market Makers augments the ratio of demand for STEEM to available supply of STEEM. The effect of the Automated Market Maker to STEEM is that each Automated Market Maker represents a permanent holding pool for STEEM, which represents a decrease available supply. Given demand were to stay equal, the price of STEEM is caused to rise with the advent of each new Automated Market Maker.
+Each SMT that leverages Automated Market Makers augments the ratio of demand for STEEM to available supply of STEEM. The effect of the Automated Market Maker to STEEM is that each Automated Market Maker represents a permanent holding pool for STEEM, which represents a decrease in available supply. Given demand were to stay equal, the price of STEEM is caused to rise with the advent of each new Automated Market Maker.
 
 ## STEEM and SMT Demand Increases with Advent of New Powers of Influence
 
