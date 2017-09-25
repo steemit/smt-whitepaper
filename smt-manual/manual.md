@@ -1279,7 +1279,7 @@ The Steem DEX is the first DEX to exist without trading fees, to the benefit of 
 
 # Augmenting SMTs with Additional Native Contracts
 
-There are several potentialy valuable programmable contracts that are not in SMT's immediate scope, however, these contracts would increase the creativity entrepreneurs and communities may apply to grow of SMT ecosystems.
+There are several potentialy valuable programmable contracts that are not in SMT's immediate scope, however, these contract capabilities could be created as modular, follow-on developments that would increase the creativity entrepreneurs and communities may apply to grow of SMT ecosystems.
 
 ## Community Building with Paid Positions
 
