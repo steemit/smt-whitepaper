@@ -1296,7 +1296,7 @@ Entrepreneurs leveraging SMTs to finance ventures may want to have the option to
 
 ## Bandwidth Sharing with SMTs Based on Reserve Liquidity Pools
 
-SMTs that use ICOs to create Automated Market Makers to boost token liquidity will inherit bandwidth rights proportionate to the amount of STEEM in the Automated Market Maker's reserve pool.  This bandwidth inheritance confers transaction rights from STEEM to all the of the "powered up" and vested SMT, basically permitting SMT owners to transact proportionate to their stake of SMT without owning STEEM outright. Bandwidth Sharing based on liquidity pools enables new token to operate with an even higher degree of independence while still contributing proportionate value to STEEM.
+SMTs that use ICOs to create Automated Market Makers to boost token liquidity will inherit bandwidth rights proportionate to the amount of STEEM in the Automated Market Maker's reserve pool.  This bandwidth inheritance confers transaction rights from STEEM to all the of the "powered up" and vested SMT, basically permitting SMT owners to transact proportionate to their stake of SMT without owning STEEM outright. Bandwidth Sharing based on liquidity pools enables new tokens to operate with an even higher degree of independence while still contributing proportionate value to STEEM.
 
 # What Makes SMTs Better Suited to Application-Specific Blockchains, such as Steem, than Application-General Blockchains, such as Ethereum?
 
