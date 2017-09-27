@@ -8,7 +8,6 @@ linkcolor: blue
 
 # Metadata
 
-* CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Creators: @ned; @theoretical
 * Developers: @theoretical; @vandeberg; @itwasntme; @zgredek; @pychol-mychol; @small.minion; @youkaicountry; @picokernel
 * Contributors: @sneak; @vandeberg; @valzav; @youkaicountry; @justinw; @goldibex; et al.
