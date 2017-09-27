@@ -1247,11 +1247,11 @@ The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` h
 \newcommand{\steem}{\texttt{STEEM}}
 \newcommand{\mytoken}{\texttt{MYTOKEN}}
 
-\section{Automated Market Makers for SMTs}
+# Automated Market Makers for SMTs
 
-\section{Setup}
+## Setup
 
-\subsection{Basic definitions}
+### Basic definitions
 
 In this article, we'll let $s$ represent a quantity of STEEM, let $t$
 represent a quantity of some token (SMT), and let $p$ represent a price,
@@ -1275,7 +1275,7 @@ whitepaper, is called CRR or \textit{constant reserve ratio}.  To discuss CRR,
 let us notate the total number of tokens in existence as $T$.  The
 \textit{CRR invariant} is then defined as $s = r v(p, 0, T-t)$.
 
-\subsection{Note on conventions}
+### Note on conventions
 
 We must discuss where our convention varies from the Bancor whitepaper.
 At some times, when some user Alice interacts with the market maker,
@@ -1297,9 +1297,9 @@ transferred from the inventory of the market maker to Bob.  Thus, we show
 that the market maker is essentially an ordinary economic agent acting according
 to a deterministic algorithm -- it doesn't actually need ``special powers''!
 
-\section{Finite trades}
+## Finite trades
 
-\subsection{Basic definitions}
+### Basic definitions
 
 A \textit{trade} is a change in the market maker's balance from
 $(s, t) \to (s+\Delta s, t+\Delta t)$.  The \textit{price} at which the
@@ -1317,7 +1317,7 @@ $M = (s, t, T, r)$.  Given some price $p$, we may define the
 a \textit{relaxation}) to be a trade which occurs at price $p$ and results in a
 state that satisfies the CRR invariant.
 
-\subsection{Computing the restoring trade}
+### Computing the restoring trade
 
 The restoring trade consists of functions $\Delta s(M, p)$ and $\Delta t(M, p)$.
 We may actually compute these functions from the definition of price and the
@@ -1336,7 +1336,7 @@ s + \Delta s & = & r v(p, 0, T-(t+\Delta t)) \\
    & = & \left( {1 \over 1-r} \right) \left( r p (T - t) - s \right)
 \end{eqnarray*}
 
-\subsection{Computing the equilibrium price}
+### Computing the equilibrium price
 
 Given a state $M$, there exists some price $p_{eq}(M)$ for which the restoring
 trade is zero; call this price the \textit{equilibrium price}.  We may compute
@@ -1354,7 +1354,7 @@ Theorem:  Relaxation is idempotent.  That is, after relaxing at price $p$,
 the equilibrium price of the resulting state is $p$, and a second relaxation
 at price $p$ will be a zero trade.
 
-\subsection{Example}
+### Example
 
 Example:  Suppose $M = (1200, 3600, 12000, 0.25)$ and $p = 0.5$.  Then of the
 $T = 12000$ TOKEN in existence, $t = 3600$ TOKEN is held by the MM, so
@@ -1395,12 +1395,12 @@ target reserve level indeed exactly matches the actual reserve level of
 $s_{new} = 1000$ STEEM, we conclude that the CRR invariant is satisfied after
 this relaxing trade.
 
-\section{Infinitesimal trades}
+## Infinitesimal trades
 
 This section is fairly technical; the reader will need a good grasp of
 calculus and differential equations to follow the results.
 
-\subsection{Setting up the problem}
+### Setting up the problem
 
 Suppose we satisfy the invariant condition at some price
 $p = p_eq$; by the CRR invariant $s = r v( p, 0, T-t) = r p (T-t)$.
@@ -1411,7 +1411,7 @@ In this section we consider the limiting situation where $\Delta p$ is
 infintesimally small, so we will use Leibniz notation ($dp$ for a small change
 in $p$, $ds$ for a small change in $s$, $dt$ for a small change in $t$).
 
-\subsection{Solving the DE's}
+### Solving the DE's
 
 By applying the substitution $p \gets p + dp$ to the expression for $\Delta s$
 computed in the previous section, we obtain an expression which simplifies
@@ -1441,7 +1441,7 @@ dt & = & -ds / p \\
 \Rightarrow p & = & k_1 (T-t)^{1-r \over r}
 \end{eqnarray*}
 
-\section{Qualitative discussion}
+## Qualitative discussion
 
 In a CRR market maker, where does the ``backing'' for newly emitted tokens come from?
 
@@ -1466,7 +1466,7 @@ option.
 
 
 
-\section{FAQ}
+## FAQ
 
 FAQ
 
