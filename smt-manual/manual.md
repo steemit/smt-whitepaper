@@ -1244,6 +1244,13 @@ The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` h
 - `delegate_vesting_shares_operation` : Supports all SMTs that support vesting.
 - Multisig:  There is nothing "special" about multisig handling of SMT operations. If you set up your account to require a multisig authority, then everything your account signs will need to be signed with multiple signatures, as you specified. This includes operations your account does as a control account managing an SMT, and operations your account does as a user holding SMT tokens.
 
+\documentclass{article}
+
+\newcommand{\steem}{\texttt{STEEM}}
+\newcommand{\mytoken}{\texttt{MYTOKEN}}
+
+\begin{document}
+
 \section{Automated Market Makers for SMTs}
 
 \section{Setup}
@@ -1651,6 +1658,8 @@ experiments suggests these limits should be about 10,000 satoshis
 of both assets, 5 percent and 50 percent, respectively.  These
 values are subject to change based on future experimentation,
 worst-case analysis, and testing.
+
+\end{document}
 
 # Costs of SMT Operations And Bandwidth Rate Limiting
 
