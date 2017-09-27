@@ -1260,7 +1260,7 @@ $p = 0.05$ STEEM / MYTOKEN then $t = 120$ MYTOKEN has a value of
 $pt = (0.05\ \mbox{STEEM / MYTOKEN}) \cdot (120\ \mbox{MYTOKEN}) = 6\ \mbox{STEEM}$.
 
 Suppose we have a market maker (or any economic agent) with a two-asset
-``portfolio'' (inventory) of $s$ STEEM and $t$ tokens.  If the price of
+"portfolio" (inventory) of $s$ STEEM and $t$ tokens.  If the price of
 tokens is $t$, then we may measure of the value of this portfolio, in
 units of STEEM, as $v(p, s, t) = s + pt$.
 
@@ -1286,7 +1286,7 @@ to his balance in exchange for sending STEEM to the market maker's balance.
 Bancor takes the convention that in this example, the market maker \textit{destroys}
 tokens in its interaction with Alice, and \textit{creates} tokens in its interaction
 with Bob.  The Bancor convention suggests the market maker is not
-an ordinary actor, but needs system-level ``special powers'' -- specifically,
+an ordinary actor, but needs system-level "special powers" -- specifically,
 the privilege to operate the token printing press -- in order to function.
 
 In this paper, we adopt the convention that the tokens sent by Alice to the
@@ -1295,7 +1295,7 @@ of the market maker.  Likewise, the tokens sent to Bob by the market maker
 are not created out of thin air; they already exist and are merely
 transferred from the inventory of the market maker to Bob.  Thus, we show
 that the market maker is essentially an ordinary economic agent acting according
-to a deterministic algorithm -- it doesn't actually need ``special powers''!
+to a deterministic algorithm -- it doesn't actually need "special powers"!
 
 ## Finite trades
 
@@ -1358,17 +1358,17 @@ at price $p$ will be a zero trade.
 
 Example:  Suppose $M = (1200, 3600, 12000, 0.25)$ and $p = 0.5$.  Then of the
 $T = 12000$ TOKEN in existence, $t = 3600$ TOKEN is held by the MM, so
-$T-t = 12000 - 3600 = 8400$ TOKEN are ``circulating'' (i.e. exist in balances
+$T-t = 12000 - 3600 = 8400$ TOKEN are "circulating" (i.e. exist in balances
 outside the MM).  These circulating tokens are worth $p(T-t) = 4200$ STEEM
-total, so they ``should be'' backed by a target reserve level of
+total, so they "should be" backed by a target reserve level of
 $rp(T-t) = 4200 * 0.25 = 1050$ STEEM.
 
-In this example, there is ``too much'' STEEM in the reserve, so relaxation
+In this example, there is "too much" STEEM in the reserve, so relaxation
 will buy tokens in the market.  This sale will cause two effects:   It will
 decrease the reserve STEEM, and also decrease circulating tokens.  The decrease
 in circulating tokens, in turn, causes the target reserve level to decline.  For
 every 1 STEEM used to buy tokens, the target reserve level declines by $r$ STEEM;
-since $r < 1$ eventually the declining reserve will ``catch up'' to its more slowly
+since $r < 1$ eventually the declining reserve will "catch up" to its more slowly
 declining target level.
 
 The above algebra shows that we will catch up at
@@ -1389,7 +1389,7 @@ analysis in the initial paragraph of this example with the new numbers.  We know
 $M_{new} = (1000, 4000, 12000, 0.25)$ and $p = 0.5$.  Then of the $T = 12000$
 TOKEN in existence, $t_{new} = 4000$ TOKEN is now held by the MM, so
 $T-t_{new} = 12000 - 4000 = 8000$ TOKEN are now circulating.  These circulating
-tokens are worth $p(T-t_{new}) = 4000$ STEEM total, so they ``should be'' backed
+tokens are worth $p(T-t_{new}) = 4000$ STEEM total, so they "should be" backed
 by a target reserve level of $rp(T-t) = 4000 * 0.25 = 1000$ STEEM.  Since the
 target reserve level indeed exactly matches the actual reserve level of
 $s_{new} = 1000$ STEEM, we conclude that the CRR invariant is satisfied after
@@ -1443,11 +1443,11 @@ dt & = & -ds / p \\
 
 ## Qualitative discussion
 
-In a CRR market maker, where does the ``backing'' for newly emitted tokens come from?
+In a CRR market maker, where does the "backing" for newly emitted tokens come from?
 
 One option is to lower the reserve ratio $r$.  This option results in no immediate market
 activity, but will weaken the response of the market maker to any future price changes.
-This is called the ``pay later'' option.
+This is called the "pay later" option.
 
 Another option is to change the dynamical system's initial conditions, i.e. edit the
 constants of integration.  This option will cause the equilibrium price $p_{eq}$ to drop,
@@ -1460,7 +1460,7 @@ and there are few/no buyers for the tokens, then the equilibrium price will fall
 through the thin orders and lowering the market price.  Even though few/no many tokens were
 sold, so even though the \textit{absolute} amount of STEEM in the reserve is still
 nearly/exactly the same as before, the reserve's value \textit{relative} to the now-lower
-market cap of the token has increased to the reserve ratio.  This option is the ``pay now''
+market cap of the token has increased to the reserve ratio.  This option is the "pay now"
 option.
 
 
@@ -1482,12 +1482,12 @@ Q:  Can the reserve ratio be exactly 100 percent?
 
 A:  Not with the system described in this paper.  It might be possible to code as a special case.
 
-Q:  In a CRR market maker, where does the ``backing'' for newly emitted tokens come from?
+Q:  In a CRR market maker, where does the "backing" for newly emitted tokens come from?
 
-A:  As blockchain designers, we have two options for sourcing the ``backing''.  One option
+A:  As blockchain designers, we have two options for sourcing the "backing".  One option
 is to lower the reserve ratio $r$.  This option results in no immediate market
 activity, but will weaken the response of the market maker to any future price changes.
-This is called the ``pay later'' option.
+This is called the "pay later" option.
 
 Another option is to change the dynamical system's initial conditions, i.e. edit the
 constants of integration.  This option will cause the equilibrium price $p_{eq}$ to drop,
@@ -1502,13 +1502,13 @@ tokens, then the equilibrium price will fall, breaking through the thin orders a
 the market price.  Even though few/no many tokens were sold, so even though the
 \textit{absolute} amount of STEEM in the reserve is still nearly/exactly the same as before,
 the reserve's value \textit{relative} to the now-lower market cap of the token has increased
-to the reserve ratio.  This option is the ``pay now'' option.
+to the reserve ratio.  This option is the "pay now" option.
 
-Q:  Where's the ``don't pay'' option?
+Q:  Where's the "don't pay" option?
 
-A:  You have to come up with some answer to where the ``backing'' for newly emitted
-tokens will come from.  Unless there's no emission.  Or unless there's no ``backing'' for
-any tokens.  So the ``don't pay'' option would be to have an SMT with either no
+A:  You have to come up with some answer to where the "backing" for newly emitted
+tokens will come from.  Unless there's no emission.  Or unless there's no "backing" for
+any tokens.  So the "don't pay" option would be to have an SMT with either no
 emission, or no market maker.
 
 Q:  Don't fractional exponents require floating point to implement?
@@ -1554,7 +1554,7 @@ cost-effective for her.
 
 Q:  Does the market maker's activity generate profits (losses)?
 
-A:  It depends on how you measure ``profits.'' If you measure the value of STEEM
+A:  It depends on how you measure "profits". If you measure the value of STEEM
 and tokens in some external third currency such as US dollars or bitcoins, the
 market maker's inventory, valued in that currency, can definitely increase or
 decrease.  If people voluntarily send STEEM or tokens to the market maker,
@@ -1564,10 +1564,10 @@ your measurement.
 Another way to define profits is by the constants of integration.  If both
 of the constants of integration increase, or one increases while the other
 remains the same, a tiny increase occurs with each trade when the market
-maker is in ``taker'' mode.
+maker is in "taker" mode.
 
-Q:  What is ``taker'' mode?  How can a market maker be set to operate
-in ``taker'' mode?
+Q:  What is "taker" mode?  How can a market maker be set to operate
+in "taker" mode?
 
 A:  When orders execute, the order used to set the price is called the maker;
 the maker's counterparty is the taker.  In the STEEM on-chain market (and on
@@ -1599,7 +1599,7 @@ ICO that raises more than the sponsor can effectively spend.
 Q:  If the reserve ratio can change over time due to pay-later emissions or DRR,
 it's not really a constant reserve ratio, is it?
 
-A:  No, they're not.  The reserve ratio's called ``constant'' because it's constant
+A:  No, they're not.  The reserve ratio's called "constant" because it's constant
 over the short-term, in normal conditions, or in the conditions in Bancor which is
 where it was named.  But the name could be regarded as slightly misleading.
 
@@ -1632,12 +1632,12 @@ one hundred percent, and involves a third token that effectively represents
 equity in the token changer.  This paper's market maker has none of these
 features.
 
-Q:  I want to have an initial ``price discovery'' period where people trade
+Q:  I want to have an initial "price discovery" period where people trade
 without action from the market maker, then have tokens and STEEM from
 the ICO gradually flow in over time to the market maker so it has a delayed,
 slow start from zero to full power.  Can I do it?
 
-A:  This is called ``gradual seeding'' and it may be supported.
+A:  This is called "gradual seeding" and it may be supported.
 
 Q:  What about numerical stability?
 
