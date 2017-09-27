@@ -10,7 +10,7 @@ linkcolor: blue
 
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Creators: @ned; @theoretical
-* Software Engineers: @theoretical; @vandeberg; @itwasntme; @zgredek; @pychol-mychol; @small.minion; @youkaicountry; @picokernel
+* Project Engineers: @theoretical; @vandeberg; @itwasntme; @zgredek; @pychol-mychol; @small.minion; @youkaicountry; @picokernel
 * Contributors: @sneak; @vandeberg; @valzav; youkaicountry; et al.
 * Sketch designs: @pkattera
 * Copyright (c) Steemit, Inc. 2017
