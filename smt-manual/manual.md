@@ -1470,10 +1470,6 @@ option.
 
 FAQ
 
-Q:  Where are the pretty pictures and graphs?
-
-A:  They're being worked on right now, and will exist in a future version of this paper.
-
 Q:  What is the relevance of constant portfolio ratio policy?
 
 A:  It may become a supported market maker policy in the future.
