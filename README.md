@@ -42,7 +42,7 @@ After building, the pdf file will be output to:
 
 There are several image files in the `/img/` directory that are generated using the build file. If no changes are made to the images, these steps do not need to be run. If the figures are updated, these are the instructions to recompile the images.
 
-Install packages
+Install Packages
 
 ```bash
 # Python
@@ -60,7 +60,7 @@ sudo apt-get install graphviz
 sudo apt-get install imagemagick
 ```
 
-Build the Image Files
+Build Image Files
 
 ```bash
 ./build.sh
