@@ -1244,6 +1244,34 @@ The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` h
 - `delegate_vesting_shares_operation` : Supports all SMTs that support vesting.
 - Multisig:  There is nothing "special" about multisig handling of SMT operations. If you set up your account to require a multisig authority, then everything your account signs will need to be signed with multiple signatures, as you specified. This includes operations your account does as a control account managing an SMT, and operations your account does as a user holding SMT tokens.
 
+# Automated Market Makers for SMTs
+
+## Setup
+
+### Basic Definitions
+
+### Note on Conventions
+
+## Finite Trades
+
+### Basic Definitions
+
+### Computing the Restoring Trade
+
+### Computing the Equilibrium Price
+
+### Example
+
+## Infinitesimal Trades
+
+### Setting Up the Problem
+
+### Solving the DEs
+
+## Qualitative Discussion
+
+## FAQ
+
 # Costs of SMT Operations And Bandwidth Rate Limiting
 
 Like STEEM, SMTs can be transferred on the Steem blockchain with zero fees. Steem replaces fees with bandwidth rate limiting based on the percentage of STEEM an account has staked, which means the blockchain calculates how much STEEM an account has temporaily vested to determine how much bandwidth the account is permitted for transfers, posting, and other operations across a period of time. In a future version of Steem, [possesion of an account name could permit some small degree of bandwidth to allow for even greater user experience](https://steemit.com/steemit/@steemitblog/proposing-hardfork-0-20-0-velocity).
