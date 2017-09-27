@@ -10,8 +10,8 @@ linkcolor: blue
 
 * CONFIDENTIAL AND PRIVILEGED; DO NOT SHARE
 * Creators: @ned; @theoretical
-* Coders: @theoretical; @vandeberg; @itwasntme; @zgredek; @pychol-mychol; @small.minion; @youkaicountry; @picokernel
-* Contributors: @sneak; @vandeberg; @valzav; et al.
+* Software Engineers: @theoretical; @vandeberg; @itwasntme; @zgredek; @pychol-mychol; @small.minion; @youkaicountry; @picokernel
+* Contributors: @sneak; @vandeberg; @valzav; youkaicountry; et al.
 * Sketch designs: @pkattera
 * Copyright (c) Steemit, Inc. 2017
 * GitHub: [https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md)
