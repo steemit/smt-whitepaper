@@ -284,9 +284,7 @@ implementation is possible.
 Q:  Does this market maker interact with the order book through the existing limit order
 system, or is it a separate set of operations?
 
-A:  In theory, it could be implemented either way.  The Steemit team is still deciding
-which way to go.  In practice, even if implemented as a completely separate subsystem,
-people will likely run arbitrage bots which will trade away any price differences
+A:  In theory, it could be implemented either way.  However, the likely outcome is that the market maker will be implemented outside of order-book markets to allow its code to be modularized.  In practice, if implemented as a completely separate subsystem, people will run arbitrage bots which will trade away any price differences
 between the reserve system and the existing market system.
 
 Q:  Where do the market maker's initial token balances come from?
