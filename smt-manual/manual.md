@@ -1848,3 +1848,5 @@ A dynamic directory (based on a URL or blockchain account) should not be cached 
 URL and file-based asset directories will be a JSON format. The details will be developed concurrently with the implementation.  Blockchain based asset directories will use a custom JSON operation. Again, the details will be developed concurrently with the implementation.
 
 ## Unit Tests
+
+The details of the unit tests will be developed concurrently with the implementation.
