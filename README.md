@@ -21,7 +21,7 @@ Clone repository
 git clone https://github.com/steemit/smt-whitepaper
 ```
 
-## Build Instructions
+## PDF Build Instructions
 
 Open the whitepaper smt-manual directory
 ```bash
@@ -36,4 +36,30 @@ pandoc manual.md --latex-engine=xelatex -o smt-whitepaper.pdf
 After building, the pdf file will be output to:
 ```bash
 ./smt-whitepaper.pdf
+```
+
+## Image Recompile Instructions
+
+There are several image files in the /img/ directory that are generated using the build file. If no changes are made to the images, these steps do not need to be run, but if the figures are updated here are the instructions to recompile the images.
+
+Install packages
+```bash
+#python
+sudo apt-get update
+python3 -V #verfiy version 3
+sudo apt-get install -y python3-pip
+
+# Matplotlib
+pip3 install matplotlib
+
+# Graphviz
+sudo apt-get install graphviz
+
+# ImageMagick
+sudo apt-get install imagemagick
+```
+
+Build
+```bash
+./build.sh
 ```
