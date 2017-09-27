@@ -1247,8 +1247,6 @@ The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` h
 \newcommand{\steem}{\texttt{STEEM}}
 \newcommand{\mytoken}{\texttt{MYTOKEN}}
 
-\begin{document}
-
 \section{Automated Market Makers for SMTs}
 
 \section{Setup}
@@ -1656,8 +1654,6 @@ experiments suggests these limits should be about 10,000 satoshis
 of both assets, 5 percent and 50 percent, respectively.  These
 values are subject to change based on future experimentation,
 worst-case analysis, and testing.
-
-\end{document}
 
 # Costs of SMT Operations And Bandwidth Rate Limiting
 
