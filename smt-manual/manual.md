@@ -1246,6 +1246,8 @@ The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` h
 
 # Automated Market Makers for SMTs
 
+https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/market-maker.tex
+
 ## Setup
 
 ### Basic Definitions
