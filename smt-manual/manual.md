@@ -51,7 +51,7 @@ Blockchain-based tokens, beginning strongly with the advent of ERC20s on Ethereu
 
 ## Immediate Liquidity
 
-By leveraging a recently architected automated concept [[2](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)], SMT-based ICOs allow a portion of STEEM tokens received to be sent into an SMT’s on-chain, off-order-book market maker in order to provide liquidity to the SMT at a specified reserve ratio. Beyond the social and specialized distribution mechanisms of SMTs, this feature advances the concept of automated market makers by pairing it alongside SMT’s decentralized markets, which also facilitate bids and asks by human participants.  The combination of these two markets enables on-chain and trustless exchange opportunities for market makers while enabling liquidity for token users.
+By leveraging a recently architected automated market maker concept [[2](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)], SMT-based ICOs allow a portion of STEEM tokens received to be sent into an SMT’s on-chain, off-order-book market maker in order to provide liquidity to the SMT at a specified reserve ratio. Beyond the social and specialized distribution mechanisms of SMTs, this feature advances the concept of automated market makers by pairing it alongside SMT’s decentralized markets, which also facilitate bids and asks by human participants.  The combination of these two markets enables on-chain and trustless exchange opportunities for market makers while enabling liquidity for token users.
 
 ## Shared Bootstrap Tools
 
