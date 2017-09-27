@@ -38,15 +38,16 @@ After building, the pdf file will be output to:
 ./smt-whitepaper.pdf
 ```
 
-## Image Recompile Instructions
+## Image Compile Instructions
 
-There are several image files in the /img/ directory that are generated using the build file. If no changes are made to the images, these steps do not need to be run, but if the figures are updated here are the instructions to recompile the images.
+There are several image files in the `/img/` directory that are generated using the build file. If no changes are made to the images, these steps do not need to be run. If the figures are updated, these are the instructions to recompile the images.
 
 Install packages
+
 ```bash
-#python
+# Python
 sudo apt-get update
-python3 -V #verfiy version 3
+python3 -V #verfiy version 3.x.x
 sudo apt-get install -y python3-pip
 
 # Matplotlib
@@ -59,7 +60,8 @@ sudo apt-get install graphviz
 sudo apt-get install imagemagick
 ```
 
-Build
+Build the Image Files
+
 ```bash
 ./build.sh
 ```
