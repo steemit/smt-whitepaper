@@ -1248,9 +1248,11 @@ The token parameters set by `smt_setup_parameters` or `smt_runtime_parameters` h
 
 # Automated Market Makers for SMTs
 
+Automated Market Makers are smart contracts, largely based on the [Bancor Protocol [2]](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf), that may be constructed during the initial ICO setup of an SMT for providing perpetual liquidity to an SMT community. For simplicity, Automated Market Makers in Steem may only trade between STEEM and any given SMT.
+
 ## Setup
 
-### Basic definitions
+### Basic Definitions
 
 In this article, we'll let $s$ represent a quantity of STEEM, let $t$
 represent a quantity of some token (SMT), and let $p$ represent a price,
@@ -1274,7 +1276,7 @@ whitepaper, is called CRR or \textit{constant reserve ratio}.  To discuss CRR,
 let us notate the total number of tokens in existence as $T$.  The
 \textit{CRR invariant} is then defined as $s = r v(p, 0, T-t)$.
 
-### Note on conventions
+### Notes on Conventions
 
 We must discuss where our convention varies from the Bancor whitepaper.
 At some times, when some user Alice interacts with the market maker,
@@ -1296,9 +1298,9 @@ transferred from the inventory of the market maker to Bob.  Thus, we show
 that the market maker is essentially an ordinary economic agent acting according
 to a deterministic algorithm -- it doesn't actually need "special powers"!
 
-## Finite trades
+## Finite Trades
 
-### Basic definitions
+### Basic Definitions
 
 A \textit{trade} is a change in the market maker's balance from
 $(s, t) \to (s+\Delta s, t+\Delta t)$.  The \textit{price} at which the
@@ -1316,7 +1318,7 @@ $M = (s, t, T, r)$.  Given some price $p$, we may define the
 a \textit{relaxation}) to be a trade which occurs at price $p$ and results in a
 state that satisfies the CRR invariant.
 
-### Computing the restoring trade
+### Computing the Restoring Trade
 
 The restoring trade consists of functions $\Delta s(M, p)$ and $\Delta t(M, p)$.
 We may actually compute these functions from the definition of price and the
@@ -1335,7 +1337,7 @@ s + \Delta s & = & r v(p, 0, T-(t+\Delta t)) \\
    & = & \left( {1 \over 1-r} \right) \left( r p (T - t) - s \right)
 \end{eqnarray*}
 
-### Computing the equilibrium price
+### Computing the Equilibrium Price
 
 Given a state $M$, there exists some price $p_{eq}(M)$ for which the restoring
 trade is zero; call this price the \textit{equilibrium price}.  We may compute
@@ -1394,12 +1396,12 @@ target reserve level indeed exactly matches the actual reserve level of
 $s_{new} = 1000$ STEEM, we conclude that the CRR invariant is satisfied after
 this relaxing trade.
 
-## Infinitesimal trades
+## Infinitesimal Trades
 
 This section is fairly technical; the reader will need a good grasp of
 calculus and differential equations to follow the results.
 
-### Setting up the problem
+### Setting up the Problem
 
 Suppose we satisfy the invariant condition at some price
 $p = p_eq$; by the CRR invariant $s = r v( p, 0, T-t) = r p (T-t)$.
@@ -1462,12 +1464,7 @@ nearly/exactly the same as before, the reserve's value \textit{relative} to the 
 market cap of the token has increased to the reserve ratio.  This option is the "pay now"
 option.
 
-
-
-
 ## FAQ
-
-FAQ
 
 Q:  What is the relevance of constant portfolio ratio policy?
 
