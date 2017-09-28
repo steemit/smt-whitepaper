@@ -3,9 +3,13 @@
 
 # SMT Whitepaper
 
-This repository contains the LaTeX source code for the SMT Whitepaper. The instructions to clone the repository and build the PDF using pandoc are described below.
+This repository contains the LaTeX source code for the SMT Whitepaper. The
+instructions to clone the repository and build the PDF using pandoc are
+described below.
 
-Currently the build instructions are for Ubuntu 16.04 or higher but may successfully build on other distributions. Pull requests to update the whitepaper will be gladly accepted and reviewed.
+Currently the build instructions are for Ubuntu 16.04 or higher but may
+successfully build on other distributions. Pull requests to update the
+whitepaper will be gladly accepted and reviewed.
 
 ## Installation Instructions
 
@@ -40,7 +44,10 @@ After building, the pdf file will be output to:
 
 ## Image Compile Instructions
 
-There are several image files in the `/img/` directory that are generated using the build file. If no changes are made to the images, these steps do not need to be run. If the figures are updated, these are the instructions to recompile the images.
+There are several image files in the `/img/` directory that are generated
+using the build file. If no changes are made to the images, these steps do
+not need to be run. If the figures are updated, these are the instructions
+to recompile the images.
 
 Install Packages
 
