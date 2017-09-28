@@ -2312,7 +2312,7 @@ positions that may be employed includes everything from front end developer,
 to evangelist, including educational content creator, business development
 representative, and many roles that have yet to be imagined.
 
-## Democratic SMTs using Whitelist Feeds
+## Democratic SMTs using Whitelist Oracles
 
 SMTs represent completely open access to tokens, however, some entities may
 wish to enable one-whitelisted-account, one-vote-per-post and
