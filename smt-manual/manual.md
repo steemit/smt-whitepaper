@@ -299,7 +299,7 @@ The first step to creating an SMT is to create a *control account* for the
 SMT.  Any STEEM account may serve as a control account, however it is highly
 recommended to create a dedicated account solely for the purpose. It is also
 highly recommended that a control account does not post, vote, or hold any
-STEEM, SBD, or other tokens (other than a small amount of vested STEEM for
+STEEM, SBD, or other tokens (other than a small amount of STEEM power for
 transaction bandwidth).
 
 The control account's name will not occupy a high visibility position in
