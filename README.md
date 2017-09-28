@@ -40,6 +40,14 @@ sudo apt install -y texlive-xetex pandoc python3-pip graphviz imagemagick
 pip3 install matplotlib
 ```
 
+## Image Compile Instructions
+
+There are several image files in the `/img/` directory that are generated using the build file. The first time the build is done, and whenever the figures are updated, the images will need to be compiled.
+
+```bash
+./build.sh
+```
+
 ## PDF Build Instructions
 
 Compile using pandoc
@@ -49,14 +57,3 @@ pandoc manual.md --latex-engine=xelatex -o smt-whitepaper.pdf
 ```
 
 After building, the pdf file will be output to `smt-whitepaper.pdf`.
-
-## Image Compile Instructions
-
-There are several image files in the `/img/` directory that are generated
-using the build file. If no changes are made to the images, these steps do
-not need to be run. If the figures are updated, these are the instructions
-to recompile the images.
-
-```bash
-./build.sh
-```
