@@ -6,11 +6,13 @@ urlcolor: blue
 linkcolor: blue
 ---
 
-# Metadata
+# Document Metadata
 
 * Creators: @ned; @theoretical
-* Developers: @theoretical; @vandeberg; @itwasntme; @zgredek; @pychol-mychol; @small.minion; @youkaicountry; @picokernel
-* Contributors: @sneak; @vandeberg; @valzav; @youkaicountry; @justinw; @goldibex; et al.
+* Developers: @theoretical; @vandeberg; @itwasntme; @zgredek;
+  @pychol-mychol; @small.minion; @youkaicountry; @picokernel
+* Contributors: @sneak; @vandeberg; @valzav; @youkaicountry; @justinw;
+  @goldibex; et al.
 * Sketch designs: @pkattera
 * Copyright (c) Steemit, Inc. 2017
 * GitHub: [https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md)
@@ -31,7 +33,7 @@ has been tested and continues to be proven by
 [dtube.video](https://dtube.video) and other Steem interfaces, which are
 monetizing content, tokens and media in a way never before seen.
 
-Several popular token protocols, such as Ethereum's ERC-20s, allow you to
+Several popular token protocols, such as Ethereum's ERC-20, allow you to
 create and launch arbitrary tokens, but no protocol enables content
 businesses to leverage those tokens by aligning incentives between users and
 applications. Due to suboptimal transaction cost structures that incur fees
@@ -110,7 +112,7 @@ Proof-of-Brain, which is an entendre based on Proof-of-Work, meant to
 emphasize the human work required to distribute tokens to community
 participants. Proof-of-Brain positions SMTs as a tool for building
 perpetually growing communities, which encourage their members to add value
-to the community through the built in rewards structure. 
+to the community through the built in rewards structure.
 
 Entrepreneurs and established entities may rely on SMTs to grow their
 content network because of the automated and continuous generation of new
@@ -127,11 +129,11 @@ their own growth.
 
 ## New Fundraising Opportunities
 
-Blockchain-based tokens, beginning strongly with the advent of ERC20s on
+Blockchain-based tokens, beginning strongly with the advent of ERC20 on
 Ethereum, represent a new manner of bringing capital into an organization
 through the process of Initial Coin Offerings (ICOs). ICOs are an
 opportunity for one group to sell an initial supply of tokens, privately or
-publically, for-specific-purpose, for-profit or not-for-profit. Depending on
+publicly, for-specific-purpose, for-profit or not-for-profit. Depending on
 how these tokens are sold, different regulatory bodies could see them as
 commodities, securities, derivatives, or as none of the above. Regardless,
 it is clear we have seen north of one billion dollars (USD) raised through
@@ -142,13 +144,13 @@ tailored to receive STEEM and cryptocurrencies on other blockchains.
 
 ## Immediate Liquidity
 
-By leveraging a recently architected automated market maker concept
+By leveraging a recently designed automated market maker concept
 [[2](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)],
 SMT-based ICOs allow a portion of STEEM tokens received to be sent into an
 SMT’s on-chain, off-order-book market maker in order to provide liquidity to
 the SMT at a specified reserve ratio. Beyond the social and specialized
 distribution mechanisms of SMTs, this feature advances the concept of
-automated market makers by pairing it alongside SMT’s decentralized markets,
+automated market makers by pairing it alongside SMTs decentralized markets,
 which also facilitate bids and asks by human participants.  The combination
 of these two markets enables on-chain and trustless exchange opportunities
 for market makers while enabling liquidity for token users.
@@ -187,12 +189,12 @@ registering at [anon.steem.network](https://anon.steem.network),
 service.
 
 Once an account name to register the token with is secured, the account
-issues the token by using a Steem-based Command Line Tool or another tool
-created in the future for token launches. The token can be structured to
-support an initial sale or distribution of the token. Certain properties of
-an SMT, such as its inflation rate, must also be defined by the person or
-entity creating the token. These properties dictate how the token is used
-inside applications and respective communities.
+issues the token by using a Steem-based command line tool or any tool
+created in the future to support token launches.  The token can be
+structured to support an initial sale or distribution of the token. Certain
+properties of an SMT, such as its inflation rate, must also be defined by
+the person or entity creating the token. These properties dictate how the
+token is used inside applications and respective communities.
 
 From launch, the token becomes immutable on the blockchain, and leveraged
 correctly, the token can have dramatic effects on the growth of businesses
@@ -301,33 +303,34 @@ STEEM, SBD, or other tokens (other than a small amount of vested STEEM for
 transaction bandwidth).
 
 The control account's name will not occupy a high visibility position in
-most UI's, so it does not much matter if the control account's name is not
-the best match for the SMT brand.
+most user interfaces, so it does not much matter if the control account's
+name is not the best match for the SMT brand.
 
 ### Control account security
 
 Security on the control account is important for persons who plan to use the
 account post launch:
 
-- The control account should use 2-of-3 or 3-of-5 multisig.
-- The control account's authorities should have accounts, not keys, as
-  multisig members.
+- The control account should use 2-of-3 or 3-of-5 multi-signature security.
+- The control account's authorities should have other accounts, not specific
+  keys, as multi-signature members.
 - For additional security, each of the accounts in the control account's
-  multisig should itself use multisig.
-- All keys should be kept offline in air-gapped machines.
-- Transactions should be generated by an online UI, and carried to the
-  air-gapped machine via USB disk.
-- Signatures should be placed on the USB disk, and carried back to the
-  online machine for transmission via the UI.
+  multi-signature group should itself use multi-signature security.
+- A subset of keys should be kept offline, in air-gapped machines.
+- Transactions should be generated by an online interface, and physically
+  transferred to the
+  air-gapped machines via removable media.
+- Signatures should be returned via physically removable media to
+  the online system for transmission via the UI.
 
 Of course, once authorities are set up, you should verify the account is
-still able to transact. It may be advisable to test your authorities and
-transaction signing setup using a testnet, or some non-important account on
+still able to transact. It is advisable to test your authorities and
+transaction signing setup using a testnet, or a less-important account on
 the main network.
 
 Once the token is launched, you may consider burning the account's keys by
-assigning them to @null, to initiate a token for which the dynamic
-properties can never be adjusted.  
+assigning them to @null, initiating a token for which the dynamic
+properties can never be adjusted.
 
 ### Token consensus
 
@@ -378,8 +381,8 @@ squatter is willing to pay the SMT creation fee.
 #### SMT naming
 
 The solution to the namesquatting problem is to publish an *asset directory*
-mapping NAI's to names.  An asset directory is *non-consensus*, meaning that
-all blockchain operations are serialized with NAI's. Asset names are only
+mapping NAIs to names.  An asset directory is *non-consensus*, meaning that
+all blockchain operations are serialized only with NAIs. Asset names are only
 used for UI presentation.
 
 A UI may include an asset directory as a file, URL, or a blockchain account
@@ -448,7 +451,7 @@ The operation must be signed by the `control_account` key. The named SMT
 must have been created earlier by the `control_account`. The symbol's
 embedded decimal places may be distinct from prior `smt_setup_operation`.
 
-The `decimal_places` field is used by UI's to display units as a number of
+The `decimal_places` field is used by UIs to display units as a number of
 decimals.
 
 The `generation_begin_time` is when participants can begin to contribute to
@@ -459,7 +462,7 @@ The `generation_end_time` is when the ICO stops accepting contributions, and
 the `announced_launch_time` is when the ICO token is created (assuming the
 ICO reached the minimum participation level). Some pause is allocated
 between the `generation_end_time` and `announced_launch_time` to allow for
-the possibility of ICO's that wish to have hidden caps that aren't revealed
+the possibility of ICOs that wish to have hidden caps that aren't revealed
 while the ICO is open for contributions. It also gives the ICO creator time
 to use the final ICO numbers to aid in pre-launch business activities.
 
@@ -520,11 +523,11 @@ contributed.
 
 ### Cap and min
 
-ICO's may specify a minimum number of STEEM units `min_steem_units`. If the
+ICOs may specify a minimum number of STEEM units `min_steem_units`. If the
 ICO does not reach `min_steem_units` before `generation_end_time`, then it
 does not occur, and contributors become eligible for refunds.
 
-Likewise, ICO's may specify two maximum numbers of STEEM units: A *hard cap*
+Likewise, ICOs may specify two maximum numbers of STEEM units: A *hard cap*
 and a *soft cap*. Units in excess of the soft cap have different routing for
 their STEEM and tokens. STEEM units in excess of the hard cap are rejected
 and do not generate any SMTs.
@@ -580,7 +583,7 @@ struct smt_cap_reveal_operation
 All caps are hidden, but the cap may be revealed at any point in time.
 Therefore, an ICO with a non-hidden minimum or cap may be implemented by
 simply including the `smt_cap_reveal_operation` in the same transaction as
-the `smt_setup_operation`. UI's should provide functionality for this.
+the `smt_setup_operation`. UIs should provide functionality for this.
 
 A UI should provide one or more of the following means to ensure the `nonce`
 and `amount` are recoverable:
@@ -699,12 +702,12 @@ is ill-defined. For example:
 - Future expansion allows new special accounts.
 
 All of these ICO definitions have a unit ratio, but defining a single
-quantity to call "price" is complicated or impossible for ICO's like these.
+quantity to call "price" is complicated or impossible for ICOs like these.
 
 #### UI treatment of unit ratios
 
 As a consequence of the above, the concept of "ICO price" is purely a
-UI-level concept. UI's which provide an ICO price should do the following:
+UI-level concept. UIs which provide an ICO price should do the following:
 
 - Document the precise definition of "price" provided by the UI.
 - Be well-behaved for pathological input like above.
@@ -713,7 +716,7 @@ UI-level concept. UI's which provide an ICO price should do the following:
 #### Hidden cap FAQ
 
 - Q: Should my ICO have a cap?
-- A: Some set of people stay away from uncapped ICO's due to perceived
+- A: Some set of people stay away from uncapped ICOs due to perceived
   "greed", or want a guaranteed lower bound on the percentage of the ICO
   their contribution will buy. If you want this set of people to
   participate, use a cap.
@@ -730,7 +733,7 @@ UI-level concept. UI's which provide an ICO price should do the following:
 ### Launch
 
 The *effective launch time* is the time at which tokens become
-transferrable. Two possibilities occur based on the timing of revealing of
+transferable. Two possibilities occur based on the timing of revealing of
 the hard cap:
 
 - When `min_steem_units` and `hard_cap_steem_units` are revealed before the
@@ -918,7 +921,7 @@ The BETA token is created with the following rules:
   receive at least 7, 1, and 2 BETA per STEEM contributed (respectively).
 
 This example is chosen to demonstrate how the ratios work.  It is not a
-realistic example, as most ICO's will choose to either set `min_unit_ratio =
+realistic example, as most ICOs will choose to either set `min_unit_ratio =
 max_unit_ratio` like ALPHA, or choose to use a large `max_unit_ratio` like
 BETA.
 
@@ -1154,8 +1157,8 @@ the STEEM you vested.
 
 #### Non-STEEM & Hybrid ICO's
 
-ICO's using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. --
-cannot be done fully automatically on-chain. However, such ICO's can be
+ICOs using non-STEEM contributions -- for example, SBD, BTC, ETH, etc. --
+cannot be done fully automatically on-chain. However, such ICOs can be
 managed by manually transferring some founder account's distribution to
 buyers' Steem accounts in proportion to their non-STEEM contribution.
 
@@ -1187,8 +1190,8 @@ This event prints `num_units` units of the SMT token.
 #### Possible inflation target
 
 The target is the entity to which the inflation is directed. The target may
-be a normal Steem account controlled by an individual founder, or a multisig
-of several founders.
+be a normal Steem account controlled by an individual founder, or a
+multi-signature secured account comprised of several founders.
 
 In addition, several special targets are possible representing trustless
 functions provided by the blockchain itself:
@@ -1204,7 +1207,7 @@ production rewards are the main (often, only) means of inflation.
 However, there is no good reason to couple inflation to block production for
 SMTs. In fact, SMTs have no block rewards, since they have no blocks (the
 underlying functionality of block production being supplied by the Steem
-witnesses, who are rewarded with Steem).
+witnesses, who are rewarded with STEEM).
 
 Repeating inflation at regular intervals can be enabled by adding
 `interval_seconds` and `interval_count` to the `token_inflation_event` data
@@ -1480,10 +1483,10 @@ typedef static_variant<
    > smt_runtime_parameter;
 ```
 
-UI's which allow inspecting or setting these parameters should be aware of
+UIs which allow inspecting or setting these parameters should be aware of
 the type and scale of each parameter. In particular, percentage parameters
 are on a basis point scale (i.e. 100% corresponds to a value of
-`STEEM_100_PERCENT = 10000`), and UI's or other tools for creating or
+`STEEM_100_PERCENT = 10000`), and UIs or other tools for creating or
 inspecting transactions *must* use the basis point scale.
 
 ## Parameter constraints
@@ -1501,7 +1504,7 @@ SMTs have similar vesting (powerup / powerdown) semantics to STEEM.  In particul
 
 - SMTs can be "powered up" into a vesting balance.
 - SMTs in a vesting balance can be "powered down" over 13 weeks (controlled
-  by hardcoded `SMT_VESTING_WITHDRAW_INTERVALS`,
+  by static `SMT_VESTING_WITHDRAW_INTERVALS`,
   `SMT_VESTING_WITHDRAW_INTERVAL_SECONDS` parameters).
 - Voting is affected only by powered-up tokens.
 - Vesting balance cannot be transferred or sold.
@@ -1602,8 +1605,8 @@ criterion depends on the relationship between current and future upvotes.
 
 In practice, independence or a modest positive correlation should be
 expected, so an `ICR=` or `ICR-` curve should be chosen. For STEEM itself,
-curation was originally the quadratic `ICR=`, as of hardfork 0.19 it is the
-linear `ICR=`.
+curation was originally the quadratic `ICR=`, as of the Steem hard fork 19
+it is the linear `ICR=`.
 
 ## Target votes per day
 
@@ -1635,7 +1638,7 @@ In this section, we introduce the concepts of *votability* and *rewardability*.
 
 Advisory votes do not affect rewards or voting power. However, the ranking
 algorithms and estimated reward calculations still apply advisory votes, so
-UI's may display advisory posts accordingly.
+UIs may display advisory posts accordingly.
 
 The votable token set is determined by `allowed_vote_assets` which is a
 `comment_options_extension`.
@@ -1678,9 +1681,9 @@ Implementation notes:
 - For an advisory vote, all rewards are zero, including curators and
   beneficiaries. This is because the blockchain applies the
   `max_accepted_payout` cap before the curator / beneficiary computations.
-- Currently (as of hardfork 0.19), the Steem blockchain *does* deduct voting
+- Currently (as of Steem hard fork 19), the Steem blockchain *does* deduct voting
   power for advisory Steem votes. This behavior will be changed in a future
-  hardfork (Steem issue #1380).
+  Steem hard fork (Steem issue #1380).
 - At most two tokens may be specified in `votable_assets`. This means that
   each post is voted with at most three tokens (including STEEM).
 - The default `max_accepted_payout` is stored in
@@ -1701,12 +1704,12 @@ within that Hivemind community must include the token of that community.
 This is a non-consensus validation rule, since the entire concept of a post
 existing within a Hivemind community is a non-consensus concept. Since it is
 a non-consensus validation rule, no consensus logic can enforce it. However,
-UI's that are aware of Hivemind communities may refuse to index or display
+UIs that are aware of Hivemind communities may refuse to index or display
 posts that violate this validation rule.
 
-## Hardcoded Token Parameters
+## Static Token Parameters
 
-Hardcoded parameters are configuration constants that affect the behavior of
+Static parameters are configuration constants that affect the behavior of
 SMTs, but are deliberately excluded from `smt_setup_parameters` or
 `smt_runtime_parameters`. The reason they are designed to be
 non-configurable is that allowing these parameters to significantly deviate
@@ -1717,24 +1720,24 @@ from the values used for STEEM would result in significant risks, such as:
 - May threaten the security and stability of the token.
 - May threaten the security and stability of STEEM.
 
-Here is the list of such hardcoded parameters:
+Here is the list of such static parameters:
 
-- `SMT_UPVOTE_LOCKOUT_HF17` : Hardcoded -- This value locks out upvotes from
+- `SMT_UPVOTE_LOCKOUT_HF17` : Static -- This value locks out upvotes from
   posts at a certain time prior to "CASH OUT", to prevent downvote abuse
   immediately prior to "CASH OUT."
-- `SMT_VESTING_WITHDRAW_INTERVALS` : Hardcoded
-- `SMT_VESTING_WITHDRAW_INTERVAL_SECONDS` : Hardcoded
-- `SMT_MAX_WITHDRAW_ROUTES` : Hardcoded
-- `SMT_SAVINGS_WITHDRAW_TIME` : Hardcoded
-- `SMT_SAVINGS_WITHDRAW_REQUEST_LIMIT` : Hardcoded
-- `SMT_MAX_VOTE_CHANGES` : Hardcoded
-- `SMT_MIN_VOTE_INTERVAL_SEC` : Hardcoded
-- `SMT_MIN_ROOT_COMMENT_INTERVAL` : Hardcoded
-- `SMT_MIN_REPLY_INTERVAL` : Hardcoded
-- `SMT_MAX_COMMENT_DEPTH` : Hardcoded
-- `SMT_SOFT_MAX_COMMENT_DEPTH` : Hardcoded
-- `SMT_MIN_PERMLINK_LENGTH` : Hardcoded
-- `SMT_MAX_PERMLINK_LENGTH` : Hardcoded
+- `SMT_VESTING_WITHDRAW_INTERVALS` : Static
+- `SMT_VESTING_WITHDRAW_INTERVAL_SECONDS` : Static
+- `SMT_MAX_WITHDRAW_ROUTES` : Static
+- `SMT_SAVINGS_WITHDRAW_TIME` : Static
+- `SMT_SAVINGS_WITHDRAW_REQUEST_LIMIT` : Static
+- `SMT_MAX_VOTE_CHANGES` : Static
+- `SMT_MIN_VOTE_INTERVAL_SEC` : Static
+- `SMT_MIN_ROOT_COMMENT_INTERVAL` : Static
+- `SMT_MIN_REPLY_INTERVAL` : Static
+- `SMT_MAX_COMMENT_DEPTH` : Static
+- `SMT_SOFT_MAX_COMMENT_DEPTH` : Static
+- `SMT_MIN_PERMLINK_LENGTH` : Static
+- `SMT_MAX_PERMLINK_LENGTH` : Static
 
 ## Mandatory token parameters
 
@@ -1777,12 +1780,12 @@ for every asset.
   relaxed to allow any asset in any of the three fields, including SMTs.
 - `delegate_vesting_shares_operation` : Supports all SMTs that support
   vesting.
-- Multisig:  There is nothing "special" about multisig handling of SMT
-  operations. If you set up your account to require a multisig authority,
-  then everything your account signs will need to be signed with multiple
-  signatures, as you specified. This includes operations your account does
-  as a control account managing an SMT, and operations your account does as
-  a user holding SMT tokens.
+- Multisig Native: There is nothing "special" about the handling of SMT
+  operations signed by multiple signatures. If you set up your account to
+  require multi-signature security, then everything your account signs will
+  need to be signed with multiple signatures, as you specified. This
+  includes operations your account does as a control account managing an
+  SMT, and operations your account does as a user holding SMT tokens.
 
 \newcommand{\steem}{\texttt{STEEM}}
 \newcommand{\mytoken}{\texttt{MYTOKEN}}
@@ -1878,7 +1881,7 @@ s + \Delta s & = & r v(p, 0, T-(t+\Delta t)) \\
    & = & rpT - rpt - rp \Delta t \\
 \Rightarrow r p \Delta t - p \Delta t & = & r p (T-t) - s \\
 \Rightarrow \Delta t & = & {r p (T - t) - s \over rp - p } \\
-                     & = & \left( {1 \over 1-r} \right) \left( {s \over p} - r (T-t) \right) \\
+      & = & \left( {1 \over 1-r} \right) \left( {s \over p} - r (T-t) \right) \\
 \Rightarrow \Delta s & = & - p \Delta t \\
    & = & \left( {1 \over 1-r} \right) \left( r p (T - t) - s \right)
 \end{eqnarray*}
@@ -1955,8 +1958,9 @@ Suppose the price then increases to $p + \Delta p$ and a relaxing trade
 $\Delta s, \Delta t$ occurs at this new price.
 
 In this section we consider the limiting situation where $\Delta p$ is
-infintesimally small, so we will use Leibniz notation ($dp$ for a small change
-in $p$, $ds$ for a small change in $s$, $dt$ for a small change in $t$).
+infinitesimally small, so we will use Leibniz notation ($dp$ for a small
+change in $p$, $ds$ for a small change in $s$, $dt$ for a small change in
+$t$).
 
 ### Solving the DE's
 
@@ -2076,7 +2080,7 @@ market system.
 Q:  Where do the market maker's initial token balances come from?
 
 A:  ICO units can specify the market maker as a destination.  An ICO creator
-may direct a percentage of ICO's STEEM contributions to the MM by specifying
+may direct a percentage of their ICO's STEEM contributions to the MM by specifying
 the market maker similarly to specifying a founder.  Or may use the soft cap
 system to specify all STEEM above a pre-determined amount goes to the ICO.  Likewise,
 a fixed or percentage amount of tokens can be added in the ICO to increase the MM's
@@ -2218,8 +2222,7 @@ users transaction fees for basic operations such as voting, posting, and
 transferring tokens. This lack of fees allows Steem based apps to compete
 with their non-blockchain counterparts, such as Facebook or Reddit, which
 certainly do not charge fees for actions such as 'Like' and 'Upvote'. If
-these applications did charge fees, they would become far less used, and
-could be more easily competed against.
+these applications did charge fees, adoption would suffer.
 
 # Decentralized Exchange
 
@@ -2231,7 +2234,7 @@ functioning unmanned markets against the liquid asset, STEEM.
 The Decentralized Exchange (DEX) structures of Steem allow assets to be
 automatically matched for best possible price when bids and asks overlap,
 unlike other DEXs - which require a "man in the middle" or user-agent to
-match orders. Automatic, rather than middle-man-faciliated, order matching
+match orders. Automatic, rather than middle-man-facilitated, order matching
 is important for the security of Steem-based assets, and for the
 replicability and safety of DEX interfaces.
 
@@ -2248,9 +2251,9 @@ also the common denominator asset, acting as a trading pair for all of
 Steem's SMTs.
 
 SBD (Steem Blockchain Dollars) are an experimental asset on Steem that
-relate to the US Dollar, originating back to Steem's launch in 2016. It is
+relate to the US Dollar, originating with Steem's launch in 2016. It is
 unclear if SBD will bring value to holders of USD as they will compete,
-possibly poorly, with IOU USDs; however, SBDs will bring value to
+possibly poorly, with USD IOU tokens; however, SBDs will bring value to
 speculators.
 
 SMTs as described in this proposal are an important part of growing the
@@ -2260,10 +2263,11 @@ trade against STEEM across the DEX.
 Simple Derivatives (IOUs) will be possible via SMT issuance. For instance,
 if an SMT is issued without inflation or rewards pool properties, then the
 issuer can reliably back the token with another real world asset such as
-bitcoin or USD. In this instance, the issuer could create business as a
-gateway, by trading their IOU for BTC or USD. Users would buy the IOU to
-gain access to the Steem DEX. This market would add diversity and value flow
-to the Steem ecosystem, while adding to the DEX's network effect.
+bitcoin or USD. In this instance, the issuer could create a business
+functioning as a gateway, by trading their IOU for BTC or USD. Users would
+buy the IOU to gain access to the Steem DEX. This market would add diversity
+and value flow to the Steem ecosystem, while adding to the DEX's network
+effect.
 
 ## Zero Trading and Transfer Fees
 
@@ -2271,19 +2275,21 @@ The Steem DEX is the first DEX to exist without trading fees, to the benefit
 of SMT creators and traders alike. This is made possible by [bandwidth rate
 limiting](#--fee--less-operations-necessary-for-quality-user-experience)
 (described in the original Steem Whitepaper and Bluepaper), as the process
-by which the blockchain calculates transaction prices on a per byte basis,
+by which the blockchain calculates transaction "prices" on a per byte basis,
 and deducts transaction bandwidth available to an account temporarily.
+These "prices" are an internal blockchain accounting and do not debit any
+token balances.
 
 # Augmenting SMTs with Additional Native Contracts
 
-There are several potentialy valuable programmable contracts that are not in
-SMT's immediate scope, however, these contract capabilities could be created
-as modular, follow-on developments that would increase the creativity
-entrepreneurs and communities may apply to grow of SMT ecosystems.
+There are several potentially valuable programmable contracts that are not in
+the immediate scope of SMTs, however, these contract capabilities can be created
+as modular, follow-on projects that increase the creativity
+entrepreneurs and communities may apply to growth of SMT ecosystems.
 
 ## Community Building with Paid Positions
 
-SMT communities may be bolstered with paid positions, guild roles or jobs
+SMT communities may be bolstered with paid positions, guild roles, or jobs
 that are defined in programmable, native smart contracts and matched with
 continuously elected participants. Rewards received through the elected
 position come from some portion of the token's Founder allocations or
@@ -2297,7 +2303,7 @@ The paid roles may be leveraged to support various applications, games, and
 businesses built around an SMT. A contract for a paid position, the
 postion's reward schedule, and the voting thresholds required to elect an
 account into a paid position may be created by anyone for a fee. To
-establish the purpose of these positions, job desciptions or constitutions
+establish the purpose of these positions, job descriptions or constitutions
 that encourage adherence to performance expectations may be established by
 the issuer or the token's community. There can be an unlimited number of
 paid positions, and paid position contracts can receive any amount of a
@@ -2306,14 +2312,26 @@ positions that may be employed includes everything from front end developer,
 to evangelist, including educational content creator, business development
 representative, and many roles that have yet to be imagined.
 
-## Democratic SMTs using Whitelist Oracles
+## Democratic SMTs using Whitelist Feeds
 
-SMTs represent completely open access to tokens, however, some entities may wish to enable one-whitelisted-account, one-vote-per-post and X-number-of-target-votes-per-day algorithms to increase their token's potential for accurate widom-of-the-crowd content discovery mechanics and the democratic nature of their token communnity.  To incorporate this, the Rewards Pool for a token will need to have a mangeable whitelist that can be enabled only at launch.  Whitelist management may be handled by the entity launching the token or outsourced to an identity mangement service, such as Civic or Jumio.  The service would need to continually provide a list of known individual's single Steem handle into the Steem blockchain.  As the blockchain pays rewards to a token, it verifies the account receiving the token is on the whitelist, otherwise the tokens are returned to the reward pool.
+SMTs represent completely open access to tokens, however, some entities may
+wish to enable one-whitelisted-account, one-vote-per-post and
+X-number-of-target-votes-per-day algorithms to increase their token's
+potential for accurate wisdom-of-the-crowd content discovery mechanics and
+the democratic nature of their token community.  To incorporate this, the
+Rewards Pool for a token will need to have a manageable whitelist that can
+be enabled only at launch.  Whitelist management may be handled by the
+entity launching the token or outsourced to an identity management service,
+such as Civic or Jumio.  The service would need to publish a feed of Steem
+usernames for known/identified people into the Steem blockchain, along with
+periodic updates to ensure accuracy of the whitelist.  As the blockchain
+pays rewards to a token, it verifies the account receiving the token is on
+the whitelist, otherwise the tokens are returned to the reward pool.
 
 ## Secondary ICOs for Contiguous Fundraising
 
 Entrepreneurs leveraging SMTs to finance ventures may want to have the
-option to perform token auctions after the intitial launch of the token.
+option to perform token auctions after the initial launch of the token.
 The entrepreneur can reserve Founders tokens at launch and earmark them for
 later sale, however, they may want to auction these tokens rather than sell
 them into Bid/Ask order books or sell them OTC.  To enable secondary
@@ -2322,7 +2340,7 @@ contract requires definitions for when an ICO begins and how long it lasts,
 as well as lockup periods for the tokens purchased.  The lockup period
 allows the tokens to be sold at a discount to the open markets and attract
 investment capital that would otherwise stay out of the market. The
-entrepreneuer will send tokens to this contract prior to the beginning of
+entrepreneur will send tokens to this contract prior to the beginning of
 the auction and the tokens will be distributed to the auction participants
 immediately following the close of auction period.
 
@@ -2339,14 +2357,15 @@ independence while still contributing proportionate value to STEEM.
 
 # What Makes SMTs Better Suited to Application-Specific Blockchains, such as Steem, than Application-General Blockchains, such as Ethereum?
 
-Throughout history of software and hardware development, it has been
+Throughout the history of software and hardware development, it has been
 observed that specialized systems have the potential to greatly outperform
-generalized systems. An example of this can be seen in [GPU outcompeting
-CPU](https://www.quora.com/Whats-the-difference-between-a-CPU-and-a-GPU-When-I-switch-on-my-computer-it-shows-GPU-information-What-does-it-mean)
-through specialization, which was followed by [ASIC outcompeting
-GPU](https://arstechnica.com/civis/viewtopic.php?t=1203755). In turn, some
-wonder how a specialized, specific-natured blockchain, such as Steem, which
-hosts application-specific programmability, and native smart contracts
+generalized systems. An example of this can be seen in [GPUs outperforming
+CPUs](https://www.quora.com/Whats-the-difference-between-a-CPU-and-a-GPU-When-I-switch-on-my-computer-it-shows-GPU-information-What-does-it-mean)
+through specialization, which was followed by [ASICs outperforming
+GPUs](https://arstechnica.com/civis/viewtopic.php?t=1203755) for particular
+tasks. In turn, some
+wonder how a specialized blockchain, such as Steem, which
+hosts application-specific programmability, and static mechanics
 embedded in consensus, is more suited to SMTs than application-general,
 open-programmability blockchains, such as Ethereum, which hosts
 [turing-complete](https://en.wikipedia.org/wiki/Turing_completeness)
@@ -2354,7 +2373,7 @@ open-programmability blockchains, such as Ethereum, which hosts
 has shown its use for discovering new cryptocurrency concepts. Without
 delving into Steem's advantages in network effect and developer team
 experience, the advantages for SMTs on Steem can be seen through a set of
-computer science, consumer safety, and economic perspectives.   
+computer science, consumer safety, and economic perspectives.
 
 ## SMTs are Safer and More Cost Effective in Application-Specific Blockchain Environments
 
@@ -2368,19 +2387,19 @@ verification](https://en.wikipedia.org/wiki/Formal_verification), which is
 valuable, however, the majority of the audit cost remains due to the need to
 audit the issuer's choice of token mechanics, choice of client for writing
 the code, and semantics of custom code written to the token. Enabled by the
-purposeful design of its code, Steem enables SMTs to support Hardcoded
-versus Dynamic crypto-economic properties that can be tuned after the
-token’s launch without harming their token holders. The purposeful
-delineation between economic properties that should be Hardcoded versus
-Dynamic makes the necessary token audits for safety simple and inexpensive
-to accomplish.
+purposeful design of its code, Steem enables SMTs to support static (versus
+dynamic) crypto-economic properties that can be tuned after the token’s
+launch without each change potentially harming their token holders. The
+purposeful delineation between economic properties that should be static
+versus dynamic makes the necessary token audits for safety simple and
+inexpensive to accomplish.
 
 To elucidate this issue, imagine someone is offering you 20% of their
 currency in exchange for $100 USD.  You will have additional questions for
 the seller - essentially questions to audit tertiary realities of the deal,
 such as: "does the seller maintain a right to print more currency and
 therefore dilute me?" In SMTs, holders of SMTs will be able to rely on the
-core economics of the SMTs they purchase due to hardcoded nature of SMTs
+core economics of the SMTs they purchase due to static nature of the SMTs
 economic properties - such as emissions or inflation rates, which cannot be
 changed by the issuer after launch. Therefore, there can be no unexpected
 new currency emissions to harm the consumer. In application-general,
@@ -2397,24 +2416,25 @@ other hand, is able to lend its reward pool features and primed-user base to
 new networks, to help them bootstrap, market, and become successful
 independent clusters of participants on the network. Conversely, some
 entrepreneurs will identify and choose a strategy to employ SMTs largely
-independent from STEEM, and like ERC20's to Ethereum, SMTs can run while
+independent from STEEM, and like ERC20 to Ethereum, SMTs can run while
 only having STEEM run in the background to calculate the necessary bandwidth
 for transaction costs.
 
-## SMTs on Steem Have Transaction Pricing that Contributes to Quality UX
+## SMTs on Steem Have Transaction Pricing that Contributes to a Quality User Experience
 
 Whether operating with bandwidth rate limiting, or outright fees, no general
 purpose blockchain will price transactions effectively for more than a small
-fraction of its applications, and SMTs would have reduced UX on
-application-general blockchains (such as Ethereum) as a result. The clear
-example is that on blockchains such as Ethereum, there are outright fees for
-all transactions, however, no content publisher would expect users to pay
-fees to leave comments on their articles. With SMTs on Ethereum, those fees
-would be required, which makes Ethereum as an SMT platform a non-starter.
+fraction of its applications, and SMTs would have reduced user experience
+(UX) on application-general blockchains (such as Ethereum) as a result. The
+clear example is that on blockchains such as Ethereum, there are outright
+fees for all transactions, however, no content publisher would expect users
+to pay fees to leave comments or likes on their articles. With SMTs on
+Ethereum, those fees would be required, which makes Ethereum a non-starter
+as an SMT platform.
 
 Unlike Ethereum, some open-programmability blockchains of the future may use
 bandwidth rate limiting as transaction costs, however, bandwidth rate
-limiting requires fine tuning to meet UX requirements of specific
+limiting requires fine tuning to meet the UX requirements of specific
 applications. As an example, in Steem, bandwidth rate limiting is
 specifically tailored to support content applications and their user
 interactions by leveraging bandwidth rights according to two objects: amount
@@ -2424,7 +2444,7 @@ each. In general purpose, open-programmability platforms, the burden and the
 need for accurate pricing may hinder the ability for applications to have
 their users' actions priced appropriately, and the problem may be
 exacerbated as a greater myriad of potential application experiments come to
-exist, stretching and shareing the blockchain's resources. Therefore,
+exist, stretching and sharing the blockchain's resources. Therefore,
 blockchains that support native application-specificity may yield more
 suitable transaction pricing, as it pertains to the UX with tokens in
 related applications.
@@ -2434,52 +2454,54 @@ related applications.
 In blockchain scaling there are cutting-edge concepts of "sharding"
 (originated by Vitalik Buterin and the Ethereum project) and "multi-threaded
 parallelism" (originated by Michael Vandeberg of Steem) that refer to how
-blockchains may scale by allowing multiple processes to occur at once.
+blockchains may scale by allowing multiple operations to occur at once.
 General purpose platforms (such as Ethereum) are a great test bed for these
 approaches to scaling, however, a platform that takes advantage of all the
 product-market fit discovered by Ethereum, that then applies it to a more
-specialized, hard-coded, iterative-upgrading model, such as Steem, can scale
+specialized, iterative-upgrading model, such as Steem, can scale
 its processes more effectively to meet the demand discovered by that
-product-market fit. 
+product-market fit.
 
-Looking to the 90s and early 00’s for analogy, when the computer science
+Looking to the 90s and early 00s for analogy, when the computer science
 world started writing code specifically optimized for GPUs, the boundary
-pushing for greater scale occurred through FPGAs - field programmable gate
-arrays, which are essentially processors for programming how all the gates
-of information operate with each other. This is not quite ASIC, but
-significantly faster than CPU. As these platforms move to more and more
+pushing for greater scale occurred through FPGAs: field programmable gate
+arrays, which are chips that allow the programmability of the set of logic
+gates into the form of any conceivable circuit, allowing for effectively a
+prototype ASIC (albeit with higher power consumption). This is not quite the
+same performance per watt as an ASIC, but orders of magnitude faster than a
+CPU for particular tasks. As these platforms move to more and more
 generalizations, such as the idea that any contract may call on any other
 contract, they will move further away from ability to optimize for scale, as
 contracts that call on all other contracts can reduce the capacity for
 multi-parallel processing to single-core processing. By analogy, like CPUs
 do not optimize better than GPUs, platforms like Ethereum, GEOS, and Tezos
-do not optimize better than hard-coded, application-specific blockchains
+do not optimize better than Turing-incomplete application-specific blockchains
 like Steem. These CPU-like blockchains will be bottlenecked by unpredictable
 processing requirements, while the ultimate blockchain platforms will be
 specially-designed, like Steem, and will scale by optimizing in the way
-FPGAs were optimized for GPUs.
+FPGAs were optimized for parallel algorithms.
 
 ## SMTs Benefit from a Blockchain with Content Management System [(CMS)](https://en.wikipedia.org/wiki/Content_management_system) Primitives
 
 Unlike application-general blockchains, such as Ethereum, that inherently
 avoid application-specific primitives at the core of the protocol, Steem
-offers a structured public content database for storing plain text in tandem
-with content primitives that developers can build from - including Account
-Names, Posts, Comments, Votes and Account Balance. These primitives benefit
-the blockchain-based applications by helping to establish
-application-interoperability and fast developer onboarding. Without these
-primitives, second order databases need to be structured specifically for a
-blockchain-based application, which may give rise to many second-order
-application-specific databases competing with each other. The rise of
-multiple second layer content databases likely splits the potential network
-effect for the blockchain as a CMS, and reduces the potential for
-application-interoperability - which provides consumer safety benefits by
-allowing end users to move fluidly from one blockchain-based application to
-another.
+offers a structured public content database for storing plain text and
+generic structured data in tandem with content primitives that developers
+can build from: Account Names, Posts, Comments, Votes and Account Balance.
+These primitives benefit the blockchain-based applications by helping to
+establish application-interoperability and rapid developer on-boarding.
+Without these primitives, second order databases need to be structured
+specifically for a blockchain-based application, which may give rise to many
+second-order application-specific databases competing with each other. The
+rise of multiple second layer content databases splits the potential network
+effect for the blockchain as a content management system (CMS), and reduces
+the potential for application-interoperability, which provides consumer
+safety benefits by allowing end users to move fluidly from one
+blockchain-based application to another.
 
 # Increasing Market Demand for STEEM with SMTs and Implicit Value Drivers rather than Fees
 
-There are several new value drivers to STEEM with the creation of SMTs.  
+There are several new value drivers to STEEM with the creation of SMTs.
 
 ## STEEM Purchased for Transaction Bandwidth Enables Maximally Profitable Participation across SMTs
 
@@ -2491,7 +2513,7 @@ are growing their earning potential in SMT communities, they need more STEEM
 to achieve the bandwidth allowance needed to perform at their highest
 possible rate of return in SMT ecosystems. At an application level, the
 demand for bandwidth may be satisfied by users or by businesses, which can
-delegate surplus bandwidth to their users.   
+delegate surplus bandwidth to their users.
 
 ## STEEM Supply is Locked into Liquidity Pools by Automated Market Makers
 
@@ -2519,16 +2541,17 @@ first flowing into the base asset, STEEM, and then flowing into SMTs.
 Increased capital in the ecosystem due to ICOs always presents an
 opportunity for net positive capital retained in STEEM, and at worst, a wash
 on the value of the base asset, where all of the STEEM is sold by the
-ICO'ing organization. The example of the worst case scenario is that an ICO
-occurs and $100 USD buys STEEM to buy the ICO'd SMT, then 100% of the STEEM
-received by the ICO is sold for USD - and no explicit net effect has
-occurred on the value of STEEM.  However, even when the net effect
+organization making the offering. The example of the worst case scenario is
+that an ICO occurs and $100 USD buys STEEM to buy the ICO'd SMT, then 100%
+of the STEEM received by the ICO is sold for USD - and no explicit net
+effect related to the value of STEEM.  However, even when the net effect
 contribution of an ICO to the value of STEEM is apparently zero, it is an
-implicit net benefit in terms of attention received to STEEM, if we consider
-all new attention to bring value. Further, it is reasonable to expect,  that
-based on the behavior of ICOs in Ethereum, that the majority of the STEEM
-received by the ICO'ing organization will continue to be held on a
-speculative or promissory basis, therefore creating holding value.
+implicit net benefit in terms of attention received by STEEM and the Steem
+ecosystem, if we consider all new attention valuable. Further, it is
+reasonable to expect, based on the behavior of ICOs in Ethereum, that
+the majority of the STEEM received by the ICO'ing organization will continue
+to be held on a speculative or promissory basis, therefore creating holding
+value.
 
 ## Steem: The World's Advertising Network
 
@@ -2558,7 +2581,7 @@ world's advertising network."
 
 ### APIs and Documentation
 
-To be continously updated for SMTs.  Current Steem APIs exist here:
+To be continuously updated for SMTs.  Current Steem APIs exist here:
 [http://steem.readthedocs.io/en/latest/index.html](http://steem.readthedocs.io/en/latest/index.html)
 and
 [https://steemit.github.io/steemit-docs/](https://steemit.github.io/steemit-docs/)
@@ -2577,14 +2600,18 @@ Through a combination of specialized designs for open asset-issuance,
 bandwidth rate limiting as transaction costs, permanent-availability of
 content, real-time transaction speeds, autonomous distribution of tokens,
 decentralized exchange, automated market making and ICO contracts, Steem
-offers the premier token protocol for publishers across the internet.  
+offers the premier token protocol for publishers across the internet.
 
 # References
 
-[1] Steemit, Inc., 2017. Steem Bluepaper. A protocol for bringing smart, social currency to publishers and content businesses across the internet. ([https://www.steem.io/steem-bluepaper.pdf](https://www.steem.io/steem-bluepaper.pdf))
+[1] Steemit, Inc., 2017. Steem Bluepaper. A protocol for bringing smart,
+social currency to publishers and content businesses across the internet.
+([https://www.steem.io/steem-bluepaper.pdf](https://www.steem.io/steem-bluepaper.pdf))
 
-[2] Eyal Hertzog, Guy Benartzi & Galia Benartzi, 2017. Bancor Protocol. Continuous Liquidity and Asynchronous Price
-Discovery for Tokens through their Smart Contracts. ([https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf))
+[2] Eyal Hertzog, Guy Benartzi & Galia Benartzi, 2017. Bancor Protocol.
+Continuous Liquidity and Asynchronous Price Discovery for Tokens through
+their Smart Contracts.
+([https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf))
 
 # Appendix
 
@@ -2621,7 +2648,7 @@ Reserved
 A `Listed` or `Deprecated` NAI has an associated name, which should be
 listed as `Reserved` in the mapping.
 
-UI's may provide *asset directory union* functionality to augment
+UIs may provide *asset directory union* functionality to augment
 directories by combining multiple asset directories into a single asset
 directory. Asset directory union should use the following algorithm to
 resolve situations where an NAI is listed differently by different
@@ -2650,10 +2677,10 @@ cached more than 5 minutes.
 ### UI guidelines for SMT names
 
 - A UI may, but need not, have a default asset directory.
-- A UI may choose to hide unlisted NAI's.
-- A UI should allow users to override or augment the UI's defaults with
-  their own asset director(ies).
-- A UI should reconsider hiding unlisted NAI's in which the user has
+- A UI may choose to hide unlisted NAIs.
+- A UI should allow users to override or augment the UIs defaults with
+  their own asset directories.
+- A UI should reconsider hiding unlisted NAIs in which the user has
   actively transacted.
 
 ### Operational guidelines for asset directories
@@ -2668,10 +2695,11 @@ cached more than 5 minutes.
 ### Asset directory formats
 
 URL and file-based asset directories will be a JSON format. The details will
-be developed concurrently with the implementation.  Blockchain based asset
+be developed concurrently with the implementation.  Blockchain-based asset
 directories will use a custom JSON operation. Again, the details will be
 developed concurrently with the implementation.
 
 ## Unit Tests
 
-The details of the unit tests will be developed concurrently with the implementation.
+The details of the unit tests will be developed concurrently with the
+implementation.
