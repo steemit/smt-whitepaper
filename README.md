@@ -32,7 +32,7 @@ Currently the manual build instructions are for Ubuntu 16.04 or higher but
 may successfully build on other distributions. Pull requests to update the
 whitepaper will be gladly accepted and reviewed.
 
-## Install packages
+## Install Packages
 
 ```bash
 sudo apt-get update
@@ -40,7 +40,7 @@ sudo apt install -y texlive-xetex pandoc python3-pip graphviz imagemagick
 pip3 install matplotlib
 ```
 
-## Image Compile Instructions
+## Compile Images
 
 There are several image files in the `/img/` directory that are generated using the build file. The first time the build is done, and whenever the figures are updated, the images will need to be compiled.
 
@@ -48,7 +48,7 @@ There are several image files in the `/img/` directory that are generated using 
 ./build.sh
 ```
 
-## PDF Build Instructions
+## Build PDF
 
 Compile using pandoc
 ```bash
