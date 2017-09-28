@@ -6,7 +6,7 @@ urlcolor: blue
 linkcolor: blue
 ---
 
-# Metadata
+# Document Metadata
 
 * Creators: @ned; @theoretical
 * Developers: @theoretical; @vandeberg; @itwasntme; @zgredek;
