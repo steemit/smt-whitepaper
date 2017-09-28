@@ -177,7 +177,7 @@ SMT-based ICOs allow a portion of STEEM tokens received to be sent into an
 SMT’s on-chain, off-order-book market maker in order to provide liquidity to
 the SMT at a specified reserve ratio. Beyond the social and specialized
 distribution mechanisms of SMTs, this feature advances the concept of
-automated market makers by pairing it alongside SMTs decentralized markets,
+automated market makers by pairing it alongside SMT's decentralized markets,
 which also facilitate bids and asks by human participants.  The combination
 of these two markets enables on-chain and trustless exchange opportunities
 for market makers while enabling liquidity for token users.
