@@ -1953,7 +1953,7 @@ calculus and differential equations to follow the results.
 ### Setting up the Problem
 
 Suppose we satisfy the invariant condition at some price
-$p = p_eq$; by the CRR invariant $s = r v( p, 0, T-t) = r p (T-t)$.
+$p = p_{eq}$; by the CRR invariant $s = r v( p, 0, T-t) = r p (T-t)$.
 Suppose the price then increases to $p + \Delta p$ and a relaxing trade
 $\Delta s, \Delta t$ occurs at this new price.
 
