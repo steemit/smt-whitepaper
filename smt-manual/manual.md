@@ -2,36 +2,9 @@
 header-includes:
     - \renewcommand{\contentsname}{Table of Contents}
     - \usepackage[top=3cm,bottom=3.5cm,left=4cm,right=4cm]{geometry}
-    - \usepackage{datetime}
-    - \newdateformat{mydate}{\THEDAY~\monthname[\THEMONTH] \THEYEAR}
-    - \usepackage{graphicx}
-    - \graphicspath{ {img/} }
 urlcolor: blue
 linkcolor: blue
 ---
-
-\clearpage
-\thispagestyle{empty}
-\vspace*{\stretch{3}}
-\begin{minipage}{1.0\textwidth}
-\begin{center}
-{\Huge Smart Media Tokens}
-
-\vspace{10mm}
-
-{\Large \mydate\today}
-
-\vspace{8mm}
-
-\includegraphics[width=3cm, height=3cm]{steem} 
-
-\end{center}
-\end{minipage}
-\vspace{\stretch{3}}
-\clearpage
-
-\clearpage
-\vspace*{\stretch{3}}
 
 # Document Metadata
 
