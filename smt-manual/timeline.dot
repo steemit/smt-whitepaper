@@ -24,12 +24,12 @@ digraph {
 		>
       ]
 
-      pre_contribution_pause[shape=rectangle group=mainline
+      pre_contribution_phase[shape=rectangle group=mainline
 		label=
 		<
 			<FONT POINT-SIZE="10" FACE="dialog">
 			<TABLE BORDER="0" CELLSPACING="0">
-			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">pre_contribution_pause</TD></TR>
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">pre_contribution_phase</TD></TR>
 			<TR><TD BGCOLOR="#e8eef7">Terms are finalized, contributions not yet accepted</TD></TR>
 			<TR><TD BGCOLOR="#e8eef7">Gives contributors time to study terms before ICO starts</TD></TR>
 			</TABLE>
@@ -69,7 +69,36 @@ digraph {
 
       announced_launch_time[shape=house group=mainline]
 
-      cap_revealed[shape=diamond group=mainline
+      post_launch_phase[shape=rectangle group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">post_launch_phase</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Lasts until launch_expiration_time comes or both hard_cap and min_steem are revealed.</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Refunds may be requested.</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+      ]
+
+      launch_expiration_time[shape=house group=mainline]
+
+      fail_phase[shape=rectangle group=mainline
+		label=
+		<
+			<FONT POINT-SIZE="10" FACE="dialog">
+			<TABLE BORDER="0" CELLSPACING="0">
+			<TR><TD WIDTH="350" BGCOLOR="#b7c9e3">fail_phase</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Launch failed due to insufficient contributions or some cap not revaled in time.</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Automatic refunds are performed.</TD></TR>
+			<TR><TD BGCOLOR="#e8eef7">Creator may try a relaunch with the same SMT symbol.</TD></TR>
+			</TABLE>
+			</FONT>
+		>
+      ]
+
+      cap_revealed[shape=diamond group=successline
 		label=
 		<
 			<FONT POINT-SIZE="10" FACE="dialog">
@@ -79,7 +108,7 @@ digraph {
 			</FONT>
 		>]
 
-      sufficient_contributions[shape=diamond group=mainline
+      sufficient_contributions[shape=diamond group=successline
 		label=
 		<
 			<FONT POINT-SIZE="10" FACE="dialog">
@@ -89,7 +118,7 @@ digraph {
 			</FONT>
 		>]
 
-      launch[shape=rectangle group=mainline
+      launch[shape=rectangle group=successline
 		label=
 		<
 			<FONT POINT-SIZE="10" FACE="dialog">
@@ -103,7 +132,7 @@ digraph {
 		>
       ]
 
-      active_phase[shape=rectangle group=mainline
+      active_phase[shape=rectangle group=successline
 		label=
 		<
 			<FONT POINT-SIZE="10" FACE="dialog">
@@ -124,39 +153,47 @@ digraph {
       smt_cap_reveal_operation_3[shape=ellipse label=smt_cap_reveal_operation]
       smt_cap_reveal_operation_4[shape=ellipse label=smt_cap_reveal_operation]
 
-      smt_refund_operation[shape=ellipse]
+      smt_refund_operation_1[shape=ellipse label=smt_refund_operation]
+      smt_refund_operation_2[shape=ellipse label=smt_refund_operation]
    }
+
+   {rank = same; cap_revealed; smt_cap_reveal_operation_4; smt_refund_operation_1; launch_expiration_time;}
 
    smt_create_operation -> setup_phase;
    setup_phase -> smt_setup_operation;
-   smt_setup_operation -> pre_contribution_pause;
-   pre_contribution_pause -> contribution_begin_time;
+   smt_setup_operation -> pre_contribution_phase;
+   pre_contribution_phase -> contribution_begin_time;
    contribution_begin_time -> contribution_phase;
    contribution_phase -> contribution_end_time;
    contribution_end_time -> post_contribution_pause;
    post_contribution_pause -> announced_launch_time;
-   announced_launch_time -> cap_revealed;
+   announced_launch_time -> post_launch_phase;
+   post_launch_phase -> launch_expiration_time;
+   launch_expiration_time -> fail_phase;
+   fail_phase -> smt_create_operation [label="optional relaunch"];
+   post_launch_phase -> cap_revealed;
    cap_revealed -> sufficient_contributions [label="Yes"];
    sufficient_contributions -> launch [label="Yes"];
-   sufficient_contributions -> inactive_phase [label="No"];
-   cap_revealed -> inactive_phase [label="No"];
+   sufficient_contributions -> fail_phase [label="No"];
+   cap_revealed -> post_launch_phase [label="No"];
    launch -> active_phase;
 
-   inactive_phase -> smt_cap_reveal_operation_4;
-   inactive_phase -> smt_refund_operation;
-   smt_cap_reveal_operation_4 -> cap_revealed;
+   post_launch_phase -> smt_cap_reveal_operation_4 [style=dotted arrowhead=none];
+   post_launch_phase -> smt_refund_operation_1 [style=dotted arrowhead=none];
 
-   setup_phase -> smt_set_setup_parameters_operation;
-   setup_phase -> smt_set_runtime_parameters_operation;
-   setup_phase -> smt_set_inflation_operation;
+   fail_phase -> smt_refund_operation_2 [style=dotted arrowhead=none];
 
-   pre_contribution_pause -> smt_cap_reveal_operation_1;
-   contribution_phase -> smt_cap_reveal_operation_2;
-   post_contribution_pause -> smt_cap_reveal_operation_3;
+   setup_phase -> smt_set_setup_parameters_operation [style=dotted arrowhead=none];
+   setup_phase -> smt_set_runtime_parameters_operation [style=dotted arrowhead=none];
+   setup_phase -> smt_set_inflation_operation [style=dotted arrowhead=none];
 
-   contribution_phase -> smt_contribute_operation;
+   pre_contribution_phase -> smt_cap_reveal_operation_1 [style=dotted arrowhead=none];
+   contribution_phase -> smt_cap_reveal_operation_2 [style=dotted arrowhead=none];
+   post_contribution_pause -> smt_cap_reveal_operation_3 [style=dotted arrowhead=none];
 
-   active_phase -> transfer_operation;
-   active_phase -> limit_order_create2_operation;
-   active_phase -> transfer_to_vesting_operation;
+   contribution_phase -> smt_contribute_operation [style=dotted arrowhead=none];
+
+   active_phase -> transfer_operation [style=dotted arrowhead=none];
+   active_phase -> limit_order_create2_operation [style=dotted arrowhead=none];
+   active_phase -> transfer_to_vesting_operation [style=dotted arrowhead=none];
 }
