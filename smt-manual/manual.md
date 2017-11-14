@@ -851,7 +851,7 @@ These are the operations for the ALPHA launch:
    "generation_begin_time" : "2017-08-10T00:00:00",
    "generation_end_time" : "2017-08-17T00:00:00",
    "announced_launch_time" : "2017-08-21T00:00:00",
-   "smt_creation_fee" : "1000.000 SBD",
+   "smt_creation_fee" : "1.000 SBD",
    "extensions" : []
   }
  ],
