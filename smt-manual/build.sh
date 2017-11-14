@@ -31,3 +31,6 @@ convert \
 
 dot -Tpng -o creation.png ../creation.dot
 dot -Tpng -o timeline.png ../timeline.dot
+
+cd ..
+pandoc manual.md --latex-engine=xelatex -o smt-whitepaper.pdf
