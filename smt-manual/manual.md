@@ -1646,7 +1646,7 @@ The votable token set is determined by `allowed_vote_assets` which is a
 ```
 struct allowed_vote_assets
 {
-   flat_map< account_name_type, votable_asset_info >      votable_assets;
+   flat_map< asset_symbol_type, votable_asset_info >      votable_assets;
 };
 
 struct votable_asset_info_v1
