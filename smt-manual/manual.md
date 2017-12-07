@@ -2410,8 +2410,8 @@ protect consumer safety.
 ## SMTs on Steem have Aligned Proof-of-Brain Incentives with the Core Token
 
 Unlike STEEM, core tokens (such as ETH) that do not carry Proof-of-Brain
-content rewards, cannot offer monetization, primed active user-base, shared
-influence, and bootstrapping benefits to new SMT communities. STEEM, on the
+content rewards cannot offer monetization, primed active user-base, shared
+influence and bootstrapping benefits to new SMT communities. STEEM, on the
 other hand, is able to lend its reward pool features and primed-user base to
 new networks, to help them bootstrap, market, and become successful
 independent clusters of participants on the network. Conversely, some
