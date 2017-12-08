@@ -1476,10 +1476,16 @@ struct smt_param_rewards_v1
    curve_id                curation_reward_curve;
 };
 
+struct smt_param_allow_downvotes
+{
+   bool value = true;
+};
+
 typedef static_variant<
    smt_param_windows_v1,
    smt_param_vote_regeneration_period_seconds_v1,
-   smt_param_rewards_v1
+   smt_param_rewards_v1,
+   smt_param_allow_downvotes
    > smt_runtime_parameter;
 ```
 
