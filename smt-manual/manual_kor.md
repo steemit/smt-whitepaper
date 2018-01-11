@@ -1245,6 +1245,7 @@ CRR 시장 조성자에 대하여 새롭게 발행되는 토큰은 어디에서 
 ## 참고 문헌
 ---
 [1] Steemit, Inc., 2017. Steem Bluepaper. A protocol for bringing smart, social currency to publishers and content businesses across the internet. (https://www.steem.io/steem-bluepaper.pdf)
+
 [2] Eyal Hertzog, Guy Benartzi & Galia Benartzi, 2017. Bancor Protocol. Continuous Liquidity and Asynchronous Price Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)
 ## 부록
 ---
