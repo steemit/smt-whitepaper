@@ -145,7 +145,7 @@ tailored to receive STEEM and cryptocurrencies on other blockchains.
 ## Immediate Liquidity
 
 By leveraging a recently designed automated market maker concept
-[[2](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)],
+[[2](https://about.bancor.network/static/bancor_protocol_whitepaper_en.pdf)],
 SMT-based ICOs allow a portion of STEEM tokens received to be sent into an
 SMT’s on-chain, off-order-book market maker in order to provide liquidity to
 the SMT at a specified reserve ratio. Beyond the social and specialized
@@ -1800,7 +1800,7 @@ for every asset.
 
 Automated Market Makers are smart contracts, largely based on the [Bancor
 Protocol
-[2]](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf),
+[2]](https://about.bancor.network/static/bancor_protocol_whitepaper_en.pdf),
 that may be constructed during the initial ICO setup of an SMT for providing
 perpetual liquidity to an SMT community. For simplicity, Automated Market
 Makers in Steem may only trade between STEEM and any given SMT.
@@ -2617,7 +2617,7 @@ social currency to publishers and content businesses across the internet.
 [2] Eyal Hertzog, Guy Benartzi & Galia Benartzi, 2017. Bancor Protocol.
 Continuous Liquidity and Asynchronous Price Discovery for Tokens through
 their Smart Contracts.
-([https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf))
+([https://about.bancor.network/static/bancor_protocol_whitepaper_en.pdf](https://about.bancor.network/static/bancor_protocol_whitepaper_en.pdf))
 
 # Appendix
 
