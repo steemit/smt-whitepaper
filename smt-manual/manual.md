@@ -892,7 +892,7 @@ The BETA token is created with the following rules:
 - For every 5 STEEM contributed, 3 STEEM go to founder account Fred.
 - For every 5 STEEM contributed, 2 STEEM go to founder account George.
 - 10% of the initial token supply goes to founder account George.
-- 20% of the initial token supply goes to founder acconut Henry.
+- 20% of the initial token supply goes to founder account Henry.
 - 70% of the initial token supply is divided among contributors according to
   their contribution.
 - Each STEEM unit is 0.005 STEEM.
