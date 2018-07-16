@@ -652,7 +652,7 @@ steem_unit = [["alpha_org", 70], ["founder_a", 23], ["founder_b", 7]]
 This STEEM-unit contains 100 STEEM-satoshis, or 0.1 STEEM.
 
 For every 1 STEEM contributed, an ALPHA contributer will receive 5 ALPHA
-tokens, and Founder Account D will receive 1 ALPHA token.  This five-sixths
+tokens, and Founder Account C will receive 1 ALPHA token.  This five-sixths
 / one-sixth split is expressed as:
 
 ```
