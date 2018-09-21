@@ -366,8 +366,8 @@ struct smt_create_operation
 An SMT is referred to by a *numerical asset identifier* or NAI, consisting
 of two at-signs followed by nine decimal digits, for example `@@314159265`.
 The blockchain enforces that the identifier placed by a UI into the
-`smt_create_operation` must match the result of the
-`get_next_smt_identifier` RPC. Therefore, an NAI cannot be chosen freely by
+`smt_create_operation` must match a result from the
+`get_nai_pool` RPC. Therefore, a NAI cannot be chosen freely by
 the SMT creator. It is not even possible to "mine" a "vanity NAI" (analogous
 to the "vanity Bitcoin address" some people use).
 
