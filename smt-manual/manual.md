@@ -9,12 +9,11 @@ linkcolor: blue
 # Document Metadata
 
 * Creators: @ned; @theoretical
-* Developers: @theoretical; @vandeberg; @itwasntme; @zgredek;
-  @pychol-mychol; @small.minion; @youkaicountry; @picokernel
-* Contributors: @sneak; @vandeberg; @valzav; @youkaicountry; @justinw;
+* Developers: @theoretical; @vandeberg; @youkaicountry; @stevegerbino
+* Contributors: @vandeberg; @valzav; @youkaicountry; @justinw;
   @goldibex; et al.
 * Sketch designs: @pkattera
-* Copyright (c) Steemit, Inc. 2017
+* Copyright (c) Steemit, Inc. 2017 - 2018
 * GitHub: [https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md](https://github.com/steemit/smt-whitepaper/blob/master/smt-manual/manual.md)
 
 # Smart Media Tokens (SMTs)
