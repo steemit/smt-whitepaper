@@ -394,8 +394,10 @@ standards of legitimate brand ownership the publisher chooses to enforce.
 Issuing a `smt_create_operation` requires payment of `smt_creation_fee`. The
 amount required is set by the `smt_creation_fee` field of
 `dynamic_global_properties_object`. This field may contain a value in STEEM
-or SBD. If specified in SBD, an equivalent amount of STEEM will be accepted,
-at the current price feed.
+or SBD. If `smt_creation_fee` is specified in SBD, an equivalent amount of
+STEEM will be accepted at the current price feed; likewise, if
+`smt_creation_fee` is specified in STEEM, an equivalent amount of SBD will
+be accepted at the current price feed.
 
 Initially, `smt_creation_fee` will be set to 1 SBD, and no means will be
 provided to update it. Updates to the `smt_creation_fee` amount may occur in
