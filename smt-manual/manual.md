@@ -1197,9 +1197,9 @@ multi-signature secured account comprised of several founders.
 In addition, several special targets are possible representing trustless
 functions provided by the blockchain itself:
 
-- Rewards.  A special destination representing the token's posting / voting rewards.
-- Vesting.  A special destination representing the tokens backing vested tokens.
-
+- Rewards. A special destination representing the tokens posting / voting rewards.
+- Vesting. A special destination representing the tokens backing vested tokens.
+- Market Maker. A special destination to pre-seed the market maker with tokens.
 #### Event sequences
 
 Traditionally blockchains compute inflation on a per-block basis, as block
@@ -1360,12 +1360,17 @@ else
 
 #### Inflation operations
 
+Inflation operations must be created in chronological order.
+
+Inflation operation timespans must not overlap.
+
 The inflation operation is specified as follows:
 
 ```
 struct smt_setup_inflation_operation
 {
    account_name_type   control_account;
+   asset_symbol_type   asset_symbol;
 
    timestamp           schedule_time;
    smt_inflation_unit  inflation_unit;
