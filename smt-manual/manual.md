@@ -1370,7 +1370,7 @@ The inflation operation is specified as follows:
 struct smt_setup_inflation_operation
 {
    account_name_type   control_account;
-   asset_symbol_type   asset_symbol;
+   asset_symbol_type   symbol;
 
    timestamp           schedule_time;
    smt_inflation_unit  inflation_unit;
