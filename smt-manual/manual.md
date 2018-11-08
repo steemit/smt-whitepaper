@@ -1199,7 +1199,7 @@ functions provided by the blockchain itself:
 
 - Rewards. A special destination representing the tokens posting / voting rewards.
 - Vesting. A special destination representing the tokens backing vested tokens.
-- Market Maker. A special destination to pre-seed the market maker with tokens.
+- Market Maker. A special destination to seed the market maker with tokens.
 #### Event sequences
 
 Traditionally blockchains compute inflation on a per-block basis, as block
