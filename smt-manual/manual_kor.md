@@ -36,7 +36,7 @@
 이더리움의  ERC20이 등장함에 따라 블록체인 기반 토큰들은 ICO(초기 코인 제공) 과정으로 조직에 투자금을 조달하는 새로운 수단으로 자리 매김하였습니다. ICO는 단체가 비공개적 또는 공개적으로, 특별한 목표를 위해, 영리적 또는 비영리적인 목적을 갖고 초기 토큰을 판매할 수 있는 기회를 제공합니다. 토큰이 판매되는 방식에 따라 여러 규제 기관에서 토큰을 상품, 유가 증권, 파생 상품, 또는 기타로 취급할 수 있습니다. 2017년에 ICO를 통해 모금된 투자금은 십억 달러를 상회하며, 이같은 흐름을 이어가기 위해 개발된 스마트 미디어 토큰의 ICO 스마트 컨트랙트로 편리하게 토큰을 출시 및 판매하는 것이 가능합니다. 스마트 미디어 토큰의 출시로 하드캡, 소프트캡, 캡이 설정되지 않은 ICO 모두 구축 가능하고, 스팀 및 타 암호화폐로 모금할 수 있습니다.
 ### 즉각적인 유동성
 ---
-새롭게 설계된 시장 조성자 개념 [[2]](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)을 활용함으로써, 스마트 미디어 토큰 기반의 ICO는 스마트 미디어 토큰의 온 체인과 호가창의 시장 조성자에게 투자받은 스팀 토큰의 일정량을 전송하여 특정한 준비금 비율만큼의 유동성을 유지하도록 합니다. 스마트 미디어 토큰의 사회적 및 전문화된 분배 메커니즘을 넘어서, 이같은 특성은 참여자의 매도, 매수 주문이 활발하게 일어나는 분산화 시장으로 자동화된 시장 조성자의 개념을 발전시킵니다. 두 측면의 결합은 온 체인 및 무신뢰 거래를 가능하게 하는 동시에 토큰 사용자에게 유동성을 제공합니다. 
+새롭게 설계된 시장 조성자 개념 [[2]](https://about.bancor.network/static/bancor_protocol_whitepaper_en.pdf)을 활용함으로써, 스마트 미디어 토큰 기반의 ICO는 스마트 미디어 토큰의 온 체인과 호가창의 시장 조성자에게 투자받은 스팀 토큰의 일정량을 전송하여 특정한 준비금 비율만큼의 유동성을 유지하도록 합니다. 스마트 미디어 토큰의 사회적 및 전문화된 분배 메커니즘을 넘어서, 이같은 특성은 참여자의 매도, 매수 주문이 활발하게 일어나는 분산화 시장으로 자동화된 시장 조성자의 개념을 발전시킵니다. 두 측면의 결합은 온 체인 및 무신뢰 거래를 가능하게 하는 동시에 토큰 사용자에게 유동성을 제공합니다. 
 ### 공유 부트스트랩 도구
 ---
 스마트 미디어 토큰은 스팀 파워와 다른 스마트 미디어 토큰의 부여분 사이의 공유 영향력을 조절하는 [보상 풀](https://steem.io/steem-bluepaper.pdf) 변수와 함께 생성됩니다. 스마트 미디어 토큰 생성자는 스팀 파워가 스마트 미디어 토큰 보상 풀의 일부를 무제한 또는 제한된 시간 동안 영향력이 증가하거나, 감소하도록 제어할 수 있습니다. 종합하면, 공유 영향력은 스마트 미디어 토큰이 기존에 활동중인 스팀 또는 다른 스마트 미디어 토큰 커뮤니티 회원들의 관심에 의해 전체적 혹은 부분적으로 부트스트랩 되도록 허용할 수 있습니다. 이같은 도구를 사용하여 커뮤니티 매니저와 기업가가 토큰 출시를 하면, 기존 사용자 층을 기반으로 스마트 미디어 토큰을 목표 시장에 신속하게 배포할 수 있습니다. 
@@ -1026,7 +1026,7 @@ typedef static_variant< votable_asset_info_v1 >           votable_asset_info;
 - `Multisig Native (고유 다중 서명) ` : 다중 서명으로 서명된 스마트 미디어 토큰 작업을 처리하는 것은 그다지 특별하지 않습니다. 만약 계정의 다중 서명 보안 기능을 사용한다면, 계정으로 서명할 때마다 지정된 다중 서명을 사용해야 합니다. 여기에는 스마트 미디어 토큰을 관리하는 통제 계정과 토큰을 보유한 일반 사용자가 수행하는 작업이 모두 포함됩니다.
 ## 스마트 미디어 토큰을 위한 자동화된 시장 조성자
 ---
-자동화된 시장 조성자는 [Bancor 프로토콜 [2]](https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)에 큰 기반을 둔 스마트 컨트랙트로 스마트 미디어 토큰 커뮤니티에 영원한 유동성을 공급하기 위해 초기 ICO 설정 과정 중 구성됩니다. 간단하게 설명하면, 스팀의 자동화된 시장 조성자는 오직 스팀과 다른 스마트 미디어 토큰과의 거래할 수 있습니다.
+자동화된 시장 조성자는 [Bancor 프로토콜 [2]](https://about.bancor.network/static/bancor_protocol_whitepaper_en.pdf)에 큰 기반을 둔 스마트 컨트랙트로 스마트 미디어 토큰 커뮤니티에 영원한 유동성을 공급하기 위해 초기 ICO 설정 과정 중 구성됩니다. 간단하게 설명하면, 스팀의 자동화된 시장 조성자는 오직 스팀과 다른 스마트 미디어 토큰과의 거래할 수 있습니다.
 ### 설정
 ---
 #### 기본 정의
@@ -1243,7 +1243,7 @@ CRR 시장 조성자에 대하여 새롭게 발행되는 토큰은 어디에서 
 ---
 [1] Steemit, Inc., 2017. Steem Bluepaper. A protocol for bringing smart, social currency to publishers and content businesses across the internet. (https://www.steem.io/steem-bluepaper.pdf)
 
-[2] Eyal Hertzog, Guy Benartzi & Galia Benartzi, 2017. Bancor Protocol. Continuous Liquidity and Asynchronous Price Discovery for Tokens through their Smart Contracts. (https://www.bancor.network/static/bancor_protocol_whitepaper_en.pdf)
+[2] Eyal Hertzog, Guy Benartzi & Galia Benartzi, 2017. Bancor Protocol. Continuous Liquidity and Asynchronous Price Discovery for Tokens through their Smart Contracts. (https://about.bancor.network/static/bancor_protocol_whitepaper_en.pdf)
 ## 부록
 ---
 ### 구현 노트
