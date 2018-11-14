@@ -1472,7 +1472,7 @@ struct smt_param_windows_v1
 struct smt_param_vote_regeneration_period_seconds_v1
 {
    uint32_t vote_regeneration_period_seconds = 0;    // STEEM_VOTING_MANA_REGENERATION_SECONDS
-   uint32_t votes_per_regeneration_period = 0;       // SMT_DEFAULT_VOTERS_PER_REGEN_PERIOD
+   uint32_t votes_per_regeneration_period = 0;       // SMT_DEFAULT_VOTES_PER_REGEN_PERIOD
 };
 
 struct smt_param_rewards_v1
