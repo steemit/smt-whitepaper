@@ -420,6 +420,12 @@ The reason pre-setup operations are not made a part of `smt_setup_operation`
 is to allow a large number of pre-setup operations to be executed over
 multiple blocks.
 
+If during the course of pre-setup, a parameter is irreversibly misconfigured
+or the token is placed in an unlaunchable state, you can restart the process
+using `smt_create_operation`. Submit the operation again with no fee and the
+same NAI and the token will be reset. The precision can be changed in this
+way by issuing the operation with the same NAI but a different precision.
+
 ### SMT setup
 
 Each SMT has an associated descriptor object which has *permanent
