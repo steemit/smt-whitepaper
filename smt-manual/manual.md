@@ -1455,11 +1455,9 @@ struct smt_set_runtime_parameters_operation
 Currently the following `setup_parameters` and `runtime_parameters` are defined:
 
 ```
-struct smt_param_allow_vesting                    { bool value = true;  };
 struct smt_param_allow_voting                     { bool value = true;  };
 
 typedef static_variant<
-   smt_param_allow_vesting,
    smt_param_allow_voting
    > smt_setup_parameter;
 
