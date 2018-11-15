@@ -1436,6 +1436,7 @@ These operations are defined as follows:
 struct smt_set_setup_parameters_operation
 {
    account_name_type                                 control_account;
+   asset_symbol_type                                 symbol;
 
    flat_set< smt_setup_parameter >                   setup_parameters;
    extensions_type                                   extensions;
@@ -1444,6 +1445,7 @@ struct smt_set_setup_parameters_operation
 struct smt_set_runtime_parameters_operation
 {
    account_name_type                                 control_account;
+   asset_symbol_type                                 symbol;
 
    flat_set< smt_runtime_parameter >                 runtime_parameters;
    extensions_type                                   extensions;
@@ -1469,15 +1471,14 @@ struct smt_param_windows_v1
 
 struct smt_param_vote_regeneration_period_seconds_v1
 {
-   uint32_t vote_regeneration_period_seconds = 0;    // STEEM_VOTE_REGENERATION_SECONDS
-   uint32_t votes_per_regeneration_period = 0;
+   uint32_t vote_regeneration_period_seconds = 0;    // STEEM_VOTING_MANA_REGENERATION_SECONDS
+   uint32_t votes_per_regeneration_period = 0;       // SMT_DEFAULT_VOTES_PER_REGEN_PERIOD
 };
 
 struct smt_param_rewards_v1
 {
    uint128_t               content_constant = 0;
    uint16_t                percent_curation_rewards = 0;
-   uint16_t                percent_content_rewards = 0;
    curve_id                author_reward_curve;
    curve_id                curation_reward_curve;
 };
@@ -1506,9 +1507,12 @@ inspecting transactions *must* use the basis point scale.
 Several dynamic parameters must be constrained to prevent abuse scenarios
 that could harm token users.
 
-- `0 < vote_regeneration_seconds < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
+- `0 < vote_regeneration_seconds <= SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
 - `0 <= reverse_auction_window_seconds + SMT_UPVOTE_LOCKOUT <
-  cashout_window_seconds < SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
+  cashout_window_seconds <= SMT_VESTING_WITHDRAW_INTERVAL_SECONDS`
+- `votes_per_regeneration_period * 86400 / vote_regeneration_period
+  <= SMT_MAX_NOMINAL_VOTES_PER_DAY`
+- `votes_per_regeneration_period <= SMT_MAX_VOTES_PER_REGENERATION`
 
 ## SMT vesting semantics
 
@@ -1542,11 +1546,14 @@ The algorithms to solve these problems operate as follows:
 - (1) Posts are weighed *against other posts* according to the *reward
   curve* or `rc`.
 - (2a) The curators collectively receive a fixed percentage of the post,
-  specified by the `curation_pct` parameter.
+  specified by the `percent_curation_rewards` parameter.
 - (2b) The author receives the remainder (after applying any beneficiaries
   or limited/declined author reward).
 - (2c) Curators are weighted *against other curators of that post* according
   to the *curation curve* or `cc`.
+
+Percent curation rewards is specified as two precision percentage and cannot
+be more than 10000 (100%).
 
 ![Creation](img/creation.png)
 \begin{center}Figure 7: Flow of initial tokens and SMT emissions\end{center}
@@ -1555,7 +1562,9 @@ The algorithms to solve these problems operate as follows:
 
 The reward curve can be *linear* or *quadratic*. The linear reward curve
 `rc(r) = r` passes the R-shares (upvotes) through unchanged. The quadratic
-reward curve `rc(r) = r^2 + 2rs` has increasing slope.
+reward curve `rc(r) = r^2 + 2rs` has increasing slope. `s` is the content
+constant as specified in `smt_param_rewards_v1`. Prior to linear rewards,
+Steem used a content constant of 2,000,000,000,000.
 
 For an illustration of the meaning of reward curves, imagine grouping the
 most-upvoted posts as follows:
@@ -1577,7 +1586,10 @@ Possible curation curves are:
 
 - Linear `cc(r) = r`
 - Square-root `cc(r) = sqrt(r)`
-- Bounded `cc(r) = r / (r + 2s)`
+- Bounded Curation `cc(r) = r / (r + 2s)`
+
+`s` in the Bounded Curation curve is the same content constant used for
+quadratic rewards.
 
 To help visualize, here are some plots called *pie charts*. Each colored
 area represents how curation rewards are divided among curators with equal
@@ -1631,9 +1643,24 @@ by two parameters:
 
 The `vote_regeneration_period_seconds` is specified directly. For (b),
 instead of specifying the voting power of a maximum-strength vote directly,
-instead you specify `votes_per_regeneration_period`. Then the
-maximum-strength vote is set such that a user casting that many max-strength
-votes will exactly cancel the regeneration.
+instead you specify `votes_per_regeneration_period`. Each vote consumes `1 /
+votes_per_regeneration_period` of the user's remaining voting power. This
+allows users to gain many more votes in the regeneration period without
+significantly impacting their voting mana by weakening each subsequent vote.
+A side effect of this system is that it takes slightly more than the the
+nominally calculated votes per day to perfectly cancel regeneration. As long as
+`vote_regeneration_period_seconds` is greater than one day (86400) you can
+calculate the actual votes per day as `ln( (vote_regeneration_period_seconds -
+86400) / vote_regeneration_period_seconds ) / ln( (votes_per_regeneration_period
+- 1) / votes_per_regeneration_period )`.
+
+These values must be bounded such that the nominal votes per day is less than
+or equal to 1000. That is `votes_per_regeneration_period * 86400 /
+vote_regeneration_period <= 1000`. This bounds the actual votes per day stricly
+below 1116. Specifying too many actual votes per day puts human actors at a
+disadvantage to bots when voting on quality content by making it difficult for
+human actors to stay below their max mana. As of v0.20.0, Steem's nominal votes
+per day was 10.
 
 ## SMT Setup GUI Sketch
 ![SMT configuration](img/SMT-setup.png)
