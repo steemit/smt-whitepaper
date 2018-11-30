@@ -287,6 +287,10 @@ into the ecosystem to be used across all tokens.
 ![IOU Asset Token Exchange](img/uc5-IOU-assets.png)
 \begin{center}Figure 5: IOU Asset Token Exchange\end{center}
 
+### 6 - Product Reservation Tokens - For Auctions of Limited Edition Products
+
+There is an incredible opportunity to use tokens to create true price discovery for limited edition products, such as digital trading cards and digital avatar skins, as well as real world products.  As long as there is a company offering to accept a burning of the correct amount of Product Reservation Token (PRT) in exchange for a Limited Quanitity Product, then the company is able to auction PRTs as the means for raising revenue under accurate price discovery conditions.  This line of thinking allows the world of ICOs to move beyond represetnations of Blockchain Utlity Tokens and Company-backed Securities and into the world of real and digital products, while inejcting its benefits of global capital access, fractional ownership and accurate price discovery. 
+
 # Owner's manual
 
 This manual will explain the nuts and bolts of how SMTs work. The intended
