@@ -28,8 +28,8 @@ with websites to align incentives and spur growth, while websites are
 empowered to adopt sustainable, currency-centric revenue models. This model
 has been tested and continues to be proven by
 [steemit.com](https://steemit.com), [busy.org](https://busy.org),
-[chainbb.com](https://chainbb.com), [dsound.audio](https://dsound.audio),
-[dtube.video](https://dtube.video) and other Steem interfaces, which are
+[esteem.app](https://esteem.app), [dsound.audio](https://dsound.audio),
+[d.tube](https://d.tube) and other Steem interfaces, which are
 monetizing content, tokens and media in a way never before seen.
 
 Several popular token protocols, such as Ethereum's ERC-20, allow you to
@@ -92,14 +92,13 @@ fundraising, and growth.
 SMTs are a breakthrough for bridging the world's content applications to
 tokens in a way that aligns incentives between the users of a network and
 the entrepreneurs building the applications. By leveraging the concepts of
-inflation (new token emissions) and token allocations by post-based voting,
-SMTs exist in a manner where value must be distributed to users who are
-participating in their related content networks and applications.
-Entrepreneurs may now create tokens to integrate with their blog,
-application, or an entire network of applications and topics. With SMTs, the
-entrepreneurs have the flexibility to decide on the economics of the tokens
-they integrate into their products, from the inflation rates to the
-algorithms that distribute the tokens.
+token emissions and token allocations by post-based voting, SMTs exist in a
+manner where value must be distributed to users who are participating in their
+related content networks and applications. Entrepreneurs may now create tokens
+to integrate with their blog, application, or an entire network of applications
+and topics. With SMTs, the entrepreneurs have the flexibility to decide on the
+economics of the tokens they integrate into their products, from the emissions
+to the algorithms that distribute the tokens.
 
 Two unique properties align incentives and make SMTs “smart and social”
 compared to other tokens (such as bitcoin, ether and ERC-20s). The first is
@@ -191,9 +190,9 @@ Once an account name to register the token with is secured, the account
 issues the token by using a Steem-based command line tool or any tool
 created in the future to support token launches.  The token can be
 structured to support an initial sale or distribution of the token. Certain
-properties of an SMT, such as its inflation rate, must also be defined by
-the person or entity creating the token. These properties dictate how the
-token is used inside applications and respective communities.
+properties of an SMT, such as emissions, must also be defined by the person
+or entity creating the token. These properties dictate how the token is used
+inside applications and respective communities.
 
 From launch, the token becomes immutable on the blockchain, and leveraged
 correctly, the token can have dramatic effects on the growth of businesses
@@ -276,7 +275,7 @@ the quality of content curation for the community.
 
 Let's examine an instance in which an entrepreneur is looking to provide
 liquidity in the Steem ecosystem. The entrepreneur can issue an SMT without
-inflation properties, and imply that they will provide structure to peg it
+emissions properties, and imply that they will provide structure to peg it
 to USD (or any other debt, contract, or asset), making it like an IOU or
 basic derivative. The structure they provide to the asset includes buying
 and selling it near $1, similar to Tether. The entrepreneur sets up bank
@@ -322,6 +321,9 @@ account post launch:
 - Signatures should be returned via physically removable media to
   the online system for transmission via the UI.
 
+The Steem cli wallet provides mechanisms for offline signing, resolution
+of account authorities, and broadcasting of multi-signature transactions.
+
 Of course, once authorities are set up, you should verify the account is
 still able to transact. It is advisable to test your authorities and
 transaction signing setup using a testnet, or a less-important account on
@@ -346,7 +348,7 @@ operation creates an SMT object in the blockchain state. After executing the
 configured.
 
 Most of the configuration occurs in subsequent operations
-(`smt_set_setup_parameters_operation`, `smt_setup_inflation_operation` and
+(`smt_set_setup_parameters_operation`, `smt_setup_emissions_operation` and
 `smt_setup_operation`). These later operations may occur in the same
 transaction, but they may also occur at any later point in time.
 
@@ -354,8 +356,9 @@ transaction, but they may also occur at any later point in time.
 struct smt_create_operation
 {
    account_name_type control_account;
-   asset             smt_creation_fee;
    asset_symbol_type symbol;
+   smt_ticker_type   desired_ticker;
+   asset             smt_creation_fee;
    extensions_type   extensions;
 };
 ```
@@ -389,6 +392,17 @@ which publishes directory entries with custom operations. The publisher of
 an asset directory should ensure that directory entries meet whatever
 standards of legitimate brand ownership the publisher chooses to enforce.
 
+#### Desired Ticker
+
+An SMT creator can specify an optional desired ticker symbol if they so choose.
+If they opt to do so, the symbol must be all capital letters between 3 and
+8 characers long. This is a non-consensus field, only for display purposes.
+The blockchain only understands assets referenced by NAI and multiple SMTs
+can request the same ticker symbols. The only symbols that cannot be chosen
+are the Steem core asset symbols, STEEM, SBD, and VESTS. It is up to each
+interface to determine how they want to handle displaying SMTs that have
+conflicting desired ticker symbols.
+
 #### SMT creation fee
 
 Issuing a `smt_create_operation` requires payment of `smt_creation_fee`. The
@@ -409,22 +423,27 @@ only a curated set of tokens.
 
 The fee is destroyed by sending it to `STEEM_NULL_ACCOUNT`.
 
-### SMT pre-setup
-
-Two pre-setup operations are included: `smt_setup_inflation_operation` and
-`smt_setup_parameters`. These operations must be issued after
-`smt_create_operation`, and before `smt_setup_operation`. They may be issued
-in the same transaction, or in prior blocks.
-
-The reason pre-setup operations are not made a part of `smt_setup_operation`
-is to allow a large number of pre-setup operations to be executed over
-multiple blocks.
+### Reset SMT Setup
 
 If during the course of pre-setup, a parameter is irreversibly misconfigured
 or the token is placed in an unlaunchable state, you can restart the process
 using `smt_create_operation`. Submit the operation again with no fee and the
 same NAI and the token will be reset. The precision can be changed in this
-way by issuing the operation with the same NAI but a different precision.
+way by issuing the operation with the same NAI but a different precision. There
+must also not be any configured emissions or ICO tiers. Doing so will reset the
+SMT entirely, as if `smt_create_operation` had been broadcast initially.
+
+### SMT pre-setup
+
+Several pre-setup operations are included: `smt_setup_ico_tier_operation`,
+`smt_setup_emissions_operation`, `smt_set_setup_parameters`, and
+`smt_set_runtime_parameters`. These operations must be issued after
+`smt_create_operation`, and before `smt_setup_operation`. They may be issued in
+the same transaction, or in prior blocks.
+
+The reason pre-setup operations are not made a part of `smt_setup_operation`
+is to allow a large number of pre-setup operations to be executed over
+multiple blocks.
 
 ### SMT setup
 
@@ -436,49 +455,58 @@ descriptor is set by the `smt_setup_operation`:
 struct smt_setup_operation
 {
    account_name_type       control_account;
-   asset_symbol_type       smt_name;
+   asset_symbol_type       symbol;
    int64_t                 max_supply = STEEM_MAX_SHARE_SUPPLY;
 
-   smt_generation_policy   initial_generation_policy;
+   time_point_sec          contribution_begin_time;
+   time_point_sec          contribution_end_time;
+   time_point_sec          launch_time;
 
-   time_point_sec          generation_begin_time;
-   time_point_sec          generation_end_time;
-   time_point_sec          announced_launch_time;
-   time_point_sec          launch_expiration_time;
+   share_type              steem_units_min;
+
+   uint32_t                min_unit_ratio = 0;
+   uint32_t                max_unit_ratio = 0;
 
    extensions_type         extensions;
 };
 ```
 
-The symbol precision in `smt_setup_operation` is authoritative. It may
-differ from, and will override, any previously specified operations'
-precision. Subsequently issued operations must have matching precision.
-
 The operation must be signed by the `control_account` key. The named SMT
-must have been created earlier by the `control_account`. The symbol's
-embedded decimal places may be distinct from prior `smt_setup_operation`.
+must have been created earlier by the `control_account`.
 
-The `decimal_places` field is used by UIs to display units as a number of
-decimals.
+`max_supply` is the maximum supply that will ever be allowed for the SMT from
+emissions. If the token emission schedule would cause the token supply the
+exceed `max_supply` the excess tokens will not be added to the supply. For most
+use cases care should be taken to ensure that max supply cannot be reached.
+Tokens created as a result of the ICO can surpass `max_supply`. However, by
+setting a low max supply, a true fixed supply token could be created that
+recreates all "burned" tokens through the emissions schedule. By combining
+a high supply ICO with a low `max_supply`, you can create a token with a
+"burn" economy.
 
-The `generation_begin_time` is when participants can begin to contribute to
+Under no cirumstances is the supply of a token allowed to surpase
+`STEEM_MAX_SHARE_SUPPLY` (1,000,000,000,000,000) either through emissions
+or the ICO.
+
+The `contribution_begin_time` is when participants can begin to contribute to
 the ICO. It is allowed to be in the future so users have time to study the
 ICO's final terms before the ICO begins.
 
-The `generation_end_time` is when the ICO stops accepting contributions, and
-the `announced_launch_time` is when the ICO token is created (assuming the
+The `contribution_end_time` is when the ICO stops accepting contributions, and
+the `launch_time` is when the ICO token is created (assuming the
 ICO reached the minimum participation level). Some pause is allocated
-between the `generation_end_time` and `announced_launch_time` to allow for
-the possibility of ICOs that wish to have hidden caps that aren't revealed
-while the ICO is open for contributions. It also gives the ICO creator time
+between the `contribution_end_time` and `launch_time` to the ICO creator time
 to use the final ICO numbers to aid in pre-launch business activities.
 
-At `launch_expiration_time`, if the ICO has not yet launched, all
-contributors will be automatically refunded (with virtual operations) and
-the ICO will be cancelled. The symbol will remain reserved to the specified
-`control_account`. However, in order to launch the token, an
-`smt_create_operation` must be issued and the `smt_creation_fee` must be
-paid again.
+At `contribution_end_time`, if the ICO has failed to meet minimum participation
+(`steem_units_min`), all contributors will be automatically refunded (with
+automated actions) and the ICO will be cancelled. The symbol will remain
+reserved to the specified `control_account`. However, in order to launch the
+token, an `smt_create_operation` must be issued and the `smt_creation_fee`
+must be paid again.
+
+`HEAD_BLOCK_TIME` <= `contribution_begin_time` <= `contribution_end_time` <=
+`launch_time`
 
 ### Token units
 
@@ -503,8 +531,8 @@ The units and their routing policies are specified in the `smt_generation_unit` 
 ```
 struct smt_generation_unit
 {
-   flat_map< account_name_type, uint16_t >        steem_unit;
-   flat_map< account_name_type, uint16_t >        token_unit;
+   flat_map< unit_target_type, uint16_t > steem_unit;
+   flat_map< unit_target_type, uint16_t > token_unit;
 };
 ```
 
@@ -517,93 +545,69 @@ values.
 When an SMT launches, token units are created for STEEM units in a R-for-1
 ratio. The number R is called the *unit ratio*. Maximum and minimum
 allowable values for R are specified respectively in the `min_unit_ratio`
-and `max_unit_ratio` fields of `smt_generation_policy`.
+and `max_unit_ratio` fields of `smt_setup_operation`.
 
 The maximum number of token units that can be created in the ICO is limited
-to `max_token_units_generated`, a parameter which is set by the ICO creator.
-(More tokens can be created after the token has launched, but this later
-creation is called *inflation* and is not considered to be part of the ICO.)
+by `steem_hard_cap`, a parameter which is set in each ICO tier. (More tokens
+can be created after the token has launched, but this later creation is called
+*emissions* and is not considered to be part of the ICO.) The caps are
+aboslute not cumulative, meaning the last ICO tier is the actual cap.
 
-The unit ratio is set to the largest integer that would not result in
-exceeding `max_token_units_generated` for the number of STEEM units actually
-contributed.
+If you have three ICO tiers with caps, 1000, 5000, and 10000 then the actual
+hard cap of the ICO is 10000 with tiers that encompass the ranges [0, 1000],
+[1001, 5000], and [5001, 10000].
 
-### Cap and min
+The unit ratio is set to create a reliable token supply while maintaining a unit
+ratio between the min and max. To calculate the unit ratio for an SMT,
+where `contributed_steem` is the amount of STEEM contributed and
+`steem_hard_cap` is the number is the hard cap of STEEM in the last ICO tier,
+use the following formula: `steem_hard_cap * min_unit_ratio / contributed_steem`.
 
-ICOs may specify a minimum number of STEEM units `min_steem_units`. If the
-ICO does not reach `min_steem_units` before `generation_end_time`, then it
-does not occur, and contributors become eligible for refunds.
+Then, for each ICO tier, calcualte the STEEM units for the tier. That is the
+contributed STEEM for that tier divided by the sum of the steemit unit routes.
 
-Likewise, ICOs may specify two maximum numbers of STEEM units: A *hard cap*
-and a *soft cap*. Units in excess of the soft cap have different routing for
-their STEEM and tokens. STEEM units in excess of the hard cap are rejected
-and do not generate any SMTs.
-
-The effects of the soft cap are divided proportionally among all
-contributors. I.e. if a ICO has a soft cap of 8 million STEEM, and 10
-contributors each contribute 1 million STEEM, then 0.2 million of *each
-user's* STEEM is routed via the soft cap's policy.
-
-The effects of the hard cap fall solely on the last contributors. I.e. if a
-ICO has a hard cap of 8 million STEEM, and 10 contributors each contribute 1
-million STEEM, then the first 8 users fully participate in the ICO, and the
-last 2 users are refunded 1 million STEEM.
-
-### Hidden caps
-
-The min and hard caps are *hidden* in the generation policy. This means that
-these numbers are fixed at setup time, but the ICO creator has the option to
-keep them secret. This functionality is implemented by a *commit/reveal*
-cryptographic protocol: A hash called the *commitment* is published at setup
-time, and the actual amount must match the commitment. (A nonce is also
-included in the hash to prevent an attacker from finding the hidden cap with
-a brute-force guess-and-test approach.)
-
-The SMT designer may wish to pre-publish a guarantee that the hidden values
-are within a certain range. The `lower_bound` and `upper_bound` fields
-provide this functionality: A revealed amount that is not in the specified
-range is treated the same as a hash mismatch.
+For example, with the following generation unit:
 
 ```
-struct smt_cap_commitment
 {
-   share_type            lower_bound;
-   share_type            upper_bound;
-   digest_type           hash;
-};
+   "steem_unit" : [["alpha_org", 70], ["founder_a", 23], ["founder_b", 7]],
+   "token_unit" : [["$from", 5], ["founder_c", 1]]
+}
+```
 
-struct smt_revealed_cap
-{
-   share_type            amount;
-   uint128_t             nonce;
-};
+The STEEM unit would be 100 and the token unit would be 6. Divide the
+contributed STEEM by the STEEM unit, multiply it by the previously calculated
+unit ratio and then by the token unit of 6. The result is how many satoshi SMT
+will be generated in that tier of the ICO.
 
-struct smt_cap_reveal_operation
+You can find the minimum satoshi SMT generated by doing the same calculations
+assuming the minimum amount of STEEM was created and use the `max_unit_ratio`.
+The actual values created might vary slightly due to rounding errors in the
+integer calculations used by the blockchain.
+
+### ICO Tiers
+
+ICOs may specify multiple tiers each with different STEEM and SMT unit routes.
+Contributions will be processed if FIFO order as they satisfy each tier. The
+only requirement that an ICO is successful is that is raises more than
+`steem_min_satoshi`. Some ICO tiers may be defined and never used. You can
+set `steem_min_satoshi` to any value to require some, or all, of the ICO tiers
+to be used in the ICO. ICO tiers can be added and removed during the setup
+phase. ICO tiers are canonically referenced by `steem_satoshi_cap`.
+
+```
+struct smt_setup_ico_tier_operation : public base_operation
 {
    account_name_type     control_account;
-   smt_revealed_cap      cap;
+   asset_symbol_type     symbol;
+
+   share_type            steem_satoshi_cap;
+   smt_generation_policy generation_policy;
+   bool                  remove = false;
 
    extensions_type       extensions;
 };
 ```
-
-All caps are hidden, but the cap may be revealed at any point in time.
-Therefore, an ICO with a non-hidden minimum or cap may be implemented by
-simply including the `smt_cap_reveal_operation` in the same transaction as
-the `smt_setup_operation`. UIs should provide functionality for this.
-
-A UI should provide one or more of the following means to ensure the `nonce`
-and `amount` are recoverable:
-
-- Force the user to type in the `amount` and `nonce` again, as confirmation
-  they have been backed up.
-- Set `nonce` to some deterministic function of the private key and public
-  data, for example `nonce = H(privkey + control_account + lower_bound +
-  upper_bound + current_date)`.
-- Provide functionality to brute-force the uncertain fields when the nonce
-  is known (e.g. the current date and `amount`).
-- Require the amount to be low-entropy to facilitate brute-forcing when the
-  nonce is known (e.g. a number between 1-999 times a power of 10).
 
 ### Generation policy data structure
 
@@ -612,24 +616,11 @@ The SMT generation policy data structure looks like this:
 ```
 struct smt_capped_generation_policy
 {
-   smt_generation_unit pre_soft_cap_unit;
-   smt_generation_unit post_soft_cap_unit;
+   smt_generation_unit generation_unit
 
-   smt_cap_commitment  min_steem_units_commitment;
-   smt_cap_commitment  hard_cap_steem_units_commitment;
-
-   uint16_t            soft_cap_percent = 0;
-
-   uint32_t            min_unit_ratio = 0;
-   uint32_t            max_unit_ratio = 0;
-
-   extensions_type     extensions;
+   extendsions_type    extensions
 };
 ```
-
-Note, the `max_token_units_generated` parameter does not appear anywhere in
-the operation. The reason is that it is actually a derived parameter:
-`max_token_units_generated = min_unit_ratio * hard_cap_steem_units`.
 
 Additionally, the `smt_generation_policy` is defined as a `static_variant`,
 of which `smt_capped_generation_policy` is the only member:
@@ -684,16 +675,28 @@ are issued as `steem_unit` are contributed. So to match the specification of
 6 ALPHA per 1 STEEM, we need to issue 1000 ALPHA-units per STEEM-unit.
 Therefore the unit ratio of this ICO is 1000.  This unit ratio is placed in
 the `min_unit_ratio` and `max_unit_ratio` fields of the
-`smt_capped_generation_policy` data structure:
+`smt_setup_operation` data structure:
 
 ```
 min_unit_ratio = 1000
 max_unit_ratio = 1000
 ```
 
-A special account name, `$from`, represents the contributor. Also supported
-is `$from.vesting`, which represents the vesting balance of the `$from`
-account.
+### Special Destination Targets
+
+There are a number of special account names that denote special destinations
+for units ratios.
+
+- `$from`: The contributor's account. Valid as a `token_unit`.
+- `$from.vesting`: The constributor's vesting balance. Valud a both
+   `steem_unit` and `token_unit`.
+- `$rewards`: Seeds reward fund of an SMT. Valid as a `token_unit`.
+- `$vesting`: Seeds the vesting fund of an SMT. Valid as a `token_unit`.
+- `$market_maker`: Seeds the market maker of an SMT. Valid as a
+   `steem_unit` and `token_unit`.
+- `$!ACCOUNT.vesting`: The vesting balance of a specific account. Note the
+   added token '!' to avoid collision with the destination `$from.vesting`.
+   Valid as a `steem_unit` and `token_unit`.
 
 #### Why unit ratios?
 
@@ -720,87 +723,6 @@ UI-level concept. UIs which provide an ICO price should do the following:
 - Be well-behaved for pathological input like above.
 - Have a button for switching between a unit ratio display and price display.
 
-#### Hidden cap FAQ
-
-- Q: Should my ICO have a cap?
-- A: Some set of people stay away from uncapped ICOs due to perceived
-  "greed", or want a guaranteed lower bound on the percentage of the ICO
-  their contribution will buy. If you want this set of people to
-  participate, use a cap.
-
-- Q: Should my cap be hidden?
-- A: Some people like the transparency and certainty of a public cap. Other
-  people think a hidden cap creates excitement and builds demand. One
-  possible compromise is to publish the previous and next power of 10, for
-  example "this ICO's cap is between 1 million and 10 million STEEM."
-
-- Q: How do I disable the cap?
-- A: Set it so that the cap would occur above `STEEM_MAX_SHARE_SUPPLY`.
-
-### Launch
-
-The *effective launch time* is the time at which tokens become
-transferable. Two possibilities occur based on the timing of revealing of
-the hard cap:
-
-- When `min_steem_units` and `hard_cap_steem_units` are revealed before the
-  `announced_launch_time`, the launch is an *on-time launch*.  The launch
-  logic is executed by the blockchain as soon as `announced_launch_time`
-  arrives, regardless of further user action.
-- When `min_steem_units` and `hard_cap_steem_units` have not been revealed
-  before the `announced_launch_time`, the launch will be a *delayed launch*.
-  The launch logic is executed by the blockchain when `min_steem_units` and
-  `hard_cap_steem_units` have been revealed.
-- If the launch is delayed, then any contributor may use
-  `smt_refund_operation` to get their STEEM back at any time after
-  `announced_launch_time`, and before the launch logic is executed.
-
-The reasons for this design are as follows:
-
-- The hidden cap isn't published immediately (that's the definition of
-  *hidden*).
-- Publishing the hidden cap is an action that must be done by the ICO
-  creator (again, any action requiring non-public information to occur
-  cannot happen automatically on a blockchain).
-- If the ICO creator never acts, then the launch logic will never execute.
-- In the case of such a malicious or unresponsive ICO creator, contributors'
-  STEEM would effectively be trapped forever, and they would never receive
-  any tokens.
-- To keep the STEEM from being trapped in this way, the
-  `smt_refund_operation` is implemented.
-
-```
-struct smt_refund_operation
-{
-   account_name_type       contributor;
-   asset                   amount;
-   extensions_type         extensions;
-};
-```
-
-Note, users are not *required* to use `smt_refund_operation`; each
-individual contributor must opt-in to receiving a refund. If the ICO creator
-publicizes a legitimate reason they failed to publish before
-`announced_launch_time`, it is possible that all/most contributors will
-voluntarily choose not to use `smt_refund_operation`. In this case, the
-launch will occur as soon as the ICO creator publishes the hidden values.
-
-The launch logic considers a contribution followed by a refund to be
-equivalent to not having contributed at all. Therefore, when a delayed
-launch occurs, each contributor will be in *exactly one* of the following
-two states:
-
-- The contributor has executed `smt_refund_operation`, received their STEEM
-  back, and will not participate in the ICO.
-- The contributor has not been issued a refund, and will participate in the
-  ICO.
-
-It is possible for a delayed launch to have exceeded its `min_steem_units`
-value at the announced launch time, but subsequently falls below its
-`min_steem_units` value as a result of refunds. In such a case, the ICO will
-not occur; it will be treated as if it had never reached its
-`min_steem_units`.
-
 ### Full JSON examples
 
 #### ALPHA
@@ -815,7 +737,7 @@ following characteristics:
 - For every 1 STEEM contributed, the contributor gets 5 ALPHA (@contibutor_a).
 - For every 1 STEEM contributed, Founder Account C gets 1 ALPHA (@founder_c).
 - No minimum, hard cap, or soft cap.
-- No post-launch inflation after launch.
+- No post-launch emissions after launch.
 
 ![Alpha ICO example](img/ico-example-alpha.png)
 \begin{center}Figure 6: Alpha ICO Flow\end{center}
@@ -827,52 +749,35 @@ These are the operations for the ALPHA launch:
  ["smt_setup",
   {
    "control_account" : "alpha",
-   "decimal_places" : 4,
+   "symbol" : {
+    "nai" : "@@588062267",
+    "precision" : 3
+   },
    "max_supply" : "1000000000000000",
-   "initial_generation_policy" : [0,
+   "contribution_begin_time" : "2017-08-10T00:00:00",
+   "contribution_end_time" : "2017-08-17T00:00:00",
+   "launch_time" : "2017-08-21T00:00:00",
+   "steem_satoshi_min" : 1
+   "min_unit_ratio" : 1000,
+   "max_unit_ratio" : 1000,
+   "extensions" : []
+  }
+ ],
+ ["smt_setup_ico_tier",
+  {
+   control_account" : "alpha",
+   "symbol" : {
+    "nai" : "@@588062267",
+    "precision" : 3
+   },
+   "steem_satoshi_cap" : 166666666666,
+   "generation_policy" : [0,
     {
-     "pre_soft_cap_unit" : {
-      "steem_unit" : [["alpha_org", 70], ["founder_a", 23], ["founder_b", 7]],
-      "token_unit" : [["$from", 5], ["founder_c", 1]]
-     },
-     "post_soft_cap_unit" : {
-      "steem_unit" : [],
-      "token_unit" : []
-     },
-     "min_steem_units_commitment" : {
-      "lower_bound" : 1,
-      "upper_bound" : 1,
-      "hash" : "32edb6022c0921d99aa347e9cda5dc2db413f5574eebaaa8592234308ffebd2b"
-     },
-     "hard_cap_steem_units_commitment" : {
-      "lower_bound" : "166666666666",
-      "upper_bound" : "166666666666",
-      "hash" : "93c5a6b892de788c5b54b63b91c4b692e36099b05d3af0d16d01c854723dda21"
-     },
-     "soft_cap_percent" : 10000,
-     "min_unit_ratio" : 1000,
-     "max_unit_ratio" : 1000,
-     "extensions" : []
+     "steem_unit" : [["alpha_org", 70], ["founder_a", 23], ["founder_b", 7]],
+     "token_unit" : [["$from", 5], ["founder_c", 1]]
     }
    ],
-   "generation_begin_time" : "2017-08-10T00:00:00",
-   "generation_end_time" : "2017-08-17T00:00:00",
-   "announced_launch_time" : "2017-08-21T00:00:00",
-   "smt_creation_fee" : "1.000 SBD",
-   "extensions" : []
-  }
- ],
- ["smt_cap_reveal",
-  {
-   "control_account" : "alpha",
-   "cap" : { "amount" : 1, "nonce" : "0" },
-   "extensions" : []
-  }
- ],
- ["smt_cap_reveal",
-  {
-   "control_account" : "alpha",
-   "cap" : { "amount" : "166666666666", "nonce" : "0" },
+   "remove" : false,
    "extensions" : []
   }
  ]
@@ -881,16 +786,12 @@ These are the operations for the ALPHA launch:
 
 Some things to note:
 
-- We disable the soft cap by setting `soft_cap_percent` to
-  `STEEM_100_PERCENT = 10000`.
-- `post_soft_cap_unit` must be empty when the soft cap is disabled.
 - The unit ratio does not change so `min_unit_ratio` / `max_unit_ratio` must
   be set accordingly.
-- We disable the hidden caps by using a zero nonce and setting `lower_bound
-  == upper_bound`.
-- We still need to reveal the caps with `smt_cap_reveal_operation`.
 - The hard cap specified is the largest hard cap that does not result in
   created tokens exceeding `STEEM_MAX_SHARE_SUPPLY`.
+- This is a single phase ICO that will succeed as long as there is a
+  contribution of at least 0.001 STEEM, up to 166,666,666.666 STEEM.
 
 #### BETA
 
@@ -938,54 +839,35 @@ BETA.
   "smt_setup",
   {
    "control_account" : "beta",
-   "decimal_places" : 4,
+   "symbol" : {
+    "nai" : "@@892151380",
+    "precision" : 4
+   },
    "max_supply" : "1000000000000000",
-   "initial_generation_policy" : [0,
+   "contribution_begin_time" : "2017-06-01T00:00:00",
+   "contribution_end_time" : "2017-06-30T00:00:00",
+   "launch_time" : "2017-07-01T00:00:00",
+   "steem_satoshi_min" : 5000000
+   "min_unit_ratio" : 50,
+   "max_unit_ratio" : 100,
+   "extensions" : []
+  }
+ ],
+ ["smt_setup_ico_tier",
+  {
+   control_account" : "beta",
+   "symbol" : {
+    "nai" : "@@892151380",
+    "precision" : 4
+   },
+   "steem_satoshi_cap" : 30000000,
+   "generation_policy" : [0,
     {
-     "pre_soft_cap_unit" : {
-      "steem_unit" : [["fred", 3], ["george", 2]],
-      "token_unit" : [["$from", 7], ["george", 1], ["henry", 2]]
-     },
-     "post_soft_cap_unit" : {
-      "steem_unit" : [],
-      "token_unit" : []
-     },
-     "min_steem_units_commitment" : {
-      "lower_bound" : 5000000,
-      "upper_bound" : 5000000,
-      "hash" : "dff2e4aed5cd054439e045e1216722aa8c4758b22df0a4b0251d6f16d58e0f3b"
-     },
-     "hard_cap_steem_units_commitment" : {
-      "lower_bound" : 30000000,
-      "upper_bound" : 30000000,
-      "hash" : "f8e6ab0e8f2c06a9d94881fdf370f0849b4c7864f62242040c88ac82ce5e40d6"
-     },
-     "soft_cap_percent" : 10000,
-     "min_unit_ratio" : 50,
-     "max_unit_ratio" : 100,
-     "extensions" : []
+     "steem_unit" : [["fred", 3], ["george", 2]],
+     "token_unit" : [["$from", 7], ["george", 1], ["henry", 2]]
     }
    ],
-   "generation_begin_time" : "2017-06-01T00:00:00",
-   "generation_end_time" : "2017-06-30T00:00:00",
-   "announced_launch_time" : "2017-07-01T00:00:00",
-   "smt_creation_fee" : "1000.000 SBD",
-   "extensions" : []
-  }
- ],
- [
-  "smt_cap_reveal",
-  {
-   "control_account" : "beta",
-   "cap" : { "amount" : 5000000, "nonce" : "0" },
-   "extensions" : []
-  }
- ],
- [
-  "smt_cap_reveal",
-  {
-   "control_account" : "beta",
-   "cap" : { "amount" : 30000000, "nonce" : "0" },
+   "remove" : false,
    "extensions" : []
   }
  ]
@@ -1008,54 +890,35 @@ contributed).
   "smt_setup",
   {
    "control_account" : "gamma",
-   "decimal_places" : 4,
+   "symbol" : {
+    "nai" : "@@459158622",
+    "precision" : 4
+   },
    "max_supply" : "1000000000000000",
-   "initial_generation_policy" : [0,
+   "contribution_begin_time" : "2017-06-01T00:00:00",
+   "contribution_end_time" : "2017-06-30T00:00:00",
+   "launch_time" : "2017-07-01T00:00:00",
+   "steem_satoshi_min" : 5000,
+   "min_unit_ratio" : 50,
+   "max_unit_ratio" : 300000,
+   "extensions" : []
+  }
+ ],
+ ["smt_setup_ico_tier",
+  {
+   control_account" : "gamma",
+   "symbol" : {
+    "nai" : "@@459158622",
+    "precision" : 4
+   },
+   "steem_satoshi_cap" : 30000000,
+   "generation_policy" : [0,
     {
-     "pre_soft_cap_unit" : {
-      "steem_unit" : [["fred", 3], ["george", 2]],
-      "token_unit" : [["$from", 7], ["george", 1], ["henry", 2]]
-     },
-     "post_soft_cap_unit" : {
-      "steem_unit" : [],
-      "token_unit" : []
-     },
-     "min_steem_units_commitment" : {
-      "lower_bound" : 5000000,
-      "upper_bound" : 5000000,
-      "hash" : "dff2e4aed5cd054439e045e1216722aa8c4758b22df0a4b0251d6f16d58e0f3b"
-     },
-     "hard_cap_steem_units_commitment" : {
-      "lower_bound" : 30000000,
-      "upper_bound" : 30000000,
-      "hash" : "f8e6ab0e8f2c06a9d94881fdf370f0849b4c7864f62242040c88ac82ce5e40d6"
-     },
-     "soft_cap_percent" : 10000,
-     "min_unit_ratio" : 50,
-     "max_unit_ratio" : 300000,
-     "extensions" : []
+     "steem_unit" : [["fred", 3], ["george", 2]],
+     "token_unit" : [["$from", 7], ["george", 1], ["henry", 2]]
     }
    ],
-   "generation_begin_time" : "2017-06-01T00:00:00",
-   "generation_end_time" : "2017-06-30T00:00:00",
-   "announced_launch_time" : "2017-07-01T00:00:00",
-   "smt_creation_fee" : "1000.000 SBD",
-   "extensions" : []
-  }
- ],
- [
-  "smt_cap_reveal",
-  {
-   "control_account" : "gamma",
-   "cap" : { "amount" : 5000000, "nonce" : "0" },
-   "extensions" : []
-  }
- ],
- [
-  "smt_cap_reveal",
-  {
-   "control_account" : "gamma",
-   "cap" : { "amount" : 30000000, "nonce" : "0" },
+   "remove" : false,
    "extensions" : []
   }
  ]
@@ -1074,54 +937,35 @@ user (including the founder themselves) to trigger the generation.
   "smt_setup",
   {
    "control_account" : "delta",
-   "decimal_places" : 5,
+   "symbol" : {
+    "nai" : "@@399754220",
+    "precision" : 5
+   },
    "max_supply" : "1000000000000000",
-   "initial_generation_policy" : [0,
+   "commitment_begin_time" : "2017-06-01T00:00:00",
+   "commitment_end_time" : "2017-06-30T00:00:00",
+   "launch_time" : "2017-07-01T00:00:00",
+   "steem_satoshi_min" : 100,
+   "min_unit_ratio" : 1000,
+   "max_unit_ratio" : 100000000,
+   "extensions" : []
+  }
+ ],
+ ["smt_setup_ico_tier",
+  {
+   control_account" : "delta",
+   "symbol" : {
+    "nai" : "@@399754220",
+    "precision" : 4
+   },
+   "steem_satoshi_cap" : 10000000,
+   "generation_policy" : [0,
     {
-     "pre_soft_cap_unit" : {
-      "steem_unit" : [["founder", 1]],
-      "token_unit" : [["founder", 10000]]
-     },
-     "post_soft_cap_unit" : {
-      "steem_unit" : [],
-      "token_unit" : []
-     },
-     "min_steem_units_commitment" : {
-      "lower_bound" : 10000000,
-      "upper_bound" : 10000000,
-      "hash" : "4e12522945b8cc2d87d54debd9563a1bb6461f1b1fa1c31876afe3514e9a1511"
-     },
-     "hard_cap_steem_units_commitment" : {
-      "lower_bound" : 10000000,
-      "upper_bound" : 10000000,
-      "hash" : "4e12522945b8cc2d87d54debd9563a1bb6461f1b1fa1c31876afe3514e9a1511"
-     },
-     "soft_cap_percent" : 10000,
-     "min_unit_ratio" : 1000,
-     "max_unit_ratio" : 1000,
-     "extensions" : []
+     "steem_unit" : [["founder", 1]],
+     "token_unit" : [["founder", 10000]]
     }
    ],
-   "generation_begin_time" : "2017-06-01T00:00:00",
-   "generation_end_time" : "2017-06-30T00:00:00",
-   "announced_launch_time" : "2017-07-01T00:00:00",
-   "smt_creation_fee" : "1000.000 SBD",
-   "extensions" : []
-  }
- ],
- [
-  "smt_cap_reveal",
-  {
-   "control_account" : "delta",
-   "cap" : { "amount" : 10000000, "nonce" : "0" },
-   "extensions" : []
-  }
- ],
- [
-  "smt_cap_reveal",
-  {
-   "control_account" : "delta",
-   "cap" : { "amount" : 10000000,  "nonce" : "0" },
+   "remove" : false,
    "extensions" : []
   }
  ]
@@ -1169,64 +1013,68 @@ cannot be done fully automatically on-chain. However, such ICOs can be
 managed by manually transferring some founder account's distribution to
 buyers' Steem accounts in proportion to their non-STEEM contribution.
 
-### Inflation Parameters
+### Emission Parameters
 
-Creation of SMT after launch is called *inflation*.
+Creation of SMT after launch is called *emissions*.
 
-Inflation is the means by which the SMT rewards contributors for the value they provide.
+Emissions is the means by which the SMT rewards contributors for the value they provide.
 
-Inflation events use the following data structure:
+Emissions events use the following data structure:
 
 ```
-struct smt_inflation_unit
+struct smt_emission_unit
 {
-   flat_map< account_name_type, uint16_t >        token_unit;
+   flat_map< account_name_type, uint16_t > token_unit;
 };
 
 // Event:  Support issuing tokens to target at time
-struct token_inflation_event
+struct smt_token_emission_action
 {
-   timestamp           schedule_time;
-   smt_inflation_unit  unit;
-   uint32_t            num_units;
+   account_name_type                        control_account;
+   asset_symbol_type                        symbol;
+   time_point_sec                           emission_time;
+   flat_map< unit_target_type, share_type > emissions;
+
+   extensions_type                          extensions;
 };
 ```
 
-This event prints `num_units` units of the SMT token.
+This event prints the SMT according to the routing table `emissions`.
 
-#### Possible inflation target
+#### Possible emissions target
 
-The target is the entity to which the inflation is directed. The target may
+The target is the entity to which the emissions are directed. The target may
 be a normal Steem account controlled by an individual founder, or a
 multi-signature secured account comprised of several founders.
 
 In addition, several special targets are possible representing trustless
 functions provided by the blockchain itself:
 
-- Rewards. A special destination representing the tokens posting / voting rewards.
-- Vesting. A special destination representing the tokens backing vested tokens.
-- Market Maker. A special destination to seed the market maker with tokens.
+- `$rewards`: A special destination representing the tokens posting / voting rewards.
+- `$vesting`: A special destination representing the tokens backing vested tokens.
+- `$market_maker`: A special destination to seed the market maker with tokens.
+
 #### Event sequences
 
-Traditionally blockchains compute inflation on a per-block basis, as block
-production rewards are the main (often, only) means of inflation.
+Traditionally blockchains compute emissions on a per-block basis, as block
+production rewards are the main (often, only) means of emissions.
 
-However, there is no good reason to couple inflation to block production for
+However, there is no good reason to couple emissions to block production for
 SMTs. In fact, SMTs have no block rewards, since they have no blocks (the
 underlying functionality of block production being supplied by the Steem
 witnesses, who are rewarded with STEEM).
 
-Repeating inflation at regular intervals can be enabled by adding
-`interval_seconds` and `interval_count` to the `token_inflation_event` data
+Repeating emissions at regular intervals can be enabled by adding
+`interval_seconds` and `interval_count` to the `token_emission_event` data
 structure. The result is a new data structure called
-`token_inflation_event_seq_v1`:
+`token_emission_event_seq_v1`:
 
 ```
 // Event seq v1:  Support repeatedly issuing tokens to target at time
-struct token_inflation_event_seq_v1
+struct token_emissions_event_seq_v1
 {
-   timestamp           schedule_time;
-   smt_inflation_unit  unit;
+   time_point_sec      schedule_time;
+   smt_emissions_unit  unit;
    asset               new_smt;
 
    int32_t             interval_seconds;
@@ -1234,7 +1082,7 @@ struct token_inflation_event_seq_v1
 };
 ```
 
-The data structure represents a token inflation event that repeats every
+The data structure represents a token emission event that repeats every
 `interval_seconds` seconds, for `interval_count` times. The maximum integer
 value `0xFFFFFFFF` is a special sentinel value that represents an event
 sequence that repeats forever.
@@ -1242,17 +1090,17 @@ sequence that repeats forever.
 Note, the `new_smt` is a quantity of SMT, not a number of units. The number
 of units is determined by dividing `new_smt` by the sum of `unit` members.
 
-#### Adding relative inflation
+#### Adding relative emissions
 
-Often, inflation schedules are expressed using percentage of supply, rather
+Often, emission schedules are expressed using percentage of supply, rather
 than in absolute terms:
 
 ```
 // Event seq v2:  v1 + allow relative amount of tokens
-struct token_inflation_event_seq_v2
+struct token_emissions_event_seq_v2
 {
-   timestamp           schedule_time;
-   smt_inflation_unit  unit;
+   time_point_sec      schedule_time;
+   smt_emissions_unit  unit;
    uint32_t            num_units;
 
    int32_t             interval_seconds;
@@ -1276,10 +1124,10 @@ bits, we can let the shift be variable:
 
 ```
 // Event seq v3:  v2 + specify shift in struct
-struct token_inflation_event_seq_v3
+struct token_emissions_event_seq_v3
 {
-   timestamp           schedule_time;
-   smt_inflation_unit  unit;
+   time_point_sec      schedule_time;
+   smt_emissions_unit  unit;
 
    int32_t             interval_seconds;
    uint32_t            interval_count;
@@ -1303,23 +1151,23 @@ rel_amount_numerator`!
 
 #### Adding time modulation
 
-Time modulation allows implementing an inflation rate which changes
+Time modulation allows implementing an emission rate which changes
 continuously over time according to a piecewise linear function.  This can
 be achieved by simply specifying the left/right endpoints of a time
 interval, and specifying absolute amounts at both endpoints:
 
 ```
 // Event seq v4:  v3 + modulation over time
-struct token_inflation_event_seq_v4
+struct token_emissions_event_seq_v4
 {
-   timestamp           schedule_time;
-   smt_inflation_unit  unit;
+   time_point_sec      schedule_time;
+   smt_emissions_unit  unit;
 
    int32_t             interval_seconds;
    uint32_t            interval_count;
 
-   timestamp           lep_time;
-   timestamp           rep_time;
+   time_point_sec      lep_time;
+   time_point_sec      rep_time;
 
    asset               lep_abs_amount;
    asset               rep_abs_amount;
@@ -1364,28 +1212,28 @@ else
 }
 ```
 
-#### Inflation operations
+#### Emission operations
 
-Inflation operations must be created in chronological order.
+Emission operations must be created in chronological order.
 
-Inflation operation timespans must not overlap.
+Emission operation timespans must not overlap.
 
-The inflation operation is specified as follows:
+The emission operation is specified as follows:
 
 ```
-struct smt_setup_inflation_operation
+struct smt_setup_emissions_operation
 {
    account_name_type   control_account;
    asset_symbol_type   symbol;
 
-   timestamp           schedule_time;
-   smt_inflation_unit  inflation_unit;
+   time_point_sec      schedule_time;
+   smt_emissions_unit  emissions_unit;
 
-   int32_t             interval_seconds = 0;
+   uint32_t            interval_seconds = 0;
    uint32_t            interval_count = 0;
 
-   timestamp           lep_time;
-   timestamp           rep_time;
+   time_point_sec      lep_time;
+   time_point_sec      rep_time;
 
    asset               lep_abs_amount;
    asset               rep_abs_amount;
@@ -1393,21 +1241,32 @@ struct smt_setup_inflation_operation
    uint32_t            rep_rel_amount_numerator = 0;
 
    uint8_t             rel_amount_denom_bits = 0;
+   bool                remove = false;
+   bool                floor_emissions = false;
 
    extensions_type     extensions
 };
 ```
 
-The `setup_inflation_operation` is a *pre-setup* operation which must be
+This version of the operation has two additional fields, `remove` and
+`floor_emissions`. `remove` is a flag whether to remove the particular
+emissions schedule or not. Due to how emission times are calculated via
+`interval_seconds` and `interval_count`, emissions must be removed in
+LIFO order.
+
+`floor_emissions` sets whether to us the minimum of `abs_amount` and
+`rel_amount` or their maximum.
+
+The `smt_setup_emissions_operation` is a *pre-setup* operation which must be
 executed *before* the `smt_setup_operation`.  See the section on pre-setup
 operations.
 
-#### Inflation FAQ
+#### Emissions FAQ
 
-- Q:  Can the SMT inflation data structures express Steem's [current
-  inflation scheme](https://github.com/steemit/steem/issues/551)?
+- Q:  Can the SMT emissions data structures express Steem's [current
+  emissions scheme](https://github.com/steemit/steem/issues/551)?
 - A:  Yes (except for rounding errors).
-- Q:  Can the SMT inflation data structures reward founders directly after X
+- Q:  Can the SMT emissions data structures reward founders directly after X
   months/years?
 - A:  Yes.
 - Q:  I don't care about time modulation. Can I disable it?
@@ -1416,9 +1275,9 @@ operations.
   and set `lep_time = rep_time` (any value will do).
 - Q:  Can some of this complexity be hidden by a well-designed UI?
 - A:  Yes.
-- Q:  Can we model the inflation as a function of time with complete
+- Q:  Can we model the emissions as a function of time with complete
   accuracy?
-- A:  The inflation data structures can be fully modeled / simulated. For
+- A:  The emissions data structures can be fully modeled / simulated. For
   some issue structures, the amount issued depends on how much is raised, so
   the issue structures cannot be modeled with complete accuracy.
 
@@ -1529,7 +1388,7 @@ SMTs have similar vesting (powerup / powerdown) semantics to STEEM.  In particul
 - Voting is affected only by powered-up tokens.
 - Vesting balance cannot be transferred or sold.
 
-Additionally, some token inflation may be directed to vesting balances.
+Additionally, some token emissions may be directed to vesting balances.
 These newly "printed" tokens are effectively split among all users with
 vesting balances, proportional to the number of tokens they have vested. As
 the number of tokens printed is independent of users' vesting balances, the
@@ -1548,13 +1407,13 @@ algorithms to decide:
 The algorithms to solve these problems operate as follows:
 
 - (1) Posts are weighed *against other posts* according to the *reward
-  curve* or `rc`.
+  curve*.
 - (2a) The curators collectively receive a fixed percentage of the post,
   specified by the `percent_curation_rewards` parameter.
 - (2b) The author receives the remainder (after applying any beneficiaries
   or limited/declined author reward).
 - (2c) Curators are weighted *against other curators of that post* according
-  to the *curation curve* or `cc`.
+  to the *curation curve*.
 
 Percent curation rewards is specified as two precision percentage and cannot
 be more than 10000 (100%).
@@ -1564,11 +1423,47 @@ be more than 10000 (100%).
 
 ## Curve definitions
 
-The reward curve can be *linear* or *quadratic*. The linear reward curve
-`rc(r) = r` passes the R-shares (upvotes) through unchanged. The quadratic
-reward curve `rc(r) = r^2 + 2rs` has increasing slope. `s` is the content
-constant as specified in `smt_param_rewards_v1`. Prior to linear rewards,
-Steem used a content constant of 2,000,000,000,000.
+There are currently six different curves that can be set as content and
+curation reward curves.
+
+- `quadratic`: `V(r) = r^2 + 2rs`
+- `convergent_linear`: `V(r) = (r^2 + 2rs) / (r + 4s)`
+- `linear`: `V(r) = r`
+- `bounded`: `V(r) = r / (r + 2s)`
+- `convergent_square_root`: `V(r) = r / sqrt(r + 2s)`
+- `square_root`: `V(r) = sqrt(r)`
+
+`s` is the content constant as specified in `smt_param_rewards_v1`. With both
+quadratic and convergent_linear rewards, Steem has used a content constant of
+2,000,000,000,000. That value may or may not make sense for your SMT depending
+on the token supply. The number is equivalent to satoshi of vesting SMT claims.
+
+There is an intrinsic relationship between the curves. In Steem, `quadratic`,
+`convergent_linear`, and `linear` are all considered content reward curves.
+`bounded`, `convergent_square_root`, and `square_root` are all used as curation
+reward curves. Specifically in these pairings:
+
+- `quadratic` and `bounded`
+- `convergent_linear` and `convergent_square_root`
+- `linear` and `square_root`
+
+The curations reward curves are actually a derivation from the content reward
+curve from a principle we call the Ultimate Indifference Principle (UIP). From
+this principle we create a system of differential equations that when applied
+to the content reward curve, yield the associated curation reward curve. The
+UIP preserves the following properties:
+
+- The base reward (curation) obtained from an infintesimal number of votes is
+the same as for all posts regardless of upvote level.
+
+- It follows then that the "bonus" should be rewarded based on future upvotes.
+The bonus should monotonically increase without reducing the base reward for
+other's votes.
+
+If you choose to pair content and curation reward curves together that match
+according to the UIP, the economics are guaranteed to be well behaved. There
+are social pros and cons for each pairing, which is part of the reason STEEM
+has used three different pairings of reward curves.
 
 For an illustration of the meaning of reward curves, imagine grouping the
 most-upvoted posts as follows:
@@ -1586,15 +1481,6 @@ Here's how the rewards differ:
 - With the linear reward curve, Section A and Section B will get the same
   reward per upvote.
 
-Possible curation curves are:
-
-- Linear `cc(r) = r`
-- Square-root `cc(r) = sqrt(r)`
-- Bounded Curation `cc(r) = r / (r + 2s)`
-
-`s` in the Bounded Curation curve is the same content constant used for
-quadratic rewards.
-
 To help visualize, here are some plots called *pie charts*. Each colored
 area represents how curation rewards are divided among curators with equal
 voting power.
@@ -1608,14 +1494,16 @@ voting power.
   grow as later curators vote.
 - When both curves are linear, everyone gets the same curation reward
   regardless of which post they vote on.
-- In the case of `rc_linear + cc_sqrt` and `rc_quadratic + cc_bounded`, the
+- In the case of `linear + sqrt` and `quadratic + bounded`, the
   same height rectangles means everyone gets about the same initial curation
-  reward, call this `ICR=`.
-- In the case of `rc_linear + cc_bounded`, the rectangles are decreasing in
+  reward, call this `ICR=` (This is the UIP).
+- In the case of `linear + bounded`, the rectangles are decreasing in
   height. This represents a progressive *handicap* against voting for
   already-popular posts, call this `ICR-`.
-- In the case of `rc_quadratic + cc_sqrt` and `rc_quadratic + cc_linear`,
+- In the case of `quadratic + sqrt` and `quadratic + linear`,
   the rectangles are increasing in height. Call this `ICR+`.
+
+TODO: Insert Table that assigns each curve pairing ICR+/-/=
 
 Fundamentally, curation is making a prediction that upvotes will occur in
 the future. As reward system designers, our criterion for selecting a curve
@@ -1635,6 +1523,10 @@ In practice, independence or a modest positive correlation should be
 expected, so an `ICR=` or `ICR-` curve should be chosen. For STEEM itself,
 curation was originally the quadratic `ICR=`, as of the Steem hard fork 19
 it is the linear `ICR=`.
+
+All curves are available for both content and curation rewards as you can
+configure an SMT to only have content or curation rewards and setting those
+curves to any available opens up SMTs to more economic models.
 
 ## Target votes per day
 
@@ -1689,16 +1581,26 @@ The votable token set is determined by `allowed_vote_assets` which is a
 ```
 struct allowed_vote_assets
 {
-   flat_map< asset_symbol_type, votable_asset_info >      votable_assets;
+   flat_map< asset_symbol_type, votable_asset_options >      votable_assets;
 };
 
-struct votable_asset_info_v1
+struct votable_asset_options
 {
-   share_type        max_accepted_payout    = 0;
-   bool              allow_curation_rewards = false;
+   share_type                    max_accepted_payout    = std::numeric_limits< int64_t >::max();
+   bool                          allow_curation_rewards = true;
+   comment_payout_beneficiaries  beneficiaries;
 };
 
-typedef static_variant< votable_asset_info_v1 >           votable_asset_info;
+struct comment_payout_beneficiaries
+{
+   vector< beneficiary_route_type > beneficiaries;
+};
+
+struct beneficiary_route_type
+{
+   account_name_type account;
+   uint16_t          weight;
+};
 ```
 
 The following rules are applied to determine whether tokens are votable:
@@ -1715,25 +1617,18 @@ And these are the rules for whether a token is rewardable:
   zero, then the token is not rewardable for that post.
 - If some voter (i.e. upvoter / downvoter) has a zero balance of a token,
   then that token is not rewardable for that voter's votes.
-- If the `max_accepted_payout` for any non-STEEM token is nonzero, then the
-  `max_accepted_payout` for STEEM/SBD must be at least the default
-  `max_accepted_payout`.
 
 Implementation notes:
 
 - For an advisory vote, all rewards are zero, including curators and
   beneficiaries. This is because the blockchain applies the
   `max_accepted_payout` cap before the curator / beneficiary computations.
-- Currently (as of Steem hard fork 19), the Steem blockchain *does* deduct voting
-  power for advisory Steem votes. This behavior will be changed in a future
-  Steem hard fork (Steem issue #1380).
 - At most two tokens may be specified in `votable_assets`. This means that
   each post is voted with at most three tokens (including STEEM).
-- The default `max_accepted_payout` is stored in
-  `max_accepted_steem_payout_latch` member of
-  `dynamic_global_properties_object`.  Clients should populate
-  `max_accepted_payout` of a post based on this member, in case the default
-  value changes in a future version.
+
+Each SMT can specifiy its own beneificiary routes separate from STEEM
+beneficiary routes. The routes are not inherited, so if the same routes are
+desired for STEEM and an SMT, it needs to be set for both.
 
 No consensus level restriction forces any particular post to have any
 particular `allowed_vote_assets`. As a consequence, any post may mark itself
@@ -1753,8 +1648,8 @@ posts that violate this validation rule.
 ## Static Token Parameters
 
 Static parameters are configuration constants that affect the behavior of
-SMTs, but are deliberately excluded from `smt_setup_parameters` or
-`smt_runtime_parameters`. The reason they are designed to be
+SMTs, but are deliberately excluded from `smt_set_setup_parameters` or
+`smt_set_runtime_parameters`. The reason they are designed to be
 non-configurable is that allowing these parameters to significantly deviate
 from the values used for STEEM would result in significant risks, such as:
 
@@ -1784,31 +1679,30 @@ Here is the list of such static parameters:
 
 ## Mandatory token parameters
 
-The token parameters set by `smt_setup_parameters` or
-`smt_runtime_parameters` have default values. A few STEEM-equivalent
+The token parameters set by `smt_set_setup_parameters` or
+`smt_set_runtime_parameters` have default values. A few STEEM-equivalent
 parameters are specified by `smt_setup_operation` fields. These are the
 parameters which do not have a default value, and thus, must be specified
 for every asset.
 
 - `SMT_MAX_SHARE_SUPPLY` : Set by `smt_setup_operation.max_supply`
-- `SMT_BLOCKCHAIN_PRECISION` : Set by `pow(10, smt_setup_operation.decimal_places)`
-- `SMT_BLOCKCHAIN_PRECISION_DIGITS` : Set by `smt_setup_operation.decimal_places`
+- `SMT_BLOCKCHAIN_PRECISION` : Set by `pow(10, smt_create_operation.precision)`
+- `SMT_BLOCKCHAIN_PRECISION_DIGITS` : Set by `smt_create_operation.precision`
 
 ## SMT interaction with existing operations
 
-- `comment_payout_beneficiaries` : The existing
-  `comment_payout_beneficiaries` will only redirect STEEM. In the future,
-  `comment_payout_beneficiaries` functionality which allows redirecting SMT
-  rewards may be added.
 - `comment_options` : `max_accepted_payout`, `allow_votes` only affects
   STEEM, see [here](#votability-and-rewardability) to restrict
   `max_accepted_payout` for assets. `allow_curation_rewards` affects all
   tokens.
-- `vote_operation` : Multiple tokens in the comment's votable set vote.
+- `vote_operation` : Only votes with Steem Power, not SMTs. Use of this
+  operation should be phased out by UIs.
+- `vote2_operation` : Allows voting with STEEM and SMTs directly with "mana"
+   as opposed to percentage vote power like `vote_operation`.
 - `transfer_operation` : Supports all SMTs.
 - Escrow operations:  Do not support SMTs.
-- `transfer_to_vesting_operation` : Supports all SMTs that support vesting.
-- `withdraw_vesting_operation` : Supports all SMTs that support vesting.
+- `transfer_to_vesting_operation` : Supports all SMTs.
+- `withdraw_vesting_operation` : Supports all SMTs.
 - `set_withdraw_vesting_route_operation` : Does not support SMTs.
 - `account_witness_vote_operation` : SMTs do not affect witness votes.
 - `account_witness_proxy_operation` : SMTs do not affect witness votes.
@@ -1816,11 +1710,13 @@ for every asset.
 - `convert_operation` : SMTs cannot be converted.
 - Limit order operations : Limit orders are fully supported by SMTs trading
   against STEEM.
-- `transfer_to_savings_operation` : SMTs support savings.
+- `transfer_to_savings_operation` : Does not support SMTs.
 - `decline_voting_rights_operation` : Affects SMT votes as well as STEEM
   votes.
-- `claim_reward_balance_operation` : Restrictions on this operation are
-  relaxed to allow any asset in any of the three fields, including SMTs.
+- `claim_reward_balance_operation` : Does not support SMTs. Use of this
+  operation should be phased out by UIs.
+- `claim_reward_balance2_operation` : Allows claiming of arbitrary reward
+  balances, STEEM and SMTs included.
 - `delegate_vesting_shares_operation` : Supports all SMTs that support
   vesting.
 - Multisig Native: There is nothing "special" about the handling of SMT
@@ -1841,6 +1737,11 @@ Protocol
 that may be constructed during the initial ICO setup of an SMT for providing
 perpetual liquidity to an SMT community. For simplicity, Automated Market
 Makers in Steem may only trade between STEEM and any given SMT.
+
+At launch, SMTs will not support market makers, but the market maker can be
+specified as a route during the ICO and in emissions. Funds will be kept in
+the market maker account and made available automatically to the market maker
+when functionality is added in a future hard fork.
 
 ## Setup
 
