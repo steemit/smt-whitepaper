@@ -632,6 +632,22 @@ typedef static_variant< smt_capped_generation_policy > smt_generation_policy;
 This `typedef` allows the potential for future protocol versions to allow
 additional generation policy semantics with different parameters.
 
+### ICO contribution data structure
+
+struct smt_contribute_operation
+{
+   account_name_type  contributor;
+   asset_symbol_type  symbol;
+   uint32_t           contribution_id;
+   asset              contribution;
+
+   extensions_type    extensions;
+};
+
+Contributions require a unique contribution id per SMT and are processed in
+FIFO order. This is important for multi-tiered ICOs that want to reward early
+contributions more than later contributions. The contribution must be in STEEM.
+
 ### Examples and rationale
 
 #### Example ICO
@@ -1261,6 +1277,55 @@ The `smt_setup_emissions_operation` is a *pre-setup* operation which must be
 executed *before* the `smt_setup_operation`.  See the section on pre-setup
 operations.
 
+#### Emissions Bandwidth
+
+Steem supports feeless transactions by the way of resource credits (RCs). These
+credits accrue to an account over time based on the amount of Steem Power
+the account controls and are paid to cover the various resources required
+to run a blockchain. Most SMT operations are paid by the control account or
+an ICO contributor. Emissions are a rare case in that they belong solely to
+the SMT, not a particular account. For this reason, RCs can be delegated
+directly to an SMT via the non-consensus operation, `delegate_to_pool`.
+
+Multiple users can all delegate some of their RCs to fund emissions for the
+SMT. If the SMT does not have sufficient RCs, some emissions may not happen
+in time. However, once sufficient RCs have been delegated, emissions will
+catch up as quickly as is allowed by the sum total of delegated RCs.
+
+```
+struct delegate_to_pool_operation
+{
+   account_name_type     from_account;
+   account_name_type     to_pool;
+   asset                 amount;
+
+   extensions_type       extensions;
+};
+```
+
+#### Example Delegation
+
+```
+["custom_json_operation",
+ {
+  "required_auths" : ["alice"],
+  "required_posting_auths" : [],
+  "id" : "rc",
+  "json" : "[\"delegate_to_pool\",
+   {
+    \"from_account\" : \"alice\",
+    \"to_account\" : \"@@588062267\",
+    \"amount\" : {
+     \"amount\" : \"100000000\"
+     \"nai\" : \"@@000000037\"
+     \"precision\" : 6
+    }
+   }
+  ]"
+ }
+]
+```
+
 #### Emissions FAQ
 
 - Q:  Can the SMT emissions data structures express Steem's [current
@@ -1728,6 +1793,167 @@ for every asset.
 
 \newcommand{\steem}{\texttt{STEEM}}
 \newcommand{\mytoken}{\texttt{MYTOKEN}}
+
+# Automated Actions
+
+### Motivation
+
+SMTs are implemented using a new framework and philosophy of blockchain
+development called Automated Actions. Because Steem is an application specific
+blockchain, there are a number on contracts that happen in the background. In
+the past we have exposed these contracts with virtual operations. Virtual
+operations are essentially an annotation of what happened so that it can be
+recorded in history. Automated Actions are included explicitly in the block
+and this provides some unique advantages.
+
+### Implementation
+
+On the surface, Automated Actions look similar to virtual operations. Many of
+them record a specific state transition that took place. For example, an ICO
+contributor receiving their tokens. Where they differ is how they are created.
+Actions can be created for future events and then executed at the proper time.
+From an implementation perspective, this is ideal as it cleans up the code and
+prevents clutter for one off functions that handle specific, but potentially
+rare, events.
+
+Actions can also create other actions, which we call cascading actions. This
+allows us to perform O(n) operations spread out safely over as many blocks as
+it takes to include them rather than performing them all at once. A good
+example of this is the first payouts in Steem. No rewards were paid out until
+July 4th, 2016, at which all comments received a payout. The block size might
+be small, but there are a lot of contracts executing during that block that
+causes it to have a disproportionate execution time. Automated Actions are
+explicitly included in a block and forces block size and execution time to be
+correlated.
+
+This is important to know because if blocks are full or there are many actions
+needing to be executed at once, actions can be delayed. You might specify a
+launch time for your SMT and it could launch a few blocks late. This is no more
+insecure than witnesses not producing blocks at a specific time and does not
+pose any risk.
+
+There are two types of Automated Actions that create a firm distinction in how
+they are handled in the consensus protocol. Those are Required and Optional
+Automated Actions.
+
+As their name implies, Required Automated Actions must be included in a block.
+Missing an action, including them in the incorrect order, or including an extra
+action all violate consensus. Required actions are allowed to be delayed if the
+inclusion of the action would cause the total size of Required Automated
+Actions to surpass 25% of the maximum block size. Blocks can include more
+actions than this, so long as they are expected, but the block is not required
+to as to not starve user generated transactions.
+
+Optional Automated Actions, as expected, are optional. These are currently just
+used for SMT emissions, which can be delayed due to insufficient Resource
+Credits (RCs). Because Optional Automated Actions are optional, their order
+does not matter and their ability to be included in the block needs to be
+verified. For example, an SMT emission needs to check if it has been long
+enough since the last emission to warrant another.
+
+### SMT Automated Actions
+
+These actions will show up in account history, so it is useful to know the
+meaning of each actions.
+
+#### SMT Required Automated Actions
+
+- `smt_ico_launch_action` signifies the beginning of an ICO. It is scheduled for
+  inclusion at `contribution_begin_time`.
+
+```
+struct smt_ico_launch_action
+{
+   account_name_type control_account;
+   asset_symbol_type symbol;
+};
+```
+
+- `smt_ico_evaluation_action` signifies the end of an ICO. It will either
+  cascade to refund contributions on a failed ICO, or schedule a token launch.
+  It is scheduled for inclusion at `contribtuon_end_time`.
+
+```
+struct smt_ico_evaluation_action
+{
+   account_name_type control_account;
+   asset_symbol_type symbol;
+};
+```
+
+- `smt_refund_action` records a refund for a contribution to a failed ICO. It
+  will be scheduled as quickly as possible after an ICO fails.
+
+```
+struct smt_refund_action
+{
+   account_name_type contributor;
+   asset_symbol_type symbol;
+   uint32_t          contribution_id;
+   asset             refund;
+};
+```
+
+- `smt_token_launch` signifies the launch of an SMT. If there was an ICO,
+  contributors and founders will receive their tokens through cascading
+  actions. It will be scheduled for inclusion at `launch_time`.
+
+```
+struct smt_token_launch_action : public base_operation
+{
+   account_name_type control_account;
+   asset_symbol_type symbol;
+};
+```
+
+- `smt_contributor_payout_action` records the payout for a contribution to a
+  successful ICO. It will scheduled as quickly as possible after the SMT
+  launches.
+
+```
+struct smt_contributor_payout_action
+{
+   account_name_type    contributor;
+   asset_symbol_type    symbol;
+   uint32_t             contribution_id;
+   asset                contribution;
+   std::vector< contribution_payout > payouts;
+};
+```
+
+- `smt_founder_payout_action` records the payout for the founders of a
+  successful ICO. It will be scheduled as quickly as possible after the SMT
+  launches.
+
+```
+struct smt_contributor_payout_action
+{
+   account_name_type    contributor;
+   asset_symbol_type    symbol;
+   uint32_t             contribution_id;
+   asset                contribution;
+   std::vector< contribution_payout > payouts;
+};
+```
+
+#### Optional Automated Actions
+
+- `smt_token_emission_action` records emissions for an SMT. The inclusion time
+  may be delayed if the block is full or if the SMT does not have sufficient
+  resource credits. `emission_time` is the effective time of the emission in
+  emissions schedule. It will attempt to be included on the earliest block
+  according to the emissions schedule where there is space and the SMT has
+  sufficient resource credits.
+
+```
+struct smt_token_emission_action
+{
+   account_name_type                        control_account;
+   asset_symbol_type                        symbol;
+   time_point_sec                           emission_time;
+   flat_map< unit_target_type, share_type > emissions;
+};
+```
 
 # Automated Market Makers for SMTs
 
